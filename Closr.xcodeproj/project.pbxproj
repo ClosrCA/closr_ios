@@ -21,6 +21,7 @@
 		E4713EFC1E399ED3004CC166 /* ClosrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */; };
 		E4713F101E39B581004CC166 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F0E1E39B581004CC166 /* Restaurant.swift */; };
 		E4713F111E39B581004CC166 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F0F1E39B581004CC166 /* Place.swift */; };
+		E4713F171E39CC88004CC166 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F161E39CC88004CC166 /* Shared.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E4713EFD1E399ED3004CC166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4713F0E1E39B581004CC166 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = Place/Restaurant.swift; sourceTree = "<group>"; };
 		E4713F0F1E39B581004CC166 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Place.swift; path = Place/Place.swift; sourceTree = "<group>"; };
+		E4713F161E39CC88004CC166 /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shared.swift; path = Place/Shared.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 		E4713F091E39B4B6004CC166 /* Place */ = {
 			isa = PBXGroup;
 			children = (
+				E4713F161E39CC88004CC166 /* Shared.swift */,
 				E4713F0F1E39B581004CC166 /* Place.swift */,
 				E4713F0E1E39B581004CC166 /* Restaurant.swift */,
 			);
@@ -494,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4713F171E39CC88004CC166 /* Shared.swift in Sources */,
 				E4713F101E39B581004CC166 /* Restaurant.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
