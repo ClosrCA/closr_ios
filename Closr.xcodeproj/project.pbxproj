@@ -19,6 +19,8 @@
 		E4713EE61E399ED2004CC166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4713EE41E399ED2004CC166 /* LaunchScreen.storyboard */; };
 		E4713EF11E399ED3004CC166 /* ClosrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EF01E399ED3004CC166 /* ClosrTests.swift */; };
 		E4713EFC1E399ED3004CC166 /* ClosrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */; };
+		E4713F101E39B581004CC166 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F0E1E39B581004CC166 /* Restaurant.swift */; };
+		E4713F111E39B581004CC166 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F0F1E39B581004CC166 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		E4713EF71E399ED3004CC166 /* ClosrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClosrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosrUITests.swift; sourceTree = "<group>"; };
 		E4713EFD1E399ED3004CC166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4713F0E1E39B581004CC166 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = Place/Restaurant.swift; sourceTree = "<group>"; };
+		E4713F0F1E39B581004CC166 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Place.swift; path = Place/Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,9 @@
 		E4713ED71E399ED2004CC166 /* Closr */ = {
 			isa = PBXGroup;
 			children = (
+				E4713F141E39B747004CC166 /* Event */,
+				E4713F121E39B736004CC166 /* User */,
+				E4713F091E39B4B6004CC166 /* Place */,
 				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
 				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
 				E4713EE21E399ED2004CC166 /* Assets.xcassets */,
@@ -179,6 +186,29 @@
 				E4713EFD1E399ED3004CC166 /* Info.plist */,
 			);
 			path = ClosrUITests;
+			sourceTree = "<group>";
+		};
+		E4713F091E39B4B6004CC166 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				E4713F0F1E39B581004CC166 /* Place.swift */,
+				E4713F0E1E39B581004CC166 /* Restaurant.swift */,
+			);
+			name = Place;
+			sourceTree = "<group>";
+		};
+		E4713F121E39B736004CC166 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		E4713F141E39B747004CC166 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Event;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,9 +494,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4713F101E39B581004CC166 /* Restaurant.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
+				E4713F111E39B581004CC166 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
