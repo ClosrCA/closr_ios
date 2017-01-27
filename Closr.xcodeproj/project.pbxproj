@@ -12,6 +12,10 @@
 		8DB2B64994EB02C2BB1AB026 /* Pods_ClosrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65AFC946EB066773EB02F2F /* Pods_ClosrUITests.framework */; };
 		A188F4BD87B3ACCD9E2C5CE6 /* Pods_Closr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */; };
 		C73D7C949987D58EFC761062 /* Pods_Closr_ClosrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E93C733ACEB26E3D0C76266 /* Pods_Closr_ClosrUITests.framework */; };
+		E4014D321E3B0F880077DD6C /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4014D311E3B0F880077DD6C /* PlacesTableViewController.swift */; };
+		E4014D351E3B0FDD0077DD6C /* Places.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4014D341E3B0FDD0077DD6C /* Places.storyboard */; };
+		E4014D371E3B12CE0077DD6C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4014D361E3B12CE0077DD6C /* Photo.swift */; };
+		E4014D3B1E3B17510077DD6C /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4014D3A1E3B17510077DD6C /* PlaceTableViewCell.swift */; };
 		E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713ED81E399ED2004CC166 /* AppDelegate.swift */; };
 		E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EDA1E399ED2004CC166 /* RootViewController.swift */; };
 		E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */; };
@@ -19,9 +23,9 @@
 		E4713EE61E399ED2004CC166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4713EE41E399ED2004CC166 /* LaunchScreen.storyboard */; };
 		E4713EF11E399ED3004CC166 /* ClosrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EF01E399ED3004CC166 /* ClosrTests.swift */; };
 		E4713EFC1E399ED3004CC166 /* ClosrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */; };
-		E4713F101E39B581004CC166 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F0E1E39B581004CC166 /* Restaurant.swift */; };
 		E4713F111E39B581004CC166 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F0F1E39B581004CC166 /* Place.swift */; };
 		E4713F171E39CC88004CC166 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F161E39CC88004CC166 /* Shared.swift */; };
+		E4713F191E3AE551004CC166 /* PlaceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F181E3AE551004CC166 /* PlaceFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		B9FCEBDAC2F229089C0F77E4 /* Pods-Closr-ClosrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr-ClosrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Closr-ClosrTests/Pods-Closr-ClosrTests.release.xcconfig"; sourceTree = "<group>"; };
 		BD1A8B59A350A2356EAF9403 /* Pods-Closr-ClosrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr-ClosrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Closr-ClosrUITests/Pods-Closr-ClosrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C65AFC946EB066773EB02F2F /* Pods_ClosrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4014D311E3B0F880077DD6C /* PlacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesTableViewController.swift; path = Place/Controller/PlacesTableViewController.swift; sourceTree = "<group>"; };
+		E4014D341E3B0FDD0077DD6C /* Places.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Places.storyboard; path = Place/Controller/View/Places.storyboard; sourceTree = "<group>"; };
+		E4014D361E3B12CE0077DD6C /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = Place/Photo.swift; sourceTree = "<group>"; };
+		E4014D3A1E3B17510077DD6C /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceTableViewCell.swift; path = Place/Controller/View/PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		E4713ED51E399ED2004CC166 /* Closr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Closr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4713ED81E399ED2004CC166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4713EDA1E399ED2004CC166 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -70,9 +78,9 @@
 		E4713EF71E399ED3004CC166 /* ClosrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClosrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosrUITests.swift; sourceTree = "<group>"; };
 		E4713EFD1E399ED3004CC166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4713F0E1E39B581004CC166 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = Place/Restaurant.swift; sourceTree = "<group>"; };
 		E4713F0F1E39B581004CC166 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Place.swift; path = Place/Place.swift; sourceTree = "<group>"; };
 		E4713F161E39CC88004CC166 /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shared.swift; path = Place/Shared.swift; sourceTree = "<group>"; };
+		E4713F181E3AE551004CC166 /* PlaceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceFactory.swift; path = Place/PlaceFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +142,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E4014D301E3B0F4A0077DD6C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E4014D311E3B0F880077DD6C /* PlacesTableViewController.swift */,
+				E4014D331E3B0F9F0077DD6C /* View */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E4014D331E3B0F9F0077DD6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E4014D341E3B0FDD0077DD6C /* Places.storyboard */,
+				E4014D3A1E3B17510077DD6C /* PlaceTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		E4713ECC1E399ED2004CC166 = {
 			isa = PBXGroup;
 			children = (
@@ -193,9 +219,11 @@
 		E4713F091E39B4B6004CC166 /* Place */ = {
 			isa = PBXGroup;
 			children = (
+				E4014D301E3B0F4A0077DD6C /* Controller */,
 				E4713F161E39CC88004CC166 /* Shared.swift */,
+				E4713F181E3AE551004CC166 /* PlaceFactory.swift */,
 				E4713F0F1E39B581004CC166 /* Place.swift */,
-				E4713F0E1E39B581004CC166 /* Restaurant.swift */,
+				E4014D361E3B12CE0077DD6C /* Photo.swift */,
 			);
 			name = Place;
 			sourceTree = "<group>";
@@ -334,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4713EE61E399ED2004CC166 /* LaunchScreen.storyboard in Resources */,
+				E4014D351E3B0FDD0077DD6C /* Places.storyboard in Resources */,
 				E4713EE31E399ED2004CC166 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,8 +527,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4713F171E39CC88004CC166 /* Shared.swift in Sources */,
-				E4713F101E39B581004CC166 /* Restaurant.swift in Sources */,
+				E4014D321E3B0F880077DD6C /* PlacesTableViewController.swift in Sources */,
+				E4014D3B1E3B17510077DD6C /* PlaceTableViewCell.swift in Sources */,
+				E4014D371E3B12CE0077DD6C /* Photo.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
+				E4713F191E3AE551004CC166 /* PlaceFactory.swift in Sources */,
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
 				E4713F111E39B581004CC166 /* Place.swift in Sources */,
@@ -647,6 +679,7 @@
 			baseConfigurationReference = 48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 47424952HG;
 				INFOPLIST_FILE = Closr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -663,6 +696,7 @@
 			baseConfigurationReference = A67206956609D6F4E129FFC4 /* Pods-Closr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 47424952HG;
 				INFOPLIST_FILE = Closr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

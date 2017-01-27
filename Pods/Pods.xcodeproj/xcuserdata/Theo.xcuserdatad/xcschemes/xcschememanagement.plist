@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>AlamofireObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,7 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>06D261369668F219A5C8C35A6E39A1A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>596E17F18AA769460B8F0E9239B62B06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,17 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C585121E4001ABF965C726C884B2E461</key>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DE87BA7F1E07C1FC7E8AAFB76310496E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E12ECCEEB77DA69FB13B3129FCB6657E</key>
+		<key>D79538A01AC74950A959298A0E5DEF9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

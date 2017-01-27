@@ -6,6 +6,7 @@ target 'Closr' do
     
   pod 'Alamofire', '~> 4.3'
   pod 'AlamofireObjectMapper', '~> 4.0'
+  pod 'AlamofireImage', '~> 3.1'
   
   target 'ClosrTests' do
     # Pods for testing

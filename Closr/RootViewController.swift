@@ -10,13 +10,25 @@ import UIKit
 import CoreLocation
 
 class RootViewController: UIViewController {
-
+    
+    lazy var demoTableViewController: PlacesTableViewController = {
+        let storyboard = UIStoryboard(name: "Places", bundle: nil)
+        
+        return storyboard.instantiateViewController(withIdentifier: "PlaceController") as! PlacesTableViewController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Place.placeNearby(location: CLLocationCoordinate2D.downtownToronto, type: .restaurant) { (places, error) in
-            places?.forEach { print($0.description) }
-        }
+        demoTableViewController.willMove(toParentViewController: self)
+        addChildViewController(demoTableViewController)
+        view.addSubview(demoTableViewController.view)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        demoTableViewController.view.frame = view.bounds
     }
 
 }
