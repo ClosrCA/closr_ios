@@ -20,7 +20,6 @@
 		E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EDA1E399ED2004CC166 /* RootViewController.swift */; };
 		E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */; };
 		E4713EE31E399ED2004CC166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4713EE21E399ED2004CC166 /* Assets.xcassets */; };
-		E4713EE61E399ED2004CC166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4713EE41E399ED2004CC166 /* LaunchScreen.storyboard */; };
 		E4713EF11E399ED3004CC166 /* ClosrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EF01E399ED3004CC166 /* ClosrTests.swift */; };
 		E4713EFC1E399ED3004CC166 /* ClosrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */; };
 		E4713F111E39B581004CC166 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713F0F1E39B581004CC166 /* Place.swift */; };
@@ -70,7 +69,6 @@
 		E4713EDA1E399ED2004CC166 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		E4713EE01E399ED2004CC166 /* Closr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Closr.xcdatamodel; sourceTree = "<group>"; };
 		E4713EE21E399ED2004CC166 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E4713EE51E399ED2004CC166 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4713EE71E399ED2004CC166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4713EEC1E399ED3004CC166 /* ClosrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClosrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4713EF01E399ED3004CC166 /* ClosrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosrTests.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
 				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
 				E4713EE21E399ED2004CC166 /* Assets.xcassets */,
-				E4713EE41E399ED2004CC166 /* LaunchScreen.storyboard */,
 				E4713EE71E399ED2004CC166 /* Info.plist */,
 				E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */,
 			);
@@ -361,7 +358,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4713EE61E399ED2004CC166 /* LaunchScreen.storyboard in Resources */,
 				E4014D351E3B0FDD0077DD6C /* Places.storyboard in Resources */,
 				E4713EE31E399ED2004CC166 /* Assets.xcassets in Resources */,
 			);
@@ -569,17 +565,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		E4713EE41E399ED2004CC166 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E4713EE51E399ED2004CC166 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		E4713EFE1E399ED3004CC166 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -679,6 +664,7 @@
 			baseConfigurationReference = 48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 47424952HG;
 				INFOPLIST_FILE = Closr/Info.plist;
@@ -696,6 +682,7 @@
 			baseConfigurationReference = A67206956609D6F4E129FFC4 /* Pods-Closr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 47424952HG;
 				INFOPLIST_FILE = Closr/Info.plist;
