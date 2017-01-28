@@ -13,13 +13,13 @@ struct GoogleAPI {
     
     struct PlaceURL {
         // param: location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=YOUR_API_KEY
-        static let nearby   = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+        static let nearby       = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
         // param: query=123+main+street&key=YOUR_API_KEY
-        static let search   = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+        static let textSearch   = "https://maps.googleapis.com/maps/api/place/textsearch/json"
         // param: placeid or reference
-        static let detail   = "https://maps.googleapis.com/maps/api/place/details/json"
+        static let detail       = "https://maps.googleapis.com/maps/api/place/details/json"
         // param: maxwidth=400&photoreference=3FyhNLlBU&key=YOUR_API_KEY
-        static let photo    = "https://maps.googleapis.com/maps/api/place/photo"
+        static let photo        = "https://maps.googleapis.com/maps/api/place/photo"
     }
     
     enum PlaceType: String {

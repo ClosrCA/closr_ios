@@ -1,5 +1,5 @@
 //
-//  PlaceFactory.swift
+//  PlaceSearch.swift
 //  Closr
 //
 //  Created by Tao on 2017-01-26.
@@ -13,7 +13,7 @@ import AlamofireObjectMapper
 
 typealias PlaceHandler = (([Place]?, Error?) -> Void)
 
-class PlaceFactory {
+class PlaceSearch {
     
     var places: [Place] {
         
@@ -73,7 +73,7 @@ class PlaceFactory {
         }
     }
     
-    func placeNearby(location: CLLocationCoordinate2D, within radius: CLLocationDistance = 2000, type: GoogleAPI.PlaceType, keyword: String? = nil, completion: PlaceHandler?) {
+    func placeNearby(location: CLLocationCoordinate2D, within radius: CLLocationDistance = 5000, type: GoogleAPI.PlaceType, keyword: String? = nil, completion: PlaceHandler?) {
         
         var params: [String: Any] = GoogleAPI.authenticate(params:["location": location.description,
                                                                    "radius": radius,

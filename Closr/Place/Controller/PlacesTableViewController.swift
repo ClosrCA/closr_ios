@@ -11,7 +11,7 @@ import CoreLocation
 
 class PlacesTableViewController: UITableViewController {
 
-    var placeFactory = PlaceFactory()
+    var placeFactory = PlaceSearch()
     
     var places = [Place]() {
         didSet {
@@ -52,12 +52,25 @@ class PlacesTableViewController: UITableViewController {
         cell.addressLabel.text = place.address
         
         if let photo = place.photos?.first {
-            photo.loadImage(maxWidth: 100, completion: { (image, error) in
-                cell.previewImageView.image = image
-            })
+            cell.previewImageView.loadImage(withPhoto: photo, placeholder: nil, maxSize: CGSize(width: 100, height: 100))
         }
 
         return cell
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let height = scrollView.frame.height
+        let distanceFromBottom = scrollView.contentSize.height - scrollView.contentOffset.y
+        
+        if distanceFromBottom <= height {
+            
+            placeFactory.nextPage(completion: { (places, error) in
+                if let places = places {
+                    self.places = places
+                }
+            })
+        }
     }
 
 }
