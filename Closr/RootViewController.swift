@@ -11,10 +11,12 @@ import CoreLocation
 
 class RootViewController: UIViewController {
     
-    lazy var demoTableViewController: PlacesTableViewController = {
+    lazy var demoTableViewController: UINavigationController = {
         let storyboard = UIStoryboard(name: "Places", bundle: nil)
         
-        return storyboard.instantiateViewController(withIdentifier: "PlaceController") as! PlacesTableViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "PlaceController") as! PlacesTableViewController
+        
+        return UINavigationController(rootViewController: controller)
     }()
     
     override func viewDidLoad() {
