@@ -9,9 +9,9 @@
 import UIKit
 import CoreLocation
 
-class RootViewController: UIViewController {
+class RootViewController: UIViewController, LoginControllerDelegate {
     
-    lazy var demoTableViewController: UINavigationController = {
+    fileprivate lazy var demoTableViewController: UINavigationController = {
         let storyboard = UIStoryboard(name: "Places", bundle: nil)
         
         let controller = storyboard.instantiateViewController(withIdentifier: "PlaceController") as! PlacesTableViewController
@@ -19,19 +19,41 @@ class RootViewController: UIViewController {
         return UINavigationController(rootViewController: controller)
     }()
     
+    fileprivate lazy var loginController: LoginViewController = {
+        let loginController = LoginViewController()
+        loginController.delegate = self
+        
+        return loginController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        demoTableViewController.willMove(toParentViewController: self)
-        addChildViewController(demoTableViewController)
-        view.addSubview(demoTableViewController.view)
+        display(controller: loginController)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    func didFinishLogin(loginController: LoginViewController) {
         
-        demoTableViewController.view.frame = view.bounds
+        remove(controller: loginController)
+        
+        display(controller: demoTableViewController)
+    }
+    
+    func didFailLogin(loginController: LoginViewController) {
+        
     }
 
+    fileprivate func remove(controller: UIViewController) {
+        controller.willMove(toParentViewController: nil)
+        controller.view.removeFromSuperview()
+        controller.removeFromParentViewController()
+    }
+    
+    fileprivate func display(controller: UIViewController) {
+        addChildViewController(controller)
+        controller.view.frame = view.bounds
+        view.addSubview(controller.view)
+        controller.didMove(toParentViewController: self)
+    }
 }
 

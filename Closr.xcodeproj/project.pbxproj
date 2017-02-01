@@ -29,6 +29,8 @@
 		E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB73B1E3ECC6A001EB362 /* YelpPlace.swift */; };
 		E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */; };
 		E4AAB7431E407E25001EB362 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7421E407E25001EB362 /* ImageLoader.swift */; };
+		E4AAB7461E41E652001EB362 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7451E41E652001EB362 /* LoginViewController.swift */; };
+		E4AAB74A1E41F362001EB362 /* LoginColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7491E41F362001EB362 /* LoginColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		E4AAB73B1E3ECC6A001EB362 /* YelpPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpPlace.swift; path = Place/Search/Yelp/YelpPlace.swift; sourceTree = "<group>"; };
 		E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpPlaceSearch.swift; path = Place/Search/Yelp/YelpPlaceSearch.swift; sourceTree = "<group>"; };
 		E4AAB7421E407E25001EB362 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = Image/ImageLoader.swift; sourceTree = "<group>"; };
+		E4AAB7451E41E652001EB362 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
+		E4AAB7491E41F362001EB362 /* LoginColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginColor.swift; path = Login/Color/LoginColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +201,7 @@
 				E4713F091E39B4B6004CC166 /* Place */,
 				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
 				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
+				E4AAB7441E41E634001EB362 /* Login */,
 				E4713EE21E399ED2004CC166 /* Assets.xcassets */,
 				E4713EE71E399ED2004CC166 /* Info.plist */,
 				E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */,
@@ -270,6 +275,31 @@
 				E4AAB7421E407E25001EB362 /* ImageLoader.swift */,
 			);
 			name = Image;
+			sourceTree = "<group>";
+		};
+		E4AAB7441E41E634001EB362 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E4AAB7451E41E652001EB362 /* LoginViewController.swift */,
+				E4AAB7481E41F343001EB362 /* Color */,
+				E4AAB7471E41F320001EB362 /* Font */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		E4AAB7471E41F320001EB362 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
+		E4AAB7481E41F343001EB362 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				E4AAB7491E41F362001EB362 /* LoginColor.swift */,
+			);
+			name = Color;
 			sourceTree = "<group>";
 		};
 		E4E3286C1E3C711200C3003B /* Search */ = {
@@ -566,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4AAB7461E41E652001EB362 /* LoginViewController.swift in Sources */,
 				E4AAB7361E3EC80D001EB362 /* GooglePlaceSearch.swift in Sources */,
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
 				E4AAB7341E3EC80D001EB362 /* GooglePhoto.swift in Sources */,
@@ -577,6 +608,7 @@
 				E4AAB7281E3EC2FD001EB362 /* PlaceSearch.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
 				E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */,
+				E4AAB74A1E41F362001EB362 /* LoginColor.swift in Sources */,
 				E4AAB72F1E3EC7F6001EB362 /* PlaceTableViewCell.swift in Sources */,
 				E4AAB7431E407E25001EB362 /* ImageLoader.swift in Sources */,
 			);
