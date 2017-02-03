@@ -7,16 +7,16 @@ target 'Closr' do
   pod 'Alamofire', '~> 4.3'
   pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'AlamofireImage', '~> 3.1'
+  
   pod 'OAuthSwift', '~> 1.1.0'
+  
   pod 'SwiftyJSON'
+  
   pod 'EasyPeasy'
   
-  target 'ClosrTests' do
-    # Pods for testing
-  end
-
-  target 'ClosrUITests' do
-    # Pods for testing
-  end
+  pod 'Bolts'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
 
 end

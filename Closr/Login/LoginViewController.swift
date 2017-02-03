@@ -8,10 +8,24 @@
 
 import UIKit
 import EasyPeasy
+import FBSDKCoreKit
+import FBSDKLoginKit
+
+enum LoginException: Error {
+    case cancelled
+    case profileFailLoading
+    
+    var localizedDescription: String {
+        switch self {
+        case .cancelled: return "Oops, proccess cancelled"
+        case .profileFailLoading: return "Can not load profile at the moment"
+        }
+    }
+}
 
 protocol LoginControllerDelegate: class {
     func didFinishLogin(loginController: LoginViewController)
-    func didFailLogin(loginController: LoginViewController)
+    func didFailLogin(loginController: LoginViewController, withError error: Error)
 }
 
 class LoginViewController: UIViewController {
@@ -80,7 +94,65 @@ class LoginViewController: UIViewController {
     
     @objc
     fileprivate func didTapFacebookLogin(sender: UIButton) {
-        delegate?.didFinishLogin(loginController: self)
+        
+        loginWithFacebook(success: { [unowned self] in
+            
+            self.loadFacebookProfile(success: { 
+                self.delegate?.didFinishLogin(loginController: self)
+                
+            }, failure: { (error) in
+                
+                self.delegate?.didFailLogin(loginController: self, withError: error)
+            })
+            
+        }, cancellation: { [unowned self] in
+            
+            self.delegate?.didFailLogin(loginController: self, withError: LoginException.cancelled)
+            
+        }) { [unowned self] (error) in
+            
+            self.delegate?.didFailLogin(loginController: self, withError: error)
+            
+        }
+    }
+    
+    fileprivate func loginWithFacebook(success: (() -> Void)?, cancellation: (() -> Void)?, failure: ((Error) -> Void)?) {
+        
+        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (loginResult, error) in
+            
+            if let error = error {
+                
+                failure?(error)
+                
+                return
+            }
+            
+            if let cancelled = loginResult?.isCancelled, cancelled {
+                cancellation?()
+                
+                return
+            }
+            
+            success?()
+        }
+    }
+    
+    fileprivate func loadFacebookProfile(success: (() -> Void)?, failure: ((Error) -> Void)?) {
+        FBSDKProfile.loadCurrentProfile { (profile, error) in
+            
+            guard profile != nil else {
+                
+                failure?(LoginException.profileFailLoading)
+                
+                return
+            }
+            
+            if let error = error {
+                failure?(error)
+            }
+            
+            success?()
+        }
     }
 
 }

@@ -1,6 +1,0 @@
-framework module Pods_Closr_ClosrUITests {
-  umbrella header "Pods-Closr-ClosrUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

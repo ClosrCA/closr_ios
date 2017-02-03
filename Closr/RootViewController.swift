@@ -39,8 +39,13 @@ class RootViewController: UIViewController, LoginControllerDelegate {
         display(controller: demoTableViewController)
     }
     
-    func didFailLogin(loginController: LoginViewController) {
+    func didFailLogin(loginController: LoginViewController, withError error: Error) {
         
+        let alertController = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+        
+        present(alertController, animated: true)
     }
 
     fileprivate func remove(controller: UIViewController) {
