@@ -10,18 +10,21 @@ import Foundation
 import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
-import OAuthSwift
 import SwiftyJSON
 
-struct YelpAPI {
-    static let consumerKey = "dUKt4i9SsihhbxrpDfEI-Q"
-    static let consumerSecret = "cIsdlO0c1jwsFiROOqbvJssY4dw"
-    static let token = "J3eFJqbKAgG6koKoQroDYevr54KeEXjo"
-    static let tokenSecret = "tPUEWH4onUC16clby1b9zj1wFaQ"
+struct YelpAPIConsole {
+    
+    static let accessTokenUserDefaultsKey = "yelp_access_token_user_defaults_key"
+    
+    struct Credentials {
+        static let appID        = "28TH0TYk_wx9cE3sBOHtoQ"
+        static let secret       = "Xx0rLcJFqOYswyQ5F6sEz89jAKC6BLSeSqXw5S7IPgE0JBIVPHSlHsCfs8eGLB0N"
+        static let authorizeURL = "https://api.yelp.com/oauth2/token"
+    }
     
     struct PlaceURL {
-        static let search = "https://api.yelp.com/v2/search"
-        static let detail = "https://api.yelp.com/v2/business/"
+        static let search = "https://api.yelp.com/v3/businesses/search"
+        static let detail = "https://api.yelp.com/v3/businesses/"
     }
     
     struct PlaceType {
@@ -34,22 +37,27 @@ struct YelpAPI {
         static let term = "term"
         static let offset = "offset"
         static let location = "location"    //location=San Francisco
-        static let coordinate = "location"       //cll=latitude,longitude
-        static let radius = "radius_filter"
-        static let category = "category"
-    }
-    
-    struct OauthField {
-        static let consumerKey  = "oauth_consumer_key"
-        static let token        = "oauth_token"
-        static let signatureMethod = "oauth_signature_method"
-        static let timestamp    = "oauth_timestamp"
-        static let nonce        = "oauth_nonce"
-        static let signature    = "oauth_signature"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+        static let radius = "radius"
+        static let category = "categories"
+        static let sortBy = "sort_by"
+        static let priceFilter = "price"
     }
 }
 
-class YelpPlaceSearch: PlaceSearch {
+enum SearchError: Error {
+    case accessDenied
+    case tokenExpired
+    
+    var localizedDescription: String {
+        switch self {
+        case .accessDenied: return "Access Denied"
+        case .tokenExpired: return "Access token expired"
+        }
+    }
+}
+class YelpPlaceSearch {
     
     var searchRequest: PlaceSearchRequest
     
@@ -59,11 +67,14 @@ class YelpPlaceSearch: PlaceSearch {
     fileprivate var lastTimeSearchURL: String?
     fileprivate var total: Int = 0
     
-    fileprivate lazy var oauthClient = OAuthSwiftClient(consumerKey: YelpAPI.consumerKey,
-                                                        consumerSecret: YelpAPI.consumerSecret,
-                                                        oauthToken: YelpAPI.token,
-                                                        oauthTokenSecret: YelpAPI.tokenSecret,
-                                                        version: .oauth1)
+    fileprivate var accessToken: String? {
+        get {
+            return UserDefaults.standard.string(forKey: YelpAPIConsole.accessTokenUserDefaultsKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: YelpAPIConsole.accessTokenUserDefaultsKey)
+        }
+    }
     
     init(searchRequest: PlaceSearchRequest) {
         self.searchRequest = searchRequest
@@ -94,38 +105,100 @@ class YelpPlaceSearch: PlaceSearch {
     }
     
     fileprivate func placeNearby(withOffset offset: Int, completion: PlaceHandler?) {
-        var params: [String: Any] = [YelpAPI.Field.offset: offset,
-                                     YelpAPI.Field.category: searchRequest.type,
-                                     YelpAPI.Field.coordinate: searchRequest.center.description,
-                                     YelpAPI.Field.radius: searchRequest.radius]
+        var params: [String: Any] = [YelpAPIConsole.Field.offset: offset,
+                                     YelpAPIConsole.Field.category: searchRequest.type,
+                                     YelpAPIConsole.Field.latitude: searchRequest.center.latitude,
+                                     YelpAPIConsole.Field.longitude: searchRequest.center.longitude,
+                                     YelpAPIConsole.Field.radius: searchRequest.radius]
         
         if let keyword = searchRequest.keyword {
-            params[YelpAPI.Field.term] = keyword
+            params[YelpAPIConsole.Field.term] = keyword
         }
         
         isFetching = true
         
-        let _ = oauthClient.get(YelpAPI.PlaceURL.search, parameters: params, success: { [unowned self] (response) in
-            let json = JSON(response.data)
+        if let token = accessToken {
+            
+            authorizedRequest(token: token, url: YelpAPIConsole.PlaceURL.search, parameters: params, completion: completion)
+            
+        } else {
+            renewAccessToekn(success: { [unowned self] (token) in
+                
+                self.store(token: token)
+                
+                self.authorizedRequest(token: token, url: YelpAPIConsole.PlaceURL.search, parameters: params, completion: completion)
+                
+            }, failure: { (error) in
+                completion?(nil, error)
+            })
+        }
+    }
+    
+    fileprivate func authorizedRequest(token: String, url: URLConvertible, parameters: Parameters?, completion: PlaceHandler?) {
+        Alamofire.request(url, parameters: parameters, headers: ["Authorization": "Bearer \(token)"]).responseJSON(completionHandler: { [unowned self] (response) in
             
             self.isFetching = false
             
-            if let error = json["error"]["text"].string {
-                print("\nerror: \(error)\n")
-                print("description: \(json["error"]["description"].stringValue)\n")
-                print("\(response.request?.allHTTPHeaderFields!)")
+            switch response.result {
+            case .success(let value):
+                
+                let json = JSON(value)
+                
+                // TODO: handle expired token
+                
+                if let error = json["error"]["text"].string {
+                    print("\nerror: \(error)\n")
+                    print("description: \(json["error"]["description"].stringValue)\n")
+                    print("\(response.request?.allHTTPHeaderFields!)")
+                }
+                
+                self.total = json["total"].intValue
+                if let rawPlaces = json["businesses"].arrayObject as? [[String: Any]] {
+                    self.places.append(contentsOf: rawPlaces.flatMap { YelpPlace(JSON: $0) })
+                }
+                
+                completion?(self.places, nil)
+                
+            case .failure(let error):
+                
+                completion?(nil, error)
             }
-            
-            self.total = json["total"].intValue
-            if let rawPlaces = json["businesses"].arrayObject as? [[String: Any]] {
-                self.places.append(contentsOf: rawPlaces.flatMap { YelpPlace(JSON: $0) })
+        })
+    }
+    
+    fileprivate func renewAccessToekn(success: ((String) -> Void)?, failure: ((Error) -> Void)?) {
+        
+        let params = ["client_id": YelpAPIConsole.Credentials.appID, "client_secret": YelpAPIConsole.Credentials.secret, "grant_type": "token"]
+        
+        Alamofire.request(YelpAPIConsole.Credentials.authorizeURL, method: .post, parameters: params).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                
+                let json = JSON(value)
+                
+                if let error = json["error"]["text"].string {
+                    print("\nerror: \(error)\n")
+                    print("description: \(json["error"]["description"].stringValue)\n")
+                    print("\(response.request?.allHTTPHeaderFields!)")
+                    
+                    failure?(SearchError.accessDenied)
+                    
+                    return
+                }
+                
+                if let token = json["access_token"].string {
+                    success?(token)
+                }
+                
+            case .failure(let error):
+                
+                failure?(error)
             }
-            
-            completion?(self.places, nil)
-            
-        }) { (error) in
-            
-            completion?(nil, error)
         }
     }
+    
+    fileprivate func store(token: String) {
+        UserDefaults.standard .setValue(token, forKey: YelpAPIConsole.accessTokenUserDefaultsKey)
+    }
+    
 }

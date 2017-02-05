@@ -140,6 +140,8 @@ class LoginViewController: UIViewController {
     fileprivate func loadFacebookProfile(success: (() -> Void)?, failure: ((Error) -> Void)?) {
         FBSDKProfile.loadCurrentProfile { (profile, error) in
             
+            // TODO: - deal with profile
+            
             guard profile != nil else {
                 
                 failure?(LoginException.profileFailLoading)

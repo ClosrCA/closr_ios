@@ -8,8 +8,6 @@ target 'Closr' do
   pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'AlamofireImage', '~> 3.1'
   
-  pod 'OAuthSwift', '~> 1.1.0'
-  
   pod 'SwiftyJSON'
   
   pod 'EasyPeasy'

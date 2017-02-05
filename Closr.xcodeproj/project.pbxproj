@@ -14,13 +14,9 @@
 		E4713EE31E399ED2004CC166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4713EE21E399ED2004CC166 /* Assets.xcassets */; };
 		E4713EF11E399ED3004CC166 /* ClosrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EF01E399ED3004CC166 /* ClosrTests.swift */; };
 		E4713EFC1E399ED3004CC166 /* ClosrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */; };
-		E4AAB7281E3EC2FD001EB362 /* PlaceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7271E3EC2FD001EB362 /* PlaceSearch.swift */; };
 		E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB72A1E3EC7E6001EB362 /* PlacesTableViewController.swift */; };
 		E4AAB72E1E3EC7F6001EB362 /* Places.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AAB72C1E3EC7F6001EB362 /* Places.storyboard */; };
 		E4AAB72F1E3EC7F6001EB362 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB72D1E3EC7F6001EB362 /* PlaceTableViewCell.swift */; };
-		E4AAB7341E3EC80D001EB362 /* GooglePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7301E3EC80D001EB362 /* GooglePhoto.swift */; };
-		E4AAB7351E3EC80D001EB362 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7311E3EC80D001EB362 /* GooglePlace.swift */; };
-		E4AAB7361E3EC80D001EB362 /* GooglePlaceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7321E3EC80D001EB362 /* GooglePlaceSearch.swift */; };
 		E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7381E3ECC12001EB362 /* PlaceSearchRequest.swift */; };
 		E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB73B1E3ECC6A001EB362 /* YelpPlace.swift */; };
 		E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */; };
@@ -70,13 +66,9 @@
 		E4713EF71E399ED3004CC166 /* ClosrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClosrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosrUITests.swift; sourceTree = "<group>"; };
 		E4713EFD1E399ED3004CC166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4AAB7271E3EC2FD001EB362 /* PlaceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceSearch.swift; path = Place/Search/PlaceSearch.swift; sourceTree = "<group>"; };
 		E4AAB72A1E3EC7E6001EB362 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesTableViewController.swift; path = Place/DemoController/PlacesTableViewController.swift; sourceTree = "<group>"; };
 		E4AAB72C1E3EC7F6001EB362 /* Places.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Places.storyboard; path = Place/DemoController/View/Places.storyboard; sourceTree = "<group>"; };
 		E4AAB72D1E3EC7F6001EB362 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceTableViewCell.swift; path = Place/DemoController/View/PlaceTableViewCell.swift; sourceTree = "<group>"; };
-		E4AAB7301E3EC80D001EB362 /* GooglePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GooglePhoto.swift; path = Place/Search/Google/GooglePhoto.swift; sourceTree = "<group>"; };
-		E4AAB7311E3EC80D001EB362 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GooglePlace.swift; path = Place/Search/Google/GooglePlace.swift; sourceTree = "<group>"; };
-		E4AAB7321E3EC80D001EB362 /* GooglePlaceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GooglePlaceSearch.swift; path = Place/Search/Google/GooglePlaceSearch.swift; sourceTree = "<group>"; };
 		E4AAB7381E3ECC12001EB362 /* PlaceSearchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceSearchRequest.swift; path = Place/Search/PlaceSearchRequest.swift; sourceTree = "<group>"; };
 		E4AAB73B1E3ECC6A001EB362 /* YelpPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpPlace.swift; path = Place/Search/Yelp/YelpPlace.swift; sourceTree = "<group>"; };
 		E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpPlaceSearch.swift; path = Place/Search/Yelp/YelpPlaceSearch.swift; sourceTree = "<group>"; };
@@ -234,16 +226,6 @@
 			name = Event;
 			sourceTree = "<group>";
 		};
-		E4AAB7291E3EC777001EB362 /* Google */ = {
-			isa = PBXGroup;
-			children = (
-				E4AAB7301E3EC80D001EB362 /* GooglePhoto.swift */,
-				E4AAB7311E3EC80D001EB362 /* GooglePlace.swift */,
-				E4AAB7321E3EC80D001EB362 /* GooglePlaceSearch.swift */,
-			);
-			name = Google;
-			sourceTree = "<group>";
-		};
 		E4AAB73A1E3ECC4A001EB362 /* Yelp */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,10 +271,8 @@
 		E4E3286C1E3C711200C3003B /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				E4AAB7271E3EC2FD001EB362 /* PlaceSearch.swift */,
 				E4AAB7381E3ECC12001EB362 /* PlaceSearchRequest.swift */,
 				E4AAB73A1E3ECC4A001EB362 /* Yelp */,
-				E4AAB7291E3EC777001EB362 /* Google */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -485,15 +465,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4AAB7461E41E652001EB362 /* LoginViewController.swift in Sources */,
-				E4AAB7361E3EC80D001EB362 /* GooglePlaceSearch.swift in Sources */,
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
-				E4AAB7341E3EC80D001EB362 /* GooglePhoto.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
 				E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */,
-				E4AAB7351E3EC80D001EB362 /* GooglePlace.swift in Sources */,
 				E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */,
-				E4AAB7281E3EC2FD001EB362 /* PlaceSearch.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
 				E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */,
 				E4AAB74A1E41F362001EB362 /* LoginColor.swift in Sources */,

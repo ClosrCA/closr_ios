@@ -11,14 +11,14 @@ import CoreLocation
 
 class PlacesTableViewController: UITableViewController {
 
-    var placeSearch: PlaceSearch = {
+    var placeSearch: YelpPlaceSearch = {
         
-        let placeRequest = PlaceSearchRequest(center: CLLocationCoordinate2D.downtownToronto, radius: CLLocationDistance.defaultRadius, type: YelpAPI.PlaceType.restaurant)
+        let placeRequest = PlaceSearchRequest(center: CLLocationCoordinate2D.downtownToronto, radius: CLLocationDistance.defaultRadius, type: YelpAPIConsole.PlaceType.food)
         
         return YelpPlaceSearch(searchRequest: placeRequest)
     }()
     
-    var places = [Place]() {
+    var places = [YelpPlace]() {
         didSet {
             tableView.reloadData()
         }
@@ -57,12 +57,11 @@ class PlacesTableViewController: UITableViewController {
         let place = places[indexPath.row]
         
         cell.nameLabel.text = place.name
-        cell.addressLabel.text = place.address
+        cell.addressLabel.text = (place.address?.displayAddress?.first ?? "") + "\n" + (place.price ?? "")
         
-        if let yelpPlace = place as? YelpPlace, let imageURL = yelpPlace.imageURL {
+        if let imageURL = place.imageURL {
             cell.previewImageView?.loadImage(URLString: imageURL, placeholder: nil)
         }
-
         return cell
     }
     

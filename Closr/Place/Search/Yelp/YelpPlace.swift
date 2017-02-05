@@ -10,57 +10,53 @@ import Foundation
 import CoreLocation
 import ObjectMapper
 
-class YelpPlace: Place, Mappable {
+typealias PlaceHandler = (([YelpPlace]?, Error?) -> Void)
+
+class YelpPlace: Mappable {
     var placeID: String!
     var name: String!
-    var address: String! {
-        set {
-            
-        }
-        get {
-            return location?.displayAddress?.joined(separator: ",\n")
-        }
-    }
-    
     var rating: Double?
-    var photos: [Photo]?
-    
-    var imageURL: String?
-    var snippetImageURL: String?
-    var location: YelpLocation?
+    var price: String?
     var isClosed: Bool = false
+    var imageURL: String?
+    var address: Address?
+    var distance: CLLocationDistance?
+    var coordinates: CLLocationCoordinate2D?
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        placeID <- map["id"]
-        name <- map["name"]
-        imageURL <- map["image_url"]
-        snippetImageURL <- map["snippet_image_url"]
-        location <- map["location"]
-        isClosed <- map["is_closed"]
-        rating <- map["rating"]
+        placeID     <- map["id"]
+        name        <- map["name"]
+        rating      <- map["rating"]
+        price       <- map["price"]
+        isClosed    <- map["is_closed"]
+        imageURL    <- map["image_url"]
+        address     <- map["location"]
+        distance    <- map["distance"]
+        coordinates <- map["coordinates"]
     }
-    
 }
 
-class YelpLocation: Mappable {
-    var crossStreets: String?
-    var city: String?
+struct Address: Mappable {
     var displayAddress: [String]?
-    var coordinate: CLLocationCoordinate2D?
+    var city: String?
+    var state: String?
+    var country: String?
+    var zipCode: String?
     
-    required init?(map: Map) {
+    init?(map: Map) {
         
     }
     
-    func mapping(map: Map) {
-        crossStreets <- map["cross_streets"]
-        city <- map["city"]
-        displayAddress <- map["display_address"]
-        coordinate <- map["coordinate"]
+    mutating func mapping(map: Map) {
+        displayAddress  <- map["display_address"]
+        city            <- map["city"]
+        state           <- map["state"]
+        country         <- map["country"]
+        zipCode         <- map["zip_code"]
     }
 }
 
