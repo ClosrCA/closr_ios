@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIColor {
+struct LoginColor {
     static let termsRegular = UIColor(red: 220 / 255, green: 221 / 255, blue: 221 / 255, alpha: 1.0)
     static let termsHighLight = UIColor.white
 }
