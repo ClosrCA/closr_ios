@@ -10,6 +10,7 @@ import UIKit
 import EasyPeasy
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftyJSON
 
 enum LoginException: Error {
     case cancelled
@@ -54,10 +55,10 @@ class LoginViewController: UIViewController {
         let highlightedString = NSLocalizedString("Terms", comment: "terms")
         let theRest = NSLocalizedString(" of use", comment: "of use")
         
-        let attributedString = NSMutableAttributedString(string: textString, attributes: [NSForegroundColorAttributeName: UIColor.termsRegular])
+        let attributedString = NSMutableAttributedString(string: textString, attributes: [NSForegroundColorAttributeName: LoginColor.termsRegular])
         attributedString.append(NSAttributedString(string: highlightedString, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
-                                                                                           NSForegroundColorAttributeName: UIColor.termsHighLight]))
-        attributedString.append(NSAttributedString(string: theRest, attributes: [NSForegroundColorAttributeName: UIColor.termsRegular]))
+                                                                                           NSForegroundColorAttributeName: LoginColor.termsHighLight]))
+        attributedString.append(NSAttributedString(string: theRest, attributes: [NSForegroundColorAttributeName: LoginColor.termsRegular]))
         
         termsLabel.numberOfLines = 0
         termsLabel.attributedText = attributedString
@@ -118,7 +119,7 @@ class LoginViewController: UIViewController {
     
     fileprivate func loginWithFacebook(success: (() -> Void)?, cancellation: (() -> Void)?, failure: ((Error) -> Void)?) {
         
-        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (loginResult, error) in
+        FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email", "user_friends", "user_birthday"], from: self) { (loginResult, error) in
             
             if let error = error {
                 
@@ -138,22 +139,26 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func loadFacebookProfile(success: (() -> Void)?, failure: ((Error) -> Void)?) {
-        FBSDKProfile.loadCurrentProfile { (profile, error) in
-            
-            // TODO: - deal with profile
-            
-            guard profile != nil else {
-                
-                failure?(LoginException.profileFailLoading)
-                
-                return
-            }
-            
-            if let error = error {
-                failure?(error)
-            }
-            
-            success?()
+        
+        FBSDKGraphRequest(graphPath: "me",
+                          parameters: ["fields": "email, name, gender, birthday, picture.type(large)"],
+                          tokenString: FBSDKAccessToken.current().tokenString,
+                          version: "v2.8",
+                          httpMethod: "GET").start { (connection, response, error) in
+                            
+                            if let error = error {
+                                failure?(error)
+                                return
+                            }
+                            
+                            if let response = response {
+                                
+                                User(profile: JSON(response)).store()
+                                
+                                success?()
+                                return
+                            }
+                            
         }
     }
 

@@ -36,7 +36,10 @@ class RootViewController: UIViewController, LoginControllerDelegate {
         
         remove(controller: loginController)
         
-        display(controller: demoTableViewController)
+        let confirmViewController = ProfileViewController()
+        confirmViewController.user = User.currentUser
+        
+        display(controller: confirmViewController)
     }
     
     func didFailLogin(loginController: LoginViewController, withError error: Error) {

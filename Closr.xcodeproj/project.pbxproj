@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		A188F4BD87B3ACCD9E2C5CE6 /* Pods_Closr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */; };
+		E46ECDE01E50D61800785BE6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDDF1E50D61800785BE6 /* ProfileViewController.swift */; };
+		E46ECDE51E50D66400785BE6 /* LoginColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE31E50D66400785BE6 /* LoginColor.swift */; };
+		E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE41E50D66400785BE6 /* LoginViewController.swift */; };
+		E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE91E50D6C400785BE6 /* Device.swift */; };
+		E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDEC1E50DA2400785BE6 /* ProfileContainerView.swift */; };
+		E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDEE1E50DD9500785BE6 /* ProfileConstant.swift */; };
+		E46ECDF41E50DE1E00785BE6 /* ProfileColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDF31E50DE1E00785BE6 /* ProfileColor.swift */; };
+		E46ECDF61E50E23900785BE6 /* ProfileFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDF51E50E23900785BE6 /* ProfileFont.swift */; };
+		E46ECDF81E50E49B00785BE6 /* Image+Editing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDF71E50E49B00785BE6 /* Image+Editing.swift */; };
+		E46ECDFB1E511EB400785BE6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDFA1E511EB400785BE6 /* User.swift */; };
+		E46ECDFD1E51313C00785BE6 /* String+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDFC1E51313C00785BE6 /* String+Format.swift */; };
 		E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713ED81E399ED2004CC166 /* AppDelegate.swift */; };
 		E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EDA1E399ED2004CC166 /* RootViewController.swift */; };
 		E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */; };
@@ -21,8 +32,6 @@
 		E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB73B1E3ECC6A001EB362 /* YelpPlace.swift */; };
 		E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */; };
 		E4AAB7431E407E25001EB362 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7421E407E25001EB362 /* ImageLoader.swift */; };
-		E4AAB7461E41E652001EB362 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7451E41E652001EB362 /* LoginViewController.swift */; };
-		E4AAB74A1E41F362001EB362 /* LoginColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7491E41F362001EB362 /* LoginColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +63,17 @@
 		A67206956609D6F4E129FFC4 /* Pods-Closr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.release.xcconfig"; sourceTree = "<group>"; };
 		AA62D6A03167E727DFA31836 /* Pods-ClosrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrUITests/Pods-ClosrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C65AFC946EB066773EB02F2F /* Pods_ClosrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E46ECDDF1E50D61800785BE6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = User/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
+		E46ECDE31E50D66400785BE6 /* LoginColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginColor.swift; sourceTree = "<group>"; };
+		E46ECDE41E50D66400785BE6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E46ECDE91E50D6C400785BE6 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Shared/Device.swift; sourceTree = "<group>"; };
+		E46ECDEC1E50DA2400785BE6 /* ProfileContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileContainerView.swift; path = User/Profile/View/ProfileContainerView.swift; sourceTree = "<group>"; };
+		E46ECDEE1E50DD9500785BE6 /* ProfileConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileConstant.swift; path = User/Profile/View/ProfileConstant.swift; sourceTree = "<group>"; };
+		E46ECDF31E50DE1E00785BE6 /* ProfileColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileColor.swift; path = User/Profile/Color/ProfileColor.swift; sourceTree = "<group>"; };
+		E46ECDF51E50E23900785BE6 /* ProfileFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileFont.swift; path = User/Profile/Font/ProfileFont.swift; sourceTree = "<group>"; };
+		E46ECDF71E50E49B00785BE6 /* Image+Editing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Image+Editing.swift"; path = "Image/Image+Editing.swift"; sourceTree = "<group>"; };
+		E46ECDFA1E511EB400785BE6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = User/Profile/Model/User.swift; sourceTree = "<group>"; };
+		E46ECDFC1E51313C00785BE6 /* String+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Format.swift"; path = "Shared/String+Format.swift"; sourceTree = "<group>"; };
 		E4713ED51E399ED2004CC166 /* Closr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Closr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4713ED81E399ED2004CC166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4713EDA1E399ED2004CC166 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -73,8 +93,6 @@
 		E4AAB73B1E3ECC6A001EB362 /* YelpPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpPlace.swift; path = Place/Search/Yelp/YelpPlace.swift; sourceTree = "<group>"; };
 		E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpPlaceSearch.swift; path = Place/Search/Yelp/YelpPlaceSearch.swift; sourceTree = "<group>"; };
 		E4AAB7421E407E25001EB362 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = Image/ImageLoader.swift; sourceTree = "<group>"; };
-		E4AAB7451E41E652001EB362 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
-		E4AAB7491E41F362001EB362 /* LoginColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginColor.swift; path = Login/Color/LoginColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +164,78 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		E46ECDDE1E50D5D900785BE6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E46ECDDF1E50D61800785BE6 /* ProfileViewController.swift */,
+				E46ECDF91E511E9500785BE6 /* Model */,
+				E46ECDF21E50DE0700785BE6 /* Font */,
+				E46ECDF01E50DDF200785BE6 /* Color */,
+				E46ECDEB1E50DA0600785BE6 /* View */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		E46ECDE11E50D66400785BE6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E46ECDE41E50D66400785BE6 /* LoginViewController.swift */,
+				E46ECDE21E50D66400785BE6 /* Color */,
+			);
+			name = Login;
+			path = User/Login;
+			sourceTree = "<group>";
+		};
+		E46ECDE21E50D66400785BE6 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				E46ECDE31E50D66400785BE6 /* LoginColor.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		E46ECDE81E50D6B200785BE6 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E46ECDE91E50D6C400785BE6 /* Device.swift */,
+				E46ECDFC1E51313C00785BE6 /* String+Format.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		E46ECDEB1E50DA0600785BE6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E46ECDEC1E50DA2400785BE6 /* ProfileContainerView.swift */,
+				E46ECDEE1E50DD9500785BE6 /* ProfileConstant.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E46ECDF01E50DDF200785BE6 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				E46ECDF31E50DE1E00785BE6 /* ProfileColor.swift */,
+			);
+			name = Color;
+			sourceTree = "<group>";
+		};
+		E46ECDF21E50DE0700785BE6 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				E46ECDF51E50E23900785BE6 /* ProfileFont.swift */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
+		E46ECDF91E511E9500785BE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E46ECDFA1E511EB400785BE6 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		E4713ECC1E399ED2004CC166 = {
 			isa = PBXGroup;
 			children = (
@@ -171,13 +261,13 @@
 		E4713ED71E399ED2004CC166 /* Closr */ = {
 			isa = PBXGroup;
 			children = (
+				E46ECDE81E50D6B200785BE6 /* Shared */,
 				E4AAB7411E407E05001EB362 /* Image */,
 				E4713F141E39B747004CC166 /* Event */,
 				E4713F121E39B736004CC166 /* User */,
 				E4713F091E39B4B6004CC166 /* Place */,
 				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
 				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
-				E4AAB7441E41E634001EB362 /* Login */,
 				E4713EE21E399ED2004CC166 /* Assets.xcassets */,
 				E4713EE71E399ED2004CC166 /* Info.plist */,
 				E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */,
@@ -215,6 +305,8 @@
 		E4713F121E39B736004CC166 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				E46ECDE11E50D66400785BE6 /* Login */,
+				E46ECDDE1E50D5D900785BE6 /* Profile */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -239,33 +331,9 @@
 			isa = PBXGroup;
 			children = (
 				E4AAB7421E407E25001EB362 /* ImageLoader.swift */,
+				E46ECDF71E50E49B00785BE6 /* Image+Editing.swift */,
 			);
 			name = Image;
-			sourceTree = "<group>";
-		};
-		E4AAB7441E41E634001EB362 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				E4AAB7451E41E652001EB362 /* LoginViewController.swift */,
-				E4AAB7481E41F343001EB362 /* Color */,
-				E4AAB7471E41F320001EB362 /* Font */,
-			);
-			name = Login;
-			sourceTree = "<group>";
-		};
-		E4AAB7471E41F320001EB362 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Font;
-			sourceTree = "<group>";
-		};
-		E4AAB7481E41F343001EB362 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				E4AAB7491E41F362001EB362 /* LoginColor.swift */,
-			);
-			name = Color;
 			sourceTree = "<group>";
 		};
 		E4E3286C1E3C711200C3003B /* Search */ = {
@@ -464,17 +532,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4AAB7461E41E652001EB362 /* LoginViewController.swift in Sources */,
+				E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */,
+				E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */,
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
+				E46ECDF81E50E49B00785BE6 /* Image+Editing.swift in Sources */,
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
 				E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */,
 				E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */,
+				E46ECDE01E50D61800785BE6 /* ProfileViewController.swift in Sources */,
+				E46ECDFD1E51313C00785BE6 /* String+Format.swift in Sources */,
+				E46ECDE51E50D66400785BE6 /* LoginColor.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
+				E46ECDF61E50E23900785BE6 /* ProfileFont.swift in Sources */,
+				E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */,
+				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,
 				E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */,
-				E4AAB74A1E41F362001EB362 /* LoginColor.swift in Sources */,
+				E46ECDF41E50DE1E00785BE6 /* ProfileColor.swift in Sources */,
 				E4AAB72F1E3EC7F6001EB362 /* PlaceTableViewCell.swift in Sources */,
 				E4AAB7431E407E25001EB362 /* ImageLoader.swift in Sources */,
+				E46ECDFB1E511EB400785BE6 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
