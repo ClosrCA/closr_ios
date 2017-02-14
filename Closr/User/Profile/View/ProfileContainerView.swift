@@ -177,4 +177,11 @@ class ProfileContainerView: UIView {
     fileprivate func onConfirm() {
         delegate?.profileContainerViewDidSelectConfirm(view: self)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        birthDayTextField.resignFirstResponder()
+        genderTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        phoneTextField.resignFirstResponder()
+    }
 }
