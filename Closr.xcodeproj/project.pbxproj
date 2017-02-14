@@ -25,6 +25,7 @@
 		E4713EE31E399ED2004CC166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4713EE21E399ED2004CC166 /* Assets.xcassets */; };
 		E4713EF11E399ED3004CC166 /* ClosrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EF01E399ED3004CC166 /* ClosrTests.swift */; };
 		E4713EFC1E399ED3004CC166 /* ClosrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */; };
+		E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A885B91E53414F0093829E /* KeyboardObserver.swift */; };
 		E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB72A1E3EC7E6001EB362 /* PlacesTableViewController.swift */; };
 		E4AAB72E1E3EC7F6001EB362 /* Places.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AAB72C1E3EC7F6001EB362 /* Places.storyboard */; };
 		E4AAB72F1E3EC7F6001EB362 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB72D1E3EC7F6001EB362 /* PlaceTableViewCell.swift */; };
@@ -86,6 +87,7 @@
 		E4713EF71E399ED3004CC166 /* ClosrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClosrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosrUITests.swift; sourceTree = "<group>"; };
 		E4713EFD1E399ED3004CC166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4A885B91E53414F0093829E /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardObserver.swift; path = Shared/KeyboardObserver.swift; sourceTree = "<group>"; };
 		E4AAB72A1E3EC7E6001EB362 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesTableViewController.swift; path = Place/DemoController/PlacesTableViewController.swift; sourceTree = "<group>"; };
 		E4AAB72C1E3EC7F6001EB362 /* Places.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Places.storyboard; path = Place/DemoController/View/Places.storyboard; sourceTree = "<group>"; };
 		E4AAB72D1E3EC7F6001EB362 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceTableViewCell.swift; path = Place/DemoController/View/PlaceTableViewCell.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				E46ECDE91E50D6C400785BE6 /* Device.swift */,
 				E46ECDFC1E51313C00785BE6 /* String+Format.swift */,
+				E4A885B91E53414F0093829E /* KeyboardObserver.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */,
 				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,
 				E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */,
+				E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */,
 				E46ECDF41E50DE1E00785BE6 /* ProfileColor.swift in Sources */,
 				E4AAB72F1E3EC7F6001EB362 /* PlaceTableViewCell.swift in Sources */,
 				E4AAB7431E407E25001EB362 /* ImageLoader.swift in Sources */,
