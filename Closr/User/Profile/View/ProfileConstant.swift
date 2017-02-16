@@ -15,14 +15,14 @@ struct ProfileConstant {
         static let topPadding: CGFloat = {
             
             if Device.is_3_5_inches || Device.is_4_inches {
-                return 40
+                return 56
             }
             
             if Device.is_4_7_inches {
-                return 70
+                return 78
             }
             
-            return 80
+            return 81
         }()
         
         static let size: CGFloat = {
@@ -40,14 +40,14 @@ struct ProfileConstant {
         static let bottomPadding: CGFloat = {
             
             if Device.is_3_5_inches || Device.is_4_inches {
-                return 35
+                return 19
             }
             
             if Device.is_4_7_inches {
-                return 38
+                return 23
             }
             
-            return 75
+            return 25
             
         }()
     }
@@ -57,10 +57,14 @@ struct ProfileConstant {
         static let bottomPadding: CGFloat = {
             
             if Device.is_3_5_inches || Device.is_4_inches {
-                return 20
+                return 44
             }
             
-            return 38
+            if Device.is_4_7_inches {
+                return 51.5
+            }
+            
+            return 57
             
         }()
     }
@@ -70,28 +74,40 @@ struct ProfileConstant {
         static let height: CGFloat = {
             
             if Device.is_3_5_inches || Device.is_4_inches {
-                return 40
+                return 34
             }
             
-            return 50
+            if Device.is_4_7_inches {
+                return 39.5
+            }
+            
+            return 44
         }()
         
         static let horizontalPadding: CGFloat = {
             
-            if Device.is_3_5_inches || Device.is_4_inches || Device.is_4_7_inches {
-                return 10
+            if Device.is_3_5_inches || Device.is_4_inches {
+                return 25
             }
             
-            return 20
+            if Device.is_4_7_inches {
+                return 29
+            }
+            
+            return 31
         }()
         
         static let verticalPadding: CGFloat = {
             
             if Device.is_3_5_inches || Device.is_4_inches {
-                return 20
+                return 35
             }
             
-            return 30
+            if Device.is_4_7_inches {
+                return 41.5
+            }
+            
+            return 46
         }()
         
         static let iconSize: CGFloat = {
@@ -107,10 +123,14 @@ struct ProfileConstant {
         static let height: CGFloat = {
             
             if Device.is_3_5_inches || Device.is_4_inches {
-                return 50
+                return 46.5
             }
             
-            return 70
+            if Device.is_4_7_inches {
+                return 54
+            }
+            
+            return 61
         }()
     }
 }

@@ -19,10 +19,18 @@ class ProfileContainerView: UIView {
 
     func updateWith(user: User) {
         nameLabel.text          = user.name
-        birthDayTextField.text  = user.birthday?.description
-        genderTextField.text    = user.gender?.rawValue
+        
+        if let birthday = user.birthday {
+            let formatter = DateFormatter()
+            formatter.dateFormat = String.birthdayFormat
+            birthDayTextField.text = formatter.string(from: birthday)
+        }
+        
+        genderTextField.text    = user.gender?.title
         emailTextField.text     = user.email
         phoneTextField.text     = user.phone
+        
+        phoneTextField.placeholder = "Optional"
         
         if let avatar = user.avatar {
             avatarImageView.loadImage(URLString: avatar, placeholder: nil)
@@ -45,19 +53,31 @@ class ProfileContainerView: UIView {
         let label                                       = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font                                      = ProfileFont.nameTitle
-        label.textColor                                 = ProfileColor.text
+        label.textColor                                 = ProfileColor.nameTitle
         label.numberOfLines                             = 0
         
         return label
     }()
     
-    fileprivate (set) lazy var birthDayTextField: UITextField   = self.makeTextFieldWith(icon: UIImage(named: "birthday")!, backgroundColor: ProfileColor.unchangableBackground, editable: false)
+    fileprivate (set) lazy var birthDayTextField: UITextField   = self.makeTextFieldWith(icon: UIImage(named: "birthday")!,
+                                                                                         backgroundColor: ProfileColor.birthdayAndGenderBackground,
+                                                                                         textColor: ProfileColor.birthdayAndGenderText,
+                                                                                         editable: false)
     
-    fileprivate (set) lazy var genderTextField: UITextField     = self.makeTextFieldWith(icon: UIImage(named: "gender")!, backgroundColor: ProfileColor.unchangableBackground, editable: false)
+    fileprivate (set) lazy var genderTextField: UITextField     = self.makeTextFieldWith(icon: UIImage(named: "gender")!,
+                                                                                         backgroundColor: ProfileColor.birthdayAndGenderBackground,
+                                                                                         textColor: ProfileColor.birthdayAndGenderText,
+                                                                                         editable: false)
     
-    fileprivate (set) lazy var emailTextField: UITextField      = self.makeTextFieldWith(icon: UIImage(named: "email")!, backgroundColor: ProfileColor.changableBackground, editable: true)
+    fileprivate (set) lazy var emailTextField: UITextField      = self.makeTextFieldWith(icon: UIImage(named: "email")!,
+                                                                                         backgroundColor: ProfileColor.emailBackground,
+                                                                                         textColor: ProfileColor.emailText,
+                                                                                         editable: true)
     
-    fileprivate (set) lazy var phoneTextField: UITextField      = self.makeTextFieldWith(icon: UIImage(named: "phone")!, backgroundColor: ProfileColor.changableBackground, editable: true)
+    fileprivate (set) lazy var phoneTextField: UITextField      = self.makeTextFieldWith(icon: UIImage(named: "phone")!,
+                                                                                         backgroundColor: ProfileColor.phoneBackground,
+                                                                                         textColor: ProfileColor.phoneText,
+                                                                                         editable: true)
     
     fileprivate (set) lazy var confirmButton: UIButton = {
         let button                                          = UIButton()
@@ -141,13 +161,13 @@ class ProfileContainerView: UIView {
         ]
     }
     
-    fileprivate func makeTextFieldWith(icon: UIImage, backgroundColor: UIColor, editable: Bool, placeholder: String? = nil) -> UITextField {
+    fileprivate func makeTextFieldWith(icon: UIImage, backgroundColor: UIColor, textColor: UIColor, editable: Bool, placeholder: String? = nil) -> UITextField {
         
         let textField                                       = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textColor                                 = ProfileColor.text
-        textField.tintColor                                 = ProfileColor.text
         textField.font                                      = ProfileFont.text
+        textField.textColor                                 = textColor
+        textField.tintColor                                 = textColor
         textField.backgroundColor                           = backgroundColor
         textField.leftView                                  = makeLeftViewFrom(icon: icon)
         textField.leftViewMode                              = .always

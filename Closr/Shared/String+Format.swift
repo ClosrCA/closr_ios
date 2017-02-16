@@ -9,5 +9,6 @@
 import Foundation
 
 extension String {
-    static let birthdayFormat = "MM/dd/yyyy"
+    static let birthdayFormat_fb    = "MM/dd/yyyy"
+    static let birthdayFormat       = "dd.MM.yyyy"
 }

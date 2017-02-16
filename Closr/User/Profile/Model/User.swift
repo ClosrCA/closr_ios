@@ -16,6 +16,13 @@ class User: NSObject, NSCoding {
     enum Gender: String {
         case female = "female"
         case male   = "male"
+        
+        var title: String {
+            switch self {
+            case .female: return "Female"
+            case .male: return "Male"
+            }
+        }
     }
     
     var fbID: String?
@@ -49,7 +56,7 @@ class User: NSObject, NSCoding {
         
         if let birthday = profile["birthday"].string {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = String.birthdayFormat
+            dateFormatter.dateFormat = String.birthdayFormat_fb
             self.birthday = dateFormatter.date(from: birthday)
         }
     }
