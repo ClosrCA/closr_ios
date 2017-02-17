@@ -19,7 +19,7 @@ class ProfileConfirmViewController: UIViewController {
     
     weak var delegate: ProfileConfirmViewControllerDelegate?
     
-    lazy var profileContainerView: ProfileContainerView = {
+    fileprivate lazy var profileContainerView: ProfileContainerView = {
         let containerView                                       = ProfileContainerView(frame: .zero)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.delegate                                  = self
