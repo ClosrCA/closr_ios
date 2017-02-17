@@ -22,6 +22,6 @@ struct ProfileColor {
     static let emailBackground             = UIColor(red: 159 / 255, green: 159 / 255, blue: 160 / 255, alpha: 0.36)
     static let phoneBackground             = UIColor(red: 159 / 255, green: 159 / 255, blue: 160 / 255, alpha: 0.56)
     
-    static let buttonBackground = UIColor(red: 233 / 255, green: 90 / 255, blue: 49 / 255, alpha: 1.0)
+    static let buttonBackground = UIColor.brandColor
     static let buttonTitle = UIColor(red: 247 / 255, green: 247 / 255, blue: 247 / 255, alpha: 1.0)
 }
