@@ -2,92 +2,30 @@
 //  ProfileViewController.swift
 //  Closr
 //
-//  Created by Tao on 2017-02-12.
+//  Created by Zhitao on 2017-02-17.
 //  Copyright © 2017 closr. All rights reserved.
 //
 
 import UIKit
-import EasyPeasy
 
-protocol ProfileViewControllerDelegate: class {
-    func profileViewControllerDidSelectConfirm(controller: ProfileViewController)
-}
 class ProfileViewController: UIViewController {
 
-    var user: User?
-    
-    weak var delegate: ProfileViewControllerDelegate?
-    
-    lazy var profileContainerView: ProfileContainerView = {
-        let containerView                                       = ProfileContainerView(frame: .zero)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.delegate                                  = self
-        
-        return containerView
-    }()
-    
-    fileprivate lazy var keyboardObserver = KeyboardObserver()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.backgroundColor = UIColor.white
         
-        view.addSubview(profileContainerView)
-        
-        if let user = user {
-            profileContainerView.updateWith(user: user)
-        }
-        
-        createConstraints()
-        
-        addKeyboardObserver()
-    }
-    
-    fileprivate func createConstraints() {
-        profileContainerView <- Edges()
-    }
-    
-    fileprivate func addKeyboardObserver() {
-        
-        keyboardObserver.addObserver(didAppear: { [weak self] (size) in
-            
-            guard let weakSelf = self else {
-                return
-            }
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                
-                weakSelf.profileContainerView <- [
-                    Top(-size.height),
-                    Bottom(-size.height)
-                ]
-                
-                weakSelf.view.layoutIfNeeded()
-                
-            })
-            
-        }) { [weak self] (size) in
-            
-            guard let weakSelf = self else {
-                return
-            }
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                
-                weakSelf.profileContainerView <- [
-                    Top(),
-                    Bottom()
-                ]
-                
-                weakSelf.view.layoutIfNeeded()
-            })
-        }
+        buildNavigationItems()
     }
 
-}
-
-extension ProfileViewController: ProfileContainerViewDelegate {
+    fileprivate func buildNavigationItems() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .done, target: self, action: #selector(onSettings))
+    }
     
-    func profileContainerViewDidSelectConfirm(view: ProfileContainerView) {
-        delegate?.profileViewControllerDidSelectConfirm(controller: self)
+    @objc
+    fileprivate func onSettings() {
+        
+        let settingsViewController = SettingsViewController(style: .grouped)
+        navigationController?.pushViewController(settingsViewController, animated: true)
     }
 }

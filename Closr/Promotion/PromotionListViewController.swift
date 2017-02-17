@@ -60,6 +60,7 @@ class PromotionListViewController: UIViewController {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: floor(view.frame.width / 2), height: 30))
         button.setTitle(title, for: .normal)
         button.setTitleColor(PromotionColor.primary, for: .normal)
+        button.setTitleColor(PromotionColor.secondary, for: .highlighted)
         button.titleLabel?.font = PromotionFont.navigationFilter
         
         return button

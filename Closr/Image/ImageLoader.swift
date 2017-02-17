@@ -12,9 +12,13 @@ import AlamofireImage
 
 extension UIImageView {
     
-    func loadImage(URLString: String, placeholder: UIImage?) {
+    func loadImage(URLString: String?, placeholder: UIImage?) {
         
         self.image = placeholder
+        
+        guard let URLString = URLString else {
+            return
+        }
         
         guard let URL = URL(string: URLString) else {
             return

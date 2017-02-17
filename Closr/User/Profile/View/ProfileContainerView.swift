@@ -18,6 +18,7 @@ class ProfileContainerView: UIView {
     weak var delegate: ProfileContainerViewDelegate?
 
     func updateWith(user: User) {
+        
         nameLabel.text          = user.name
         
         if let birthday = user.birthday {
