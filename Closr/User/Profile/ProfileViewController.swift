@@ -9,9 +9,14 @@
 import UIKit
 import EasyPeasy
 
+protocol ProfileViewControllerDelegate: class {
+    func profileViewControllerDidSelectConfirm(controller: ProfileViewController)
+}
 class ProfileViewController: UIViewController {
 
     var user: User?
+    
+    weak var delegate: ProfileViewControllerDelegate?
     
     lazy var profileContainerView: ProfileContainerView = {
         let containerView                                       = ProfileContainerView(frame: .zero)
@@ -83,6 +88,6 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: ProfileContainerViewDelegate {
     
     func profileContainerViewDidSelectConfirm(view: ProfileContainerView) {
-        // TODO: render tab bar controller
+        delegate?.profileViewControllerDidSelectConfirm(controller: self)
     }
 }

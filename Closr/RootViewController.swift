@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class RootViewController: UIViewController, LoginControllerDelegate {
+class RootViewController: UIViewController {
     
     fileprivate lazy var demoTableViewController: UINavigationController = {
         let storyboard = UIStoryboard(name: "Places", bundle: nil)
@@ -20,37 +20,32 @@ class RootViewController: UIViewController, LoginControllerDelegate {
     }()
     
     fileprivate lazy var loginController: LoginViewController = {
-        let loginController = LoginViewController()
-        loginController.delegate = self
+        let loginController         = LoginViewController()
+        loginController.delegate    = self
         
         return loginController
     }()
     
+    fileprivate lazy var profileConfirmController: ProfileViewController = {
+        let confirmViewController       = ProfileViewController()
+        confirmViewController.user      = User.currentUser
+        confirmViewController.delegate  = self
+        
+        return confirmViewController
+    }()
+    
+    fileprivate lazy var tabbarController: TabBarController = TabBarController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        display(controller: loginController)
+        if User.isAuthenticated {
+            display(controller: tabbarController)
+        } else {
+            display(controller: loginController)
+        }
     }
     
-    func didFinishLogin(loginController: LoginViewController) {
-        
-        remove(controller: loginController)
-        
-        let confirmViewController = ProfileViewController()
-        confirmViewController.user = User.currentUser
-        
-        display(controller: confirmViewController)
-    }
-    
-    func didFailLogin(loginController: LoginViewController, withError error: Error) {
-        
-        let alertController = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-        
-        present(alertController, animated: true)
-    }
-
     fileprivate func remove(controller: UIViewController) {
         controller.willMove(toParentViewController: nil)
         controller.view.removeFromSuperview()
@@ -62,6 +57,34 @@ class RootViewController: UIViewController, LoginControllerDelegate {
         controller.view.frame = view.bounds
         view.addSubview(controller.view)
         controller.didMove(toParentViewController: self)
+    }
+}
+
+extension RootViewController: LoginControllerDelegate {
+    
+    func didFinishLogin(loginController: LoginViewController) {
+        
+        remove(controller: loginController)
+        
+        display(controller: profileConfirmController)
+    }
+    
+    func didFailLogin(loginController: LoginViewController, withError error: Error) {
+        
+        let alertController = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+        
+        present(alertController, animated: true)
+    }
+}
+
+extension RootViewController: ProfileViewControllerDelegate {
+    func profileViewControllerDidSelectConfirm(controller: ProfileViewController) {
+        
+        remove(controller: controller)
+        
+        display(controller: tabbarController)
     }
 }
 

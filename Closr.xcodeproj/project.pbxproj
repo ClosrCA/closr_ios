@@ -32,6 +32,8 @@
 		E477F0031E56701400ED7806 /* PromotionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0021E56701400ED7806 /* PromotionColor.swift */; };
 		E477F0051E56710300ED7806 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0041E56710300ED7806 /* Theme.swift */; };
 		E477F0071E567DBF00ED7806 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0061E567DBF00ED7806 /* Reusable.swift */; };
+		E477F0091E57305600ED7806 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0081E57305600ED7806 /* TabBarController.swift */; };
+		E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F00A1E5730A100ED7806 /* PromotionListViewController.swift */; };
 		E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A885B91E53414F0093829E /* KeyboardObserver.swift */; };
 		E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB72A1E3EC7E6001EB362 /* PlacesTableViewController.swift */; };
 		E4AAB72E1E3EC7F6001EB362 /* Places.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AAB72C1E3EC7F6001EB362 /* Places.storyboard */; };
@@ -101,6 +103,8 @@
 		E477F0021E56701400ED7806 /* PromotionColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionColor.swift; path = Promotion/Color/PromotionColor.swift; sourceTree = "<group>"; };
 		E477F0041E56710300ED7806 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Shared/Theme.swift; sourceTree = "<group>"; };
 		E477F0061E567DBF00ED7806 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = Shared/Reusable.swift; sourceTree = "<group>"; };
+		E477F0081E57305600ED7806 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E477F00A1E5730A100ED7806 /* PromotionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionListViewController.swift; path = Promotion/PromotionListViewController.swift; sourceTree = "<group>"; };
 		E4A885B91E53414F0093829E /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardObserver.swift; path = Shared/KeyboardObserver.swift; sourceTree = "<group>"; };
 		E4AAB72A1E3EC7E6001EB362 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesTableViewController.swift; path = Place/DemoController/PlacesTableViewController.swift; sourceTree = "<group>"; };
 		E4AAB72C1E3EC7F6001EB362 /* Places.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Places.storyboard; path = Place/DemoController/View/Places.storyboard; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 				E4713F091E39B4B6004CC166 /* Place */,
 				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
 				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
+				E477F0081E57305600ED7806 /* TabBarController.swift */,
 				E4713EE21E399ED2004CC166 /* Assets.xcassets */,
 				E4713EE71E399ED2004CC166 /* Info.plist */,
 				E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */,
@@ -344,6 +349,7 @@
 				E477F0011E56700100ED7806 /* Color */,
 				E477EFFE1E566BB800ED7806 /* Font */,
 				E477EFF71E5664FB00ED7806 /* View */,
+				E477F00A1E5730A100ED7806 /* PromotionListViewController.swift */,
 			);
 			name = Promotion;
 			sourceTree = "<group>";
@@ -608,9 +614,11 @@
 				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,
 				E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */,
 				E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */,
+				E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */,
 				E477F0071E567DBF00ED7806 /* Reusable.swift in Sources */,
 				E477F0031E56701400ED7806 /* PromotionColor.swift in Sources */,
 				E477EFFB1E5668DA00ED7806 /* PromotionCollectionViewCell.swift in Sources */,
+				E477F0091E57305600ED7806 /* TabBarController.swift in Sources */,
 				E46ECDF41E50DE1E00785BE6 /* ProfileColor.swift in Sources */,
 				E4AAB72F1E3EC7F6001EB362 /* PlaceTableViewCell.swift in Sources */,
 				E477EFF91E56652600ED7806 /* PromotionListConstant.swift in Sources */,

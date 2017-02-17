@@ -10,12 +10,12 @@ import Foundation
 
 protocol Reusable {
     
-    var reuseIdentifier: String { get }
+    static var reuseIdentifier: String { get }
 }
 
 extension Reusable {
     
-    var reuseIdentifier: String {
+    static var reuseIdentifier: String {
         
         return String(describing: self)
     }
