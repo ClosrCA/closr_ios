@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
                 return
             }
             
-            UIView.animate(withDuration: 2.0, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 
                 weakSelf.profileContainerView <- [
                     Top(-size.height),
@@ -66,7 +66,7 @@ class ProfileViewController: UIViewController {
                 return
             }
             
-            UIView.animate(withDuration: 2.0, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 
                 weakSelf.profileContainerView <- [
                     Top(),
