@@ -101,6 +101,10 @@ extension User {
         return nil
     }
     
+    class func clear() {
+        UserDefaults.standard.removeObject(forKey: User.userDefaultsKey)
+    }
+    
     func store() {
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: self)
         UserDefaults.standard.set(encodedData, forKey: User.userDefaultsKey)

@@ -11,6 +11,16 @@ import EasyPeasy
 
 class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
     
+    func update(promotion: Promotion) {
+        
+        thumbnailImageView.loadImage(URLString: promotion.imageURL, placeholder: nil)
+        
+        nameLabel.text      = promotion.resturantName
+        distanceLabel.text  = promotion.distance
+        
+        promotionContainerView.updateWith(promotion: promotion)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -32,6 +42,7 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
     fileprivate lazy var thumbnailImageView: UIImageView = {
         let imageView                                       = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor                           = PromotionColor.secondary
         
         return imageView
     }()
@@ -71,6 +82,7 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        thumbnailImageView.af_cancelImageRequest()
         thumbnailImageView.image    = nil
         nameLabel.text              = nil
         distanceLabel.text          = nil

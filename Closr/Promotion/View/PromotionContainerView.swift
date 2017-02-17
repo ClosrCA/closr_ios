@@ -10,17 +10,18 @@ import UIKit
 import EasyPeasy
 
 class PromotionContainerView: UIView {
-
-    func update(discount: String?) {
-        discountLabel.text  = discount
-        itemLabel.text      = "off"
-    }
     
-    func update(price: String?, currency: String?, quantity: String?, item: String?) {
-        dollarSignLabel.text    = currency
-        priceLabel.text         = price
-        quantityLabel.text      = quantity
-        itemLabel.text          = item
+    func updateWith(promotion: Promotion) {
+        
+        if let discount = promotion.discount {
+            discountLabel.text  = discount
+            itemLabel.text      = "off"
+        } else {
+            dollarSignLabel.text    = promotion.currency
+            priceLabel.text         = promotion.price
+            quantityLabel.text      = promotion.quantity
+            itemLabel.text          = promotion.item
+        }
     }
     
     func prepareForReuse() {

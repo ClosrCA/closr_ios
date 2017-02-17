@@ -19,31 +19,32 @@ class RootViewController: UIViewController {
         return UINavigationController(rootViewController: controller)
     }()
     
-    fileprivate lazy var loginController: LoginViewController = {
+    fileprivate var loginController: LoginViewController {
         let loginController         = LoginViewController()
         loginController.delegate    = self
         
         return loginController
-    }()
+    }
     
-    fileprivate lazy var profileConfirmController: ProfileViewController = {
-        let confirmViewController       = ProfileViewController()
+    fileprivate var profileConfirmController: ProfileConfirmViewController {
+        let confirmViewController       = ProfileConfirmViewController()
         confirmViewController.user      = User.currentUser
         confirmViewController.delegate  = self
         
         return confirmViewController
-    }()
-    
-    fileprivate lazy var tabbarController: TabBarController = TabBarController()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if User.isAuthenticated {
-            display(controller: tabbarController)
+            let tabBarController = TabBarController()
+            display(controller: tabBarController)
         } else {
             display(controller: loginController)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didSignout), name: NotificationName.signout, object: nil)
     }
     
     fileprivate func remove(controller: UIViewController) {
@@ -57,6 +58,20 @@ class RootViewController: UIViewController {
         controller.view.frame = view.bounds
         view.addSubview(controller.view)
         controller.didMove(toParentViewController: self)
+    }
+    
+    @objc
+    fileprivate func didSignout() {
+        
+        childViewControllers.forEach { remove(controller: $0) }
+        
+        User.clear()
+        
+        display(controller: loginController)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -79,12 +94,13 @@ extension RootViewController: LoginControllerDelegate {
     }
 }
 
-extension RootViewController: ProfileViewControllerDelegate {
-    func profileViewControllerDidSelectConfirm(controller: ProfileViewController) {
+extension RootViewController: ProfileConfirmViewControllerDelegate {
+    func profileConfirmViewControllerDidSelectConfirm(controller: ProfileConfirmViewController) {
         
         remove(controller: controller)
         
-        display(controller: tabbarController)
+        let tabBarController = TabBarController()
+        display(controller: tabBarController)
     }
 }
 

@@ -115,7 +115,7 @@ struct ProfileConstant {
                 return 30
             }
             
-            return 40
+            return 35
         }()
     }
     

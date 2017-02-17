@@ -13,16 +13,18 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let promotionController = UINavigationController(rootViewController:PromotionListViewController())
+        tabBar.tintColor = UIColor.brandColor
+        
+        let promotionController = UINavigationController(rootViewController: PromotionListViewController())
         promotionController.tabBarItem = UITabBarItem(title: "Promotion", image: nil, selectedImage: nil)
         
-        let resturantController = UIViewController()
-        resturantController.tabBarItem = UITabBarItem(title: "Resturant", image: nil, selectedImage: nil)
+        let resturantController = UINavigationController(rootViewController: RestaurantListViewController())
+        resturantController.tabBarItem = UITabBarItem(title: "Restaurant", image: nil, selectedImage: nil)
         
-        let eventController = UIViewController()
+        let eventController = UINavigationController(rootViewController: UIViewController())
         eventController.tabBarItem = UITabBarItem(title: "Event", image: nil, selectedImage: nil)
         
-        let profileController = ProfileViewController()
+        let profileController = UINavigationController(rootViewController: ProfileViewController())
         profileController.tabBarItem = UITabBarItem(title: "Profile", image: nil, selectedImage: nil)
         
         viewControllers = [promotionController, resturantController, eventController, profileController]
