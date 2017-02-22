@@ -35,6 +35,20 @@ struct PromotionListConstant {
     }()
     
     struct Cell {
+        
+        static let height: CGFloat = {
+            
+            if Device.is_3_5_inches || Device.is_4_inches {
+                return 175
+            }
+            
+            if Device.is_4_7_inches {
+                return 205
+            }
+            
+            return 226
+        }()
+        
         static let imageAspectRatio: CGFloat = {
             
             if Device.is_3_5_inches || Device.is_4_inches {

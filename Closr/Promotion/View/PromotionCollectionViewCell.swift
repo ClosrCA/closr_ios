@@ -30,8 +30,6 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
         contentView.addSubview(distanceLabel)
         contentView.addSubview(promotionContainerView)
         
-        contentView.backgroundColor = PromotionColor.primary
-        
         createConstraints()
     }
     
