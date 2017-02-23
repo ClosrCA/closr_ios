@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */; };
 		4CA91CCD1E57664F00A8F51C /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CCC1E57664F00A8F51C /* Promotion.swift */; };
 		4CA91CD41E57795B00A8F51C /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD31E57795B00A8F51C /* RestaurantTableViewCell.swift */; };
 		4CA91CD61E57799100A8F51C /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD51E57799100A8F51C /* RestaurantListViewController.swift */; };
@@ -71,6 +72,7 @@
 		2D49278ECCB91E5347BDEBE1 /* Pods-ClosrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Closr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		353B364B06A9A5F276964D4C /* Pods-ClosrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrUITests/Pods-ClosrUITests.release.xcconfig"; sourceTree = "<group>"; };
+		36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.debug.xcconfig"; sourceTree = "<group>"; };
 		4CA91CCC1E57664F00A8F51C /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Promotion/Promotion/Promotion.swift; sourceTree = "<group>"; };
 		4CA91CD31E57795B00A8F51C /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantTableViewCell.swift; path = Restaurant/View/RestaurantTableViewCell.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				E477F0081E57305600ED7806 /* TabBarController.swift */,
 				E4713EE21E399ED2004CC166 /* Assets.xcassets */,
 				E4713EE71E399ED2004CC166 /* Info.plist */,
+				36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */,
 				E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */,
 			);
 			path = Closr;
@@ -591,6 +594,7 @@
 			files = (
 				E4AAB72E1E3EC7F6001EB362 /* Places.storyboard in Resources */,
 				E4713EE31E399ED2004CC166 /* Assets.xcassets in Resources */,
+				36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +627,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		72AEF6F365887734CA548AF5 /* [CP] Embed Pods Frameworks */ = {
