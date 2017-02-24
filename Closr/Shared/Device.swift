@@ -10,7 +10,10 @@ import UIKit
 
 struct Device {
     
-    struct Height {
+    static let screenWidth  = UIScreen.main.bounds.width
+    static let screenHeight = UIScreen.main.bounds.height
+    
+    fileprivate struct Height {
         static let inches_3_5: CGFloat  = 480
         static let inches_4: CGFloat    = 568
         static let inches_4_7: CGFloat  = 667

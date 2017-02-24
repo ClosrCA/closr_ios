@@ -30,8 +30,6 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
         contentView.addSubview(distanceLabel)
         contentView.addSubview(promotionContainerView)
         
-        contentView.backgroundColor = PromotionColor.primary
-        
         createConstraints()
     }
     
@@ -118,8 +116,9 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
         ]
         
         promotionContainerView <- [
-            Size(100),
-            Bottom(),
+            Height(PromotionListConstant.Cell.promotionLabelHeight),
+            Width(PromotionListConstant.Cell.promotionLabelWidth),
+            Bottom().to(distanceLabel, .bottom),
             Trailing()
         ]
     }

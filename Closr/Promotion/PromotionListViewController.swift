@@ -8,6 +8,7 @@
 
 import UIKit
 import EasyPeasy
+import CoreLocation
 
 class PromotionListViewController: UIViewController {
 
@@ -32,6 +33,19 @@ class PromotionListViewController: UIViewController {
         return collectionView
     }()
     
+    fileprivate lazy var placeSearch: YelpPlaceSearch = {
+        
+        let searchRequest = PlaceSearchRequest(center: CLLocationCoordinate2D.downtownToronto, radius: CLLocationDistance.defaultRadius, type: YelpAPIConsole.PlaceType.food)
+        
+        return YelpPlaceSearch(searchRequest: searchRequest)
+    }()
+    
+    fileprivate var promotions = [Promotion]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +55,7 @@ class PromotionListViewController: UIViewController {
         
         createConstraints()
         
-        collectionView.reloadData()
+        reloadData()
     }
 
     fileprivate func createConstraints() {
@@ -65,6 +79,16 @@ class PromotionListViewController: UIViewController {
         
         return button
     }
+    
+    fileprivate func reloadData() {
+        
+        placeSearch.placeNearby { [unowned self] (places, error) in
+            if let places = places, error == nil {
+                
+                self.promotions = places.map { Promotion(resturantID: $0.placeID, resturantName: $0.name, distance: $0.distance?.readableDescription, imageURL: $0.imageURL, startDate: nil, endDate: nil, discount: "30%", price: nil, currency: nil, quantity: nil, item: nil) }
+            }
+        }
+    }
 }
 
 extension PromotionListViewController: UICollectionViewDataSource {
@@ -73,12 +97,14 @@ extension PromotionListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return promotions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PromotionCollectionViewCell.reuseIdentifier, for: indexPath) as! PromotionCollectionViewCell
+        
+        cell.update(promotion: promotions[indexPath.item])
         
         return cell
     }
@@ -88,9 +114,8 @@ extension PromotionListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 2 * PromotionListConstant.collectionViewPadding - PromotionListConstant.minItemSpace) / 2
-        let height = width * PromotionListConstant.Cell.imageAspectRatio
         
-        return CGSize(width: width, height: height)
+        return CGSize(width: width, height: PromotionListConstant.Cell.height)
     }
 }
 

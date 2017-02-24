@@ -52,6 +52,7 @@ class PromotionContainerView: UIView {
     fileprivate lazy var backgroundImageView: UIImageView = {
         let imageView                                       = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image                                     = UIImage(named: "promotion_label")
         
         return imageView
     }()
@@ -110,6 +111,11 @@ class PromotionContainerView: UIView {
             Top(10)
         ]
         
+        itemLabel <- [
+            CenterX(),
+            Bottom(10)
+        ]
+        
         dollarSignLabel <- [
             Leading(20),
             Top(10)
@@ -122,11 +128,6 @@ class PromotionContainerView: UIView {
         
         quantityLabel <- [
             Leading().to(dollarSignLabel, .leading),
-            Bottom(10)
-        ]
-        
-        itemLabel <- [
-            Leading().to(quantityLabel, .trailing),
             Bottom(10)
         ]
     }

@@ -35,6 +35,20 @@ struct PromotionListConstant {
     }()
     
     struct Cell {
+        
+        static let height: CGFloat = {
+            
+            if Device.is_3_5_inches || Device.is_4_inches {
+                return 170
+            }
+            
+            if Device.is_4_7_inches {
+                return 190
+            }
+            
+            return 210
+        }()
+        
         static let imageAspectRatio: CGFloat = {
             
             if Device.is_3_5_inches || Device.is_4_inches {
@@ -50,24 +64,36 @@ struct PromotionListConstant {
         
         static let nameTopPadding: CGFloat = {
            
-            if Device.is_3_5_inches || Device.is_4_inches {
-                return 7
-            }
-            
-            if Device.is_4_7_inches {
-                return 8
-            }
-            
-            return 9
+            return 5
         }()
         
         static let nameBottomPadding: CGFloat = {
             
+            return 5
+        }()
+        
+        static let promotionLabelHeight: CGFloat = {
             if Device.is_3_5_inches || Device.is_4_inches {
-                return 8
+                return 58
             }
             
-            return 11
+            if Device.is_4_7_inches {
+                return 68
+            }
+            
+            return 78
+        }()
+        
+        static let promotionLabelWidth: CGFloat = {
+            if Device.is_3_5_inches || Device.is_4_inches {
+                return 65
+            }
+            
+            if Device.is_4_7_inches {
+                return 78
+            }
+            
+            return 88
         }()
     }
 }
