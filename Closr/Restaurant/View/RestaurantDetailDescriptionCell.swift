@@ -9,7 +9,7 @@
 import UIKit
 import EasyPeasy
 
-class RestaurantDetailDescriptionCell: UITableViewCell {
+class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
 
     fileprivate lazy var nameLabel: UILabel = {
         let nameLabel                                       = UILabel()

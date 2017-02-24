@@ -13,7 +13,7 @@ protocol RestaurantDetailImageCellDataSource: class {
     func imageURLStringFor(cell: RestaurantDetailImageCell) -> [String]
 }
 
-class RestaurantDetailImageCell: UITableViewCell {
+class RestaurantDetailImageCell: UITableViewCell, Reusable {
 
     weak var dataSource: RestaurantDetailImageCellDataSource?
     
