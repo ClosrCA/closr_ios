@@ -33,6 +33,8 @@ class RestaurantDetailImageCell: UITableViewCell, Reusable {
         collectionView.translatesAutoresizingMaskIntoConstraints    = false
         collectionView.dataSource                                   = self
         collectionView.delegate                                     = self
+        collectionView.showsHorizontalScrollIndicator               = false
+        collectionView.isPagingEnabled                              = true
         
         collectionView.register(ImageCarouselCell.self, forCellWithReuseIdentifier: ImageCarouselCell.reuseIdentifier)
         
@@ -41,8 +43,10 @@ class RestaurantDetailImageCell: UITableViewCell, Reusable {
 
     fileprivate lazy var pageControl: UIPageControl = {
         let pageControl                                         = UIPageControl()
+        pageControl.hidesForSinglePage                          = true
         pageControl.translatesAutoresizingMaskIntoConstraints   = false
-        pageControl.currentPageIndicatorTintColor               = UIColor.brandColor
+        pageControl.currentPageIndicatorTintColor               = RestaurantColor.primary
+        pageControl.pageIndicatorTintColor                      = RestaurantColor.secondary
         
         return pageControl
     }()

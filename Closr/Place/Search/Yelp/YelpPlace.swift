@@ -10,9 +10,10 @@ import Foundation
 import CoreLocation
 import ObjectMapper
 
-typealias PlaceHandler = (([YelpPlace]?, Error?) -> Void)
+typealias PlacesHandler = (([YelpPlace]?, Error?) -> Void)
+typealias PlaceDetailHandler = ((YelpPlace?, Error?) -> Void)
 
-class YelpPlace: Mappable {
+struct YelpPlace: Mappable {
     var placeID: String!
     var name: String!
     var rating: Double?
@@ -23,11 +24,14 @@ class YelpPlace: Mappable {
     var distance: CLLocationDistance?
     var coordinates: CLLocationCoordinate2D?
     
-    required init?(map: Map) {
+    var phone: String?
+    var photos: [String]?
+    
+    init?(map: Map) {
         
     }
     
-    func mapping(map: Map) {
+    mutating func mapping(map: Map) {
         placeID     <- map["id"]
         name        <- map["name"]
         rating      <- map["rating"]
@@ -37,6 +41,8 @@ class YelpPlace: Mappable {
         address     <- map["location"]
         distance    <- map["distance"]
         coordinates <- map["coordinates"]
+        phone       <- map["phone"]
+        photos      <- map["photos"]
     }
 }
 

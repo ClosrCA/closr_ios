@@ -14,6 +14,7 @@ class ImageCarouselCell: UICollectionViewCell, Reusable {
     fileprivate lazy var imageView: UIImageView = {
         let imageView               = UIImageView()
         imageView.backgroundColor   = UIColor.lightGray
+        imageView.contentMode       = .scaleAspectFill
         
         return imageView
     }()

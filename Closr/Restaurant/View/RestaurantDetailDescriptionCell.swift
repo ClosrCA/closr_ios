@@ -15,6 +15,8 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         let nameLabel                                       = UILabel()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.numberOfLines                             = 0
+        nameLabel.textAlignment                             = .center
+        nameLabel.font                                      = RestaurantFont.resturantName
         
         return nameLabel
     }()
@@ -25,6 +27,7 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         let label                                       = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text                                      = "Open hours:"
+        label.textColor                                 = RestaurantColor.primary
         
         return label
     }()
@@ -33,6 +36,7 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         let label                                       = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text                                      = "Phone:"
+        label.textColor                                 = RestaurantColor.primary
         
         return label
     }()
@@ -41,6 +45,7 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         let label                                       = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text                                      = "Address:"
+        label.textColor                                 = RestaurantColor.primary
         
         return label
     }()
@@ -69,6 +74,7 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
     func update(restaurant: YelpPlace) {
         nameLabel.text      = restaurant.name
         addressLabel.text   = restaurant.address?.displayAddress?.first
+        phoneLabel.text     = restaurant.phone
     }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -81,6 +87,8 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         contentView.addSubview(phoneLabel)
         contentView.addSubview(addressDescriptionLabel)
         contentView.addSubview(addressLabel)
+        
+        createConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -92,7 +100,7 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         nameLabel <- [
             Leading(),
             Trailing(),
-            Top()
+            Top(10)
         ]
         
         openHoursDescriptionLabel <- [
@@ -107,7 +115,8 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         
         addressDescriptionLabel <- [
             Top().to(phoneDescriptionLabel, .bottom),
-            Trailing().to(phoneDescriptionLabel, .trailing)
+            Trailing().to(phoneDescriptionLabel, .trailing),
+            Bottom(10)
         ]
         
         openHoursLabel <- [
@@ -122,7 +131,7 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         
         addressLabel <- [
             Leading().to(addressDescriptionLabel, .trailing),
-            CenterY().to(addressDescriptionLabel, .centerY)
+            CenterY().to(addressDescriptionLabel, .centerY),
         ]
     }
 }

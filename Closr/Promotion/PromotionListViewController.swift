@@ -49,6 +49,8 @@ class PromotionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = ""
+        
         buildNavigationItems()
         
         view.addSubview(collectionView)
@@ -123,5 +125,9 @@ extension PromotionListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let detailController    = RestaurantDetailViewController(placeID: promotions[indexPath.item].resturantID)
+        detailController.search = placeSearch
+        
+        navigationController?.pushViewController(detailController, animated: true)
     }
 }
