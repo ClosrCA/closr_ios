@@ -9,7 +9,7 @@
 import Foundation
 
 struct Promotion {
-    var resturantID: String?
+    var resturantID: String!
     var resturantName: String?
     var distance: String?
     var imageURL: String?

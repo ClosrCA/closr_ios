@@ -15,6 +15,8 @@
 		4CA91CDA1E577C7D00A8F51C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD91E577C7D00A8F51C /* ProfileViewController.swift */; };
 		4CA91CDD1E577CEC00A8F51C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CDC1E577CEC00A8F51C /* SettingsViewController.swift */; };
 		A188F4BD87B3ACCD9E2C5CE6 /* Pods_Closr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */; };
+		E458B1D51E65AA8300EE7736 /* RestaurantColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1D41E65AA8300EE7736 /* RestaurantColor.swift */; };
+		E458B1D71E65B55F00EE7736 /* RestaurantFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1D61E65B55F00EE7736 /* RestaurantFont.swift */; };
 		E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */; };
 		E46ECDE51E50D66400785BE6 /* LoginColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE31E50D66400785BE6 /* LoginColor.swift */; };
 		E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE41E50D66400785BE6 /* LoginViewController.swift */; };
@@ -93,6 +95,8 @@
 		A67206956609D6F4E129FFC4 /* Pods-Closr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.release.xcconfig"; sourceTree = "<group>"; };
 		AA62D6A03167E727DFA31836 /* Pods-ClosrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrUITests/Pods-ClosrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C65AFC946EB066773EB02F2F /* Pods_ClosrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E458B1D41E65AA8300EE7736 /* RestaurantColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantColor.swift; path = Restaurant/Color/RestaurantColor.swift; sourceTree = "<group>"; };
+		E458B1D61E65B55F00EE7736 /* RestaurantFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantFont.swift; path = Restaurant/Font/RestaurantFont.swift; sourceTree = "<group>"; };
 		E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileConfirmViewController.swift; path = User/Profile/ProfileConfirmViewController.swift; sourceTree = "<group>"; };
 		E46ECDE31E50D66400785BE6 /* LoginColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginColor.swift; sourceTree = "<group>"; };
 		E46ECDE41E50D66400785BE6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 		4CA91CD01E5778EE00A8F51C /* Color */ = {
 			isa = PBXGroup;
 			children = (
+				E458B1D41E65AA8300EE7736 /* RestaurantColor.swift */,
 			);
 			name = Color;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 		4CA91CD11E5778F400A8F51C /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				E458B1D61E65B55F00EE7736 /* RestaurantFont.swift */,
 			);
 			name = Font;
 			sourceTree = "<group>";
@@ -259,6 +265,16 @@
 				E4AAB72D1E3EC7F6001EB362 /* PlaceTableViewCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		E458B1D11E65A56B00EE7736 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E4713EE21E399ED2004CC166 /* Assets.xcassets */,
+				E4713EE71E399ED2004CC166 /* Info.plist */,
+				36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		E46ECDDE1E50D5D900785BE6 /* Profile */ = {
@@ -374,9 +390,7 @@
 				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
 				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
 				E477F0081E57305600ED7806 /* TabBarController.swift */,
-				E4713EE21E399ED2004CC166 /* Assets.xcassets */,
-				E4713EE71E399ED2004CC166 /* Info.plist */,
-				36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */,
+				E458B1D11E65A56B00EE7736 /* Resources */,
 				E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */,
 			);
 			path = Closr;
@@ -696,8 +710,10 @@
 				E477F0051E56710300ED7806 /* Theme.swift in Sources */,
 				E477EFFD1E56692400ED7806 /* PromotionContainerView.swift in Sources */,
 				E477F00F1E5DCB7600ED7806 /* RestaurantDetailViewController.swift in Sources */,
+				E458B1D71E65B55F00EE7736 /* RestaurantFont.swift in Sources */,
 				E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */,
 				E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */,
+				E458B1D51E65AA8300EE7736 /* RestaurantColor.swift in Sources */,
 				4CA91CD41E57795B00A8F51C /* RestaurantTableViewCell.swift in Sources */,
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
