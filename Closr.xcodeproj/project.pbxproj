@@ -17,6 +17,10 @@
 		A188F4BD87B3ACCD9E2C5CE6 /* Pods_Closr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */; };
 		E458B1D51E65AA8300EE7736 /* RestaurantColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1D41E65AA8300EE7736 /* RestaurantColor.swift */; };
 		E458B1D71E65B55F00EE7736 /* RestaurantFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1D61E65B55F00EE7736 /* RestaurantFont.swift */; };
+		E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */; };
+		E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */; };
+		E458B1DE1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DD1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift */; };
+		E458B1E01E67025200EE7736 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DF1E67025200EE7736 /* CheckboxTableViewCell.swift */; };
 		E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */; };
 		E46ECDE51E50D66400785BE6 /* LoginColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE31E50D66400785BE6 /* LoginColor.swift */; };
 		E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE41E50D66400785BE6 /* LoginViewController.swift */; };
@@ -97,6 +101,10 @@
 		C65AFC946EB066773EB02F2F /* Pods_ClosrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E458B1D41E65AA8300EE7736 /* RestaurantColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantColor.swift; path = Restaurant/Color/RestaurantColor.swift; sourceTree = "<group>"; };
 		E458B1D61E65B55F00EE7736 /* RestaurantFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantFont.swift; path = Restaurant/Font/RestaurantFont.swift; sourceTree = "<group>"; };
+		E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventViewController.swift; path = Event/CreateEventViewController.swift; sourceTree = "<group>"; };
+		E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldTableViewCell.swift; path = Event/View/TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		E458B1DD1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderTableViewCell.swift; path = Event/View/DoubleSliderTableViewCell.swift; sourceTree = "<group>"; };
+		E458B1DF1E67025200EE7736 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckboxTableViewCell.swift; path = Event/View/CheckboxTableViewCell.swift; sourceTree = "<group>"; };
 		E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileConfirmViewController.swift; path = User/Profile/ProfileConfirmViewController.swift; sourceTree = "<group>"; };
 		E46ECDE31E50D66400785BE6 /* LoginColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginColor.swift; sourceTree = "<group>"; };
 		E46ECDE41E50D66400785BE6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +285,16 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		E458B1DA1E6701B900EE7736 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */,
+				E458B1DD1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift */,
+				E458B1DF1E67025200EE7736 /* CheckboxTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		E46ECDDE1E50D5D900785BE6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +454,8 @@
 		E4713F141E39B747004CC166 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */,
+				E458B1DA1E6701B900EE7736 /* View */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -718,17 +738,20 @@
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
 				E477F0131E5DD66500ED7806 /* RestaurantDetailDescriptionCell.swift in Sources */,
+				E458B1DE1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift in Sources */,
 				E46ECDF81E50E49B00785BE6 /* Image+Editing.swift in Sources */,
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
 				E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */,
 				E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */,
 				E477F0001E566BCB00ED7806 /* PromotionFont.swift in Sources */,
 				E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */,
+				E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */,
 				E46ECDFD1E51313C00785BE6 /* String+Format.swift in Sources */,
 				E46ECDE51E50D66400785BE6 /* LoginColor.swift in Sources */,
 				E477F0181E5DDBB400ED7806 /* ImageCarouselCell.swift in Sources */,
 				E477F0111E5DD64300ED7806 /* RestaurantDetailImageCell.swift in Sources */,
 				E477F00D1E5DC74D00ED7806 /* Location.swift in Sources */,
+				E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */,
 				4CA91CCD1E57664F00A8F51C /* Promotion.swift in Sources */,
 				4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */,
 				4CA91CD61E57799100A8F51C /* RestaurantListViewController.swift in Sources */,
@@ -736,6 +759,7 @@
 				E46ECDF61E50E23900785BE6 /* ProfileFont.swift in Sources */,
 				E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */,
 				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,
+				E458B1E01E67025200EE7736 /* CheckboxTableViewCell.swift in Sources */,
 				E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */,
 				E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */,
 				E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */,

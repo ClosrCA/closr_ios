@@ -36,13 +36,25 @@ class RestaurantDetailViewController: UIViewController {
         tableView.dataSource                                = self
         tableView.estimatedRowHeight                        = 200
         tableView.rowHeight                                 = UITableViewAutomaticDimension
-        tableView.tableFooterView                           = UIView()
+        tableView.tableFooterView                           = self.makeFooterView()
+        tableView.keyboardDismissMode                       = .onDrag
         
         tableView.register(RestaurantDetailImageCell.self, forCellReuseIdentifier: RestaurantDetailImageCell.reuseIdentifier)
         tableView.register(RestaurantDetailDescriptionCell.self, forCellReuseIdentifier: RestaurantDetailDescriptionCell.reuseIdentifier)
         tableView.register(RestaurantDetailEventCell.self, forCellReuseIdentifier: RestaurantDetailEventCell.reuseIdentifier)
         
         return tableView
+    }()
+    
+    fileprivate lazy var createEventButton: UIButton = {
+        let button                                          = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints    = false
+        button.setTitle("Create Event", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setBackgroundImage(UIImage.imageWith(color: UIColor.brandColor, within: CGSize(width: 1, height: 1)), for: .normal)
+        button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
+        
+        return button
     }()
     
     init(placeID: String) {
@@ -70,6 +82,12 @@ class RestaurantDetailViewController: UIViewController {
         })
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        transparentNavigationBar()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -81,11 +99,28 @@ class RestaurantDetailViewController: UIViewController {
     
     fileprivate func buildUI() {
         
-        transparentNavigationBar()
-        
         view.addSubview(tableView)
         
         tableView <- Edges(EdgeInsets(top: -44, left: 0, bottom: 0, right: 0))
+    }
+    
+    @objc
+    fileprivate func onCreateEvent() {
+        
+        let createEventController = CreateEventViewController()
+        createEventController.place = restaurant
+        
+        present(UINavigationController(rootViewController: createEventController), animated: true)
+    }
+    
+    fileprivate func makeFooterView() -> UIView {
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 60))
+        
+        footer.addSubview(createEventButton)
+        
+        createEventButton <- Edges(10)
+        
+        return footer
     }
 }
 
