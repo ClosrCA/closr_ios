@@ -12,91 +12,84 @@ import EasyPeasy
 class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
 
     fileprivate lazy var nameLabel: UILabel = {
-        let nameLabel                                       = UILabel()
-        nameLabel.numberOfLines                             = 0
-        nameLabel.textAlignment                             = .center
-        nameLabel.textColor                                 = RestaurantColor.title
-        nameLabel.font                                      = RestaurantFont.resturantName
+        let nameLabel            = UILabel.makeLable(font: RestaurantFont.resturantName, textColor: RestaurantColor.title)
+        nameLabel.numberOfLines  = 0
         
         return nameLabel
     }()
     
-    // TODO: Review view
-    // TODO: Cuisin and price
+    fileprivate lazy var reviewBackground: UIView   = UIView()
+    fileprivate lazy var cuisineLabel: UILabel      = UILabel.makeLable(font: RestaurantFont.cuisineAndPrice, textColor: RestaurantColor.primary)
     
-    fileprivate lazy var openHoursDescriptionLabel: UILabel = {
-        let label                                       = UILabel()
-        label.text                                      = "Open hours:"
-        label.font                                      = RestaurantFont.infoTitle
-        label.textColor                                 = RestaurantColor.primary
-        
-        return label
-    }()
+    fileprivate lazy var openHoursTitleLabel: UILabel = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.primary, text: "Open hours:")
+    fileprivate lazy var phoneTitleLabel: UILabel     = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.primary, text: "Phone:")
+    fileprivate lazy var addressTitleLabel: UILabel   = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.primary, text: "Address:")
     
-    fileprivate lazy var phoneDescriptionLabel: UILabel = {
-        let label                                       = UILabel()
-        label.text                                      = "Phone:"
-        label.font                                      = RestaurantFont.infoTitle
-        label.textColor                                 = RestaurantColor.primary
-        
-        return label
-    }()
-    
-    fileprivate lazy var addressDescriptionLabel: UILabel = {
-        let label                                       = UILabel()
-        label.text                                      = "Address:"
-        label.font                                      = RestaurantFont.infoTitle
-        label.textColor                                 = RestaurantColor.primary
-        
-        return label
-    }()
-    
-    fileprivate lazy var openHoursLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = RestaurantFont.infoTitle
-        label.textColor                                 = RestaurantColor.subtitle
-        
-        return label
-    }()
-    
-    fileprivate lazy var phoneLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = RestaurantFont.infoTitle
-        label.textColor                                 = RestaurantColor.subtitle
-        
-        return label
-    }()
-    
-    fileprivate lazy var addressLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = RestaurantFont.infoTitle
-        label.textColor                                 = RestaurantColor.subtitle
-        
-        return label
-    }()
+    fileprivate lazy var openHoursLabel: UILabel    = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.subtitle)
+    fileprivate lazy var phoneLabel: UILabel        = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.subtitle)
+    fileprivate lazy var addressLabel: UILabel      = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.subtitle)
     
     func update(restaurant: YelpPlace) {
         nameLabel.text      = restaurant.name
         addressLabel.text   = restaurant.address?.displayAddress?.first
         phoneLabel.text     = restaurant.phone
+        
+        var cuisineAndPrice: String? = nil
+        
+        if let cuisine = restaurant.categories?.first?.title {
+            cuisineAndPrice = cuisine
+        }
+        
+        if cuisineAndPrice != nil && !cuisineAndPrice!.isEmpty {
+            cuisineAndPrice?.append("   ")
+        }
+        
+        if let price = restaurant.price {
+            cuisineAndPrice?.append(price)
+        }
+        
+        cuisineLabel.text = cuisineAndPrice
+        
+        if let rating = restaurant.rating {
+            addReview(rating: rating)
+        }
     }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(openHoursDescriptionLabel)
-        contentView.addSubview(openHoursLabel)
-        contentView.addSubview(phoneDescriptionLabel)
-        contentView.addSubview(phoneLabel)
-        contentView.addSubview(addressDescriptionLabel)
-        contentView.addSubview(addressLabel)
+        buildSubViews()
         
         createConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    fileprivate func addReview(rating: Double) {
+        let review = ReviewFactory.reviewViewWith(rating: rating, scoreImage: UIImage(named: "review_star"), halfScoreImage: UIImage(named: "review_star_half"))
+        
+        reviewBackground <- Size(review.preferredSize)
+        
+        if let reviewView = review.reviewView {
+            reviewBackground.addSubview(reviewView)
+            
+            reviewView <- Edges()
+        }
+    }
+    
+    fileprivate func buildSubViews() {
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(reviewBackground)
+        contentView.addSubview(cuisineLabel)
+        contentView.addSubview(openHoursTitleLabel)
+        contentView.addSubview(openHoursLabel)
+        contentView.addSubview(phoneTitleLabel)
+        contentView.addSubview(phoneLabel)
+        contentView.addSubview(addressTitleLabel)
+        contentView.addSubview(addressLabel)
     }
     
     fileprivate func createConstraints() {
@@ -107,38 +100,49 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
             Top(RestaurantDetailConstant.restaurantNameTopPadding)
         ]
         
-        openHoursDescriptionLabel <- [
-            Top(RestaurantDetailConstant.infoSectionVerticalPadding).to(nameLabel, .bottom),
+        reviewBackground <- [
+            Top(RestaurantDetailConstant.reviewTopPadding).to(nameLabel, .bottom),
+            CenterX()
+        ]
+        
+        cuisineLabel <- [
+            Leading(),
+            Trailing(),
+            Top(RestaurantDetailConstant.cuisineTopPadding).to(reviewBackground, .bottom)
+        ]
+        
+        openHoursTitleLabel <- [
+            Top(RestaurantDetailConstant.infoSectionVerticalPadding).to(cuisineLabel, .bottom),
             Leading(RestaurantDetailConstant.infoSectionLeadingPadding)
         ]
         
-        phoneDescriptionLabel <- [
-            Top(RestaurantDetailConstant.infoInternalPadding).to(openHoursDescriptionLabel, .bottom),
-            Trailing().to(openHoursDescriptionLabel, .trailing)
+        phoneTitleLabel <- [
+            Top(RestaurantDetailConstant.infoInternalPadding).to(openHoursTitleLabel, .bottom),
+            Trailing().to(openHoursTitleLabel, .trailing)
         ]
         
-        addressDescriptionLabel <- [
-            Top(RestaurantDetailConstant.infoInternalPadding).to(phoneDescriptionLabel, .bottom),
-            Trailing().to(phoneDescriptionLabel, .trailing),
+        addressTitleLabel <- [
+            Top(RestaurantDetailConstant.infoInternalPadding).to(phoneTitleLabel, .bottom),
+            Trailing().to(phoneTitleLabel, .trailing),
             Bottom(RestaurantDetailConstant.infoSectionVerticalPadding)
         ]
         
         openHoursLabel <- [
-            Leading(8).to(openHoursDescriptionLabel, .trailing),
+            Leading(8).to(openHoursTitleLabel, .trailing),
             Trailing(<=8),
-            CenterY().to(openHoursDescriptionLabel, .centerY)
+            CenterY().to(openHoursTitleLabel, .centerY)
         ]
         
         phoneLabel <- [
-            Leading(8).to(phoneDescriptionLabel, .trailing),
+            Leading(8).to(phoneTitleLabel, .trailing),
             Trailing(<=8),
-            CenterY().to(phoneDescriptionLabel, .centerY)
+            CenterY().to(phoneTitleLabel, .centerY)
         ]
         
         addressLabel <- [
-            Leading(8).to(addressDescriptionLabel, .trailing),
+            Leading(8).to(addressTitleLabel, .trailing),
             Trailing(<=8),
-            CenterY().to(addressDescriptionLabel, .centerY),
+            CenterY().to(addressTitleLabel, .centerY),
         ]
     }
 }

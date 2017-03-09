@@ -26,6 +26,8 @@ struct YelpPlace: Mappable {
     
     var phone: String?
     var photos: [String]?
+    var categories: [Category]?
+    var hours: OpenHours?
     
     init?(map: Map) {
         
@@ -41,8 +43,10 @@ struct YelpPlace: Mappable {
         address     <- map["location"]
         distance    <- map["distance"]
         coordinates <- map["coordinates"]
-        phone       <- map["phone"]
+        phone       <- map["display_phone"]
         photos      <- map["photos"]
+        categories  <- map["categories"]
+        hours       <- map["hours"]
     }
 }
 
@@ -63,6 +67,52 @@ struct Address: Mappable {
         state           <- map["state"]
         country         <- map["country"]
         zipCode         <- map["zip_code"]
+    }
+}
+
+struct Category: Mappable {
+    var alias: String?
+    var title: String?
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        alias  <- map["alias"]
+        title  <- map["title"]
+    }
+}
+
+struct OpenHours: Mappable {
+    var isOpenNow: Bool = false
+    var hours: [Hours]?
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        isOpenNow <- map["is_open_now"]
+        hours     <- map["hours"]
+    }
+    
+    struct Hours: Mappable {
+        var day: Int?
+        var endTime: String?  // "2300"
+        var startTime: String?
+        var isOvernight: Bool = false
+        
+        init?(map: Map) {
+            
+        }
+        
+        mutating func mapping(map: Map) {
+            day             <- map["day"]
+            endTime         <- map["end"]
+            startTime       <- map["start"]
+            isOvernight     <- map["is_overnight"]
+        }
     }
 }
 
