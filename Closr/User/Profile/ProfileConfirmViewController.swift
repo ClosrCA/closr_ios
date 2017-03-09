@@ -21,7 +21,6 @@ class ProfileConfirmViewController: UIViewController {
     
     fileprivate lazy var profileContainerView: ProfileContainerView = {
         let containerView                                       = ProfileContainerView(frame: .zero)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.delegate                                  = self
         
         return containerView

@@ -13,20 +13,21 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
 
     fileprivate lazy var nameLabel: UILabel = {
         let nameLabel                                       = UILabel()
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.numberOfLines                             = 0
         nameLabel.textAlignment                             = .center
+        nameLabel.textColor                                 = RestaurantColor.title
         nameLabel.font                                      = RestaurantFont.resturantName
         
         return nameLabel
     }()
     
     // TODO: Review view
+    // TODO: Cuisin and price
     
     fileprivate lazy var openHoursDescriptionLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text                                      = "Open hours:"
+        label.font                                      = RestaurantFont.infoTitle
         label.textColor                                 = RestaurantColor.primary
         
         return label
@@ -34,8 +35,8 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
     
     fileprivate lazy var phoneDescriptionLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text                                      = "Phone:"
+        label.font                                      = RestaurantFont.infoTitle
         label.textColor                                 = RestaurantColor.primary
         
         return label
@@ -43,8 +44,8 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
     
     fileprivate lazy var addressDescriptionLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text                                      = "Address:"
+        label.font                                      = RestaurantFont.infoTitle
         label.textColor                                 = RestaurantColor.primary
         
         return label
@@ -52,21 +53,24 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
     
     fileprivate lazy var openHoursLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font                                      = RestaurantFont.infoTitle
+        label.textColor                                 = RestaurantColor.subtitle
         
         return label
     }()
     
     fileprivate lazy var phoneLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font                                      = RestaurantFont.infoTitle
+        label.textColor                                 = RestaurantColor.subtitle
         
         return label
     }()
     
     fileprivate lazy var addressLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font                                      = RestaurantFont.infoTitle
+        label.textColor                                 = RestaurantColor.subtitle
         
         return label
     }()
@@ -100,37 +104,40 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         nameLabel <- [
             Leading(),
             Trailing(),
-            Top(10)
+            Top(RestaurantDetailConstant.restaurantNameTopPadding)
         ]
         
         openHoursDescriptionLabel <- [
-            Top().to(nameLabel, .bottom),
-            Leading(40)
+            Top(RestaurantDetailConstant.infoSectionVerticalPadding).to(nameLabel, .bottom),
+            Leading(RestaurantDetailConstant.infoSectionLeadingPadding)
         ]
         
         phoneDescriptionLabel <- [
-            Top().to(openHoursDescriptionLabel, .bottom),
+            Top(RestaurantDetailConstant.infoInternalPadding).to(openHoursDescriptionLabel, .bottom),
             Trailing().to(openHoursDescriptionLabel, .trailing)
         ]
         
         addressDescriptionLabel <- [
-            Top().to(phoneDescriptionLabel, .bottom),
+            Top(RestaurantDetailConstant.infoInternalPadding).to(phoneDescriptionLabel, .bottom),
             Trailing().to(phoneDescriptionLabel, .trailing),
-            Bottom(10)
+            Bottom(RestaurantDetailConstant.infoSectionVerticalPadding)
         ]
         
         openHoursLabel <- [
-            Leading().to(openHoursDescriptionLabel, .trailing),
+            Leading(8).to(openHoursDescriptionLabel, .trailing),
+            Trailing(<=8),
             CenterY().to(openHoursDescriptionLabel, .centerY)
         ]
         
         phoneLabel <- [
-            Leading().to(phoneDescriptionLabel, .trailing),
+            Leading(8).to(phoneDescriptionLabel, .trailing),
+            Trailing(<=8),
             CenterY().to(phoneDescriptionLabel, .centerY)
         ]
         
         addressLabel <- [
-            Leading().to(addressDescriptionLabel, .trailing),
+            Leading(8).to(addressDescriptionLabel, .trailing),
+            Trailing(<=8),
             CenterY().to(addressDescriptionLabel, .centerY),
         ]
     }
