@@ -40,7 +40,6 @@ class ProfileContainerView: UIView {
     
     fileprivate (set) lazy var avatarImageView: UIImageView = {
         let imageView                                       = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius                        = ProfileConstant.AvatarImage.size / 2
         imageView.layer.borderWidth                         = 1.0
         imageView.layer.borderColor                         = ProfileColor.avatarExternalBorder.cgColor
@@ -52,7 +51,6 @@ class ProfileContainerView: UIView {
     
     fileprivate (set) lazy var nameLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font                                      = ProfileFont.nameTitle
         label.textColor                                 = ProfileColor.nameTitle
         label.numberOfLines                             = 0
@@ -81,9 +79,7 @@ class ProfileContainerView: UIView {
                                                                                          editable: true)
     
     fileprivate (set) lazy var confirmButton: UIButton = {
-        let button                                          = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints    = false
-        
+        let button = UIButton()
         button.setTitle("Get Closr", for: .normal)
         button.titleLabel?.font = ProfileFont.buttonTitle
         button.setTitleColor(ProfileColor.buttonTitle, for: .normal)
@@ -165,7 +161,6 @@ class ProfileContainerView: UIView {
     fileprivate func makeTextFieldWith(icon: UIImage, backgroundColor: UIColor, textColor: UIColor, editable: Bool, placeholder: String? = nil) -> UITextField {
         
         let textField                                       = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font                                      = ProfileFont.text
         textField.textColor                                 = textColor
         textField.tintColor                                 = textColor
@@ -179,8 +174,7 @@ class ProfileContainerView: UIView {
     }
     
     fileprivate func makeLeftViewFrom(icon: UIImage) -> UIView {
-        let imageView                                       = UIImageView(image: icon)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView               = UIImageView(image: icon)
         
         let leftView                = UIView(frame: CGRect(x: 0, y: 0, width: ProfileConstant.TextField.height, height: ProfileConstant.TextField.height))
         leftView.backgroundColor    = UIColor.clear

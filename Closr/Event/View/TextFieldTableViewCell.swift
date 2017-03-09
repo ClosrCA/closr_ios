@@ -20,14 +20,12 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var titleLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     fileprivate lazy var textField: UITextField = {
         let textField                                       = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor                           = UIColor.lightGray
         textField.borderStyle                               = .roundedRect
         textField.delegate                                  = self

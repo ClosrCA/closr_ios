@@ -19,7 +19,6 @@ class CreateEventViewController: UIViewController {
     
     fileprivate lazy var tableView: UITableView = {
         let tableView                                       = UITableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource                                = self
         tableView.estimatedRowHeight                        = 44
         tableView.rowHeight                                 = UITableViewAutomaticDimension

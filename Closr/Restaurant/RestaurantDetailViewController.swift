@@ -32,9 +32,10 @@ class RestaurantDetailViewController: UIViewController {
     
     fileprivate lazy var tableView: UITableView = {
         let tableView                                       = UITableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource                                = self
+        tableView.delegate                                  = self
         tableView.estimatedRowHeight                        = 200
+        tableView.estimatedSectionHeaderHeight              = 80
         tableView.rowHeight                                 = UITableViewAutomaticDimension
         tableView.tableFooterView                           = self.makeFooterView()
         tableView.keyboardDismissMode                       = .onDrag
@@ -47,8 +48,7 @@ class RestaurantDetailViewController: UIViewController {
     }()
     
     fileprivate lazy var createEventButton: UIButton = {
-        let button                                          = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints    = false
+        let button = UIButton()
         button.setTitle("Create Event", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.setBackgroundImage(UIImage.imageWith(color: UIColor.brandColor, within: CGSize(width: 1, height: 1)), for: .normal)
@@ -114,11 +114,13 @@ class RestaurantDetailViewController: UIViewController {
     }
     
     fileprivate func makeFooterView() -> UIView {
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 60))
+        let footerHeight = 2*RestaurantDetailConstant.EventList.createEventButtonPadding + RestaurantDetailConstant.EventList.createEventButtonHeight
+        
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: footerHeight))
         
         footer.addSubview(createEventButton)
         
-        createEventButton <- Edges(10)
+        createEventButton <- Edges(RestaurantDetailConstant.EventList.createEventButtonPadding)
         
         return footer
     }
@@ -171,11 +173,21 @@ extension RestaurantDetailViewController: UITableViewDataSource {
         
         return UITableViewCell()
     }
+}
+
+extension RestaurantDetailViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == Section.event.rawValue {
-            return "Current Event"
+            return UITableViewAutomaticDimension
+        }
+        
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == Section.event.rawValue {
+            return RestaurantDetailEventTitleView()
         }
         
         return nil

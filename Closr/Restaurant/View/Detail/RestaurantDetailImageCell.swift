@@ -27,10 +27,9 @@ class RestaurantDetailImageCell: UITableViewCell, Reusable {
         layout.minimumLineSpacing       = 0
         layout.minimumInteritemSpacing  = 0
         layout.scrollDirection          = .horizontal
-        layout.itemSize                 = CGSize(width: Device.screenWidth, height: 230)
+        layout.itemSize                 = CGSize(width: Device.screenWidth, height: RestaurantDetailConstant.heroImageHeight)
         
         let collectionView                                          = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints    = false
         collectionView.dataSource                                   = self
         collectionView.delegate                                     = self
         collectionView.showsHorizontalScrollIndicator               = false
@@ -44,7 +43,6 @@ class RestaurantDetailImageCell: UITableViewCell, Reusable {
     fileprivate lazy var pageControl: UIPageControl = {
         let pageControl                                         = UIPageControl()
         pageControl.hidesForSinglePage                          = true
-        pageControl.translatesAutoresizingMaskIntoConstraints   = false
         pageControl.currentPageIndicatorTintColor               = RestaurantColor.primary
         pageControl.pageIndicatorTintColor                      = RestaurantColor.secondary
         
@@ -67,7 +65,7 @@ class RestaurantDetailImageCell: UITableViewCell, Reusable {
     fileprivate func createConstraints() {
         collectionView <- [
             Edges(),
-            Height(230)
+            Height(RestaurantDetailConstant.heroImageHeight)
         ]
         
         pageControl <- [

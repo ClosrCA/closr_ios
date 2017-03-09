@@ -121,9 +121,9 @@ class YelpPlaceSearch {
         
         isFetching = true
         
-        authorizedSearchRequest(parameters: params) { [unowned self] (places, error) in
+        authorizedSearchRequest(parameters: params) { [weak self] (places, error) in
             
-            self.isFetching = false
+            self?.isFetching = false
             
             completion?(places, error)
         }
@@ -133,7 +133,11 @@ class YelpPlaceSearch {
         
         func sendRequest(token: String) {
             
-            Alamofire.request(YelpAPIConsole.PlaceURL.search, parameters: parameters, headers: ["Authorization": "Bearer \(token)"]).responseJSON(completionHandler: { [unowned self] (response) in
+            Alamofire.request(YelpAPIConsole.PlaceURL.search, parameters: parameters, headers: ["Authorization": "Bearer \(token)"]).responseJSON(completionHandler: { [weak self] (response) in
+                
+                guard let weakSelf = self else {
+                    return
+                }
                 
                 switch response.result {
                 case .success(let value):
@@ -148,12 +152,12 @@ class YelpPlaceSearch {
                         print("\(response.request?.allHTTPHeaderFields!)")
                     }
                     
-                    self.total = json["total"].intValue
+                    weakSelf.total = json["total"].intValue
                     if let rawPlaces = json["businesses"].arrayObject as? [[String: Any]] {
-                        self.places.append(contentsOf: rawPlaces.flatMap { YelpPlace(JSON: $0) })
+                        weakSelf.places.append(contentsOf: rawPlaces.flatMap { YelpPlace(JSON: $0) })
                     }
                     
-                    completion?(self.places, nil)
+                    completion?(weakSelf.places, nil)
                     
                 case .failure(let error):
                     
