@@ -18,7 +18,7 @@ struct RestaurantFont {
         return UIFont.systemFont(ofSize: 31)
     }()
     
-    static let cuisinAndPrice: UIFont = {
+    static let cuisineAndPrice: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 13)
         }

@@ -34,7 +34,7 @@ struct RestaurantDetailConstant {
         return 9
     }()
     
-    static let cuisinTopPadding: CGFloat = {
+    static let cuisineTopPadding: CGFloat = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return 6
         }

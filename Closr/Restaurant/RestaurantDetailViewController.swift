@@ -38,7 +38,7 @@ class RestaurantDetailViewController: UIViewController {
         tableView.estimatedSectionHeaderHeight              = 80
         tableView.rowHeight                                 = UITableViewAutomaticDimension
         tableView.tableFooterView                           = self.makeFooterView()
-        tableView.keyboardDismissMode                       = .onDrag
+        tableView.allowsSelection                           = false
         
         tableView.register(RestaurantDetailImageCell.self, forCellReuseIdentifier: RestaurantDetailImageCell.reuseIdentifier)
         tableView.register(RestaurantDetailDescriptionCell.self, forCellReuseIdentifier: RestaurantDetailDescriptionCell.reuseIdentifier)
