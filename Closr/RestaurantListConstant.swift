@@ -8,13 +8,9 @@
 
 import UIKit
 
-
-
-
-
-class RestaurantListSpace: NSObject {
+struct RestaurantListConstant {
     
-    static let restaurantImageViewHeight:CGFloat={
+    static let restaurantImageViewHeight: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 109
@@ -25,13 +21,9 @@ class RestaurantListSpace: NSObject {
         }
         
         return 141
-        
-        
-        
     }()
     
-    
-    static let restaurantImageViewWidth:CGFloat={
+    static let restaurantImageViewWidth: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 149
@@ -42,13 +34,7 @@ class RestaurantListSpace: NSObject {
         }
         
         return 192
-        
-        
-        
     }()
-    
-    
-    
     
     static let cellDistanceSpaceHeight: CGFloat = {
         if Device.is_3_5_inches || Device.is_4_inches {
@@ -62,13 +48,6 @@ class RestaurantListSpace: NSObject {
         return 5
     }()
     
-    
-    
-    
-    
-    
-    
-    
     static let promotionRateViewHeight:CGFloat={
         
         if Device.is_3_5_inches || Device.is_4_inches {
@@ -80,11 +59,7 @@ class RestaurantListSpace: NSObject {
         }
         
         return 37
-        
-        
-        
     }()
-    
     
     static let promotionRateViewWidth:CGFloat={
         
@@ -97,16 +72,9 @@ class RestaurantListSpace: NSObject {
         }
         
         return 161
-        
-        
-        
     }()
     
-    
-    
-    
     static let addGroupButtonSize:CGFloat={
-        
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 25
@@ -117,15 +85,7 @@ class RestaurantListSpace: NSObject {
         }
         
         return 45
-        
-        
-        
     }()
-    
-    
-    
-    
-    
     
     static let imageLabelPadding:CGFloat={
         
@@ -138,8 +98,6 @@ class RestaurantListSpace: NSObject {
         }
         
         return 16
-        
-        
     }()
     
     static let restaurantNameTopPadding:CGFloat={
@@ -153,8 +111,6 @@ class RestaurantListSpace: NSObject {
         }
         
         return 2
-        
-        
     }()
     
     static let distNamePadding:CGFloat={
@@ -168,8 +124,6 @@ class RestaurantListSpace: NSObject {
         }
         
         return 40
-        
-        
     }()
     
     static let imagePricePadding:CGFloat={
@@ -183,8 +137,6 @@ class RestaurantListSpace: NSObject {
         }
         
         return 67
-        
-        
     }()
     
     static let restaurantCategoryTopPadding:CGFloat={
@@ -198,8 +150,6 @@ class RestaurantListSpace: NSObject {
         }
         
         return 10
-        
-        
     }()
     
     static let restaurantCategoryButtomPadding:CGFloat={
@@ -213,8 +163,6 @@ class RestaurantListSpace: NSObject {
         }
         
         return 16
-        
-        
     }()
     
     static let buttonRightPadding:CGFloat={
@@ -228,9 +176,5 @@ class RestaurantListSpace: NSObject {
         }
         
         return 14
-        
-        
     }()
-    
-    
 }

@@ -1,5 +1,5 @@
 //
-//  RestaurantFontSize.swift
+//  RestaurantListFont.swift
 //  Closr
 //
 //  Created by Yale的Mac on 2017/3/1.
@@ -8,13 +8,8 @@
 
 import UIKit
 
-class RestaurantListSize: NSObject {
-    
-    
+struct RestaurantListFont {
 
-    
-    
-    
     static let restaurantName: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 15)
@@ -27,11 +22,7 @@ class RestaurantListSize: NSObject {
         return UIFont.systemFont(ofSize: 19.5)
     }()
     
-    
-   
-    
-    
-    static let restaurantAddress: UIFont = {
+    static let address: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 11)
         }
@@ -43,11 +34,7 @@ class RestaurantListSize: NSObject {
         return UIFont.systemFont(ofSize: 13.5)
     }()
     
-    
-
-    
-    
-    static let restaurantDist: UIFont = {
+    static let distance: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 11)
         }
@@ -59,13 +46,7 @@ class RestaurantListSize: NSObject {
         return UIFont.systemFont(ofSize: 13.5)
     }()
     
-    
-    
-    
-    
-    
-    
-    static let restaurantPrice: UIFont = {
+    static let price: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 11)
         }
@@ -77,14 +58,7 @@ class RestaurantListSize: NSObject {
         return UIFont.systemFont(ofSize: 13.5)
     }()
     
-    
-
-    
-    
-    
-    
-    
-    static let restaurantCategory: UIFont = {
+    static let category: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 8.5)
         }
@@ -95,12 +69,6 @@ class RestaurantListSize: NSObject {
         
         return UIFont.systemFont(ofSize: 11)
     }()
-    
-    
-    
-    
-
-    
     
     static let promotionRate: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
@@ -113,9 +81,4 @@ class RestaurantListSize: NSObject {
         
         return UIFont.systemFont(ofSize: 11)
     }()
-    
-   
-    
-    
-    
 }

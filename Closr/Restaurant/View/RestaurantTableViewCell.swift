@@ -9,375 +9,178 @@
 import UIKit
 import EasyPeasy
 
-
-
-class RestaurantTableViewCell: UITableViewCell {
+class RestaurantTableViewCell: UITableViewCell, Reusable {
+    
+    fileprivate lazy var restaurantImageView: UIImageView = {
+        let imageView               = UIImageView()
+        imageView.backgroundColor   = UIColor.lightGray
+        
+        return imageView
+    }()
+    
+    fileprivate lazy var nameLabel: UILabel = {
+        let label       = UILabel()
+        label.font      = RestaurantListFont.restaurantName
+        label.textColor = RestaurantListColor.restaurantName
+        
+        return label
+    }()
+    
+    fileprivate lazy var addressLabel: UILabel = {
+        let label       = UILabel()
+        label.font      = RestaurantListFont.address
+        label.textColor = RestaurantListColor.address
+        
+        return label
+    }()
+    
+    fileprivate lazy var distanceLabel: UILabel = {
+        let label       = UILabel()
+        label.font      = RestaurantListFont.distance
+        label.textColor = RestaurantListColor.distance
+        
+        return label
+    }()
+    
+    fileprivate lazy var priceLabel: UILabel = {
+        let label       = UILabel()
+        label.font      = RestaurantListFont.price
+        label.textColor = RestaurantListColor.price
+        
+        return label
+    }()
+    
+    fileprivate lazy var categoryLabel: UILabel = {
+        let label       = UILabel()
+        label.font      = RestaurantListFont.category
+        label.textColor = RestaurantListColor.category
+        
+        return label
+    }()
+    
+    fileprivate lazy var distanceImageView: UIImageView = {
+        let imageView = UIImageView()
+        
+        return imageView
+    }()
+    
+    fileprivate lazy var promotionBackgroundImageView: UIImageView = {
+        
+        let imageView = UIImageView()
+        
+        return imageView
+    }()
+    
+    fileprivate lazy var promotionLabel: UILabel = {
+        let label       = UILabel()
+        label.text      = "Specials: 15% OFF"
+        label.font      = RestaurantListFont.promotionRate
+        label.textColor = RestaurantListColor.promotionRate
+        
+        return label
+    }()
+    
+    fileprivate lazy var addGroupButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named:"lable-01.png"), for: .normal)
+        
+        return button
+    }()
+    
+    func update(restaurant: YelpPlace, placeHolder: UIImage?) {
+        restaurantImageView.loadImage(URLString: restaurant.imageURL, placeholder: nil)
+    }
     
     override init(style: UITableViewCellStyle,reuseIdentifier reuseIdentifire: String?){
-        
         super.init(style: style, reuseIdentifier: reuseIdentifire)
         
-        
-        
-        
         setUpViews()
-        
+        createConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+   
+    fileprivate func setUpViews() {
+        
+        contentView.addSubview(restaurantImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(addressLabel)
+        contentView.addSubview(distanceLabel)
+        contentView.addSubview(priceLabel)
+        contentView.addSubview(categoryLabel)
+        contentView.addSubview(distanceImageView)
+        
+        contentView.addSubview(promotionBackgroundImageView)
+        promotionBackgroundImageView.addSubview(promotionLabel)
+        
+        contentView.addSubview(addGroupButton)
+        
+    }
     
-    
-    
-    
-    lazy var restaurantImageView:UIImageView={
-        
-        return UIImageView()
-        
-    }()
-    
-    
-    
-    lazy var restaurantName : UILabel={
-        
-        
-        let rN=UILabel()
-        
-        
-        rN.text="Restaurant Name"
-        rN.font=RestaurantListSize.restaurantName
-        rN.textColor=RestaurantListColor.restaurantNameColor
-        
-        
-        return rN
-        
-        
-    }()
-    
-    
-    
-    lazy var restaurantAddress: UILabel={
-        
-        
-        let rA=UILabel()
-        
-        
-        rA.text="Hwy 7"
-        rA.font=RestaurantListSize.restaurantAddress
-        rA.textColor=RestaurantListColor.restaurantAddressColor
-        
-        return rA
-        
-        
-    }()
-    
-    
-    
-    lazy var restaurantDist: UILabel={
-        
-        
-        let rD=UILabel()
-        
-        rD.text="0.3km"
-        rD.font=RestaurantListSize.restaurantDist
-        rD.textColor=RestaurantListColor.restaurantDistColor
-        
-        
-        
-        return rD
-        
-        
-    }()
-    
-    
-    
-    lazy var restaurantPrice: UILabel={
-        
-        
-        let rP=UILabel()
-        
-        
-        rP.text="$$$999"
-        rP.font=RestaurantListSize.restaurantPrice
-        rP.textColor=RestaurantListColor.restaurantPriceColor
-        
-        
-        
-        
-        return rP
-        
-        
-    }()
-    
-    
-    
-    lazy var restaurantCategory: UILabel={
-        
-        
-        let rC=UILabel()
-        
-        
-        rC.text="Salad,Pizza"
-        rC.font=RestaurantListSize.restaurantCategory
-        rC.textColor=RestaurantListColor.restaurantCategoryColor
-        
-        
-        
-        return rC
-        
-        
-    }()
-    
-    
-    
-    lazy var cellDistance:UIImageView={
-        
-        var subFrame = CGRect()
-        
-        
-        let cD=UIImageView(frame:subFrame)
-        
-        return cD
-        
-    }()
-    
-    
-    
-    
-    lazy var promotionRateView:UIImageView={
-        
-        var subFrame = CGRect()
-        
-        
-        let pR=UIImageView(/*frame:subFrame*/)
-        
-        return pR
-        
-    }()
-    
-    
-    
-    
-    
-    
-    lazy var promotionRate:UILabel={
-        
-        var subFrame = CGRect()
-        
-        
-        
-        let  pR = UILabel(/*frame: subFrame*/)
-        
-        
-        pR.text="Specials: 15% OFF"
-        pR.textAlignment=NSTextAlignment.center
-        pR.font=RestaurantListSize.promotionRate
-        pR.textColor=RestaurantListColor.promotionRateColor
-        
-        
-        return pR
-        
-    }()
-    
-    
-    
-    
-    
-    lazy var addGroupButton:UIButton={
-        
-        let aGB=UIButton()
-        aGB.setBackgroundImage(UIImage(named:"lable-01.png"), for: .normal)
-        
-        return aGB
-        
-    }()
-    
-    func setUpViews(){
-        
-        
-        
-        
-        restaurantImageView.backgroundColor=UIColor.brown
-        
+    fileprivate func createConstraints() {
         
         restaurantImageView <- [
-            
-            Height(RestaurantListSpace.restaurantImageViewHeight),
-            Width(RestaurantListSpace.restaurantImageViewWidth)]
+            Height(RestaurantListConstant.restaurantImageViewHeight),
+            Width(RestaurantListConstant.restaurantImageViewWidth),
+            Top(),
+            Leading()
+        ]
         
-        restaurantImageView<-[
+        nameLabel <- [
+            Top(RestaurantListConstant.restaurantNameTopPadding),
+            Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
+        ]
+        
+        addressLabel <- [
+            Top(RestaurantListConstant.imageLabelPadding).to(nameLabel),
+            Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
+        ]
+        
+        distanceLabel <- [
             
-            Top().to(contentView),
-            Left().to(contentView,.left)
+            Top(RestaurantListConstant.distNamePadding).to(addressLabel),
+            Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
             
         ]
         
-        self.contentView.addSubview(restaurantImageView)
-        
-        
-        
-        
-        
-        
-        
-        
-        self.contentView.addSubview(restaurantName)
-        
-        restaurantName<-[
-            Top(RestaurantListSpace.restaurantNameTopPadding).to(contentView),
-            Leading(RestaurantListSpace.imageLabelPadding).to(restaurantImageView,.trailing)
-        ]
-        
-        
-        
-        
-        
-        
-        
-        
-        self.contentView.addSubview(restaurantAddress)
-        
-        restaurantAddress<-[
-            Top(RestaurantListSpace.imageLabelPadding).to(restaurantName),
-            Leading(RestaurantListSpace.imageLabelPadding).to(restaurantImageView,.trailing)
-        ]
-        
-        
-        
-        
-        
-        
-        
-        self.contentView.addSubview(restaurantDist)
-        
-        restaurantDist<-[
+        priceLabel <- [
             
-            Top(RestaurantListSpace.distNamePadding).to(restaurantAddress),
-            Leading(RestaurantListSpace.imageLabelPadding).to(restaurantImageView,.trailing)
+            Top(RestaurantListConstant.distNamePadding).to(addressLabel),
+            Leading(RestaurantListConstant.imagePricePadding).to(restaurantImageView,.trailing)
             
         ]
         
+        categoryLabel <- [
+            Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing),
+            Bottom(RestaurantListConstant.restaurantCategoryButtomPadding)
+        ]
         
-        
-        
-        
-        
-        
-        
-        self.contentView.addSubview(restaurantPrice)
-        
-        restaurantPrice<-[
-            
-            Top(RestaurantListSpace.distNamePadding).to(restaurantAddress),
-            Leading(RestaurantListSpace.imagePricePadding).to(restaurantImageView,.trailing)
-            
+        distanceImageView <- [
+            Leading(),
+            Trailing(),
+            Top().to(restaurantImageView,.bottom),
+            Height(RestaurantListConstant.cellDistanceSpaceHeight)
         ]
         
         
-        
-        
-        
-        
-        
-        
-        self.contentView.addSubview(restaurantCategory)
-        
-        restaurantCategory<-[
-            
-            
-            Leading(RestaurantListSpace.imageLabelPadding).to(restaurantImageView,.trailing),
-            Bottom(RestaurantListSpace.restaurantCategoryButtomPadding).to(contentView)
-            
-            
+        promotionBackgroundImageView <- [
+            Height(RestaurantListConstant.promotionRateViewHeight),
+            Width(RestaurantListConstant.promotionRateViewWidth),
+            Trailing().to(restaurantImageView,.trailing),
+            Bottom(RestaurantListConstant.restaurantCategoryButtomPadding)
         ]
         
         
-        
-        
-        cellDistance.backgroundColor=UIColor.white
-        self.contentView.addSubview(cellDistance)
-        
-        
-        
-        cellDistance <- Height(CGFloat(RestaurantListSpace.cellDistanceSpaceHeight))
-        
-        
-        cellDistance<-[
-            
-            Leading(0).to(contentView,.leading),
-            Trailing(0).to(contentView,.trailing),
-            Top(0).to(restaurantImageView,.bottom)
-            
-            
+        promotionLabel <- Edges()
+       
+        addGroupButton <- [
+            Trailing(RestaurantListConstant.buttonRightPadding),
+            Bottom(RestaurantListConstant.restaurantCategoryButtomPadding),
+            Height(RestaurantListConstant.addGroupButtonSize),
+            Width(RestaurantListConstant.addGroupButtonSize)
         ]
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        promotionRateView.backgroundColor=UIColor.black
-        self.contentView.addSubview(promotionRateView)
-        
-        
-        promotionRateView<-[
-            
-            Height(CGFloat(RestaurantListSpace.promotionRateViewHeight)),
-            
-            Width(CGFloat(RestaurantListSpace.promotionRateViewWidth))
-            
-            
-        ]
-        
-        
-        promotionRateView<-[
-            
-            Trailing(0).to(restaurantImageView,.trailing),
-            Bottom(RestaurantListSpace.restaurantCategoryButtomPadding).to(contentView,.bottom)
-            
-            
-            
-        ]
-        
-        
-        
-        
-        promotionRateView.addSubview(promotionRate)
-        
-        promotionRate<-[
-            
-            Center(CGPoint(x: 0, y: 0))
-            
-            
-        ]
-        
-        
-        
-        
-        self.contentView.addSubview(addGroupButton)
-        
-        
-        addGroupButton<-[
-            
-            Trailing(RestaurantListSpace.buttonRightPadding).to(contentView),
-            
-            Bottom(RestaurantListSpace.restaurantCategoryButtomPadding).to(contentView)
-            
-        ]
-        
-        addGroupButton<-[
-            
-            Height(RestaurantListSpace.addGroupButtonSize),
-            
-            Width(RestaurantListSpace.addGroupButtonSize)
-            
-        ]
-        
-        
         
     }
 }
