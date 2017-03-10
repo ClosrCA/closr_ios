@@ -1,6 +1,6 @@
 //
 //  RestaurantFontSize.swift
-//  TableViewTest
+//  Closr
 //
 //  Created by Yale的Mac on 2017/3/1.
 //  Copyright © 2017年 YaleMac. All rights reserved.
@@ -8,34 +8,14 @@
 
 import UIKit
 
-class RestaurantFontSize: NSObject {
+class RestaurantListSize: NSObject {
     
     
-    /*
-     
-     
-     static let discount: UIFont = {
-     if Device.is_3_5_inches || Device.is_4_inches {
-     return UIFont.systemFont(ofSize: 26)
-     }
-     
-     if Device.is_4_7_inches {
-     return UIFont.systemFont(ofSize: 30)
-     }
-     
-     return UIFont.systemFont(ofSize: 33)
-     }()
-     
-     
-     
-     */
-    
-    
-    //RestaurantName
+
     
     
     
-    static let restaurantNameSize: UIFont = {
+    static let restaurantName: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 15)
         }
@@ -48,9 +28,10 @@ class RestaurantFontSize: NSObject {
     }()
     
     
-    //RestaurantAddress
+   
     
-    static let restaurantAddressSize: UIFont = {
+    
+    static let restaurantAddress: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 11)
         }
@@ -63,9 +44,10 @@ class RestaurantFontSize: NSObject {
     }()
     
     
-    //RestaurantDist
+
     
-    static let restaurantDistSize: UIFont = {
+    
+    static let restaurantDist: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 11)
         }
@@ -78,9 +60,12 @@ class RestaurantFontSize: NSObject {
     }()
     
     
-    //RestaurantPrice
     
-    static let restaurantPriceSize: UIFont = {
+    
+    
+    
+    
+    static let restaurantPrice: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 11)
         }
@@ -93,9 +78,13 @@ class RestaurantFontSize: NSObject {
     }()
     
     
-    //restaurantCategory
+
     
-    static let restaurantCategorySize: UIFont = {
+    
+    
+    
+    
+    static let restaurantCategory: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 8.5)
         }
@@ -110,9 +99,10 @@ class RestaurantFontSize: NSObject {
     
     
     
-    //promotionRate
+
     
-    static let promotionRateSize: UIFont = {
+    
+    static let promotionRate: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return UIFont.systemFont(ofSize: 8.5)
         }
@@ -124,6 +114,8 @@ class RestaurantFontSize: NSObject {
         return UIFont.systemFont(ofSize: 11)
     }()
     
-    //addGroupButton
+   
+    
+    
     
 }

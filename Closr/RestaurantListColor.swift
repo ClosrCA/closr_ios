@@ -1,6 +1,6 @@
 //
-//  RestaurantFontColor.swift
-//  TableViewTest
+//  RestaurantListColor.swift
+//  Closr
 //
 //  Created by Yale的Mac on 2017/2/28.
 //  Copyright © 2017年 YaleMac. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct RestaurantFontColor {
+struct RestaurantListColor {
     
     
     static let restaurantNameColor = UIColor(red: 89 / 255, green: 89 / 255, blue: 87 / 255, alpha: 1.0)
