@@ -10,9 +10,10 @@ import Foundation
 import CoreLocation
 import ObjectMapper
 
-typealias PlaceHandler = (([YelpPlace]?, Error?) -> Void)
+typealias PlacesHandler = (([YelpPlace]?, Error?) -> Void)
+typealias PlaceDetailHandler = ((YelpPlace?, Error?) -> Void)
 
-class YelpPlace: Mappable {
+struct YelpPlace: Mappable {
     var placeID: String!
     var name: String!
     var rating: Double?
@@ -23,11 +24,16 @@ class YelpPlace: Mappable {
     var distance: CLLocationDistance?
     var coordinates: CLLocationCoordinate2D?
     
-    required init?(map: Map) {
+    var phone: String?
+    var photos: [String]?
+    var categories: [Category]?
+    var hours: OpenHours?
+    
+    init?(map: Map) {
         
     }
     
-    func mapping(map: Map) {
+    mutating func mapping(map: Map) {
         placeID     <- map["id"]
         name        <- map["name"]
         rating      <- map["rating"]
@@ -37,6 +43,10 @@ class YelpPlace: Mappable {
         address     <- map["location"]
         distance    <- map["distance"]
         coordinates <- map["coordinates"]
+        phone       <- map["display_phone"]
+        photos      <- map["photos"]
+        categories  <- map["categories"]
+        hours       <- map["hours"]
     }
 }
 
@@ -57,6 +67,52 @@ struct Address: Mappable {
         state           <- map["state"]
         country         <- map["country"]
         zipCode         <- map["zip_code"]
+    }
+}
+
+struct Category: Mappable {
+    var alias: String?
+    var title: String?
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        alias  <- map["alias"]
+        title  <- map["title"]
+    }
+}
+
+struct OpenHours: Mappable {
+    var isOpenNow: Bool = false
+    var hours: [Hours]?
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        isOpenNow <- map["is_open_now"]
+        hours     <- map["hours"]
+    }
+    
+    struct Hours: Mappable {
+        var day: Int?
+        var endTime: String?  // "2300"
+        var startTime: String?
+        var isOvernight: Bool = false
+        
+        init?(map: Map) {
+            
+        }
+        
+        mutating func mapping(map: Map) {
+            day             <- map["day"]
+            endTime         <- map["end"]
+            startTime       <- map["start"]
+            isOvernight     <- map["is_overnight"]
+        }
     }
 }
 
