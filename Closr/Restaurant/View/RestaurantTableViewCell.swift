@@ -62,13 +62,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         
         return label
     }()
-    
-    fileprivate lazy var distanceImageView: UIImageView = {
-        let imageView = UIImageView()
-        
-        return imageView
-    }()
-    
+   
     fileprivate lazy var promotionBackgroundImageView: UIImageView = {
         
         let imageView = UIImageView()
@@ -117,7 +111,6 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         contentView.addSubview(distanceLabel)
         contentView.addSubview(priceLabel)
         contentView.addSubview(categoryLabel)
-        contentView.addSubview(distanceImageView)
         
         contentView.addSubview(promotionBackgroundImageView)
         promotionBackgroundImageView.addSubview(promotionLabel)
@@ -154,7 +147,6 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             
             Top(RestaurantListConstant.distNameTopPadding).to(addressLabel),
             Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
-            
         ]
         
         priceLabel <- [
@@ -168,15 +160,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing),
             Bottom(RestaurantListConstant.restaurantCategoryButtomPadding)
         ]
-        
-        distanceImageView <- [
-            
-            Leading(),
-            Trailing(),
-            Top().to(restaurantImageView,.bottom),
-            Height(RestaurantListConstant.cellDistanceSpaceHeight)
-        ]
-        
+       
         
         promotionBackgroundImageView <- [
             
@@ -188,7 +172,6 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         
         
         promotionLabel <- Center()
-        
         
         
         addGroupButton <- [

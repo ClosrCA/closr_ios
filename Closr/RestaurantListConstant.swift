@@ -50,20 +50,7 @@ struct RestaurantListConstant {
         
     }()
     
-    
-    static let cellDistanceSpaceHeight: CGFloat = {
-        if Device.is_3_5_inches || Device.is_4_inches {
-            return 3.5
-        }
-        
-        if Device.is_4_7_inches {
-            return 4.5
-        }
-        
-        return 5
-    }()
-    
-    static let promotionRateViewHeight:CGFloat={
+    static let promotionRateViewHeight: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 28
@@ -76,7 +63,7 @@ struct RestaurantListConstant {
         return 37
     }()
     
-    static let promotionRateViewWidth:CGFloat={
+    static let promotionRateViewWidth: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 124
@@ -89,7 +76,7 @@ struct RestaurantListConstant {
         return 161
     }()
     
-    static let addGroupButtonSize:CGFloat={
+    static let addGroupButtonSize: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 25
@@ -102,7 +89,7 @@ struct RestaurantListConstant {
         return 45
     }()
     
-    static let imageLabelPadding:CGFloat={
+    static let imageLabelPadding: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 12
@@ -115,7 +102,7 @@ struct RestaurantListConstant {
         return 16
     }()
     
-    static let restaurantNameTopPadding:CGFloat={
+    static let restaurantNameTopPadding: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 1
@@ -128,7 +115,7 @@ struct RestaurantListConstant {
         return 2
     }()
     
-    static let distNameTopPadding:CGFloat={
+    static let distNameTopPadding: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 24.4
@@ -141,7 +128,7 @@ struct RestaurantListConstant {
         return 32.5
     }()
     
-    static let imagePricePadding:CGFloat={
+    static let imagePricePadding: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 52
@@ -154,7 +141,7 @@ struct RestaurantListConstant {
         return 67
     }()
     
-    static let restaurantCategoryTopPadding:CGFloat={
+    static let restaurantCategoryTopPadding: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 7.5
@@ -167,7 +154,7 @@ struct RestaurantListConstant {
         return 10
     }()
     
-    static let restaurantCategoryButtomPadding:CGFloat={
+    static let restaurantCategoryButtomPadding: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 11
@@ -180,7 +167,7 @@ struct RestaurantListConstant {
         return 16
     }()
     
-    static let buttonRightPadding:CGFloat={
+    static let buttonRightPadding: CGFloat = {
         
         if Device.is_3_5_inches || Device.is_4_inches {
             return 13
