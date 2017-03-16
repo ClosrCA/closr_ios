@@ -12,22 +12,22 @@ import EasyPeasy
 class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
 
     fileprivate lazy var nameLabel: UILabel = {
-        let nameLabel            = UILabel.makeLable(font: RestaurantFont.resturantName, textColor: RestaurantColor.title)
+        let nameLabel            = UILabel.makeLable(font: RestaurantDetailFont.resturantName, textColor: RestaurantDetailColor.title)
         nameLabel.numberOfLines  = 0
         
         return nameLabel
     }()
     
     fileprivate lazy var reviewBackground: UIView   = UIView()
-    fileprivate lazy var cuisineLabel: UILabel      = UILabel.makeLable(font: RestaurantFont.cuisineAndPrice, textColor: RestaurantColor.primary)
+    fileprivate lazy var cuisineLabel: UILabel      = UILabel.makeLable(font: RestaurantDetailFont.cuisineAndPrice, textColor: RestaurantDetailColor.primary)
     
-    fileprivate lazy var openHoursTitleLabel: UILabel = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.primary, text: "Open hours:")
-    fileprivate lazy var phoneTitleLabel: UILabel     = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.primary, text: "Phone:")
-    fileprivate lazy var addressTitleLabel: UILabel   = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.primary, text: "Address:")
+    fileprivate lazy var openHoursTitleLabel: UILabel = UILabel.makeLable(font: RestaurantDetailFont.infoTitle, textColor: RestaurantDetailColor.primary, text: "Open hours:")
+    fileprivate lazy var phoneTitleLabel: UILabel     = UILabel.makeLable(font: RestaurantDetailFont.infoTitle, textColor: RestaurantDetailColor.primary, text: "Phone:")
+    fileprivate lazy var addressTitleLabel: UILabel   = UILabel.makeLable(font: RestaurantDetailFont.infoTitle, textColor: RestaurantDetailColor.primary, text: "Address:")
     
-    fileprivate lazy var openHoursLabel: UILabel    = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.subtitle)
-    fileprivate lazy var phoneLabel: UILabel        = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.subtitle)
-    fileprivate lazy var addressLabel: UILabel      = UILabel.makeLable(font: RestaurantFont.infoTitle, textColor: RestaurantColor.subtitle)
+    fileprivate lazy var openHoursLabel: UILabel    = UILabel.makeLable(font: RestaurantDetailFont.infoTitle, textColor: RestaurantDetailColor.subtitle)
+    fileprivate lazy var phoneLabel: UILabel        = UILabel.makeLable(font: RestaurantDetailFont.infoTitle, textColor: RestaurantDetailColor.subtitle)
+    fileprivate lazy var addressLabel: UILabel      = UILabel.makeLable(font: RestaurantDetailFont.infoTitle, textColor: RestaurantDetailColor.subtitle)
     
     func update(restaurant: YelpPlace) {
         nameLabel.text      = restaurant.name

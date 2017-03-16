@@ -13,7 +13,7 @@ class RestaurantDetailEventTitleView: UIView {
 
     fileprivate lazy var topDivider: UIView = {
         let view                = UIView()
-        view.backgroundColor    = RestaurantColor.subtitle
+        view.backgroundColor    = RestaurantDetailColor.subtitle
         
         return view
     }()
@@ -21,8 +21,8 @@ class RestaurantDetailEventTitleView: UIView {
     fileprivate lazy var titleLabel: UILabel = {
         let label       = UILabel()
         label.text      = "Curent Event"
-        label.textColor = RestaurantColor.title
-        label.font      = RestaurantFont.eventTitle
+        label.textColor = RestaurantDetailColor.title
+        label.font      = RestaurantDetailFont.eventTitle
         
         return label
     }()

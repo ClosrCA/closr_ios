@@ -1,5 +1,5 @@
 //
-//  RestaurantColor.swift
+//  RestaurantDetailColor.swift
 //  Closr
 //
 //  Created by Tao on 2017-02-28.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct RestaurantColor {
+struct RestaurantDetailColor {
     
     static let primary      = UIColor.brandColor
     static let secondary    = UIColor(red: 243 / 255, green: 186 / 255, blue: 177 / 255, alpha: 1.0)

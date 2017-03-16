@@ -43,8 +43,8 @@ class RestaurantDetailImageCell: UITableViewCell, Reusable {
     fileprivate lazy var pageControl: UIPageControl = {
         let pageControl                                         = UIPageControl()
         pageControl.hidesForSinglePage                          = true
-        pageControl.currentPageIndicatorTintColor               = RestaurantColor.primary
-        pageControl.pageIndicatorTintColor                      = RestaurantColor.secondary
+        pageControl.currentPageIndicatorTintColor               = RestaurantDetailColor.primary
+        pageControl.pageIndicatorTintColor                      = RestaurantDetailColor.secondary
         
         return pageControl
     }()

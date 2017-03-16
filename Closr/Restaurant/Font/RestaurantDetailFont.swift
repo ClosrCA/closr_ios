@@ -1,5 +1,5 @@
 //
-//  RestaurantFont.swift
+//  RestaurantDetailFont.swift
 //  Closr
 //
 //  Created by Tao on 2017-02-28.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct RestaurantFont {
+struct RestaurantDetailFont {
     
     static let resturantName: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
