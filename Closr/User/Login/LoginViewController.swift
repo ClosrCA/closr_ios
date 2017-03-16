@@ -30,14 +30,28 @@ protocol LoginControllerDelegate: class {
 }
 
 class LoginViewController: UIViewController {
+    
 
     weak var delegate: LoginControllerDelegate?
     
     fileprivate lazy var backgroundImageView: UIImageView = {
-        let backgroundImageView = UIImageView(image: UIImage(named: "login_background"))
+        if Device.is_3_5_inches || Device.is_4_inches {
+            return UIImageView(image: UIImage(named:"login 5-5s-6.png"))
+        }
+            
+        else if Device.is_4_7_inches {
+             return UIImageView(image: UIImage(named:"login 6-6s-8.png"))
+        }
         
-        return backgroundImageView
+        else{
+             return UIImageView(image: UIImage(named:"login plus-05.png"))
+        }
+        
     }()
+    
+    
+    
+   
     
     fileprivate lazy var facebookLoginButton: UIButton = {
         let loginButton = UIButton()
@@ -66,6 +80,9 @@ class LoginViewController: UIViewController {
         return termsLabel
     }()
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -91,6 +108,22 @@ class LoginViewController: UIViewController {
             Leading(),
             Trailing(),
         ]
+        
+        
+        if Device.is_3_5_inches || Device.is_4_inches {
+            facebookLoginButton <- Bottom(185).to(backgroundImageView,.bottom)
+        }
+            
+        else if Device.is_4_7_inches {
+            facebookLoginButton <- Bottom(205).to(backgroundImageView,.bottom)
+
+        }
+            
+        else{
+            facebookLoginButton <- Bottom(240).to(backgroundImageView,.bottom)
+        }
+        
+
     }
     
     @objc
