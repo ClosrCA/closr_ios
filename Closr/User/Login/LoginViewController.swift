@@ -30,14 +30,11 @@ protocol LoginControllerDelegate: class {
 }
 
 class LoginViewController: UIViewController {
+    
 
     weak var delegate: LoginControllerDelegate?
     
-    fileprivate lazy var backgroundImageView: UIImageView = {
-        let backgroundImageView = UIImageView(image: UIImage(named: "login_background"))
-        
-        return backgroundImageView
-    }()
+    fileprivate lazy var backgroundImageView: UIImageView = UIImageView(image: UIImage(named:"login_background"))
     
     fileprivate lazy var facebookLoginButton: UIButton = {
         let loginButton = UIButton()
@@ -66,6 +63,9 @@ class LoginViewController: UIViewController {
         return termsLabel
     }()
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,15 +81,15 @@ class LoginViewController: UIViewController {
         backgroundImageView <- Edges()
         
         termsLabel <- [
-            Leading(30),
-            Trailing(30),
-            Bottom(100),
-            Top(30).to(facebookLoginButton, .bottom)
+            Leading(LoginViewConstants.termsLabelPadding),
+            Trailing(LoginViewConstants.termsLabelPadding),
+            Top(LoginViewConstants.termsLabelPadding).to(facebookLoginButton, .bottom)
         ]
         
         facebookLoginButton <- [
             Leading(),
             Trailing(),
+            Bottom(LoginViewConstants.facebookButtonBottomPadding)
         ]
     }
     
