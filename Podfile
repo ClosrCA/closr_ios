@@ -16,5 +16,8 @@ target 'Closr' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
+  
+  
+  pod 'Firebase'
 
 end

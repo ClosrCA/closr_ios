@@ -72,14 +72,14 @@ struct PromotionFont {
     
     static let resturantName: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {
-            return UIFont.boldSystemFont(ofSize: 19)
+            return UIFont(name: "AvenirNextCondensed-Bold", size: 19)!
         }
         
         if Device.is_4_7_inches {
-            return UIFont.boldSystemFont(ofSize: 20)
+            return UIFont(name: "AvenirNextCondensed-Bold", size: 20)!
         }
         
-        return UIFont.boldSystemFont(ofSize: 22)
+        return UIFont(name: "AvenirNextCondensed-Bold", size: 22)!
     }()
     
     static let distance: UIFont = {

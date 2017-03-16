@@ -30,8 +30,6 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
         contentView.addSubview(distanceLabel)
         contentView.addSubview(promotionContainerView)
         
-        contentView.backgroundColor = PromotionColor.primary
-        
         createConstraints()
     }
     
@@ -41,22 +39,19 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
     
     fileprivate lazy var thumbnailImageView: UIImageView = {
         let imageView                                       = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor                           = PromotionColor.secondary
         
         return imageView
     }()
     
     fileprivate lazy var locationIconImageView: UIImageView = {
-        let imageView                                       = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView()
         
         return imageView
     }()
     
     fileprivate lazy var nameLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font                                      = PromotionFont.resturantName
         label.textColor                                 = PromotionColor.title
         
@@ -65,19 +60,13 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
     
     fileprivate lazy var distanceLabel: UILabel = {
         let label                                       = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font                                      = PromotionFont.distance
         label.textColor                                 = PromotionColor.distance
         
         return label
     }()
     
-    fileprivate lazy var promotionContainerView: PromotionContainerView = {
-        let promotionView                                       = PromotionContainerView(frame: .zero)
-        promotionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return promotionView
-    }()
+    fileprivate lazy var promotionContainerView: PromotionContainerView = PromotionContainerView(frame: .zero)
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -118,8 +107,9 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
         ]
         
         promotionContainerView <- [
-            Size(100),
-            Bottom(),
+            Height(PromotionListConstant.Cell.promotionLabelHeight),
+            Width(PromotionListConstant.Cell.promotionLabelWidth),
+            Bottom().to(distanceLabel, .bottom),
             Trailing()
         ]
     }
