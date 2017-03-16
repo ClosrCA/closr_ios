@@ -20,6 +20,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var nameLabel: UILabel = {
         let label       = UILabel()
+        label.text      = "Restaurant Name"
         label.font      = RestaurantListFont.restaurantName
         label.textColor = RestaurantListColor.restaurantName
         
@@ -28,6 +29,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var addressLabel: UILabel = {
         let label       = UILabel()
+        label.text      = "Hwy 7, 2031"
         label.font      = RestaurantListFont.address
         label.textColor = RestaurantListColor.address
         
@@ -36,6 +38,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var distanceLabel: UILabel = {
         let label       = UILabel()
+        label.text      = "2.3km"
         label.font      = RestaurantListFont.distance
         label.textColor = RestaurantListColor.distance
         
@@ -44,6 +47,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var priceLabel: UILabel = {
         let label       = UILabel()
+        label.text      = "$$$ 999"
         label.font      = RestaurantListFont.price
         label.textColor = RestaurantListColor.price
         
@@ -52,6 +56,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var categoryLabel: UILabel = {
         let label       = UILabel()
+        label.text      = "pizza, spagetti, rice"
         label.font      = RestaurantListFont.category
         label.textColor = RestaurantListColor.category
         
@@ -67,6 +72,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     fileprivate lazy var promotionBackgroundImageView: UIImageView = {
         
         let imageView = UIImageView()
+        imageView.backgroundColor=UIColor.orange
         
         return imageView
     }()
@@ -87,9 +93,10 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         return button
     }()
     
-    func update(restaurant: YelpPlace, placeHolder: UIImage?) {
-        restaurantImageView.loadImage(URLString: restaurant.imageURL, placeholder: nil)
-    }
+    
+     func update(restaurant: YelpPlace, placeHolder: UIImage?) {
+     restaurantImageView.loadImage(URLString: restaurant.imageURL, placeholder: nil)
+     }
     
     override init(style: UITableViewCellStyle,reuseIdentifier reuseIdentifire: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifire)
@@ -101,7 +108,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
+    
     fileprivate func setUpViews() {
         
         contentView.addSubview(restaurantImageView)
@@ -117,47 +124,53 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         
         contentView.addSubview(addGroupButton)
         
+        
     }
     
     fileprivate func createConstraints() {
         
         restaurantImageView <- [
+            
             Height(RestaurantListConstant.restaurantImageViewHeight),
             Width(RestaurantListConstant.restaurantImageViewWidth),
-            Top(),
+            Top(RestaurantListConstant.restaurantContentTopPadding),
+            Bottom(),
             Leading()
         ]
         
         nameLabel <- [
-            Top(RestaurantListConstant.restaurantNameTopPadding),
+            
+            Top(RestaurantListConstant.restaurantNameTopPadding+RestaurantListConstant.restaurantContentTopPadding),
             Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
         ]
         
         addressLabel <- [
+            
             Top(RestaurantListConstant.imageLabelPadding).to(nameLabel),
             Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
         ]
         
         distanceLabel <- [
             
-            Top(RestaurantListConstant.distNamePadding).to(addressLabel),
+            Top(RestaurantListConstant.distNameTopPadding).to(addressLabel),
             Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
             
         ]
         
         priceLabel <- [
             
-            Top(RestaurantListConstant.distNamePadding).to(addressLabel),
+            Top(RestaurantListConstant.distNameTopPadding).to(addressLabel),
             Leading(RestaurantListConstant.imagePricePadding).to(restaurantImageView,.trailing)
-            
         ]
         
         categoryLabel <- [
+            
             Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing),
             Bottom(RestaurantListConstant.restaurantCategoryButtomPadding)
         ]
         
         distanceImageView <- [
+            
             Leading(),
             Trailing(),
             Top().to(restaurantImageView,.bottom),
@@ -166,6 +179,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         
         
         promotionBackgroundImageView <- [
+            
             Height(RestaurantListConstant.promotionRateViewHeight),
             Width(RestaurantListConstant.promotionRateViewWidth),
             Trailing().to(restaurantImageView,.trailing),
@@ -173,9 +187,12 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         ]
         
         
-        promotionLabel <- Edges()
-       
+        promotionLabel <- Center()
+        
+        
+        
         addGroupButton <- [
+            
             Trailing(RestaurantListConstant.buttonRightPadding),
             Bottom(RestaurantListConstant.restaurantCategoryButtomPadding),
             Height(RestaurantListConstant.addGroupButtonSize),

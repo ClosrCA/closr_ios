@@ -36,6 +36,21 @@ struct RestaurantListConstant {
         return 192
     }()
     
+    static let restaurantContentTopPadding: CGFloat = {
+        
+        if Device.is_3_5_inches || Device.is_4_inches {
+            return 3.5
+        }
+        
+        if Device.is_4_7_inches {
+            return 4.5
+        }
+        
+        return 5
+        
+    }()
+    
+    
     static let cellDistanceSpaceHeight: CGFloat = {
         if Device.is_3_5_inches || Device.is_4_inches {
             return 3.5
@@ -113,17 +128,17 @@ struct RestaurantListConstant {
         return 2
     }()
     
-    static let distNamePadding:CGFloat={
+    static let distNameTopPadding:CGFloat={
         
         if Device.is_3_5_inches || Device.is_4_inches {
-            return 32
+            return 24.4
         }
         
         if Device.is_4_7_inches {
-            return 37
+            return 30
         }
         
-        return 40
+        return 32.5
     }()
     
     static let imagePricePadding:CGFloat={
