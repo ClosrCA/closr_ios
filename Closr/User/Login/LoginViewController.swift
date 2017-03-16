@@ -34,24 +34,7 @@ class LoginViewController: UIViewController {
 
     weak var delegate: LoginControllerDelegate?
     
-    fileprivate lazy var backgroundImageView: UIImageView = {
-        if Device.is_3_5_inches || Device.is_4_inches {
-            return UIImageView(image: UIImage(named:"login 5-5s-6.png"))
-        }
-            
-        else if Device.is_4_7_inches {
-             return UIImageView(image: UIImage(named:"login 6-6s-8.png"))
-        }
-        
-        else{
-             return UIImageView(image: UIImage(named:"login plus-05.png"))
-        }
-        
-    }()
-    
-    
-    
-   
+    fileprivate lazy var backgroundImageView: UIImageView = UIImageView(image: UIImage(named:"login_background"))
     
     fileprivate lazy var facebookLoginButton: UIButton = {
         let loginButton = UIButton()
@@ -98,32 +81,16 @@ class LoginViewController: UIViewController {
         backgroundImageView <- Edges()
         
         termsLabel <- [
-            Leading(30),
-            Trailing(30),
-            Bottom(100),
-            Top(30).to(facebookLoginButton, .bottom)
+            Leading(LoginViewConstants.termsLabelPadding),
+            Trailing(LoginViewConstants.termsLabelPadding),
+            Top(LoginViewConstants.termsLabelPadding).to(facebookLoginButton, .bottom)
         ]
         
         facebookLoginButton <- [
             Leading(),
             Trailing(),
+            Bottom(LoginViewConstants.facebookButtonBottomPadding)
         ]
-        
-        
-        if Device.is_3_5_inches || Device.is_4_inches {
-            facebookLoginButton <- Bottom(185).to(backgroundImageView,.bottom)
-        }
-            
-        else if Device.is_4_7_inches {
-            facebookLoginButton <- Bottom(205).to(backgroundImageView,.bottom)
-
-        }
-            
-        else{
-            facebookLoginButton <- Bottom(240).to(backgroundImageView,.bottom)
-        }
-        
-
     }
     
     @objc

@@ -7,19 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		36D94B731E7138C600868A29 /* RestaurantListColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D94B721E7138C600868A29 /* RestaurantListColor.swift */; };
-		36D94B751E7138F100868A29 /* RestaurantListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D94B741E7138F100868A29 /* RestaurantListConstant.swift */; };
-		36D94B791E71397700868A29 /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D94B781E71397700868A29 /* RestaurantListViewController.swift */; };
-		36D94B7B1E7139C100868A29 /* RestaurantListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D94B7A1E7139C100868A29 /* RestaurantListFont.swift */; };
-		36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B851E7A37B500868A29 /* Assets.xcassets */; };
-		36D94B8A1E7A380300868A29 /* login 5-5s-06.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B871E7A380300868A29 /* login 5-5s-06.png */; };
-		36D94B8B1E7A380300868A29 /* login 6-6s-08.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B881E7A380300868A29 /* login 6-6s-08.png */; };
-		36D94B8C1E7A380300868A29 /* login plus-05.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B891E7A380300868A29 /* login plus-05.png */; };
 		36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */; };
-		4CA91CCD1E57664F00A8F51C /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CCC1E57664F00A8F51C /* Promotion.swift */; };
+		36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B851E7A37B500868A29 /* Assets.xcassets */; };
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
 		4CA91CDA1E577C7D00A8F51C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD91E577C7D00A8F51C /* ProfileViewController.swift */; };
 		4CA91CDD1E577CEC00A8F51C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CDC1E577CEC00A8F51C /* SettingsViewController.swift */; };
+		4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */; };
+		4CFFEE791E7B0C76009E8CB7 /* LoginViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */; };
 		A188F4BD87B3ACCD9E2C5CE6 /* Pods_Closr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */; };
 		E42562F91E703CD10078E9ED /* RestaurantDetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42562F61E703CD10078E9ED /* RestaurantDetailDescriptionCell.swift */; };
 		E42562FA1E703CD10078E9ED /* RestaurantDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42562F71E703CD10078E9ED /* RestaurantDetailImageCell.swift */; };
@@ -97,20 +91,14 @@
 		2D49278ECCB91E5347BDEBE1 /* Pods-ClosrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Closr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		353B364B06A9A5F276964D4C /* Pods-ClosrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrUITests/Pods-ClosrUITests.release.xcconfig"; sourceTree = "<group>"; };
-		36D94B721E7138C600868A29 /* RestaurantListColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantListColor.swift; sourceTree = "<group>"; };
-		36D94B741E7138F100868A29 /* RestaurantListConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantListConstant.swift; sourceTree = "<group>"; };
-		36D94B781E71397700868A29 /* RestaurantListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantListViewController.swift; sourceTree = "<group>"; };
-		36D94B7A1E7139C100868A29 /* RestaurantListFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantListFont.swift; sourceTree = "<group>"; };
-		36D94B851E7A37B500868A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		36D94B871E7A380300868A29 /* login 5-5s-06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login 5-5s-06.png"; path = "Assets.xcassets/login_facebook.imageset/login 5-5s-06.png"; sourceTree = "<group>"; };
-		36D94B881E7A380300868A29 /* login 6-6s-08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login 6-6s-08.png"; path = "Assets.xcassets/login_facebook.imageset/login 6-6s-08.png"; sourceTree = "<group>"; };
-		36D94B891E7A380300868A29 /* login plus-05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login plus-05.png"; path = "Assets.xcassets/login_facebook.imageset/login plus-05.png"; sourceTree = "<group>"; };
 		36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		36D94B851E7A37B500868A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.debug.xcconfig"; sourceTree = "<group>"; };
-		4CA91CCC1E57664F00A8F51C /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Promotion/Promotion/Promotion.swift; sourceTree = "<group>"; };
 		4CA91CD71E577AAF00A8F51C /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Shared/Notification.swift; sourceTree = "<group>"; };
 		4CA91CD91E577C7D00A8F51C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = User/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
 		4CA91CDC1E577CEC00A8F51C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = User/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
+		4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Promotion/Model/Promotion.swift; sourceTree = "<group>"; };
+		4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewConstants.swift; sourceTree = "<group>"; };
 		4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50163C0A5221D5BF6257B9A8 /* Pods-ClosrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A7B4D8EF80D28ADA80777C1 /* Pods_Closr_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Closr_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,7 +209,7 @@
 		4CA91CCE1E5766FF00A8F51C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4CA91CCC1E57664F00A8F51C /* Promotion.swift */,
+				4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -316,7 +304,8 @@
 		E458B1D11E65A56B00EE7736 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E4713EE21E399ED2004CC166 /* Assets.xcassets */,
+				E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */,
+				36D94B851E7A37B500868A29 /* Assets.xcassets */,
 				E4713EE71E399ED2004CC166 /* Info.plist */,
 				36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */,
 			);
@@ -349,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				E46ECDE41E50D66400785BE6 /* LoginViewController.swift */,
+				4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */,
 				E46ECDE21E50D66400785BE6 /* Color */,
 			);
 			name = Login;
@@ -447,13 +437,7 @@
 				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
 				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
 				E477F0081E57305600ED7806 /* TabBarController.swift */,
-				36D94B851E7A37B500868A29 /* Assets.xcassets */,
-				36D94B871E7A380300868A29 /* login 5-5s-06.png */,
-				36D94B881E7A380300868A29 /* login 6-6s-08.png */,
-				36D94B891E7A380300868A29 /* login plus-05.png */,
-				E4713EE71E399ED2004CC166 /* Info.plist */,
 				E458B1D11E65A56B00EE7736 /* Resources */,
-				E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */,
 			);
 			path = Closr;
 			sourceTree = "<group>";
@@ -706,12 +690,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36D94B8A1E7A380300868A29 /* login 5-5s-06.png in Resources */,
 				E4AAB72E1E3EC7F6001EB362 /* Places.storyboard in Resources */,
-				36D94B8B1E7A380300868A29 /* login 6-6s-08.png in Resources */,
 				36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */,
-				36D94B8C1E7A380300868A29 /* login plus-05.png in Resources */,
-				E4713EE31E399ED2004CC166 /* Assets.xcassets in Resources */,
 				36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -808,13 +788,13 @@
 				E42562FF1E7108230078E9ED /* RestaurantDetailEventTitleView.swift in Sources */,
 				E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */,
 				E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */,
+				4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */,
 				E4E99E021E7A31E600A10DA7 /* RestaurantListFont.swift in Sources */,
 				E46ECDFD1E51313C00785BE6 /* String+Format.swift in Sources */,
 				E46ECDE51E50D66400785BE6 /* LoginColor.swift in Sources */,
 				E477F0181E5DDBB400ED7806 /* ImageCarouselCell.swift in Sources */,
 				E477F00D1E5DC74D00ED7806 /* Location.swift in Sources */,
 				E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */,
-				4CA91CCD1E57664F00A8F51C /* Promotion.swift in Sources */,
 				4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
 				E46ECDF61E50E23900785BE6 /* ProfileFont.swift in Sources */,
@@ -827,6 +807,7 @@
 				E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */,
 				E477F0071E567DBF00ED7806 /* Reusable.swift in Sources */,
 				E477F0031E56701400ED7806 /* PromotionColor.swift in Sources */,
+				4CFFEE791E7B0C76009E8CB7 /* LoginViewConstants.swift in Sources */,
 				E477EFFB1E5668DA00ED7806 /* PromotionCollectionViewCell.swift in Sources */,
 				E477F0091E57305600ED7806 /* TabBarController.swift in Sources */,
 				E46ECDF41E50DE1E00785BE6 /* ProfileColor.swift in Sources */,

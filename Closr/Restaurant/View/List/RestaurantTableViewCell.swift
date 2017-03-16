@@ -135,7 +135,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         
         nameLabel <- [
             
-            Top(RestaurantListConstant.restaurantNameTopPadding+RestaurantListConstant.restaurantContentTopPadding),
+            Top(RestaurantListConstant.restaurantNameTopPadding + RestaurantListConstant.restaurantContentTopPadding),
             Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
         ]
         
@@ -162,7 +162,6 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing),
             Bottom(RestaurantListConstant.restaurantCategoryButtomPadding)
         ]
-       
         
         promotionBackgroundImageView <- [
             
@@ -172,9 +171,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             Bottom(RestaurantListConstant.restaurantCategoryButtomPadding)
         ]
         
-        
-        promotionLabel <- Center()
-        
+        promotionLabel <- Edges()
         
         addGroupButton <- [
             
@@ -183,6 +180,5 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
             Height(RestaurantListConstant.addGroupButtonSize),
             Width(RestaurantListConstant.addGroupButtonSize)
         ]
-        
     }
 }
