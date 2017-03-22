@@ -10,12 +10,19 @@ import UIKit
 import EasyPeasy
 
 protocol TextFieldTableViewCellDelegate: class {
-    func textFieldTableViewCellDidFinishEditing(cell: TextFieldTableViewCell)
+    func textFieldTableViewCellDidFinishEditing(cell: TextFieldTableViewCell, text: String?)
     func textFieldTableViewCellDidBeginEditing(cell: TextFieldTableViewCell)
 }
 
 class TextFieldTableViewCell: UITableViewCell, Reusable {
 
+    enum Section {
+        case address
+        case date
+        case time
+        case purpose
+    }
+    
     weak var delegate: TextFieldTableViewCellDelegate?
     
     fileprivate lazy var titleLabel: UILabel = {
@@ -33,18 +40,66 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
         return textField
     }()
     
-    func update(title: String?, text: String?, inputView: UIView?, inputAccessoryView: UIView? = nil, isEditable: Bool = true) {
+    fileprivate lazy var datePicker: UIDatePicker = {
+        let datePicker              = UIDatePicker()
+        datePicker.datePickerMode   = .date
+        datePicker.minimumDate      = Date()
+        
+        return datePicker
+    }()
+    
+    fileprivate lazy var timePicker: UIDatePicker = {
+        let timePicker              = UIDatePicker()
+        timePicker.datePickerMode   = .time
+        timePicker.minimumDate      = Date()
+        
+        return timePicker
+    }()
+    
+    fileprivate lazy var purposePicker: UIPickerView = {
+        let picker          = UIPickerView()
+        picker.delegate     = self
+        picker.dataSource   = self
+        
+        return picker
+    }()
+    
+    fileprivate lazy var toolBar: UIToolbar = {
+        let toolBar         = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 44))
+        toolBar.tintColor   = UIColor.brandColor
+        
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onDonePicking))
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.items = [leftSpace, doneItem]
+        
+        return toolBar
+    }()
+    
+    func update(title: String?, text: String?, section: Section) {
         
         titleLabel.text = title
+        textField.text  = text
         
-        textField.text                  = text
-        textField.inputView             = inputView
-        textField.inputAccessoryView    = inputAccessoryView
+        switch section {
+        case .address:
+            textField.backgroundColor = UIColor.white
+            textField.borderStyle     = .none
+            textField.isUserInteractionEnabled = false
+            return
+        case .date:
+            textField.inputView = datePicker
+        case .time:
+            textField.inputView = timePicker
+        case .purpose:
+            textField.inputView = purposePicker
+        }
         
-        textField.backgroundColor = isEditable ? UIColor.lightGray : UIColor.white
-        textField.borderStyle     = isEditable ? .roundedRect : .none
+        textField.inputAccessoryView    = toolBar
+        textField.backgroundColor       = UIColor.lightGray
+        textField.borderStyle           = .roundedRect
         
-        textField.isUserInteractionEnabled  = isEditable
+        textField.isUserInteractionEnabled  = true
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -58,6 +113,11 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc
+    fileprivate func onDonePicking() {
+        delegate?.textFieldTableViewCellDidFinishEditing(cell: self, text: textField.text)
     }
 
     override func prepareForReuse() {
@@ -94,6 +154,47 @@ extension TextFieldTableViewCell: UITextFieldDelegate {
         delegate?.textFieldTableViewCellDidBeginEditing(cell: self)
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.textFieldTableViewCellDidFinishEditing(cell: self)
+        delegate?.textFieldTableViewCellDidFinishEditing(cell: self, text: textField.text)
+    }
+}
+
+extension TextFieldTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
+    enum Purpose: Int, CustomStringConvertible {
+        
+        static let count = 4
+        
+        case business
+        case casual
+        case dating
+        case foodie
+        
+        var description: String {
+            switch self {
+            case .business: return "Business/Networking"
+            case .casual: return "Casual chatting"
+            case .dating: return "Dating"
+            case .foodie: return "Foodie lovers"
+            }
+        }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Purpose.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if let purpose = Purpose(rawValue: row) {
+            return purpose.description
+        }
+        
+        return nil
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textField.text = Purpose(rawValue: row)?.description
     }
 }
