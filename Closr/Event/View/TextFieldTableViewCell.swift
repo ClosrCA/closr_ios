@@ -25,11 +25,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     weak var delegate: TextFieldTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = {
-        let label                                       = UILabel()
-        
-        return label
-    }()
+    fileprivate lazy var titleLabel: UILabel = UILabel()
     
     fileprivate lazy var textField: UITextField = {
         let textField                                       = UITextField()
@@ -44,6 +40,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
         let datePicker              = UIDatePicker()
         datePicker.datePickerMode   = .date
         datePicker.minimumDate      = Date()
+        datePicker.addTarget(self, action: #selector(onDateSelected), for: .valueChanged)
         
         return datePicker
     }()
@@ -51,7 +48,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     fileprivate lazy var timePicker: UIDatePicker = {
         let timePicker              = UIDatePicker()
         timePicker.datePickerMode   = .time
-        timePicker.minimumDate      = Date()
+        timePicker.addTarget(self, action: #selector(onTimeSelected), for: .valueChanged)
         
         return timePicker
     }()
@@ -79,17 +76,25 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     func update(title: String?, text: String?, section: Section) {
         
         titleLabel.text = title
-        textField.text  = text
         
         switch section {
         case .address:
+            textField.text  = text
             textField.backgroundColor = UIColor.white
             textField.borderStyle     = .none
             textField.isUserInteractionEnabled = false
             return
         case .date:
+            let formatter           = DateFormatter()
+            formatter.dateFormat    = String.createEventDateFormat
+            textField.text          = formatter.string(from: Date())
+            
             textField.inputView = datePicker
         case .time:
+            let formatter           = DateFormatter()
+            formatter.dateFormat    = String.createEventTimeFormat
+            textField.text          = formatter.string(from: Date())
+            
             textField.inputView = timePicker
         case .purpose:
             textField.inputView = purposePicker
@@ -117,7 +122,24 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     @objc
     fileprivate func onDonePicking() {
+        textField.resignFirstResponder()
         delegate?.textFieldTableViewCellDidFinishEditing(cell: self, text: textField.text)
+    }
+    
+    @objc
+    fileprivate func onTimeSelected() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = String.createEventTimeFormat
+        
+        textField.text = formatter.string(from: timePicker.date)
+    }
+    
+    @objc
+    fileprivate func onDateSelected() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = String.createEventDateFormat
+        
+        textField.text = formatter.string(from: datePicker.date)
     }
 
     override func prepareForReuse() {
