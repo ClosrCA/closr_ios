@@ -14,8 +14,14 @@ class CreateEventViewController: UIViewController {
     var place: YelpPlace? {
         didSet {
             tableView.reloadData()
+            
+            if let restaurant = place {
+                event = Event(restaurant: restaurant)
+            }
         }
     }
+    
+    fileprivate var event: Event?
     
     fileprivate lazy var tableView: UITableView = {
         let tableView                                       = UITableView(frame: .zero, style: .plain)
@@ -26,13 +32,10 @@ class CreateEventViewController: UIViewController {
         tableView.separatorStyle                            = .none
         
         tableView.register(TextFieldTableViewCell.self, forCellReuseIdentifier: TextFieldTableViewCell.reuseIdentifier)
+        tableView.register(RangeSliderTableViewCell.self, forCellReuseIdentifier: RangeSliderTableViewCell.reuseIdentifier)
         
         return tableView
     }()
-    
-    fileprivate var m_dateString: String?
-    fileprivate var m_timeString: String?
-    fileprivate var m_purposeString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,9 +84,14 @@ extension CreateEventViewController: UITableViewDataSource {
         
         if let section = Section(rawValue: section) {
             switch section {
-            case .textField: return TextFieldRow.count.rawValue
-            case .numberFilter: return 2
-            default: return 0
+            case .textField:
+                return TextFieldRow.count.rawValue
+            case .ageFilter:
+                return 1
+            case .numberFilter:
+                return 0
+            default:
+                break
             }
         }
         
@@ -106,11 +114,11 @@ extension CreateEventViewController: UITableViewDataSource {
                     case .address:
                         cell.update(title: "Address", text: place?.address?.displayAddress?.first, section: .address)
                     case .date:
-                        cell.update(title: "Date", text: m_dateString, section: .date)
+                        cell.update(title: "Date", text: event?.date, section: .date)
                     case .time:
-                        cell.update(title: "Time", text: m_timeString, section: .time)
+                        cell.update(title: "Time", text: event?.time, section: .time)
                     case .purpose:
-                        cell.update(title: "Purpose", text: m_purposeString, section: .purpose)
+                        cell.update(title: "Purpose", text: event?.purpose, section: .purpose)
                     default:
                         break
                     }
@@ -118,6 +126,13 @@ extension CreateEventViewController: UITableViewDataSource {
                     return cell
                 }
                 
+            case .ageFilter:
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: RangeSliderTableViewCell.reuseIdentifier, for: indexPath) as! RangeSliderTableViewCell
+                
+                cell.delegate = self
+                
+                return cell
             default:
                 break
             }
@@ -137,14 +152,21 @@ extension CreateEventViewController: TextFieldTableViewCellDelegate {
             let section = TextFieldRow(rawValue: row) {
             switch section {
             case .date:
-                m_dateString = text
+                event?.date = text
             case .time:
-                m_timeString = text
+                event?.time = text
             case .purpose:
-                m_purposeString = text
+                event?.purpose = text
             default:
                 break 
             }
         }
+    }
+}
+
+extension CreateEventViewController: RangeSliderTableViewCellDelegate {
+    func rangeSliderDidChangeRange(_ cell: RangeSliderTableViewCell, minValue: Double, maxValue: Double) {
+        event?.minAge = minValue
+        event?.maxAge = maxValue
     }
 }

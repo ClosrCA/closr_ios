@@ -17,7 +17,8 @@ target 'Closr' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
   
-  
   pod 'Firebase'
 
+#UI
+  pod 'WARangeSlider'
 end

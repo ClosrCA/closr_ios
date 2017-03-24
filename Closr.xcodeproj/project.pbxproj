@@ -27,7 +27,7 @@
 		E458B1D71E65B55F00EE7736 /* RestaurantDetailFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1D61E65B55F00EE7736 /* RestaurantDetailFont.swift */; };
 		E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */; };
 		E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */; };
-		E458B1DE1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DD1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift */; };
+		E458B1DE1E6701FC00EE7736 /* RangeSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */; };
 		E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */; };
 		E46ECDE51E50D66400785BE6 /* LoginColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE31E50D66400785BE6 /* LoginColor.swift */; };
 		E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE41E50D66400785BE6 /* LoginViewController.swift */; };
@@ -119,7 +119,7 @@
 		E458B1D61E65B55F00EE7736 /* RestaurantDetailFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantDetailFont.swift; path = Restaurant/Font/RestaurantDetailFont.swift; sourceTree = "<group>"; };
 		E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventViewController.swift; path = Event/CreateEventViewController.swift; sourceTree = "<group>"; };
 		E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldTableViewCell.swift; path = Event/View/TextFieldTableViewCell.swift; sourceTree = "<group>"; };
-		E458B1DD1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleSliderTableViewCell.swift; path = Event/View/DoubleSliderTableViewCell.swift; sourceTree = "<group>"; };
+		E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeSliderTableViewCell.swift; path = Event/View/RangeSliderTableViewCell.swift; sourceTree = "<group>"; };
 		E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileConfirmViewController.swift; path = User/Profile/ProfileConfirmViewController.swift; sourceTree = "<group>"; };
 		E46ECDE31E50D66400785BE6 /* LoginColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginColor.swift; sourceTree = "<group>"; };
 		E46ECDE41E50D66400785BE6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -326,7 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */,
-				E458B1DD1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift */,
+				E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -789,7 +789,7 @@
 				E42562FA1E703CD10078E9ED /* RestaurantDetailImageCell.swift in Sources */,
 				E42563011E718B430078E9ED /* UILabel+Make.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
-				E458B1DE1E6701FC00EE7736 /* DoubleSliderTableViewCell.swift in Sources */,
+				E458B1DE1E6701FC00EE7736 /* RangeSliderTableViewCell.swift in Sources */,
 				E46ECDF81E50E49B00785BE6 /* Image+Editing.swift in Sources */,
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
 				E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */,

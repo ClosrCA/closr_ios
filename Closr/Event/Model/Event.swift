@@ -10,17 +10,28 @@ import Foundation
 
 struct Event {
     var restaurant: YelpPlace
-    var time: Date
-    var purpose: String
+    var time: String?
+    var date: String?
+    var purpose: String?
+    var minAge: Double?
+    var maxAge: Double?
+    var numberOfPeople: Int = 2
+    var gender: String?
     
-    init(restaurant: YelpPlace, date: String, when: String, purpose: String) {
-        self.restaurant = restaurant
-        self.purpose    = purpose
+    var rawDate: Date? {
+        guard let time = time, let date = date else {
+            return nil
+        }
         
         let timeFormatter           = DateFormatter()
         timeFormatter.dateFormat    = String.createEventFullTimeFormat
         
-        let timeString = date.appending(" \(when)")
-        time = timeFormatter.date(from: timeString) ?? Date()
+        let timeString = date.appending(" \(time)")
+        
+        return timeFormatter.date(from: timeString)
+    }
+    
+    init(restaurant: YelpPlace) {
+        self.restaurant = restaurant
     }
 }
