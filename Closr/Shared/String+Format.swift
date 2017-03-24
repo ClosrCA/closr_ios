@@ -11,4 +11,8 @@ import Foundation
 extension String {
     static let birthdayFormat_fb    = "MM/dd/yyyy"
     static let birthdayFormat       = "dd.MM.yyyy"
+    
+    static let createEventDateFormat = "yyyy-MM-dd"
+    static let createEventTimeFormat = "h:mm a"
+    static let createEventFullTimeFormat = "yyyy-MM-dd h:m a"
 }
