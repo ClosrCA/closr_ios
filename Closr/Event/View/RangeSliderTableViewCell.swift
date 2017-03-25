@@ -17,9 +17,14 @@ protocol RangeSliderTableViewCellDelegate: class {
 class RangeSliderTableViewCell: UITableViewCell, Reusable {
 
     struct Constants {
+        static let labelPadding: CGFloat = 10
+        static let sliderPadding: CGFloat = 10
+        static let sliderHeight: CGFloat = 44
+        
         static let minAge: Double = 18
         static let maxAge: Double = 80
     }
+    
     
     weak var delegate: RangeSliderTableViewCellDelegate?
     
@@ -77,21 +82,21 @@ class RangeSliderTableViewCell: UITableViewCell, Reusable {
     
     fileprivate func createConstraints() {
         titleLabel <- [
-            Leading(10),
-            Top(8)
+            Leading(Constants.labelPadding),
+            Top(Constants.labelPadding)
         ]
         
         rangeLabel <- [
-            Trailing(10),
-            Top(8)
+            Trailing(Constants.labelPadding),
+            Top(Constants.labelPadding)
         ]
         
         rangeSlider <- [
-            Top(10).to(titleLabel, .bottom),
-            Leading(10),
-            Trailing(10),
-            Height(44),
-            Bottom(8)
+            Top(Constants.sliderPadding).to(titleLabel, .bottom),
+            Leading(Constants.sliderPadding),
+            Trailing(Constants.sliderPadding),
+            Height(Constants.sliderHeight),
+            Bottom(Constants.sliderPadding)
         ]
     }
 

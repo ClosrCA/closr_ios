@@ -54,6 +54,9 @@ class RestaurantDetailViewController: UIViewController {
         button.setBackgroundImage(UIImage.imageWith(color: UIColor.brandColor, within: CGSize(width: 1, height: 1)), for: .normal)
         button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
         
+        button.layer.cornerRadius = 20
+        button.clipsToBounds = true
+        
         return button
     }()
     
@@ -120,7 +123,7 @@ class RestaurantDetailViewController: UIViewController {
         
         footer.addSubview(createEventButton)
         
-        createEventButton <- Edges(RestaurantDetailConstant.EventList.createEventButtonPadding)
+        createEventButton <- Edges(RestaurantDetailConstant.EventList.createEventButtonPadding).with(.high)
         
         return footer
     }

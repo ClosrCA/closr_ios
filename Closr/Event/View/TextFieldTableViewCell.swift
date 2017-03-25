@@ -23,6 +23,12 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
         case purpose
     }
     
+    fileprivate struct Constants {
+        static let titlePadding: CGFloat                = 10
+        static let textFieldVerticalPadding: CGFloat    = 8
+        static let textFieldHeight: CGFloat             = 30
+    }
+    
     weak var delegate: TextFieldTableViewCellDelegate?
     
     fileprivate lazy var titleLabel: UILabel = UILabel()
@@ -155,17 +161,17 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     fileprivate func createConstraints() {
         titleLabel <- [
-            Top(8),
-            Leading(10),
-            Trailing(10)
+            Top(Constants.titlePadding),
+            Leading(Constants.titlePadding),
+            Trailing(Constants.titlePadding)
         ]
         
         textField <- [
-            Top(8).to(titleLabel, .bottom),
+            Top(Constants.textFieldVerticalPadding).to(titleLabel, .bottom),
             Leading().to(titleLabel, .leading),
             Trailing().to(titleLabel, .trailing),
-            Bottom(8),
-            Height(40)
+            Bottom(Constants.textFieldVerticalPadding),
+            Height(Constants.textFieldHeight)
         ]
     }
     

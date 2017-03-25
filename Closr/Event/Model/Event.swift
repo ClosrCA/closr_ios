@@ -15,7 +15,7 @@ struct Event {
     var purpose: String?
     var minAge: Double?
     var maxAge: Double?
-    var numberOfPeople: Int = 2
+    var numberOfPeople: Int = 3
     var gender: String?
     
     var rawDate: Date? {
