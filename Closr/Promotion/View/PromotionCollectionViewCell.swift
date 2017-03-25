@@ -39,7 +39,7 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
     
     fileprivate lazy var thumbnailImageView: UIImageView = {
         let imageView                                       = UIImageView()
-        imageView.backgroundColor                           = PromotionColor.secondary
+        imageView.backgroundColor                           = AppColor.greyBackground
         
         return imageView
     }()
@@ -50,21 +50,9 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
         return imageView
     }()
     
-    fileprivate lazy var nameLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = PromotionFont.resturantName
-        label.textColor                                 = PromotionColor.title
-        
-        return label
-    }()
+    fileprivate lazy var nameLabel: UILabel = UILabel.makeLable(font: AppFont.thinTitle, textColor: AppColor.title)
     
-    fileprivate lazy var distanceLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = PromotionFont.distance
-        label.textColor                                 = PromotionColor.distance
-        
-        return label
-    }()
+    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
     
     fileprivate lazy var promotionContainerView: PromotionContainerView = PromotionContainerView(frame: .zero)
     

@@ -31,7 +31,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     weak var delegate: TextFieldTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel()
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.greyText)
     
     fileprivate lazy var textField: UITextField = {
         let textField                                       = UITextField()
@@ -69,7 +69,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var toolBar: UIToolbar = {
         let toolBar         = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 44))
-        toolBar.tintColor   = UIColor.brandColor
+        toolBar.tintColor   = AppColor.brand
         
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onDonePicking))
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

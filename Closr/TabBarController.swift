@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.tintColor = UIColor.brandColor
+        tabBar.tintColor = AppColor.brand
         
         let promotionController = UINavigationController(rootViewController: PromotionListViewController())
         promotionController.tabBarItem = UITabBarItem(title: "promotion", image: UIImage(named: "promotion"), selectedImage: UIImage(named: "promotion_ative"))

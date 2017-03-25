@@ -56,45 +56,15 @@ class PromotionContainerView: UIView {
         return imageView
     }()
     
-    fileprivate lazy var discountLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = PromotionFont.discount
-        label.textColor                                 = PromotionColor.primary
-        
-        return label
-    }()
+    fileprivate lazy var discountLabel: UILabel = UILabel.makeLable(font: AppFont.largeTitle, textColor: AppColor.brand)
     
-    fileprivate lazy var dollarSignLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = PromotionFont.dollarSign
-        label.textColor                                 = PromotionColor.primary
-        
-        return label
-    }()
+    fileprivate lazy var dollarSignLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.brand)
     
-    fileprivate lazy var priceLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = PromotionFont.price
-        label.textColor                                 = PromotionColor.primary
-        
-        return label
-    }()
+    fileprivate lazy var priceLabel: UILabel = UILabel.makeLable(font: AppFont.largeTitle, textColor: AppColor.brand)
     
-    fileprivate lazy var quantityLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = PromotionFont.quantity
-        label.textColor                                 = PromotionColor.secondary
-        
-        return label
-    }()
+    fileprivate lazy var quantityLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.brand)
     
-    fileprivate lazy var itemLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = PromotionFont.item
-        label.textColor                                 = PromotionColor.secondary
-        
-        return label
-    }()
+    fileprivate lazy var itemLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.brand)
     
     fileprivate func createConstraints() {
         

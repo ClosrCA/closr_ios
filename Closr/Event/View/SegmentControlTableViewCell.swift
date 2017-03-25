@@ -23,15 +23,11 @@ class SegmentControlTableViewCell: UITableViewCell, Reusable {
     
     weak var delegate: SegmentControlTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        return label
-    }()
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.greyText)
     
     fileprivate lazy var segmentControl: UISegmentedControl = {
         let segmentControl = UISegmentedControl()
-        segmentControl.tintColor = UIColor.brandColor
+        segmentControl.tintColor = AppColor.brand
         
         segmentControl.addTarget(self, action: #selector(onSegmentSelected(sender:)), for: .valueChanged)
         

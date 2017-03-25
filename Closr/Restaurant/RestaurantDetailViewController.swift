@@ -50,8 +50,8 @@ class RestaurantDetailViewController: UIViewController {
     fileprivate lazy var createEventButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Event", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.setBackgroundImage(UIImage.imageWith(color: UIColor.brandColor, within: CGSize(width: 1, height: 1)), for: .normal)
+        button.setTitleColor(AppColor.lightButtonTitle, for: .normal)
+        button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
         button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
         
         button.layer.cornerRadius = 20

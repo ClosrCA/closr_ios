@@ -28,28 +28,17 @@ class RangeSliderTableViewCell: UITableViewCell, Reusable {
     
     weak var delegate: RangeSliderTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Age"
-        
-        return label
-    }()
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.greyText, text: "Age")
     
-    fileprivate lazy var rangeLabel: UILabel = {
-        let label       = UILabel()
-        label.textColor = UIColor.brandColor
-        label.text      = "no age limit"
-        
-        return label
-    }()
+    fileprivate lazy var rangeLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.brand, text: "no age limit")
     
     fileprivate lazy var rangeSlider: RangeSlider = {
         let rangeSlider = RangeSlider()
         rangeSlider.lowerValue = 0
         rangeSlider.upperValue = 1
         rangeSlider.trackTintColor = UIColor.lightGray
-        rangeSlider.trackHighlightTintColor = UIColor.brandColor
-        rangeSlider.thumbTintColor = UIColor.brandColor
+        rangeSlider.trackHighlightTintColor = AppColor.brand
+        rangeSlider.thumbTintColor = AppColor.brand
         
         rangeSlider.addTarget(self, action: #selector(onRangeChanged(sender:)), for: .valueChanged)
         
