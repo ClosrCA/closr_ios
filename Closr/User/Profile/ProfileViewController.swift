@@ -25,9 +25,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.addSubview(tableView)
-        
-        tableView <- Edges()
+        buildTableView()
         
         buildNavigationItems()
     }
@@ -41,6 +39,18 @@ class ProfileViewController: UIViewController {
         
         let settingsViewController = SettingsViewController(style: .grouped)
         navigationController?.pushViewController(settingsViewController, animated: true)
+    }
+    
+    fileprivate func buildTableView() {
+        
+        let footer      = ProfileActionFooterView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: ProfileActionFooterView.preferredHeight))
+        footer.delegate = self
+        
+        tableView.tableFooterView = footer
+        
+        view.addSubview(tableView)
+        
+        tableView <- Edges()
     }
 }
 
@@ -103,5 +113,19 @@ extension ProfileViewController: UITableViewDataSource {
         default:
             return nil
         }
+    }
+}
+
+extension ProfileViewController: ProfileActionFooterViewDelegate {
+    func profileActionFooterView(_ footer: ProfileActionFooterView, didSelectFAQ sender: UIButton) {
+        
+    }
+    
+    func profileActionFooterView(_ footer: ProfileActionFooterView, didSelectContact sender: UIButton) {
+        
+    }
+    
+    func profileActionFooterView(_ footer: ProfileActionFooterView, didSelectSignOut sender: UIButton) {
+        NotificationCenter.default.post(name: NotificationName.signout, object: nil)
     }
 }

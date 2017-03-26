@@ -24,7 +24,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     }
     
     fileprivate struct Constants {
-        static let titlePadding: CGFloat                = 10
+        static let contentPadding: CGFloat              = 10
         static let textFieldVerticalPadding: CGFloat    = 8
         static let textFieldHeight: CGFloat             = 30
     }
@@ -161,15 +161,14 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     fileprivate func createConstraints() {
         titleLabel <- [
-            Top(Constants.titlePadding),
-            Leading(Constants.titlePadding),
-            Trailing(Constants.titlePadding)
+            Top(Constants.contentPadding),
+            Leading(Constants.contentPadding)
         ]
         
         textField <- [
-            Top(Constants.textFieldVerticalPadding).to(titleLabel, .bottom),
-            Leading().to(titleLabel, .leading),
-            Trailing().to(titleLabel, .trailing),
+            Top(Constants.textFieldVerticalPadding).to(titleLabel),
+            Leading(Constants.contentPadding),
+            Trailing(Constants.contentPadding),
             Bottom(Constants.textFieldVerticalPadding),
             Height(Constants.textFieldHeight)
         ]
