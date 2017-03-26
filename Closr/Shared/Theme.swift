@@ -21,6 +21,7 @@ struct AppColor {
     static let darkButtonTitle  = UIColor(red: 89 / 255, green: 89 / 255, blue: 87 / 255, alpha: 1.0)
     
     static let greyBackground = UIColor(red: 159 / 255, green: 159 / 255, blue: 160 / 255, alpha: 0.56)
+    static let brandBackground = UIColor(red: 86 / 255, green: 34 / 255, blue: 26 / 255, alpha: 0.1)
 }
 
 struct AppFont {

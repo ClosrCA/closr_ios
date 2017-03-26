@@ -21,7 +21,7 @@ class RangeSliderTableViewCell: UITableViewCell, Reusable {
         static let sliderPadding: CGFloat = 10
         static let sliderHeight: CGFloat = 44
         
-        static let minAge: Double = 18
+        static let minAge: Double = 19
         static let maxAge: Double = 80
     }
     

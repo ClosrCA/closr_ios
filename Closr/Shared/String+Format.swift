@@ -14,5 +14,7 @@ extension String {
     
     static let createEventDateFormat = "yyyy-MM-dd"
     static let createEventTimeFormat = "h:mm a"
-    static let createEventFullTimeFormat = "yyyy-MM-dd h:m a"
+    static let createEventFullTimeFormat = "yyyy-MM-dd h:mm a"
+    
+    static let eventListDateFormat = "yyyy.MM.dd h:mm a"
 }

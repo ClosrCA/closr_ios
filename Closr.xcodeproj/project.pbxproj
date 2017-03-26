@@ -14,6 +14,8 @@
 		4CA91CDD1E577CEC00A8F51C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CDC1E577CEC00A8F51C /* SettingsViewController.swift */; };
 		4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */; };
 		4CFFEE791E7B0C76009E8CB7 /* LoginViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */; };
+		691B58FB1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */; };
+		691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */; };
 		69BD54901E86C20C0037A7EE /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BD548F1E86C20C0037A7EE /* EventCollectionViewCell.swift */; };
 		69E750821E86122A00E7EFB0 /* SegmentControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */; };
 		69F13CAF1E82B38100E3483F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F13CAE1E82B38100E3483F /* Event.swift */; };
@@ -95,6 +97,8 @@
 		4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewConstants.swift; sourceTree = "<group>"; };
 		4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50163C0A5221D5BF6257B9A8 /* Pods-ClosrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.release.xcconfig"; sourceTree = "<group>"; };
+		691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCollectionTableViewCell.swift; path = Event/View/EventCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileActionFooterView.swift; path = User/Profile/View/ProfileActionFooterView.swift; sourceTree = "<group>"; };
 		69BD548F1E86C20C0037A7EE /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCollectionViewCell.swift; path = Event/View/EventCollectionViewCell.swift; sourceTree = "<group>"; };
 		69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentControlTableViewCell.swift; path = Event/View/SegmentControlTableViewCell.swift; sourceTree = "<group>"; };
 		69F13CAE1E82B38100E3483F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Event/Model/Event.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 				E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */,
 				69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */,
 				69BD548F1E86C20C0037A7EE /* EventCollectionViewCell.swift */,
+				691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				E46ECDEC1E50DA2400785BE6 /* ProfileContainerView.swift */,
+				691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */,
 				E46ECDEE1E50DD9500785BE6 /* ProfileConstant.swift */,
 			);
 			name = View;
@@ -716,6 +722,7 @@
 				E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */,
 				E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */,
 				E4E99E001E7A31C500A10DA7 /* RestaurantListConstant.swift in Sources */,
+				691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */,
 				E42562FF1E7108230078E9ED /* RestaurantDetailEventTitleView.swift in Sources */,
 				E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */,
 				E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */,
@@ -725,6 +732,7 @@
 				E477F00D1E5DC74D00ED7806 /* Location.swift in Sources */,
 				E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */,
 				4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */,
+				691B58FB1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
 				E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */,
 				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,

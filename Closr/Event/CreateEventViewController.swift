@@ -257,7 +257,7 @@ extension CreateEventViewController: SegmentControlTableViewCellDelegate {
         case female
         case male
         
-        static let segmentItems = ["Female", "Male", "Doesnt matter"]
+        static let segmentItems = ["Female", "Male", "Doesn't matter"]
         
         var description: String {
             switch self {
