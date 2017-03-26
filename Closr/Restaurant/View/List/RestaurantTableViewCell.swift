@@ -19,62 +19,27 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         return imageView
     }()
     
-    fileprivate lazy var nameLabel: UILabel = {
-        let label       = UILabel()
-        label.font      = RestaurantListFont.restaurantName
-        label.textColor = RestaurantListColor.restaurantName
-        
-        return label
-    }()
+    fileprivate lazy var nameLabel: UILabel = UILabel.makeLable(font: AppFont.thinTitle, textColor: AppColor.title)
     
-    fileprivate lazy var addressLabel: UILabel = {
-        let label       = UILabel()
-        label.font      = RestaurantListFont.address
-        label.textColor = RestaurantListColor.address
-        
-        return label
-    }()
+    fileprivate lazy var addressLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
     
-    fileprivate lazy var distanceLabel: UILabel = {
-        let label       = UILabel()
-        label.font      = RestaurantListFont.distance
-        label.textColor = RestaurantListColor.distance
-        
-        return label
-    }()
+    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
     
-    fileprivate lazy var priceLabel: UILabel = {
-        let label       = UILabel()
-        label.font      = RestaurantListFont.price
-        label.textColor = RestaurantListColor.price
-        
-        return label
-    }()
+    fileprivate lazy var priceLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.brand)
     
-    fileprivate lazy var categoryLabel: UILabel = {
-        let label       = UILabel()
-        label.font      = RestaurantListFont.category
-        label.textColor = RestaurantListColor.category
-        
-        return label
-    }()
+    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
    
     fileprivate lazy var promotionBackgroundImageView: UIImageView = {
         
         let imageView = UIImageView()
-        imageView.backgroundColor=UIColor.orange
+        // TODO: - add asset
+        
+        imageView.backgroundColor = UIColor.orange
         
         return imageView
     }()
     
-    fileprivate lazy var promotionLabel: UILabel = {
-        let label       = UILabel()
-        label.text      = "Specials: 15% OFF"
-        label.font      = RestaurantListFont.promotionRate
-        label.textColor = RestaurantListColor.promotionRate
-        
-        return label
-    }()
+    fileprivate lazy var promotionLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.lightGreyText)
     
     fileprivate lazy var addGroupButton: UIButton = {
         let button = UIButton()

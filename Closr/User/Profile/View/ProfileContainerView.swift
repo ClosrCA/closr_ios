@@ -42,7 +42,7 @@ class ProfileContainerView: UIView {
         let imageView                                       = UIImageView()
         imageView.layer.cornerRadius                        = ProfileConstant.AvatarImage.size / 2
         imageView.layer.borderWidth                         = 1.0
-        imageView.layer.borderColor                         = ProfileColor.avatarExternalBorder.cgColor
+        imageView.layer.borderColor                         = AppColor.lightGreyText.cgColor
         imageView.clipsToBounds                             = true
         // TODO: internal light border
         
@@ -51,39 +51,39 @@ class ProfileContainerView: UIView {
     
     fileprivate (set) lazy var nameLabel: UILabel = {
         let label                                       = UILabel()
-        label.font                                      = ProfileFont.nameTitle
-        label.textColor                                 = ProfileColor.nameTitle
+        label.font                                      = AppFont.title
+        label.textColor                                 = AppColor.title
         label.numberOfLines                             = 0
         
         return label
     }()
     
     fileprivate (set) lazy var birthDayTextField: UITextField   = self.makeTextFieldWith(icon: UIImage(named: "birthday")!,
-                                                                                         backgroundColor: ProfileColor.birthdayAndGenderBackground,
-                                                                                         textColor: ProfileColor.birthdayAndGenderText,
+                                                                                         backgroundColor: AppColor.greyBackground,
+                                                                                         textColor: AppColor.greyText,
                                                                                          editable: false)
     
     fileprivate (set) lazy var genderTextField: UITextField     = self.makeTextFieldWith(icon: UIImage(named: "gender")!,
-                                                                                         backgroundColor: ProfileColor.birthdayAndGenderBackground,
-                                                                                         textColor: ProfileColor.birthdayAndGenderText,
+                                                                                         backgroundColor: AppColor.greyBackground,
+                                                                                         textColor: AppColor.greyText,
                                                                                          editable: false)
     
     fileprivate (set) lazy var emailTextField: UITextField      = self.makeTextFieldWith(icon: UIImage(named: "email")!,
-                                                                                         backgroundColor: ProfileColor.emailBackground,
-                                                                                         textColor: ProfileColor.emailText,
+                                                                                         backgroundColor: AppColor.greyBackground,
+                                                                                         textColor: AppColor.greyText,
                                                                                          editable: true)
     
     fileprivate (set) lazy var phoneTextField: UITextField      = self.makeTextFieldWith(icon: UIImage(named: "phone")!,
-                                                                                         backgroundColor: ProfileColor.phoneBackground,
-                                                                                         textColor: ProfileColor.phoneText,
+                                                                                         backgroundColor: AppColor.greyBackground,
+                                                                                         textColor: AppColor.greyText,
                                                                                          editable: true)
     
     fileprivate (set) lazy var confirmButton: UIButton = {
         let button = UIButton()
         button.setTitle("Get Closr", for: .normal)
-        button.titleLabel?.font = ProfileFont.buttonTitle
-        button.setTitleColor(ProfileColor.buttonTitle, for: .normal)
-        button.setBackgroundImage(UIImage.imageWith(color: ProfileColor.buttonBackground, within: CGSize(width: 1, height: 1)), for: .normal)
+        button.titleLabel?.font = AppFont.title
+        button.setTitleColor(AppColor.lightButtonTitle, for: .normal)
+        button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
         button.addTarget(self, action: #selector(onConfirm), for: .touchUpInside)
         
         return button
@@ -161,7 +161,7 @@ class ProfileContainerView: UIView {
     fileprivate func makeTextFieldWith(icon: UIImage, backgroundColor: UIColor, textColor: UIColor, editable: Bool, placeholder: String? = nil) -> UITextField {
         
         let textField                                       = UITextField()
-        textField.font                                      = ProfileFont.text
+        textField.font                                      = AppFont.text
         textField.textColor                                 = textColor
         textField.tintColor                                 = textColor
         textField.backgroundColor                           = backgroundColor

@@ -24,14 +24,14 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     }
     
     fileprivate struct Constants {
-        static let titlePadding: CGFloat                = 10
+        static let contentPadding: CGFloat              = 10
         static let textFieldVerticalPadding: CGFloat    = 8
         static let textFieldHeight: CGFloat             = 30
     }
     
     weak var delegate: TextFieldTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel()
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.greyText)
     
     fileprivate lazy var textField: UITextField = {
         let textField                                       = UITextField()
@@ -69,7 +69,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var toolBar: UIToolbar = {
         let toolBar         = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 44))
-        toolBar.tintColor   = UIColor.brandColor
+        toolBar.tintColor   = AppColor.brand
         
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onDonePicking))
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -161,15 +161,14 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     fileprivate func createConstraints() {
         titleLabel <- [
-            Top(Constants.titlePadding),
-            Leading(Constants.titlePadding),
-            Trailing(Constants.titlePadding)
+            Top(Constants.contentPadding),
+            Leading(Constants.contentPadding)
         ]
         
         textField <- [
-            Top(Constants.textFieldVerticalPadding).to(titleLabel, .bottom),
-            Leading().to(titleLabel, .leading),
-            Trailing().to(titleLabel, .trailing),
+            Top(Constants.textFieldVerticalPadding).to(titleLabel),
+            Leading(Constants.contentPadding),
+            Trailing(Constants.contentPadding),
             Bottom(Constants.textFieldVerticalPadding),
             Height(Constants.textFieldHeight)
         ]

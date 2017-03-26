@@ -67,7 +67,7 @@ class CreateEventViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Create New Event", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.setBackgroundImage(UIImage.imageWith(color: UIColor.brandColor, within: CGSize(width: 1, height: 1)), for: .normal)
+        button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
         button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
         
         button.layer.cornerRadius = 20
@@ -257,7 +257,7 @@ extension CreateEventViewController: SegmentControlTableViewCellDelegate {
         case female
         case male
         
-        static let segmentItems = ["Female", "Male", "Doesnt matter"]
+        static let segmentItems = ["Female", "Male", "Doesn't matter"]
         
         var description: String {
             switch self {

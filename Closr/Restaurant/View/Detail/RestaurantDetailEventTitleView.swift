@@ -13,19 +13,12 @@ class RestaurantDetailEventTitleView: UIView {
 
     fileprivate lazy var topDivider: UIView = {
         let view                = UIView()
-        view.backgroundColor    = RestaurantDetailColor.subtitle
+        view.backgroundColor    = AppColor.lightGreyText
         
         return view
     }()
     
-    fileprivate lazy var titleLabel: UILabel = {
-        let label       = UILabel()
-        label.text      = "Curent Event"
-        label.textColor = RestaurantDetailColor.title
-        label.font      = RestaurantDetailFont.eventTitle
-        
-        return label
-    }()
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLable(font: AppFont.title, textColor: AppColor.title, text: "Current Event")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
