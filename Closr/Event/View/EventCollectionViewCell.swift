@@ -21,14 +21,17 @@ class EventCollectionViewCell: UICollectionViewCell, Reusable {
     }
     // TODO: - replace 
     
-    fileprivate lazy var thumbnail: UIView = {
+    fileprivate lazy var thumbnailContainer: UIView = {
         let view                = UIView()
-        view.backgroundColor    = AppColor.brand
         view.layer.cornerRadius = Constants.thumbnailSize / 2
+        view.layer.borderColor  = AppColor.brand.cgColor
+        view.layer.borderWidth  = 2
         view.clipsToBounds      = true
         
         return view
     }()
+    
+    fileprivate var thumbnail: UIView?
     
     fileprivate lazy var titleLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.title)
     fileprivate lazy var dateLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.brand)
@@ -46,12 +49,20 @@ class EventCollectionViewCell: UICollectionViewCell, Reusable {
         }
         
         // TODO: - load avatars
+        
+        let thumbnail = EventThumbnailFactory.thumbnail(images: [], required: 3)
+        
+        thumbnailContainer.addSubview(thumbnail)
+        
+        thumbnail <- Edges()
+        
+        self.thumbnail = thumbnail
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(thumbnail)
+        contentView.addSubview(thumbnailContainer)
         contentView.addSubview(titleLabel)
         contentView.addSubview(dateLabel)
         
@@ -62,9 +73,16 @@ class EventCollectionViewCell: UICollectionViewCell, Reusable {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        thumbnail?.removeFromSuperview()
+        thumbnail = nil
+    }
+    
     fileprivate func createConstraints() {
         
-        thumbnail <- [
+        thumbnailContainer <- [
             CenterX(),
             Top(Constants.thumbnailTopPadding),
             Size(Constants.thumbnailSize),
@@ -72,7 +90,7 @@ class EventCollectionViewCell: UICollectionViewCell, Reusable {
         
         titleLabel <- [
             CenterX(),
-            Top(Constants.labelVerticalPadding).to(thumbnail),
+            Top(Constants.labelVerticalPadding).to(thumbnailContainer),
             Leading(>=0),
             Trailing(<=0)
         ]
