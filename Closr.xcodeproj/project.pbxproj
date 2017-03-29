@@ -17,6 +17,7 @@
 		691B58FB1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */; };
 		691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */; };
 		69BD54901E86C20C0037A7EE /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BD548F1E86C20C0037A7EE /* EventCollectionViewCell.swift */; };
+		69BEF7A31E8A114300D33F38 /* EventThumbnailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEF7A21E8A114300D33F38 /* EventThumbnailFactory.swift */; };
 		69E750821E86122A00E7EFB0 /* SegmentControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */; };
 		69F13CAF1E82B38100E3483F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F13CAE1E82B38100E3483F /* Event.swift */; };
 		A188F4BD87B3ACCD9E2C5CE6 /* Pods_Closr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */; };
@@ -100,6 +101,7 @@
 		691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCollectionTableViewCell.swift; path = Event/View/EventCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileActionFooterView.swift; path = User/Profile/View/ProfileActionFooterView.swift; sourceTree = "<group>"; };
 		69BD548F1E86C20C0037A7EE /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCollectionViewCell.swift; path = Event/View/EventCollectionViewCell.swift; sourceTree = "<group>"; };
+		69BEF7A21E8A114300D33F38 /* EventThumbnailFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventThumbnailFactory.swift; path = Event/View/EventThumbnailFactory.swift; sourceTree = "<group>"; };
 		69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentControlTableViewCell.swift; path = Event/View/SegmentControlTableViewCell.swift; sourceTree = "<group>"; };
 		69F13CAE1E82B38100E3483F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Event/Model/Event.swift; sourceTree = "<group>"; };
 		6A7B4D8EF80D28ADA80777C1 /* Pods_Closr_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Closr_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +237,16 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		69BEF7A11E8A0F1D00D33F38 /* CreateEeventTableView */ = {
+			isa = PBXGroup;
+			children = (
+				E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */,
+				E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */,
+				69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */,
+			);
+			name = CreateEeventTableView;
+			sourceTree = "<group>";
+		};
 		69F13CAA1E82B2E000E3483F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,11 +307,10 @@
 		E458B1DA1E6701B900EE7736 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */,
-				E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */,
-				69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */,
+				69BEF7A11E8A0F1D00D33F38 /* CreateEeventTableView */,
 				69BD548F1E86C20C0037A7EE /* EventCollectionViewCell.swift */,
 				691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */,
+				69BEF7A21E8A114300D33F38 /* EventThumbnailFactory.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -741,6 +752,7 @@
 				E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */,
 				E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */,
 				E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */,
+				69BEF7A31E8A114300D33F38 /* EventThumbnailFactory.swift in Sources */,
 				69E750821E86122A00E7EFB0 /* SegmentControlTableViewCell.swift in Sources */,
 				69BD54901E86C20C0037A7EE /* EventCollectionViewCell.swift in Sources */,
 				69F13CAF1E82B38100E3483F /* Event.swift in Sources */,
