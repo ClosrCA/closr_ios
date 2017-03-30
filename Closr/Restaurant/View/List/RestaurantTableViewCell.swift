@@ -19,15 +19,15 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         return imageView
     }()
     
-    fileprivate lazy var nameLabel: UILabel = UILabel.makeLable(font: AppFont.thinTitle, textColor: AppColor.title)
+    fileprivate lazy var nameLabel: UILabel = UILabel.makeLabel(font: AppFont.thinTitle, textColor: AppColor.title)
     
-    fileprivate lazy var addressLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var addressLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
-    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
-    fileprivate lazy var priceLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.brand)
+    fileprivate lazy var priceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand)
     
-    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
    
     fileprivate lazy var promotionBackgroundImageView: UIImageView = {
         
@@ -39,7 +39,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         return imageView
     }()
     
-    fileprivate lazy var promotionLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.lightGreyText)
+    fileprivate lazy var promotionLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.lightGreyText)
     
     fileprivate lazy var addGroupButton: UIButton = {
         let button = UIButton()

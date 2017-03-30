@@ -50,9 +50,9 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
         return imageView
     }()
     
-    fileprivate lazy var nameLabel: UILabel = UILabel.makeLable(font: AppFont.thinTitle, textColor: AppColor.title)
+    fileprivate lazy var nameLabel: UILabel = UILabel.makeLabel(font: AppFont.thinTitle, textColor: AppColor.title)
     
-    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
     fileprivate lazy var promotionContainerView: PromotionContainerView = PromotionContainerView(frame: .zero)
     

@@ -56,15 +56,15 @@ class PromotionContainerView: UIView {
         return imageView
     }()
     
-    fileprivate lazy var discountLabel: UILabel = UILabel.makeLable(font: AppFont.largeTitle, textColor: AppColor.brand)
+    fileprivate lazy var discountLabel: UILabel = UILabel.makeLabel(font: AppFont.largeTitle, textColor: AppColor.brand)
     
-    fileprivate lazy var dollarSignLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.brand)
+    fileprivate lazy var dollarSignLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand)
     
-    fileprivate lazy var priceLabel: UILabel = UILabel.makeLable(font: AppFont.largeTitle, textColor: AppColor.brand)
+    fileprivate lazy var priceLabel: UILabel = UILabel.makeLabel(font: AppFont.largeTitle, textColor: AppColor.brand)
     
-    fileprivate lazy var quantityLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.brand)
+    fileprivate lazy var quantityLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand)
     
-    fileprivate lazy var itemLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.brand)
+    fileprivate lazy var itemLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand)
     
     fileprivate func createConstraints() {
         

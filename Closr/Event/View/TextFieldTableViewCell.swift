@@ -31,7 +31,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     weak var delegate: TextFieldTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.greyText)
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
     
     fileprivate lazy var textField: UITextField = {
         let textField                                       = UITextField()

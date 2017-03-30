@@ -18,7 +18,7 @@ class RestaurantDetailEventTitleView: UIView {
         return view
     }()
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLable(font: AppFont.title, textColor: AppColor.title, text: "Current Event")
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.title, textColor: AppColor.title, text: "Current Event")
     
     override init(frame: CGRect) {
         super.init(frame: frame)

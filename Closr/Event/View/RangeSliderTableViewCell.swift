@@ -28,9 +28,9 @@ class RangeSliderTableViewCell: UITableViewCell, Reusable {
     
     weak var delegate: RangeSliderTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.greyText, text: "Age")
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText, text: "Age")
     
-    fileprivate lazy var rangeLabel: UILabel = UILabel.makeLable(font: AppFont.text, textColor: AppColor.brand, text: "no age limit")
+    fileprivate lazy var rangeLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.brand, text: "no age limit")
     
     fileprivate lazy var rangeSlider: RangeSlider = {
         let rangeSlider = RangeSlider()
