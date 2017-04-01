@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360856F41E8F2C6900C50FDA /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F31E8F2C6900C50FDA /* EventListViewController.swift */; };
+		360856F71E8F2CF800C50FDA /* NearbyEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F61E8F2CF800C50FDA /* NearbyEventTableViewCell.swift */; };
+		360856FA1E8F2D7E00C50FDA /* EventListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F91E8F2D7E00C50FDA /* EventListConstant.swift */; };
+		360856FC1E8F2DB400C50FDA /* EventListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856FB1E8F2DB400C50FDA /* EventListFont.swift */; };
+		360856FE1E8F2DE100C50FDA /* EventListColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856FD1E8F2DE100C50FDA /* EventListColor.swift */; };
+		360857011E8F2E5100C50FDA /* EventListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */; };
 		36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */; };
 		36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B851E7A37B500868A29 /* Assets.xcassets */; };
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
@@ -88,6 +94,12 @@
 		2D49278ECCB91E5347BDEBE1 /* Pods-ClosrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Closr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		353B364B06A9A5F276964D4C /* Pods-ClosrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrUITests/Pods-ClosrUITests.release.xcconfig"; sourceTree = "<group>"; };
+		360856F31E8F2C6900C50FDA /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListViewController.swift; path = Event/EventListViewController.swift; sourceTree = "<group>"; };
+		360856F61E8F2CF800C50FDA /* NearbyEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearbyEventTableViewCell.swift; path = Event/EventListTableView/NearbyEventTableViewCell.swift; sourceTree = "<group>"; };
+		360856F91E8F2D7E00C50FDA /* EventListConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListConstant.swift; path = Event/EventListTableView/EventListConstant.swift; sourceTree = "<group>"; };
+		360856FB1E8F2DB400C50FDA /* EventListFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListFont.swift; path = Event/EventListTableView/EventListFont.swift; sourceTree = "<group>"; };
+		360856FD1E8F2DE100C50FDA /* EventListColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListColor.swift; path = Event/EventListTableView/EventListColor.swift; sourceTree = "<group>"; };
+		360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListSectionHeader.swift; path = Event/EventListTableView/EventListSectionHeader.swift; sourceTree = "<group>"; };
 		36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36D94B851E7A37B500868A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +199,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360856F51E8F2C9700C50FDA /* EventListTableView */ = {
+			isa = PBXGroup;
+			children = (
+				360856F31E8F2C6900C50FDA /* EventListViewController.swift */,
+				360856F61E8F2CF800C50FDA /* NearbyEventTableViewCell.swift */,
+				360856FF1E8F2E0E00C50FDA /* Header */,
+				360856F81E8F2D3D00C50FDA /* EventListParameter */,
+			);
+			name = EventListTableView;
+			sourceTree = "<group>";
+		};
+		360856F81E8F2D3D00C50FDA /* EventListParameter */ = {
+			isa = PBXGroup;
+			children = (
+				360856F91E8F2D7E00C50FDA /* EventListConstant.swift */,
+				360856FB1E8F2DB400C50FDA /* EventListFont.swift */,
+				360856FD1E8F2DE100C50FDA /* EventListColor.swift */,
+			);
+			name = EventListParameter;
+			sourceTree = "<group>";
+		};
+		360856FF1E8F2E0E00C50FDA /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
 		406E760EAE7372BF6ED1E497 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +348,7 @@
 		E458B1DA1E6701B900EE7736 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				360856F51E8F2C9700C50FDA /* EventListTableView */,
 				69BEF7A11E8A0F1D00D33F38 /* CreateEeventTableView */,
 				69BD548F1E86C20C0037A7EE /* EventCollectionViewCell.swift */,
 				691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */,
@@ -719,11 +761,15 @@
 				E477F0051E56710300ED7806 /* Theme.swift in Sources */,
 				E477EFFD1E56692400ED7806 /* PromotionContainerView.swift in Sources */,
 				E477F00F1E5DCB7600ED7806 /* RestaurantDetailViewController.swift in Sources */,
+				360856FC1E8F2DB400C50FDA /* EventListFont.swift in Sources */,
+				360856FA1E8F2D7E00C50FDA /* EventListConstant.swift in Sources */,
 				E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */,
 				E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */,
 				E42563041E7190420078E9ED /* ReviewFactory.swift in Sources */,
+				360856F41E8F2C6900C50FDA /* EventListViewController.swift in Sources */,
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
 				E42562F91E703CD10078E9ED /* RestaurantDetailDescriptionCell.swift in Sources */,
+				360856FE1E8F2DE100C50FDA /* EventListColor.swift in Sources */,
 				E42562FA1E703CD10078E9ED /* RestaurantDetailImageCell.swift in Sources */,
 				E42563011E718B430078E9ED /* UILabel+Make.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
@@ -733,6 +779,7 @@
 				E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */,
 				E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */,
 				E4E99E001E7A31C500A10DA7 /* RestaurantListConstant.swift in Sources */,
+				360857011E8F2E5100C50FDA /* EventListSectionHeader.swift in Sources */,
 				691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */,
 				E42562FF1E7108230078E9ED /* RestaurantDetailEventTitleView.swift in Sources */,
 				E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */,
@@ -748,6 +795,7 @@
 				E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */,
 				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,
 				E42562FD1E703CF70078E9ED /* RestaurantDetailConstant.swift in Sources */,
+				360856F71E8F2CF800C50FDA /* NearbyEventTableViewCell.swift in Sources */,
 				E4E99E041E7A31F100A10DA7 /* RestaurantListViewController.swift in Sources */,
 				E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */,
 				E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */,
