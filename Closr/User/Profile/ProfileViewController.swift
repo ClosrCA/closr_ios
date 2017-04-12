@@ -26,19 +26,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         buildTableView()
-        
-        buildNavigationItems()
-    }
-
-    fileprivate func buildNavigationItems() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .done, target: self, action: #selector(onSettings))
-    }
-    
-    @objc
-    fileprivate func onSettings() {
-        
-        let settingsViewController = SettingsViewController(style: .grouped)
-        navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
     fileprivate func buildTableView() {
