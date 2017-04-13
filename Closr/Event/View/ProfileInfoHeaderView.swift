@@ -34,13 +34,13 @@ class ProfileInfoHeaderView: UITableViewHeaderFooterView {
     
     fileprivate lazy var genderImageView: UIImageView = UIImageView()
 
-    fileprivate lazy var nameLabel: UILabel = UILabel.makeLable(font: AppFont.title, textColor: AppColor.brand)
+    fileprivate lazy var nameLabel: UILabel = UILabel.makeLabel(font: AppFont.title, textColor: AppColor.brand)
     
-    fileprivate lazy var birthdayLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var birthdayLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
-    fileprivate lazy var phoneLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var phoneLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
-    fileprivate lazy var emailLabel: UILabel = UILabel.makeLable(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var emailLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
     func update(user: User) {
         // TODO: avatar placeholder
