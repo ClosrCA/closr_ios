@@ -17,7 +17,6 @@
 		36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B851E7A37B500868A29 /* Assets.xcassets */; };
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
 		4CA91CDA1E577C7D00A8F51C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD91E577C7D00A8F51C /* ProfileViewController.swift */; };
-		4CA91CDD1E577CEC00A8F51C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CDC1E577CEC00A8F51C /* SettingsViewController.swift */; };
 		4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */; };
 		4CFFEE791E7B0C76009E8CB7 /* LoginViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */; };
 		691B58FB1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */; };
@@ -37,6 +36,7 @@
 		E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */; };
 		E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */; };
 		E458B1DE1E6701FC00EE7736 /* RangeSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */; };
+		E46A44921E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A44911E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift */; };
 		E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */; };
 		E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE41E50D66400785BE6 /* LoginViewController.swift */; };
 		E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE91E50D6C400785BE6 /* Device.swift */; };
@@ -105,7 +105,6 @@
 		48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.debug.xcconfig"; sourceTree = "<group>"; };
 		4CA91CD71E577AAF00A8F51C /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Shared/Notification.swift; sourceTree = "<group>"; };
 		4CA91CD91E577C7D00A8F51C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = User/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
-		4CA91CDC1E577CEC00A8F51C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = User/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
 		4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Promotion/Model/Promotion.swift; sourceTree = "<group>"; };
 		4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewConstants.swift; sourceTree = "<group>"; };
 		4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +130,7 @@
 		E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventViewController.swift; path = Event/CreateEventViewController.swift; sourceTree = "<group>"; };
 		E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldTableViewCell.swift; path = Event/View/TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeSliderTableViewCell.swift; path = Event/View/RangeSliderTableViewCell.swift; sourceTree = "<group>"; };
+		E46A44911E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileInfoHeaderView.swift; path = Event/View/ProfileInfoHeaderView.swift; sourceTree = "<group>"; };
 		E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileConfirmViewController.swift; path = User/Profile/ProfileConfirmViewController.swift; sourceTree = "<group>"; };
 		E46ECDE41E50D66400785BE6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E46ECDE91E50D6C400785BE6 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Shared/Device.swift; sourceTree = "<group>"; };
@@ -270,14 +270,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		4CA91CDB1E577CCB00A8F51C /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				4CA91CDC1E577CEC00A8F51C /* SettingsViewController.swift */,
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
 		69BEF7A11E8A0F1D00D33F38 /* CreateEeventTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +390,7 @@
 			children = (
 				E46ECDEC1E50DA2400785BE6 /* ProfileContainerView.swift */,
 				691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */,
+				E46A44911E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift */,
 				E46ECDEE1E50DD9500785BE6 /* ProfileConstant.swift */,
 			);
 			name = View;
@@ -482,7 +475,6 @@
 		E4713F121E39B736004CC166 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				4CA91CDB1E577CCB00A8F51C /* Settings */,
 				E46ECDE11E50D66400785BE6 /* Login */,
 				E46ECDDE1E50D5D900785BE6 /* Profile */,
 			);
@@ -794,6 +786,7 @@
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
 				E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */,
 				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,
+				E46A44921E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift in Sources */,
 				E42562FD1E703CF70078E9ED /* RestaurantDetailConstant.swift in Sources */,
 				360856F71E8F2CF800C50FDA /* NearbyEventTableViewCell.swift in Sources */,
 				E4E99E041E7A31F100A10DA7 /* RestaurantListViewController.swift in Sources */,
@@ -815,7 +808,6 @@
 				E46ECDFB1E511EB400785BE6 /* User.swift in Sources */,
 				E42562FB1E703CD10078E9ED /* RestaurantDetailEventCell.swift in Sources */,
 				E4E99DFE1E7A31B400A10DA7 /* RestaurantTableViewCell.swift in Sources */,
-				4CA91CDD1E577CEC00A8F51C /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
