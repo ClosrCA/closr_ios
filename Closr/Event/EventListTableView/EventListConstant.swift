@@ -184,6 +184,4 @@ struct EventListConstant  {
         
         return 8
     }()
-    
-    
 }

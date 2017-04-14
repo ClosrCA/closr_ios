@@ -8,8 +8,9 @@
 
 import UIKit
 
-class EventListFont: NSObject {
+struct EventListFont {
     
+    // TODO: temp
     
     static let sectionHeader: UIFont = {
         if Device.is_3_5_inches || Device.is_4_inches {

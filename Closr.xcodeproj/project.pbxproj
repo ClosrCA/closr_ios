@@ -202,9 +202,9 @@
 		360856F51E8F2C9700C50FDA /* EventListTableView */ = {
 			isa = PBXGroup;
 			children = (
-				360856F31E8F2C6900C50FDA /* EventListViewController.swift */,
 				360856F61E8F2CF800C50FDA /* NearbyEventTableViewCell.swift */,
-				360856FF1E8F2E0E00C50FDA /* Header */,
+				360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */,
+				360856F91E8F2D7E00C50FDA /* EventListConstant.swift */,
 				360856F81E8F2D3D00C50FDA /* EventListParameter */,
 			);
 			name = EventListTableView;
@@ -213,19 +213,10 @@
 		360856F81E8F2D3D00C50FDA /* EventListParameter */ = {
 			isa = PBXGroup;
 			children = (
-				360856F91E8F2D7E00C50FDA /* EventListConstant.swift */,
 				360856FB1E8F2DB400C50FDA /* EventListFont.swift */,
 				360856FD1E8F2DE100C50FDA /* EventListColor.swift */,
 			);
 			name = EventListParameter;
-			sourceTree = "<group>";
-		};
-		360856FF1E8F2E0E00C50FDA /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */,
-			);
-			name = Header;
 			sourceTree = "<group>";
 		};
 		406E760EAE7372BF6ED1E497 /* Pods */ = {
@@ -485,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */,
+				360856F31E8F2C6900C50FDA /* EventListViewController.swift */,
 				69F13CAA1E82B2E000E3483F /* Model */,
 				E458B1DA1E6701B900EE7736 /* View */,
 			);

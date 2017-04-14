@@ -10,6 +10,7 @@ import UIKit
 
 struct EventListColor {
     
+    // TODO: temp
     static let nearbyRestaurantName   =   UIColor(red: 89 / 255, green: 87 / 255, blue: 87 / 255, alpha: 1.0)
     
     static let nearbyRestuarantAddress    =   UIColor(red: 158 / 255, green: 158 / 255, blue: 159 / 255,  alpha: 1.0)

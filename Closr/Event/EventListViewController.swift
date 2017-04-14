@@ -17,13 +17,11 @@ class EventListViewController: UIViewController {
         tableView.dataSource            = self
         tableView.estimatedRowHeight    = 200
         tableView.rowHeight             = UITableViewAutomaticDimension
+        tableView.sectionHeaderHeight   = EventListConstant.sectionHeaderHeight
+        
         tableView.register(NearbyEventTableViewCell.self, forCellReuseIdentifier: NearbyEventTableViewCell.reuseIdentifier)
-        
         tableView.register(EventCollectionTableViewCell.self, forCellReuseIdentifier: EventCollectionTableViewCell.reuseIdentifier)
-        
         tableView.register(EventListSectionHeader.self, forHeaderFooterViewReuseIdentifier: EventListSectionHeader.reuseIdentifier)
-        
-        tableView.sectionHeaderHeight  = EventListConstant.sectionHeaderHeight
         
         return tableView
     }()
@@ -41,20 +39,24 @@ class EventListViewController: UIViewController {
     
 }
 
-let sectionRowCount=[1,5]
-
-
-
 extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    enum EventListSection: Int {
+        case current
+        case nearby
+        case count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return sectionRowCount[section]
+        // TODO: replace when model up
+        
+        return 5
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 2
+        return EventListSection.count.rawValue
     }
     
     
@@ -62,13 +64,15 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: EventListSectionHeader.reuseIdentifier) as! EventListSectionHeader
         
-        if section == 0 {
+        let section = EventListSection(rawValue: section)!
+        
+        switch section {
+        case .current:
             sectionHeader.update(title: "Current Event")
-            
-        }
-        else{
+        case .nearby:
             sectionHeader.update(title: "Nearby Event")
-            
+        default:
+            break
         }
         
         return sectionHeader
@@ -78,24 +82,22 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let sectionNum=indexPath.section
+        let section = EventListSection(rawValue: indexPath.section)!
         
-        if sectionNum == 0 {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: EventCollectionTableViewCell.reuseIdentifier,for:indexPath)// as! CurrentEventTableViewCell
+        switch section {
+        case .current:
+            let cell = tableView.dequeueReusableCell(withIdentifier: EventCollectionTableViewCell.reuseIdentifier,for:indexPath) as! EventCollectionTableViewCell
             
             return cell
-            
-        }
-            
-        else{
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: NearbyEventTableViewCell.reuseIdentifier,for:indexPath)// as! NearbyEventTableViewCell
-            
+        case .nearby:
+            let cell = tableView.dequeueReusableCell(withIdentifier: NearbyEventTableViewCell.reuseIdentifier,for:indexPath) as! NearbyEventTableViewCell
             
             return cell
+        default:
+            break
         }
         
+        return UITableViewCell()
     }
 }
 

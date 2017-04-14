@@ -9,9 +9,7 @@
 import UIKit
 import EasyPeasy
 
-class NearbyEventTableViewCell: UITableViewCell,Reusable {
-    
-    
+class NearbyEventTableViewCell: UITableViewCell, Reusable {
     
     override init(style: UITableViewCellStyle,reuseIdentifier reuseIdentifire: String?){
         
@@ -19,24 +17,23 @@ class NearbyEventTableViewCell: UITableViewCell,Reusable {
         
         setUpViews()
         createConstraints()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func update(event: Event) {
+        //TODO: event model
+    }
     
     fileprivate lazy var nearbyImageView: UIImageView = {
         let imageView   = UIImageView()
-        imageView.backgroundColor=UIColor.blue
+        imageView.backgroundColor = UIColor.blue
         
         return  imageView
         
     }()
-    
-    
-    
     
     fileprivate lazy var nameLabel: UILabel = {
         let label       = UILabel()
@@ -76,9 +73,6 @@ class NearbyEventTableViewCell: UITableViewCell,Reusable {
         return label
     }()
     
-    
-    
-    
     fileprivate func setUpViews(){
         
         contentView.addSubview(nearbyImageView)
@@ -86,8 +80,6 @@ class NearbyEventTableViewCell: UITableViewCell,Reusable {
         contentView.addSubview(addressLabel)
         contentView.addSubview(dateLabel)
         contentView.addSubview(distanceLabel)
-        
-        
     }
     
     fileprivate func createConstraints(){
@@ -97,7 +89,6 @@ class NearbyEventTableViewCell: UITableViewCell,Reusable {
             Width(EventListConstant.nearbyImageViewWidth),
             Top(EventListConstant.nearbyImageViewTopPadding),
             Leading(EventListConstant.nearbyImageViewLeadingPadding)
-            
         ]
         
         nameLabel <-  [
@@ -124,11 +115,5 @@ class NearbyEventTableViewCell: UITableViewCell,Reusable {
             Leading(EventListConstant.nearbyLabelImageViewPadding).to(nearbyImageView,.trailing)
             
         ]
-        
-        
     }
-    
-    
-    
-    
 }

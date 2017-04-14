@@ -9,41 +9,34 @@
 import UIKit
 import EasyPeasy
 
-class EventListSectionHeader: UITableViewHeaderFooterView,Reusable{
-    
+class EventListSectionHeader: UITableViewHeaderFooterView, Reusable{
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
         setUpViews()
         createConstraints()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     fileprivate var sectionNameLabel: UILabel = {
         let label       = UILabel()
         label.font      = EventListFont.sectionHeader
         label.textColor = EventListColor.sectionHeaderText
-        label.text      = "HEADER"
         
         return label
     }()
     
     func update(title: String) {
         sectionNameLabel.text = title
-        
     }
     
     func setUpViews(){
-        
         contentView.addSubview(sectionNameLabel)
         contentView.backgroundColor = EventListColor.sectionHeaderBackground
-        
     }
     
     
@@ -55,7 +48,5 @@ class EventListSectionHeader: UITableViewHeaderFooterView,Reusable{
             Bottom(EventListConstant.sectionHeaderTopBottomPadding)
             
         ]
-        
-        
     }
 }
