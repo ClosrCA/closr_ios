@@ -149,7 +149,7 @@ class YelpPlaceSearch {
                     if let error = json["error"]["text"].string {
                         print("\nerror: \(error)\n")
                         print("description: \(json["error"]["description"].stringValue)\n")
-                        print("\(response.request?.allHTTPHeaderFields!)")
+                        print("\(String(describing: response.request?.allHTTPHeaderFields!))")
                     }
                     
                     weakSelf.total = json["total"].intValue
@@ -238,7 +238,7 @@ class YelpPlaceSearch {
                 if let error = json["error"]["text"].string {
                     print("\nerror: \(error)\n")
                     print("description: \(json["error"]["description"].stringValue)\n")
-                    print("\(response.request?.allHTTPHeaderFields!)")
+                    print("\(String(describing: response.request?.allHTTPHeaderFields!))")
                     
                     failure?(SearchError.accessDenied)
                     
