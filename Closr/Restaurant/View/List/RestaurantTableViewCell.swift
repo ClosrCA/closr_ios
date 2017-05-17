@@ -13,40 +13,25 @@ import EasyPeasy
 class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var restaurantImageView: UIImageView = {
-        let imageView               = UIImageView()
-        imageView.backgroundColor   = UIColor.lightGray
+        let imageView                   = UIImageView()
+        imageView.backgroundColor       = UIColor.lightGray
+        imageView.layer.cornerRadius    = RestaurantListConstant.Restaurant.imageCornerRadius
+        imageView.clipsToBounds         = true
         
         return imageView
     }()
     
-    fileprivate lazy var nameLabel: UILabel = UILabel.makeLabel(font: AppFont.thinTitle, textColor: AppColor.title)
+    fileprivate lazy var reviewImageView: UIImageView = UIImageView()
+    
+    fileprivate lazy var nameLabel: UILabel = UILabel.makeLabel(font: AppFont.thinTitle, textColor: AppColor.brand)
     
     fileprivate lazy var addressLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
     fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
-    fileprivate lazy var priceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand)
+    fileprivate lazy var priceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title)
     
-    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
-   
-    fileprivate lazy var promotionBackgroundImageView: UIImageView = {
-        
-        let imageView = UIImageView()
-        // TODO: - add asset
-        
-        imageView.backgroundColor = UIColor.orange
-        
-        return imageView
-    }()
-    
-    fileprivate lazy var promotionLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.lightGreyText)
-    
-    fileprivate lazy var addGroupButton: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(named:"lable-01.png"), for: .normal)
-        
-        return button
-    }()
+    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title)
     
     
     func update(restaurant: YelpPlace, placeHolder: UIImage?, promoted: Bool) {
@@ -57,7 +42,9 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         priceLabel.text = restaurant.price
         categoryLabel.text = restaurant.categories?.first?.title
         
-        promotionBackgroundImageView.isHidden = !promoted
+        if let rating = restaurant.rating {
+            reviewImageView.image = ReviewHelper.buildYelpSmallReview(rating: rating)
+        }
      }
     
     override init(style: UITableViewCellStyle,reuseIdentifier reuseIdentifire: String?){
@@ -78,80 +65,61 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         
         restaurantImageView.af_cancelImageRequest()
         restaurantImageView.image = nil
+        
+        reviewImageView.image = nil
     }
     
     fileprivate func setUpViews() {
-        
+        contentView.addSubview(reviewImageView)
         contentView.addSubview(restaurantImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(addressLabel)
         contentView.addSubview(distanceLabel)
         contentView.addSubview(priceLabel)
         contentView.addSubview(categoryLabel)
-        
-        contentView.addSubview(promotionBackgroundImageView)
-        promotionBackgroundImageView.addSubview(promotionLabel)
-        
-        contentView.addSubview(addGroupButton)
     }
     
     fileprivate func createConstraints() {
         
         restaurantImageView <- [
-            
-            Height(RestaurantListConstant.restaurantImageViewHeight),
-            Width(RestaurantListConstant.restaurantImageViewWidth),
-            Top(RestaurantListConstant.restaurantContentTopPadding),
-            Bottom(),
-            Leading()
+            Size(RestaurantListConstant.Restaurant.imageSize),
+            Top(RestaurantListConstant.Restaurant.imagePadding),
+            Leading(RestaurantListConstant.Restaurant.imagePadding),
+            Bottom(RestaurantListConstant.Restaurant.imagePadding)
         ]
         
         nameLabel <- [
-            
-            Top(RestaurantListConstant.restaurantNameTopPadding + RestaurantListConstant.restaurantContentTopPadding),
-            Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
-        ]
-        
-        addressLabel <- [
-            
-            Top(RestaurantListConstant.imageLabelPadding).to(nameLabel),
-            Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
-        ]
-        
-        distanceLabel <- [
-            
-            Top(RestaurantListConstant.distNameTopPadding).to(addressLabel),
-            Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing)
-        ]
-        
-        priceLabel <- [
-            
-            Top(RestaurantListConstant.distNameTopPadding).to(addressLabel),
-            Leading(RestaurantListConstant.imagePricePadding).to(restaurantImageView,.trailing)
+            Top(RestaurantListConstant.Restaurant.restaurantNameTopPadding),
+            Leading(RestaurantListConstant.Restaurant.resaurantNameHorizontalPadding).to(restaurantImageView),
+            Trailing(RestaurantListConstant.Restaurant.resaurantNameHorizontalPadding)
         ]
         
         categoryLabel <- [
-            
-            Leading(RestaurantListConstant.imageLabelPadding).to(restaurantImageView,.trailing),
-            Bottom(RestaurantListConstant.restaurantCategoryButtomPadding)
+            Leading().to(nameLabel, .leading),
+            Trailing().to(nameLabel, .trailing),
+            Top(RestaurantListConstant.Restaurant.verticalPadding).to(nameLabel)
         ]
         
-        promotionBackgroundImageView <- [
-            
-            Height(RestaurantListConstant.promotionRateViewHeight),
-            Width(RestaurantListConstant.promotionRateViewWidth),
-            Trailing().to(restaurantImageView,.trailing),
-            Bottom(RestaurantListConstant.restaurantCategoryButtomPadding)
+        addressLabel <- [
+            Top(RestaurantListConstant.Restaurant.verticalPadding).to(categoryLabel),
+            Leading().to(nameLabel, .leading),
+            Trailing().to(nameLabel, .trailing)
         ]
         
-        promotionLabel <- Edges()
+        reviewImageView <- [
+            Size(RestaurantListConstant.Restaurant.reviewSize),
+            Leading().to(nameLabel, .leading),
+            Top(RestaurantListConstant.Restaurant.verticalPadding).to(addressLabel)
+        ]
         
-        addGroupButton <- [
-            
-            Trailing(RestaurantListConstant.buttonRightPadding),
-            Bottom(RestaurantListConstant.restaurantCategoryButtomPadding),
-            Height(RestaurantListConstant.addGroupButtonSize),
-            Width(RestaurantListConstant.addGroupButtonSize)
+        priceLabel <- [
+            Top(RestaurantListConstant.Restaurant.verticalPadding).to(reviewImageView),
+            Leading().to(nameLabel, .leading)
+        ]
+        
+        distanceLabel <- [
+            Top(RestaurantListConstant.Restaurant.verticalPadding).to(priceLabel),
+            Leading().to(nameLabel,.leading)
         ]
     }
 }
