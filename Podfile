@@ -22,3 +22,8 @@ target 'Closr' do
 #UI
   pod 'WARangeSlider'
 end
+
+target 'ClosrTests' do
+    inherit! :search_paths
+    pod 'Firebase'
+end

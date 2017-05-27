@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301494944B454DD413B1D6D0 /* Pods_ClosrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */; };
 		360856F41E8F2C6900C50FDA /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F31E8F2C6900C50FDA /* EventListViewController.swift */; };
 		360856F71E8F2CF800C50FDA /* NearbyEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F61E8F2CF800C50FDA /* NearbyEventTableViewCell.swift */; };
 		360856FA1E8F2D7E00C50FDA /* EventListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F91E8F2D7E00C50FDA /* EventListConstant.swift */; };
@@ -49,12 +50,11 @@
 		E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713ED81E399ED2004CC166 /* AppDelegate.swift */; };
 		E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EDA1E399ED2004CC166 /* RootViewController.swift */; };
 		E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4713EDF1E399ED2004CC166 /* Closr.xcdatamodeld */; };
-		E4713EF11E399ED3004CC166 /* ClosrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EF01E399ED3004CC166 /* ClosrTests.swift */; };
 		E4713EFC1E399ED3004CC166 /* ClosrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */; };
 		E477EFF91E56652600ED7806 /* PromotionListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477EFF81E56652600ED7806 /* PromotionListConstant.swift */; };
 		E477EFFB1E5668DA00ED7806 /* PromotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477EFFA1E5668DA00ED7806 /* PromotionCollectionViewCell.swift */; };
 		E477EFFD1E56692400ED7806 /* PromotionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477EFFC1E56692400ED7806 /* PromotionContainerView.swift */; };
-		E477F0051E56710300ED7806 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0041E56710300ED7806 /* Theme.swift */; };
+		E477F0051E56710300ED7806 /* Color+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0041E56710300ED7806 /* Color+Font.swift */; };
 		E477F0071E567DBF00ED7806 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0061E567DBF00ED7806 /* Reusable.swift */; };
 		E477F0091E57305600ED7806 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0081E57305600ED7806 /* TabBarController.swift */; };
 		E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F00A1E5730A100ED7806 /* PromotionListViewController.swift */; };
@@ -147,7 +147,6 @@
 		E4713EE01E399ED2004CC166 /* Closr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Closr.xcdatamodel; sourceTree = "<group>"; };
 		E4713EE71E399ED2004CC166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4713EEC1E399ED3004CC166 /* ClosrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClosrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4713EF01E399ED3004CC166 /* ClosrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosrTests.swift; sourceTree = "<group>"; };
 		E4713EF21E399ED3004CC166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4713EF71E399ED3004CC166 /* ClosrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClosrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4713EFB1E399ED3004CC166 /* ClosrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosrUITests.swift; sourceTree = "<group>"; };
@@ -155,7 +154,7 @@
 		E477EFF81E56652600ED7806 /* PromotionListConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionListConstant.swift; path = Promotion/View/PromotionListConstant.swift; sourceTree = "<group>"; };
 		E477EFFA1E5668DA00ED7806 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionCollectionViewCell.swift; path = Promotion/View/PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E477EFFC1E56692400ED7806 /* PromotionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionContainerView.swift; path = Promotion/View/PromotionContainerView.swift; sourceTree = "<group>"; };
-		E477F0041E56710300ED7806 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Shared/Theme.swift; sourceTree = "<group>"; };
+		E477F0041E56710300ED7806 /* Color+Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Color+Font.swift"; path = "Shared/Color+Font.swift"; sourceTree = "<group>"; };
 		E477F0061E567DBF00ED7806 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = Shared/Reusable.swift; sourceTree = "<group>"; };
 		E477F0081E57305600ED7806 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E477F00A1E5730A100ED7806 /* PromotionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionListViewController.swift; path = Promotion/PromotionListViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301494944B454DD413B1D6D0 /* Pods_ClosrTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +371,7 @@
 				E46ECDFC1E51313C00785BE6 /* String+Format.swift */,
 				E42563001E718B430078E9ED /* UILabel+Make.swift */,
 				E4A885B91E53414F0093829E /* KeyboardObserver.swift */,
-				E477F0041E56710300ED7806 /* Theme.swift */,
+				E477F0041E56710300ED7806 /* Color+Font.swift */,
 				E477F0061E567DBF00ED7806 /* Reusable.swift */,
 				4CA91CD71E577AAF00A8F51C /* Notification.swift */,
 			);
@@ -441,7 +441,6 @@
 		E4713EEF1E399ED3004CC166 /* ClosrTests */ = {
 			isa = PBXGroup;
 			children = (
-				E4713EF01E399ED3004CC166 /* ClosrTests.swift */,
 				695A31691ECC3AC50087183F /* ReviewHelperTests.swift */,
 				E4713EF21E399ED3004CC166 /* Info.plist */,
 			);
@@ -581,9 +580,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4713F031E399ED3004CC166 /* Build configuration list for PBXNativeTarget "ClosrTests" */;
 			buildPhases = (
+				6697E94A8634142DF8A7116B /* [CP] Check Pods Manifest.lock */,
 				E4713EE81E399ED3004CC166 /* Sources */,
 				E4713EE91E399ED3004CC166 /* Frameworks */,
 				E4713EEA1E399ED3004CC166 /* Resources */,
+				E3B50A67D50AE809037655D1 /* [CP] Embed Pods Frameworks */,
+				B14D7671E633B67FA2FF859E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -708,6 +710,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		6697E94A8634142DF8A7116B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		72AEF6F365887734CA548AF5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -738,6 +755,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Closr/Pods-Closr-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B14D7671E633B67FA2FF859E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3B50A67D50AE809037655D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -745,7 +792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E477F0051E56710300ED7806 /* Theme.swift in Sources */,
+				E477F0051E56710300ED7806 /* Color+Font.swift in Sources */,
 				E477EFFD1E56692400ED7806 /* PromotionContainerView.swift in Sources */,
 				E477F00F1E5DCB7600ED7806 /* RestaurantDetailViewController.swift in Sources */,
 				360856FC1E8F2DB400C50FDA /* EventListFont.swift in Sources */,
@@ -810,7 +857,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4713EF11E399ED3004CC166 /* ClosrTests.swift in Sources */,
 				695A316A1ECC3AC50087183F /* ReviewHelperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -970,6 +1016,7 @@
 		};
 		E4713F041E399ED3004CC166 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D49278ECCB91E5347BDEBE1 /* Pods-ClosrTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 47424952HG;
@@ -984,6 +1031,7 @@
 		};
 		E4713F051E399ED3004CC166 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50163C0A5221D5BF6257B9A8 /* Pods-ClosrTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 47424952HG;

@@ -16,6 +16,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         let imageView                   = UIImageView()
         imageView.backgroundColor       = UIColor.lightGray
         imageView.layer.cornerRadius    = RestaurantListConstant.Restaurant.imageCornerRadius
+        imageView.contentMode           = .scaleAspectFill
         imageView.clipsToBounds         = true
         
         return imageView
@@ -43,7 +44,8 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         categoryLabel.text = restaurant.categories?.first?.title
         
         if let rating = restaurant.rating {
-            reviewImageView.image = ReviewHelper.buildYelpSmallReview(rating: rating)
+            let imageName = ReviewHelper.yelpSmallReviewImageName(rating: rating)
+            reviewImageView.image = UIImage(named: imageName)
         }
      }
     
@@ -90,36 +92,38 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         
         nameLabel <- [
             Top(RestaurantListConstant.Restaurant.restaurantNameTopPadding),
-            Leading(RestaurantListConstant.Restaurant.resaurantNameHorizontalPadding).to(restaurantImageView),
-            Trailing(RestaurantListConstant.Restaurant.resaurantNameHorizontalPadding)
+            Leading(RestaurantListConstant.Restaurant.contentHorizontalPadding).to(restaurantImageView),
+            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding)
         ]
         
         categoryLabel <- [
             Leading().to(nameLabel, .leading),
-            Trailing().to(nameLabel, .trailing),
-            Top(RestaurantListConstant.Restaurant.verticalPadding).to(nameLabel)
+            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding),
+            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(nameLabel)
         ]
         
         addressLabel <- [
-            Top(RestaurantListConstant.Restaurant.verticalPadding).to(categoryLabel),
+            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(categoryLabel),
             Leading().to(nameLabel, .leading),
-            Trailing().to(nameLabel, .trailing)
+            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding)
         ]
         
         reviewImageView <- [
             Size(RestaurantListConstant.Restaurant.reviewSize),
             Leading().to(nameLabel, .leading),
-            Top(RestaurantListConstant.Restaurant.verticalPadding).to(addressLabel)
+            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(addressLabel)
         ]
         
         priceLabel <- [
-            Top(RestaurantListConstant.Restaurant.verticalPadding).to(reviewImageView),
-            Leading().to(nameLabel, .leading)
+            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(reviewImageView),
+            Leading().to(nameLabel, .leading),
+            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding)
         ]
         
         distanceLabel <- [
-            Top(RestaurantListConstant.Restaurant.verticalPadding).to(priceLabel),
-            Leading().to(nameLabel,.leading)
+            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(priceLabel),
+            Leading().to(nameLabel,.leading),
+            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding)
         ]
     }
 }

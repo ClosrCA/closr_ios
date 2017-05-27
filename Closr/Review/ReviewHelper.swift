@@ -81,19 +81,17 @@ class ReviewHelper {
         return (backgroundView, CGSize(width: width, height: height))
     }
     
-    class func buildYelpSmallReview(rating: Double) -> UIImage? {
+    class func yelpSmallReviewImageName(rating: Double) -> String {
         
         let review = calculateReview(rating: rating)
-        let imageName = String(format: kSmallReviewFormat, review)
         
-        return UIImage(named: imageName)
+        return String(format: kSmallReviewFormat, review)
     }
     
-    class func buildYelpRegularReview(rating: Double) -> UIImage? {
+    class func yelpRegularReviewImageName(rating: Double) -> String {
         let review = calculateReview(rating: rating)
-        let imageName = String(format: kRegularReviewFormat, review)
         
-        return UIImage(named: imageName)
+        return String(format: kRegularReviewFormat, review)
     }
     
     fileprivate class func calculateReview(rating: Double) -> String {

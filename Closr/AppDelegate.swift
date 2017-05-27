@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        FIRApp.configure()
+        FirebaseApp.configure()
         
         window = UIWindow()
         window?.rootViewController = RootViewController(nibName: nil, bundle: nil)
