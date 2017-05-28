@@ -10,8 +10,13 @@ import UIKit
 import CoreLocation
 import EasyPeasy
 
+enum RestaurantListSection: Int {
+    case category
+    case restaurant
+    case count
+}
+
 class RestaurantListViewController: UIViewController {
-    
     
     fileprivate lazy var tableView: UITableView = {
         let tableView                   = UITableView()
@@ -20,7 +25,12 @@ class RestaurantListViewController: UIViewController {
         tableView.estimatedRowHeight    = 200
         tableView.rowHeight             = UITableViewAutomaticDimension
         
+        tableView.estimatedSectionHeaderHeight  = 40
+        tableView.sectionHeaderHeight           = UITableViewAutomaticDimension
+        
         tableView.register(RestaurantTableViewCell.self, forCellReuseIdentifier: RestaurantTableViewCell.reuseIdentifier)
+        tableView.register(CategoryCarouselTableViewCell.self, forCellReuseIdentifier: CategoryCarouselTableViewCell.reuseIdentifier)
+        tableView.register(RestaurantListSectionHeader.self, forHeaderFooterViewReuseIdentifier: RestaurantListSectionHeader.reuseIdentifier)
         
         return tableView
     }()
@@ -81,12 +91,27 @@ class RestaurantListViewController: UIViewController {
 }
 
 extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return RestaurantListSection.count.rawValue
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == RestaurantListSection.category.rawValue {
+            return 1
+        }
+        
         return restaurants.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == RestaurantListSection.category.rawValue {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCarouselTableViewCell.reuseIdentifier, for: indexPath) as! CategoryCarouselTableViewCell
+            
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.reuseIdentifier, for: indexPath) as! RestaurantTableViewCell
         
         cell.update(restaurant: restaurants[indexPath.row], placeHolder: nil, promoted: false)
@@ -94,7 +119,29 @@ extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RestaurantListSectionHeader.reuseIdentifier) as! RestaurantListSectionHeader
+        
+        if let section = RestaurantListSection(rawValue: section) {
+            switch section {
+            case .category:
+                header.update(title: "CATEGORIES")
+            case .restaurant:
+                header.update(accessoryTitle: "Powered by", accessoryImage: UIImage(named: "yelp_logo"))
+            default:
+                break
+            }
+        }
+        
+        return header
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == RestaurantListSection.category.rawValue {
+            return
+        }
+        
         let detailController    = RestaurantDetailViewController(placeID: restaurants[indexPath.row].placeID)
         detailController.search = placeSearch
         

@@ -69,7 +69,7 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
     
     
     fileprivate func addReview(rating: Double) {
-        let review = ReviewFactory.reviewViewWith(rating: rating, scoreImage: UIImage(named: "review_star"), halfScoreImage: UIImage(named: "review_star_half"))
+        let review = ReviewHelper.buildReviewView(rating: rating, scoreImage: UIImage(named: "review_star"), halfScoreImage: UIImage(named: "review_star_half"))
         
         reviewBackground <- Size(review.preferredSize)
         

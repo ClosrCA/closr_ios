@@ -10,22 +10,29 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
+    enum Tabs: Int {
+        case promotion  = 1
+        case restaurant = 2
+        case event      = 3
+        case profile    = 4
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tabBar.tintColor = AppColor.brand
         
         let promotionController = UINavigationController(rootViewController: PromotionListViewController())
-        promotionController.tabBarItem = UITabBarItem(title: "promotion", image: UIImage(named: "promotion"), selectedImage: UIImage(named: "promotion_ative"))
+        promotionController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "promotion"), tag: Tabs.promotion.rawValue)
         
         let resturantController = UINavigationController(rootViewController: RestaurantListViewController())
-        resturantController.tabBarItem = UITabBarItem(title: "restaurant", image: UIImage(named: "restaurant"), selectedImage: UIImage(named: "restaurant_active"))
+        resturantController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "restaurant"), tag: Tabs.restaurant.rawValue)
         
         let eventController = UINavigationController(rootViewController: UIViewController())
-        eventController.tabBarItem = UITabBarItem(title: "event", image: UIImage(named: "event"), selectedImage: UIImage(named: "event_active"))
+        eventController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "event"), tag: Tabs.event.rawValue)
         
         let profileController = UINavigationController(rootViewController: ProfileViewController())
-        profileController.tabBarItem = UITabBarItem(title: "profile", image: UIImage(named: "profile"), selectedImage: UIImage(named: "profile_active"))
+        profileController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "profile"), tag: Tabs.profile.rawValue)
         
         viewControllers = [promotionController, resturantController, eventController, profileController]
     }

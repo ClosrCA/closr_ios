@@ -12,28 +12,29 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - EasyPeasy (1.4.2)
-  - FBSDKCoreKit (4.21.0):
+  - FBSDKCoreKit (4.23.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.21.0):
+  - FBSDKLoginKit (4.23.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.21.0):
+  - FBSDKShareKit (4.23.0):
     - FBSDKCoreKit
-  - Firebase (3.15.0):
-    - Firebase/Core (= 3.15.0)
-  - Firebase/Core (3.15.0):
-    - FirebaseAnalytics (= 3.7.0)
-    - FirebaseCore (= 3.5.2)
-  - FirebaseAnalytics (3.7.0):
-    - FirebaseCore (~> 3.5)
-    - FirebaseInstanceID (~> 1.0)
+  - Firebase (4.0.0):
+    - Firebase/Core (= 4.0.0)
+  - Firebase/Core (4.0.0):
+    - FirebaseAnalytics (= 4.0.0)
+    - FirebaseCore (= 4.0.0)
+  - FirebaseAnalytics (4.0.0):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (3.5.2):
+  - FirebaseCore (4.0.0):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseInstanceID (1.0.9)
+  - FirebaseInstanceID (2.0.0):
+    - FirebaseCore (~> 4.0)
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
-  - ObjectMapper (2.2.5)
+  - ObjectMapper (2.2.7)
   - SwiftyJSON (3.1.4)
   - WARangeSlider (1.1.1)
 
@@ -56,18 +57,18 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   EasyPeasy: 50e7130b61f495ce105796e438d4136e2c8d2cc0
-  FBSDKCoreKit: 8a372ab194b5c7c26355c1920ef52dbeb44bc222
-  FBSDKLoginKit: a1a5f4b4ac445823a020fbeeaf5f03714a67ff9c
-  FBSDKShareKit: 649a7acfd01a3e056a33994c1bfbb997814cc8a2
-  Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
-  FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
-  FirebaseCore: a024587e43778508700af8c6b1209f7c4516ba02
-  FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
+  FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
+  FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
+  FBSDKShareKit: 65751c3b9937ab9d594e6c37611ecc115ceeb448
+  Firebase: 284eea779b73fdff309791817da7c68bff8dd572
+  FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
+  FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
+  ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WARangeSlider: 54b3e0853b8d16c444fd539005901aecee86837d
 
-PODFILE CHECKSUM: f880edca14884fe46aee98d20bad7bf614213826
+PODFILE CHECKSUM: c77fb68dbb8816eed9bd12461a53aa2ef9d559fe
 
 COCOAPODS: 1.2.0
