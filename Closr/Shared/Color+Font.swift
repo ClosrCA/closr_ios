@@ -82,6 +82,8 @@ struct AppFont {
         
         return UIFont.systemFont(ofSize: 13, weight: UIFontWeightLight)
     }()
+    
+    static let extraSmallText: UIFont = UIFont.systemFont(ofSize: 8, weight: UIFontWeightLight)
 }
 
 extension UIViewController {

@@ -22,8 +22,8 @@ struct RestaurantListConstant {
     
     struct Category {
         static let lineSpace: CGFloat   = 13
-        static let cellSize: CGSize     = CGSize(width: 123, height: 71)
-        static let imageSize: CGSize    = CGSize(width: 133, height: 91)
+        static let imageSize: CGSize    = CGSize(width: 123, height: 71)
+        static let cellSize: CGSize     = CGSize(width: 143, height: 91)
     }
     
 }
