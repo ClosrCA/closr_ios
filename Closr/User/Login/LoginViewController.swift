@@ -31,10 +31,19 @@ protocol LoginControllerDelegate: class {
 
 class LoginViewController: UIViewController {
     
-
+    struct Constants {
+        static let logoTopPadding: CGFloat  = 200
+        static let logoSize: CGSize         = CGSize(width: 266, height: 196)
+        
+        static let termsLabelPadding: CGFloat        = 8
+        static let facebookButtonBottomPadding: CGFloat = 50
+    }
+    
     weak var delegate: LoginControllerDelegate?
     
-    fileprivate lazy var backgroundImageView: UIImageView = UIImageView(image: UIImage(named:"login_background"))
+    fileprivate lazy var backgroundImageView: UIImageView   = UIImageView(image: UIImage(named:"login_bg"))
+    fileprivate lazy var backgroundOverlay: UIImageView     = UIImageView(image: UIImage(named: "login_bg_overlay"))
+    fileprivate lazy var logoImageView: UIImageView         = UIImageView(image: UIImage(named: "login_logo"))
     
     fileprivate lazy var facebookLoginButton: UIButton = {
         let loginButton = UIButton()
@@ -48,48 +57,70 @@ class LoginViewController: UIViewController {
     fileprivate lazy var termsLabel: UILabel = {
         let termsLabel = UILabel()
         
-        let textString = NSLocalizedString("By signing in you agree with our ", comment: "By signing in you agree with our")
-        let highlightedString = NSLocalizedString("Terms", comment: "terms")
-        let theRest = NSLocalizedString(" of use", comment: "of use")
+        let textString = NSLocalizedString("By signing in you agree with our ", comment: "")
+        let highlightedString = NSLocalizedString("Terms", comment: "")
+        let theRest = NSLocalizedString(" of use", comment: "")
         
-        let attributedString = NSMutableAttributedString(string: textString, attributes: [NSForegroundColorAttributeName: AppColor.lightGreyText])
+        let attributedString = NSMutableAttributedString(string: textString, attributes: [NSForegroundColorAttributeName: AppColor.lightGreyText,
+                                                                                          NSFontAttributeName: AppFont.smallText])
+        
         attributedString.append(NSAttributedString(string: highlightedString, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
-                                                                                           NSForegroundColorAttributeName: AppColor.hightedText]))
-        attributedString.append(NSAttributedString(string: theRest, attributes: [NSForegroundColorAttributeName: AppColor.lightGreyText]))
+                                                                                           NSForegroundColorAttributeName: AppColor.hightedText,
+                                                                                           NSFontAttributeName: AppFont.smallText]))
         
-        termsLabel.numberOfLines = 0
-        termsLabel.attributedText = attributedString
+        attributedString.append(NSAttributedString(string: theRest, attributes: [NSForegroundColorAttributeName: AppColor.lightGreyText,
+                                                                                 NSFontAttributeName: AppFont.smallText]))
+        
+        termsLabel.numberOfLines    = 0
+        termsLabel.attributedText   = attributedString
+        termsLabel.textAlignment    = .center
         
         return termsLabel
     }()
     
-    
+    fileprivate lazy var subtitleLable = UILabel.makeLabel(font: AppFont.title,
+                                                           textColor: AppColor.hightedText,
+                                                           text: NSLocalizedString("Build friendships, one table at a time", comment: ""))
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.addSubview(backgroundImageView)
+        view.addSubview(backgroundOverlay)
+        view.addSubview(logoImageView)
         view.addSubview(facebookLoginButton)
         view.addSubview(termsLabel)
-        
+        view.addSubview(subtitleLable)
         
         createConstraints()
     }
     
     fileprivate func createConstraints() {
         backgroundImageView <- Edges()
+        backgroundOverlay   <- Edges()
+        
+        logoImageView <- [
+            Size(Constants.logoSize),
+            Top(Constants.logoTopPadding),
+            CenterX()
+        ]
+        
+        subtitleLable <- [
+            Top().to(logoImageView),
+            CenterX()
+        ]
         
         termsLabel <- [
-            Leading(LoginViewConstants.termsLabelPadding),
-            Trailing(LoginViewConstants.termsLabelPadding),
-            Top(LoginViewConstants.termsLabelPadding).to(facebookLoginButton, .bottom)
+            Leading(Constants.termsLabelPadding),
+            Trailing(Constants.termsLabelPadding),
+            Top(Constants.termsLabelPadding).to(facebookLoginButton, .bottom)
         ]
         
         facebookLoginButton <- [
             Leading(),
             Trailing(),
-            Bottom(LoginViewConstants.facebookButtonBottomPadding)
+            Bottom(Constants.facebookButtonBottomPadding)
         ]
     }
     

@@ -19,9 +19,9 @@
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
 		4CA91CDA1E577C7D00A8F51C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD91E577C7D00A8F51C /* ProfileViewController.swift */; };
 		4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */; };
-		4CFFEE791E7B0C76009E8CB7 /* LoginViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */; };
 		691B58FB1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */; };
 		691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */; };
+		6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */; };
 		695A316A1ECC3AC50087183F /* ReviewHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A31691ECC3AC50087183F /* ReviewHelperTests.swift */; };
 		69BA88571EDA375B0039E237 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */; };
 		69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */; };
@@ -110,11 +110,11 @@
 		4CA91CD71E577AAF00A8F51C /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Shared/Notification.swift; sourceTree = "<group>"; };
 		4CA91CD91E577C7D00A8F51C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = User/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
 		4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Promotion/Model/Promotion.swift; sourceTree = "<group>"; };
-		4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewConstants.swift; sourceTree = "<group>"; };
 		4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50163C0A5221D5BF6257B9A8 /* Pods-ClosrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.release.xcconfig"; sourceTree = "<group>"; };
 		691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCollectionTableViewCell.swift; path = Event/View/EventCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileActionFooterView.swift; path = User/Profile/View/ProfileActionFooterView.swift; sourceTree = "<group>"; };
+		6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		695A31691ECC3AC50087183F /* ReviewHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelperTests.swift; sourceTree = "<group>"; };
 		69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCarouselTableViewCell.swift; sourceTree = "<group>"; };
@@ -362,7 +362,6 @@
 			isa = PBXGroup;
 			children = (
 				E46ECDE41E50D66400785BE6 /* LoginViewController.swift */,
-				4CFFEE781E7B0C76009E8CB7 /* LoginViewConstants.swift */,
 			);
 			name = Login;
 			path = User/Login;
@@ -438,6 +437,7 @@
 				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
 				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
 				E477F0081E57305600ED7806 /* TabBarController.swift */,
+				6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */,
 				E458B1D11E65A56B00EE7736 /* Resources */,
 			);
 			path = Closr;
@@ -636,7 +636,7 @@
 				TargetAttributes = {
 					E4713ED41E399ED2004CC166 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 47424952HG;
+						DevelopmentTeam = G95XP478TT;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -683,6 +683,7 @@
 			files = (
 				E4AAB72E1E3EC7F6001EB362 /* Places.storyboard in Resources */,
 				36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */,
+				6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */,
 				36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -852,7 +853,6 @@
 				69BD54901E86C20C0037A7EE /* EventCollectionViewCell.swift in Sources */,
 				69F13CAF1E82B38100E3483F /* Event.swift in Sources */,
 				E477F0071E567DBF00ED7806 /* Reusable.swift in Sources */,
-				4CFFEE791E7B0C76009E8CB7 /* LoginViewConstants.swift in Sources */,
 				E477EFFB1E5668DA00ED7806 /* PromotionCollectionViewCell.swift in Sources */,
 				E477F0091E57305600ED7806 /* TabBarController.swift in Sources */,
 				E4AAB72F1E3EC7F6001EB362 /* PlaceTableViewCell.swift in Sources */,
@@ -995,9 +995,8 @@
 			baseConfigurationReference = 48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 47424952HG;
+				DEVELOPMENT_TEAM = G95XP478TT;
 				INFOPLIST_FILE = Closr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1013,9 +1012,8 @@
 			baseConfigurationReference = A67206956609D6F4E129FFC4 /* Pods-Closr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 47424952HG;
+				DEVELOPMENT_TEAM = G95XP478TT;
 				INFOPLIST_FILE = Closr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
