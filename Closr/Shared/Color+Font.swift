@@ -9,8 +9,10 @@
 import UIKit
 
 struct AppColor {
-    static let brand        = UIColor(red:232 / 255.0, green:111 / 255.0, blue:1 / 255.0,  alpha:1)
+    static let brand        = UIColor(red:232 / 255, green:111 / 255, blue:1 / 255,  alpha:1)
     static let secondary    = UIColor(red: 243 / 255, green: 186 / 255, blue: 177 / 255, alpha: 1.0)
+    
+    static let border       = UIColor(red: 149 / 255, green: 152 / 255, blue: 154 / 255, alpha: 0.2)
     
     static let title            = UIColor(red: 89 / 255, green: 89 / 255, blue: 87 / 255, alpha: 1.0)
     static let greyText         = UIColor(red: 149 / 255, green: 149 / 255, blue: 149 / 255, alpha: 1.0)
@@ -84,17 +86,4 @@ struct AppFont {
     }()
     
     static let extraSmallText: UIFont = UIFont.systemFont(ofSize: 8, weight: UIFontWeightLight)
-}
-
-extension UIViewController {
-    
-    func transparentNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage     = UIImage()
-    }
-    
-    func defaultNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UINavigationBar.appearance().backgroundImage(for: .default), for: .default)
-        navigationController?.navigationBar.shadowImage     = UINavigationBar.appearance().shadowImage
-    }
 }

@@ -42,6 +42,14 @@ class RestaurantListViewController: UIViewController {
         return refreshControl
     }()
     
+    fileprivate lazy var searchBarController: UISearchController = {
+        let searchController                                = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater               = self
+        searchController.dimsBackgroundDuringPresentation   = false
+        
+        return searchController
+    }()
+    
     fileprivate var restaurants = [YelpPlace]() {
         didSet {
             tableView.reloadData()
@@ -55,13 +63,23 @@ class RestaurantListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        definesPresentationContext = true
+        
+        buildSearchItem()
+        setupSubviews()
+        reloadData()
+    }
+    
+    fileprivate func setupSubviews() {
         view.addSubview(tableView)
-        
         tableView.addSubview(refreshControl)
-        
         tableView <- Edges()
         
-        reloadData()
+        navigationItem.titleView = searchBarController.searchBar
+    }
+    
+    fileprivate func buildSearchItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: #selector(didSelectSearch))
     }
     
     @objc
@@ -86,6 +104,12 @@ class RestaurantListViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc
+    fileprivate func didSelectSearch() {
+        // TODO: bring up search bar
+        navigationItem.titleView?.toggleFadeInOut()
     }
     
 }
@@ -149,5 +173,13 @@ extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
+extension RestaurantListViewController: UISearchControllerDelegate {
 
+}
+
+extension RestaurantListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+}
 

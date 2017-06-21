@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = RootViewController(nibName: nil, bundle: nil)
         window?.makeKeyAndVisible()
         
+        UIViewController.setupGlobalAppearance()
+        
         return true
     }
     

@@ -22,6 +22,8 @@
 		691B58FB1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */; };
 		691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */; };
 		6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */; };
+		6942D1051EFA0BD600988471 /* UIViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */; };
+		6942D1071EFA1B6500988471 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1061EFA1B6500988471 /* UIView+Animation.swift */; };
 		695A316A1ECC3AC50087183F /* ReviewHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A31691ECC3AC50087183F /* ReviewHelperTests.swift */; };
 		69BA88571EDA375B0039E237 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */; };
 		69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */; };
@@ -115,6 +117,8 @@
 		691B58FA1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCollectionTableViewCell.swift; path = Event/View/EventCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileActionFooterView.swift; path = User/Profile/View/ProfileActionFooterView.swift; sourceTree = "<group>"; };
 		6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Appearance.swift"; path = "Shared/UIViewController+Appearance.swift"; sourceTree = "<group>"; };
+		6942D1061EFA1B6500988471 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Animation.swift"; path = "Shared/UIView+Animation.swift"; sourceTree = "<group>"; };
 		695A31691ECC3AC50087183F /* ReviewHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelperTests.swift; sourceTree = "<group>"; };
 		69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCarouselTableViewCell.swift; sourceTree = "<group>"; };
@@ -376,6 +380,8 @@
 				E42563001E718B430078E9ED /* UILabel+Make.swift */,
 				E4A885B91E53414F0093829E /* KeyboardObserver.swift */,
 				E477F0041E56710300ED7806 /* Color+Font.swift */,
+				6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */,
+				6942D1061EFA1B6500988471 /* UIView+Animation.swift */,
 				E477F0061E567DBF00ED7806 /* Reusable.swift */,
 				4CA91CD71E577AAF00A8F51C /* Notification.swift */,
 			);
@@ -859,9 +865,11 @@
 				E477EFF91E56652600ED7806 /* PromotionListConstant.swift in Sources */,
 				4CA91CDA1E577C7D00A8F51C /* ProfileViewController.swift in Sources */,
 				E4AAB7431E407E25001EB362 /* ImageLoader.swift in Sources */,
+				6942D1071EFA1B6500988471 /* UIView+Animation.swift in Sources */,
 				E46ECDFB1E511EB400785BE6 /* User.swift in Sources */,
 				E42562FB1E703CD10078E9ED /* RestaurantDetailEventCell.swift in Sources */,
 				E4E99DFE1E7A31B400A10DA7 /* RestaurantTableViewCell.swift in Sources */,
+				6942D1051EFA0BD600988471 /* UIViewController+Appearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
