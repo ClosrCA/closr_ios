@@ -28,7 +28,7 @@ class TabBarController: UITabBarController {
         let resturantController = UINavigationController(rootViewController: RestaurantListViewController())
         resturantController.tabBarItem = UITabBarItem(title: "Restaurants", image: UIImage(named: "restaurant"), tag: Tabs.restaurant.rawValue)
         
-        let eventController = UINavigationController(rootViewController: UIViewController())
+        let eventController = UINavigationController(rootViewController: JoinEventListViewController())
         eventController.tabBarItem = UITabBarItem(title: "Events", image: UIImage(named: "event"), tag: Tabs.event.rawValue)
         
         let profileController = UINavigationController(rootViewController: ProfileViewController())

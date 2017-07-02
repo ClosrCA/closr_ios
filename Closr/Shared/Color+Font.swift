@@ -22,6 +22,8 @@ struct AppColor {
     
     static let greyBackground = UIColor(red: 159 / 255, green: 159 / 255, blue: 160 / 255, alpha: 0.56)
     static let brandBackground = UIColor(red: 86 / 255, green: 34 / 255, blue: 26 / 255, alpha: 0.1)
+    
+    static let joinEventText = UIColor(red: 0 / 255, green: 3 / 255, blue: 5 / 255, alpha: 1.0)
 }
 
 struct AppFont {
@@ -82,6 +84,18 @@ struct AppFont {
         
         return UIFont.systemFont(ofSize: 13, weight: UIFontWeightLight)
     }()
+    
+    static let joinEventSmallText: UIFont = {
+       
+        return UIFont.systemFont(ofSize: 10, weight: UIFontWeightLight)
+    }()
+    
+    static let joinEventlargeTitle: UIFont = {
+       
+        return UIFont.systemFont(ofSize: 16, weight: UIFontWeightLight)
+    }()
+
+
     
     static let extraSmallText: UIFont = UIFont.systemFont(ofSize: 8, weight: UIFontWeightLight)
 }
