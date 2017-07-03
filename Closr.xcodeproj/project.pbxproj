@@ -67,9 +67,6 @@
 		E477F00F1E5DCB7600ED7806 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F00E1E5DCB7600ED7806 /* RestaurantDetailViewController.swift */; };
 		E477F0181E5DDBB400ED7806 /* ImageCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0171E5DDBB400ED7806 /* ImageCarouselCell.swift */; };
 		E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A885B91E53414F0093829E /* KeyboardObserver.swift */; };
-		E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB72A1E3EC7E6001EB362 /* PlacesTableViewController.swift */; };
-		E4AAB72E1E3EC7F6001EB362 /* Places.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AAB72C1E3EC7F6001EB362 /* Places.storyboard */; };
-		E4AAB72F1E3EC7F6001EB362 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB72D1E3EC7F6001EB362 /* PlaceTableViewCell.swift */; };
 		E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7381E3ECC12001EB362 /* PlaceSearchRequest.swift */; };
 		E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB73B1E3ECC6A001EB362 /* YelpPlace.swift */; };
 		E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */; };
@@ -171,9 +168,6 @@
 		E477F00E1E5DCB7600ED7806 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantDetailViewController.swift; path = Restaurant/RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		E477F0171E5DDBB400ED7806 /* ImageCarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCarouselCell.swift; path = Restaurant/View/Detail/ImageCarouselCell.swift; sourceTree = "<group>"; };
 		E4A885B91E53414F0093829E /* KeyboardObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardObserver.swift; path = Shared/KeyboardObserver.swift; sourceTree = "<group>"; };
-		E4AAB72A1E3EC7E6001EB362 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesTableViewController.swift; path = Place/DemoController/PlacesTableViewController.swift; sourceTree = "<group>"; };
-		E4AAB72C1E3EC7F6001EB362 /* Places.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Places.storyboard; path = Place/DemoController/View/Places.storyboard; sourceTree = "<group>"; };
-		E4AAB72D1E3EC7F6001EB362 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceTableViewCell.swift; path = Place/DemoController/View/PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		E4AAB7381E3ECC12001EB362 /* PlaceSearchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceSearchRequest.swift; path = Place/Search/PlaceSearchRequest.swift; sourceTree = "<group>"; };
 		E4AAB73B1E3ECC6A001EB362 /* YelpPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpPlace.swift; path = Place/Search/Yelp/YelpPlace.swift; sourceTree = "<group>"; };
 		E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpPlaceSearch.swift; path = Place/Search/Yelp/YelpPlaceSearch.swift; sourceTree = "<group>"; };
@@ -298,24 +292,6 @@
 				7E93C733ACEB26E3D0C76266 /* Pods_Closr_ClosrUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E4014D301E3B0F4A0077DD6C /* DemoController */ = {
-			isa = PBXGroup;
-			children = (
-				E4AAB72A1E3EC7E6001EB362 /* PlacesTableViewController.swift */,
-				E4014D331E3B0F9F0077DD6C /* View */,
-			);
-			name = DemoController;
-			sourceTree = "<group>";
-		};
-		E4014D331E3B0F9F0077DD6C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E4AAB72C1E3EC7F6001EB362 /* Places.storyboard */,
-				E4AAB72D1E3EC7F6001EB362 /* PlaceTableViewCell.swift */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		E42563021E7190250078E9ED /* Review */ = {
@@ -468,7 +444,6 @@
 		E4713F091E39B4B6004CC166 /* Place */ = {
 			isa = PBXGroup;
 			children = (
-				E4014D301E3B0F4A0077DD6C /* DemoController */,
 				E4E3286C1E3C711200C3003B /* Search */,
 			);
 			name = Place;
@@ -684,7 +659,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4AAB72E1E3EC7F6001EB362 /* Places.storyboard in Resources */,
 				36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */,
 				6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */,
 				36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */,
@@ -847,7 +821,6 @@
 				360856F71E8F2CF800C50FDA /* NearbyEventTableViewCell.swift in Sources */,
 				E4E99E041E7A31F100A10DA7 /* RestaurantListViewController.swift in Sources */,
 				69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */,
-				E4AAB72B1E3EC7E6001EB362 /* PlacesTableViewController.swift in Sources */,
 				E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */,
 				E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */,
 				69BEF7A31E8A114300D33F38 /* EventThumbnailFactory.swift in Sources */,
@@ -857,7 +830,6 @@
 				E477F0071E567DBF00ED7806 /* Reusable.swift in Sources */,
 				E477EFFB1E5668DA00ED7806 /* PromotionCollectionViewCell.swift in Sources */,
 				E477F0091E57305600ED7806 /* TabBarController.swift in Sources */,
-				E4AAB72F1E3EC7F6001EB362 /* PlaceTableViewCell.swift in Sources */,
 				E477EFF91E56652600ED7806 /* PromotionListConstant.swift in Sources */,
 				4CA91CDA1E577C7D00A8F51C /* ProfileViewController.swift in Sources */,
 				E4AAB7431E407E25001EB362 /* ImageLoader.swift in Sources */,

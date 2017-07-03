@@ -43,9 +43,10 @@ class RestaurantListViewController: UIViewController {
     }()
     
     fileprivate lazy var searchBarController: UISearchController = {
-        let searchController                                = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater               = self
-        searchController.dimsBackgroundDuringPresentation   = false
+        let searchController                                    = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater                   = self
+        searchController.dimsBackgroundDuringPresentation       = false
+        searchController.hidesNavigationBarDuringPresentation   = false
         
         return searchController
     }()
@@ -57,15 +58,14 @@ class RestaurantListViewController: UIViewController {
     }
     
     fileprivate var placeSearch: YelpPlaceSearch!
-    
     fileprivate lazy var location: Location = Location()
+    fileprivate var refreshWhenTypingTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         definesPresentationContext = true
         
-        buildSearchItem()
         setupSubviews()
         reloadData()
     }
@@ -78,10 +78,6 @@ class RestaurantListViewController: UIViewController {
         navigationItem.titleView = searchBarController.searchBar
     }
     
-    fileprivate func buildSearchItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: #selector(didSelectSearch))
-    }
-    
     @objc
     fileprivate func reloadData() {
         
@@ -92,12 +88,12 @@ class RestaurantListViewController: UIViewController {
                 // TODO: location error popup
             }
             
-            self.refreshControl.endRefreshing()
+            self.placeSearch = YelpPlaceSearch.foodSearch(with: location)
             
-            let searchRequest = PlaceSearchRequest(center: location.coordinate, radius: CLLocationDistance.defaultRadius, type: YelpAPIConsole.PlaceType.food)
-            self.placeSearch  = YelpPlaceSearch(searchRequest: searchRequest)
-            
-            self.placeSearch.placeNearby { [unowned self] (places, error) in
+            self.placeSearch.fetchPlaces { (places, error) in
+                
+                self.refreshControl.endRefreshing()
+                
                 if let places = places, error == nil {
                     
                     self.restaurants = places
@@ -105,13 +101,6 @@ class RestaurantListViewController: UIViewController {
             }
         }
     }
-    
-    @objc
-    fileprivate func didSelectSearch() {
-        // TODO: bring up search bar
-        navigationItem.titleView?.toggleFadeInOut()
-    }
-    
 }
 
 extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -174,12 +163,42 @@ extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension RestaurantListViewController: UISearchControllerDelegate {
-
+    
 }
 
 extension RestaurantListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
+        guard let searchText = searchController.searchBar.text, searchText.characters.count > 2 else {
+            return
+        }
+        
+        // TODO: generic solution for cities
+        
+        placeSearch.searchRequest.keyword = searchText
+        
+        refreshTimer()
+    }
+    
+    fileprivate func refreshTimer() {
+        refreshWhenTypingTimer?.invalidate()
+        refreshWhenTypingTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(startSearching), userInfo: nil, repeats: false)
+    }
+    
+    @objc
+    fileprivate func startSearching() {
+        
+        refreshControl.beginRefreshing()
+        
+        placeSearch.fetchPlaces { (places, error) in
+            
+            self.refreshControl.endRefreshing()
+            
+            if let places = places, error == nil {
+                
+                self.restaurants = places
+            }
+        }
     }
 }
 

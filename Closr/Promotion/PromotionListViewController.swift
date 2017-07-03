@@ -102,7 +102,7 @@ class PromotionListViewController: UIViewController {
             let searchRequest = PlaceSearchRequest(center: location.coordinate, radius: CLLocationDistance.defaultRadius, type: YelpAPIConsole.PlaceType.food)
             self.placeSearch  = YelpPlaceSearch(searchRequest: searchRequest)
             
-            self.placeSearch.placeNearby { [unowned self] (places, error) in
+            self.placeSearch.fetchPlaces { [unowned self] (places, error) in
                 if let places = places, error == nil {
                     
                     self.promotions = places.map { Promotion(resturantID: $0.placeID, resturantName: $0.name, distance: $0.distance?.readableDescription, imageURL: $0.imageURL, startDate: nil, endDate: nil, discount: "30%", price: nil, currency: nil, quantity: nil, item: nil) }

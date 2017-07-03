@@ -10,12 +10,12 @@ import Foundation
 import CoreLocation
 
 class PlaceSearchRequest {
-    var center: CLLocationCoordinate2D
-    var radius: CLLocationDistance
-    var type: String
-    var keyword: String? 
+    var center: CLLocationCoordinate2D  = kCLLocationCoordinate2DInvalid
+    var radius: CLLocationDistance      = CLLocationDistanceMax
+    var type: String                    = ""
+    var keyword: String                 = ""
     
-    init(center: CLLocationCoordinate2D, radius: CLLocationDistance, type: String, keyword: String? = nil) {
+    init(center: CLLocationCoordinate2D, radius: CLLocationDistance, type: String, keyword: String = "") {
         self.center     = center
         self.radius     = radius
         self.type       = type
