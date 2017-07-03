@@ -11,14 +11,15 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 import SwiftyJSON
+import CoreLocation
 
 struct YelpAPIConsole {
     
     static let accessTokenUserDefaultsKey = "yelp_access_token_user_defaults_key"
     
     struct Credentials {
-        static let appID        = "28TH0TYk_wx9cE3sBOHtoQ"
-        static let secret       = "Xx0rLcJFqOYswyQ5F6sEz89jAKC6BLSeSqXw5S7IPgE0JBIVPHSlHsCfs8eGLB0N"
+        static let appID        = "nG3Rf_t32eiAg3EHB8Jszg"
+        static let secret       = "TFdGk5pqErGu6jwNb182mduLwxnmvz0l2cNPSLWTxBJsCatf6yuNfi0z6FT7PGFe"
         static let authorizeURL = "https://api.yelp.com/oauth2/token"
     }
     
@@ -80,7 +81,7 @@ class YelpPlaceSearch {
         self.searchRequest = searchRequest
     }
     
-    func placeNearby(completion: PlacesHandler?) {
+    func fetchPlaces(completion: PlacesHandler?) {
         
         if isFetching {
             return
@@ -88,7 +89,7 @@ class YelpPlaceSearch {
         
         places.removeAll()
         
-        placeNearby(withOffset: 0, completion: completion)
+        placesBySearch(withOffset: 0, completion: completion)
     }
     
     func nextPage(completion: PlacesHandler?) {
@@ -101,22 +102,31 @@ class YelpPlaceSearch {
             return
         }
         
-        placeNearby(withOffset: places.count, completion: completion)
+        placesBySearch(withOffset: places.count, completion: completion)
     }
     
     func fetch(placeID: String, completion: PlaceDetailHandler?) {
         authorizedFetchRequest(placeID: placeID, completion: completion)
     }
     
-    fileprivate func placeNearby(withOffset offset: Int, completion: PlacesHandler?) {
-        var params: [String: Any] = [YelpAPIConsole.Field.offset: offset,
-                                     YelpAPIConsole.Field.category: searchRequest.type,
-                                     YelpAPIConsole.Field.latitude: searchRequest.center.latitude,
-                                     YelpAPIConsole.Field.longitude: searchRequest.center.longitude,
-                                     YelpAPIConsole.Field.radius: searchRequest.radius]
+    fileprivate func placesBySearch(withOffset offset: Int, completion: PlacesHandler?) {
+        var params: [String: Any] = [YelpAPIConsole.Field.offset: offset]
         
-        if let keyword = searchRequest.keyword {
-            params[YelpAPIConsole.Field.term] = keyword
+        if !searchRequest.type.isEmpty {
+            params[YelpAPIConsole.Field.category] = searchRequest.type
+        }
+        
+        if CLLocationCoordinate2DIsValid(searchRequest.center) {
+            params[YelpAPIConsole.Field.latitude] = searchRequest.center.latitude
+            params[YelpAPIConsole.Field.longitude] = searchRequest.center.longitude
+        }
+        
+        if searchRequest.radius != CLLocationDistanceMax {
+            params[YelpAPIConsole.Field.radius] = searchRequest.radius
+        }
+        
+        if !searchRequest.keyword.isEmpty {
+            params[YelpAPIConsole.Field.term] = searchRequest.keyword
         }
         
         isFetching = true
@@ -259,5 +269,13 @@ class YelpPlaceSearch {
     class func store(token: String) {
         UserDefaults.standard .setValue(token, forKey: YelpAPIConsole.accessTokenUserDefaultsKey)
     }
-    
+}
+
+extension YelpPlaceSearch {
+    class func foodSearch(with location: CLLocation) -> YelpPlaceSearch {
+        
+        let searchRequest = PlaceSearchRequest(center: location.coordinate, radius: CLLocationDistance.defaultRadius, type: YelpAPIConsole.PlaceType.food)
+        
+        return YelpPlaceSearch(searchRequest: searchRequest)
+    }
 }

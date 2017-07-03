@@ -42,6 +42,15 @@ class RestaurantListViewController: UIViewController {
         return refreshControl
     }()
     
+    fileprivate lazy var searchBarController: UISearchController = {
+        let searchController                                    = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater                   = self
+        searchController.dimsBackgroundDuringPresentation       = false
+        searchController.hidesNavigationBarDuringPresentation   = false
+        
+        return searchController
+    }()
+    
     fileprivate var restaurants = [YelpPlace]() {
         didSet {
             tableView.reloadData()
@@ -49,19 +58,24 @@ class RestaurantListViewController: UIViewController {
     }
     
     fileprivate var placeSearch: YelpPlaceSearch!
-    
     fileprivate lazy var location: Location = Location()
+    fileprivate var refreshWhenTypingTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        definesPresentationContext = true
+        
+        setupSubviews()
+        reloadData()
+    }
+    
+    fileprivate func setupSubviews() {
         view.addSubview(tableView)
-        
         tableView.addSubview(refreshControl)
-        
         tableView <- Edges()
         
-        reloadData()
+        navigationItem.titleView = searchBarController.searchBar
     }
     
     @objc
@@ -74,12 +88,12 @@ class RestaurantListViewController: UIViewController {
                 // TODO: location error popup
             }
             
-            self.refreshControl.endRefreshing()
+            self.placeSearch = YelpPlaceSearch.foodSearch(with: location)
             
-            let searchRequest = PlaceSearchRequest(center: location.coordinate, radius: CLLocationDistance.defaultRadius, type: YelpAPIConsole.PlaceType.food)
-            self.placeSearch  = YelpPlaceSearch(searchRequest: searchRequest)
-            
-            self.placeSearch.placeNearby { [unowned self] (places, error) in
+            self.placeSearch.fetchPlaces { (places, error) in
+                
+                self.refreshControl.endRefreshing()
+                
                 if let places = places, error == nil {
                     
                     self.restaurants = places
@@ -87,7 +101,6 @@ class RestaurantListViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -149,5 +162,43 @@ extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
+extension RestaurantListViewController: UISearchControllerDelegate {
+    
+}
 
+extension RestaurantListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        guard let searchText = searchController.searchBar.text, searchText.characters.count > 2 else {
+            return
+        }
+        
+        // TODO: generic solution for cities
+        
+        placeSearch.searchRequest.keyword = searchText
+        
+        refreshTimer()
+    }
+    
+    fileprivate func refreshTimer() {
+        refreshWhenTypingTimer?.invalidate()
+        refreshWhenTypingTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(startSearching), userInfo: nil, repeats: false)
+    }
+    
+    @objc
+    fileprivate func startSearching() {
+        
+        refreshControl.beginRefreshing()
+        
+        placeSearch.fetchPlaces { (places, error) in
+            
+            self.refreshControl.endRefreshing()
+            
+            if let places = places, error == nil {
+                
+                self.restaurants = places
+            }
+        }
+    }
+}
 

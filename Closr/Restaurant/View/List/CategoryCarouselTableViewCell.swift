@@ -48,8 +48,8 @@ class CategoryCarouselTableViewCell: UITableViewCell, Reusable {
     fileprivate lazy var collectionView: UICollectionView = {
         let layout                      = UICollectionViewFlowLayout()
         layout.scrollDirection          = .horizontal
-        layout.itemSize                 = RestaurantListConstant.Category.cellSize
-        layout.minimumInteritemSpacing  = RestaurantListConstant.Category.lineSpace
+        layout.itemSize                 = CategoryCollectionViewCell.preferredCellSize
+        layout.minimumInteritemSpacing  = CategoryCollectionViewCell.preferredLineSpace
         
         let collectionView                              = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource                       = self
@@ -69,7 +69,7 @@ class CategoryCarouselTableViewCell: UITableViewCell, Reusable {
         
         contentView.addSubview(collectionView)
         
-        let cellHeight = RestaurantListConstant.Category.cellSize.height + 2*RestaurantListConstant.Category.lineSpace
+        let cellHeight = CategoryCollectionViewCell.preferredCellSize.height + 2*CategoryCollectionViewCell.preferredLineSpace
         
         collectionView <- [
             Edges(),
