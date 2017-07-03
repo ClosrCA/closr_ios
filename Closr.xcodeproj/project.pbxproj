@@ -75,7 +75,6 @@
 		E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */; };
 		E4AAB7431E407E25001EB362 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AAB7421E407E25001EB362 /* ImageLoader.swift */; };
 		E4E99DFE1E7A31B400A10DA7 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E99DFD1E7A31B400A10DA7 /* RestaurantTableViewCell.swift */; };
-		E4E99E001E7A31C500A10DA7 /* RestaurantListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E99DFF1E7A31C500A10DA7 /* RestaurantListConstant.swift */; };
 		E4E99E041E7A31F100A10DA7 /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E99E031E7A31F100A10DA7 /* RestaurantListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -180,7 +179,6 @@
 		E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpPlaceSearch.swift; path = Place/Search/Yelp/YelpPlaceSearch.swift; sourceTree = "<group>"; };
 		E4AAB7421E407E25001EB362 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = Image/ImageLoader.swift; sourceTree = "<group>"; };
 		E4E99DFD1E7A31B400A10DA7 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
-		E4E99DFF1E7A31C500A10DA7 /* RestaurantListConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantListConstant.swift; path = ../RestaurantListConstant.swift; sourceTree = "<group>"; };
 		E4E99E031E7A31F100A10DA7 /* RestaurantListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantListViewController.swift; path = Restaurant/RestaurantListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -558,7 +556,6 @@
 		E4E99DFC1E7A31B400A10DA7 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				E4E99DFF1E7A31C500A10DA7 /* RestaurantListConstant.swift */,
 				E4E99DFD1E7A31B400A10DA7 /* RestaurantTableViewCell.swift */,
 				69BA885A1EDA460B0039E237 /* RestaurantListSectionHeader.swift */,
 				69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */,
@@ -829,7 +826,6 @@
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
 				E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */,
 				E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */,
-				E4E99E001E7A31C500A10DA7 /* RestaurantListConstant.swift in Sources */,
 				360857011E8F2E5100C50FDA /* EventListSectionHeader.swift in Sources */,
 				691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */,
 				E42562FF1E7108230078E9ED /* RestaurantDetailEventTitleView.swift in Sources */,

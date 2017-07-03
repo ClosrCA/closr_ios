@@ -12,10 +12,20 @@ import EasyPeasy
 
 class RestaurantTableViewCell: UITableViewCell, Reusable {
     
+    struct Constants {
+        static let imageSize: CGSize                        = CGSize(width: 112, height: 144)
+        static let reviewSize: CGSize                       = CGSize(width: 82, height: 14)
+        static let imageCornerRadius: CGFloat               = 10
+        static let imagePadding: CGFloat                    = 15
+        static let restaurantNameTopPadding: CGFloat        = 20
+        static let contentHorizontalPadding: CGFloat        = 13
+        static let contentVerticalPadding: CGFloat          = 8
+    }
+    
     fileprivate lazy var restaurantImageView: UIImageView = {
         let imageView                   = UIImageView()
         imageView.backgroundColor       = UIColor.lightGray
-        imageView.layer.cornerRadius    = RestaurantListConstant.Restaurant.imageCornerRadius
+        imageView.layer.cornerRadius    = Constants.imageCornerRadius
         imageView.contentMode           = .scaleAspectFill
         imageView.clipsToBounds         = true
         
@@ -84,46 +94,46 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     fileprivate func createConstraints() {
         
         restaurantImageView <- [
-            Size(RestaurantListConstant.Restaurant.imageSize),
-            Top(RestaurantListConstant.Restaurant.imagePadding),
-            Leading(RestaurantListConstant.Restaurant.imagePadding),
-            Bottom(RestaurantListConstant.Restaurant.imagePadding)
+            Size(Constants.imageSize),
+            Top(Constants.imagePadding),
+            Leading(Constants.imagePadding),
+            Bottom(Constants.imagePadding)
         ]
         
         nameLabel <- [
-            Top(RestaurantListConstant.Restaurant.restaurantNameTopPadding),
-            Leading(RestaurantListConstant.Restaurant.contentHorizontalPadding).to(restaurantImageView),
-            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding)
+            Top(Constants.restaurantNameTopPadding),
+            Leading(Constants.contentHorizontalPadding).to(restaurantImageView),
+            Trailing(<=Constants.contentHorizontalPadding)
         ]
         
         categoryLabel <- [
             Leading().to(nameLabel, .leading),
-            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding),
-            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(nameLabel)
+            Trailing(<=Constants.contentHorizontalPadding),
+            Top(Constants.contentVerticalPadding).to(nameLabel)
         ]
         
         addressLabel <- [
-            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(categoryLabel),
+            Top(Constants.contentVerticalPadding).to(categoryLabel),
             Leading().to(nameLabel, .leading),
-            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding)
+            Trailing(<=Constants.contentHorizontalPadding)
         ]
         
         reviewImageView <- [
-            Size(RestaurantListConstant.Restaurant.reviewSize),
+            Size(Constants.reviewSize),
             Leading().to(nameLabel, .leading),
-            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(addressLabel)
+            Top(Constants.contentVerticalPadding).to(addressLabel)
         ]
         
         priceLabel <- [
-            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(reviewImageView),
+            Top(Constants.contentVerticalPadding).to(reviewImageView),
             Leading().to(nameLabel, .leading),
-            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding)
+            Trailing(<=Constants.contentHorizontalPadding)
         ]
         
         distanceLabel <- [
-            Top(RestaurantListConstant.Restaurant.contentVerticalPadding).to(priceLabel),
+            Top(Constants.contentVerticalPadding).to(priceLabel),
             Leading().to(nameLabel,.leading),
-            Trailing(<=RestaurantListConstant.Restaurant.contentHorizontalPadding)
+            Trailing(<=Constants.contentHorizontalPadding)
         ]
     }
 }

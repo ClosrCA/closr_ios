@@ -11,6 +11,20 @@ import EasyPeasy
 
 class CategoryCollectionViewCell: UICollectionViewCell, Reusable {
     
+    struct Constants {
+        static let lineSpace: CGFloat   = 13
+        static let imageSize: CGSize    = CGSize(width: 123, height: 71)
+        static let cellSize: CGSize     = CGSize(width: 143, height: 91)
+    }
+    
+    static var preferredCellSize: CGSize {
+        return Constants.cellSize
+    }
+    
+    static var preferredLineSpace: CGFloat {
+        return Constants.lineSpace
+    }
+    
     fileprivate lazy var shadowBackgroundImageView: UIImageView = {
         let background = UIImage(named: "category_background")
         
@@ -57,13 +71,13 @@ class CategoryCollectionViewCell: UICollectionViewCell, Reusable {
     
     fileprivate func createConstraints() {
         categoryImageView <- [
-            Size(RestaurantListConstant.Category.imageSize),
+            Size(Constants.imageSize),
             Top(),
             Trailing()
         ]
         
         shadowBackgroundImageView <- [
-            Size(RestaurantListConstant.Category.imageSize),
+            Size(Constants.imageSize),
             Bottom(),
             Leading()
         ]
