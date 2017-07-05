@@ -12,7 +12,7 @@ import AlamofireImage
 
 extension UIImageView {
     
-    func loadImage(URLString: String?, placeholder: UIImage?) {
+    func loadImage(URLString: String?, placeholder: UIImage? = nil) {
         
         self.image = placeholder
         

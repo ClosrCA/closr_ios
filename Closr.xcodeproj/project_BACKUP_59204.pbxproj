@@ -16,6 +16,7 @@
 		360857011E8F2E5100C50FDA /* EventListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */; };
 		361AABCA1F047A340088426D /* JoinEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361AABC91F047A340088426D /* JoinEventListViewController.swift */; };
 		361AABD11F04B00A0088426D /* JoinEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361AABD01F04B00A0088426D /* JoinEventTableViewCell.swift */; };
+		361AABD71F059E730088426D /* JoinEventThumbnailSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361AABD61F059E730088426D /* JoinEventThumbnailSize.swift */; };
 		36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */; };
 		36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B851E7A37B500868A29 /* Assets.xcassets */; };
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
@@ -106,6 +107,7 @@
 		360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListSectionHeader.swift; path = Event/EventListTableView/EventListSectionHeader.swift; sourceTree = "<group>"; };
 		361AABC91F047A340088426D /* JoinEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinEventListViewController.swift; sourceTree = "<group>"; };
 		361AABD01F04B00A0088426D /* JoinEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinEventTableViewCell.swift; sourceTree = "<group>"; };
+		361AABD61F059E730088426D /* JoinEventThumbnailSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinEventThumbnailSize.swift; sourceTree = "<group>"; };
 		36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36D94B851E7A37B500868A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				361AABC91F047A340088426D /* JoinEventListViewController.swift */,
 				361AABD01F04B00A0088426D /* JoinEventTableViewCell.swift */,
+				361AABD61F059E730088426D /* JoinEventThumbnailSize.swift */,
 			);
 			name = JoinEvent;
 			sourceTree = "<group>";
@@ -814,6 +817,11 @@
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
 				E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */,
 				E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */,
+<<<<<<< HEAD
+				361AABD71F059E730088426D /* JoinEventThumbnailSize.swift in Sources */,
+				E4E99E001E7A31C500A10DA7 /* RestaurantListConstant.swift in Sources */,
+=======
+>>>>>>> develop
 				360857011E8F2E5100C50FDA /* EventListSectionHeader.swift in Sources */,
 				691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */,
 				E42562FF1E7108230078E9ED /* RestaurantDetailEventTitleView.swift in Sources */,

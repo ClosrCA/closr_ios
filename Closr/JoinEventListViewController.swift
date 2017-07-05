@@ -18,8 +18,7 @@ class JoinEventListViewController: UIViewController {
         tableView.dataSource            = self
         tableView.estimatedRowHeight    = 200
         tableView.rowHeight             = UITableViewAutomaticDimension
-        tableView.sectionHeaderHeight   = EventListConstant.sectionHeaderHeight
-     
+        tableView.separatorStyle        = .none
         
         tableView.register(JoinEventTableViewCell.self, forCellReuseIdentifier: JoinEventTableViewCell.reuseIdentifier)
         return tableView
@@ -57,9 +56,9 @@ extension JoinEventListViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
-         let cell = tableView.dequeueReusableCell(withIdentifier: JoinEventTableViewCell.reuseIdentifier,for:indexPath) as! JoinEventTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: JoinEventTableViewCell.reuseIdentifier,for:indexPath) as! JoinEventTableViewCell
         
-             return cell
+        return cell
     }
     
       

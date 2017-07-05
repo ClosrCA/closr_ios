@@ -11,191 +11,160 @@ import EasyPeasy
 
 
 class JoinEventTableViewCell: UITableViewCell, Reusable{
-
-    var isCurrent: Bool = true {
-        didSet {
-           // collectionView.backgroundColor = isCurrent ? AppColor.brandBackground : UIColor.white
-        }
+    
+    struct Constants {
+        static let horizontalPadding: CGFloat   = 8
+        static let verticalPadding: CGFloat     = 13
+        
+        static let avatarSize: CGSize               = CGSize(width: 55, height: 55)
+        static let avatarVerticalPadding: CGFloat   = 9
+        static let avatarLeftPadding: CGFloat       = 13
+        
+        static let titleTopPadding: CGFloat     = 12
+        static let titleLeftPadding: CGFloat    = 18
+        static let titleBottomPadding: CGFloat  = 6
+        
+        static let restaurantNameTopPadding: CGFloat = 6
+        
+        static let iconSize: CGSize                     = CGSize(width: 15, height: 15)
+        static let iconRightPaddingToContainer: CGFloat = 64
+        static let iconVerticalPadding: CGFloat         = 14
+        static let iconVerticalSpace: CGFloat           = 16
+        
+        static let timeLeftPadding: CGFloat = 8
     }
     
-    fileprivate lazy var cellView: UIView = {
+    fileprivate lazy var containerView: UIView = {
     
-        let view = UIView();
+        let view = UIView()
         
-        view.backgroundColor = UIColor.white
-        view.layer.borderColor = AppColor.brand.cgColor
-        view.layer.borderWidth = 1
+        view.backgroundColor    = UIColor.white
+        view.layer.borderColor  = AppColor.secondary.cgColor
+        view.layer.cornerRadius = 9.0
+        view.layer.borderWidth  = 1
         
         return view;
     
     }()
     
-    fileprivate lazy var eventTitleLabel: UILabel = UILabel.makeLabel(font: AppFont.joinEventlargeTitle, textColor: AppColor.joinEventText, text: "Event Title")
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.title, text: "Event Title")
     
-    
-    fileprivate lazy var eventRestaurantLabel: UILabel = UILabel.makeLabel(font: AppFont.joinEventSmallText, textColor: AppColor.joinEventText, text: "Restaurant Name")
+    fileprivate lazy var restaurantLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title, text: "Restaurant Name")
 
-    fileprivate lazy var eventDistanceLabel: UILabel = UILabel.makeLabel(font: AppFont.joinEventSmallText, textColor: AppColor.joinEventText, text: "10.5km")
+    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title, text: "10.5km")
 
-    fileprivate lazy var eventTimeRemainingLabel: UILabel = UILabel.makeLabel(font: AppFont.joinEventSmallText, textColor: AppColor.joinEventText, text: "25 min")
+    fileprivate lazy var timeLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title, text: "25 min")
 
-    fileprivate lazy var portraitthumbnailContainer: UIView = {
+    fileprivate lazy var avatarImageView: UIImageView = {
         
-        let view                = UIView();
+        let imageView                   = UIImageView(image: UIImage(named: "user"))
+        imageView.contentMode           = .center
+        imageView.layer.cornerRadius    = Constants.avatarSize.height / 2
+        imageView.clipsToBounds         = true
         
-        view.layer.borderColor  = AppColor.brand.cgColor
-        //view.layer.borderWidth  = 2
-        view.clipsToBounds      = true
-        view.backgroundColor = UIColor.blue
-        
-        return view
+        return imageView
     }()
 
-    
-    fileprivate lazy var peoplethumbnailContainer: UIView = {
+    // TODO: generator
+    fileprivate lazy var participantsContainer: UIView = {
         
         let view                = UIView()
-       
-        view.layer.borderColor  = AppColor.brand.cgColor
-       // view.layer.borderWidth  = 2
-        view.clipsToBounds      = true
-        view.backgroundColor = UIColor.brown
+        view.backgroundColor    = UIColor.brown
         
         return view
     }()
     
-    fileprivate lazy var timethumbnailContainer: UIView = {
-        
-        let view                = UIView()
+    fileprivate lazy var timeImageView: UIImageView = UIImageView(image: UIImage(named: "time_icon"))
     
-        view.layer.borderColor  = AppColor.brand.cgColor
-      //  view.layer.borderWidth  = 2
-        view.clipsToBounds      = true
-        view.backgroundColor = UIColor.black
-        
-        return view
-    }()
-    
-
-    fileprivate lazy var distancethumbnailContainer: UIView = {
-        
-        let view                = UIView()
-        
-        view.layer.borderColor  = AppColor.brand.cgColor
-      //  view.layer.borderWidth  = 2
-        view.clipsToBounds      = true
-        view.backgroundColor = UIColor.green
-        
-        return view
-    }()
-    
-
-    
+    fileprivate lazy var distanceImageView: UIImageView = UIImageView(image: UIImage(named: "distance_icon"))
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        selectionStyle = .none
         
-        contentView.addSubview(cellView);
+        setupSubviews()
         
-        
-        cellView.addSubview(eventTitleLabel);
-        cellView.addSubview(eventRestaurantLabel);
-        cellView.addSubview(eventDistanceLabel);
-        cellView.addSubview(eventTimeRemainingLabel);
-        
-        cellView.addSubview(portraitthumbnailContainer);
-        cellView.addSubview(peoplethumbnailContainer);
-        cellView.addSubview(timethumbnailContainer);
-        cellView.addSubview(distancethumbnailContainer);
-        
-        addConstraint2init();
-       
+        createConstraints();
     }
-    
-    func addConstraint2init() {
-        
-        cellView <- [
-        
-            Left(cellViewConstants.labelLeftPadding).to(contentView),
-            Right(cellViewConstants.labelRightPadding).to(contentView),
-            Top(cellViewConstants.labelTopPadding).to(contentView),
-            Bottom(cellViewConstants.labelBottomPadding).to(contentView)
-        
-        ]
-        
-        portraitthumbnailContainer <- [
-            
-            CenterY(),
-            Left(PortraitConstants.leftPadding).to(cellView),
-            Top(PortraitConstants.topPadding).to(cellView),
-            Height(PortraitConstants.thumbnailHeight),
-            Width(PortraitConstants.thumbnailWidth)
-            
-        ]
-        
-        eventTitleLabel <- [
-        
-            Top(eventTitleLabelConstants.labelTopPadding).to(cellView),
-            Left(eventTitleLabelConstants.labelLeftPadding).to(portraitthumbnailContainer)
-            
-        ]
-        
-        peoplethumbnailContainer <- [
-        
-            Top(PeopleConstants.topPadding).to(eventTitleLabel),
-            Left(PeopleConstants.leftPadding).to(portraitthumbnailContainer),
-            Height(PeopleConstants.thumbnailHeight),
-            Width(PeopleConstants.thumbnailWidth)
-
-        
-        ]
-        
-        eventRestaurantLabel <- [
-        
-            Top(eventRestaurantLabelConstants.labelTopPadding).to(peoplethumbnailContainer),
-            Left(eventRestaurantLabelConstants.labelLeftPadding).to(portraitthumbnailContainer),
-            Bottom(eventDistanceLabelConstants.labelBottomPadding).to(cellView)
-        
-        ]
-        
-        timethumbnailContainer <- [
-        
-            Top(timeConstants.topPadding).to(cellView),
-            Left(timeConstants.leftPadding).to(cellView),
-            Height(timeConstants.thumbnailHeight),
-            Width(timeConstants.thumbnailWidth)
-        
-        ]
-        
-        distancethumbnailContainer <- [
-        
-            Bottom(distanceConstants.bottomPadding).to(cellView),
-            Left(distanceConstants.leftPadding).to(cellView),
-            Height(distanceConstants.thumbnailHeight),
-            Width(distanceConstants.thumbnailWidth)
-        
-        ]
-        
-        eventTimeRemainingLabel <- [
-        
-            Top(eventTimeRemainingLabelConstants.labelTopPadding).to(cellView),
-            Left(eventTimeRemainingLabelConstants.labelLeftPadding).to(timethumbnailContainer)
-        
-        ]
-        
-        eventDistanceLabel <- [
-        
-            Bottom(eventDistanceLabelConstants.labelBottomPadding).to(cellView),
-            Left(eventDistanceLabelConstants.labelLeftPadding).to(distancethumbnailContainer)
-        
-        ]
-        
-    }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update(with event: Event) {
+        titleLabel.text = event.title
+        avatarImageView.loadImage(URLString: event.author?.avatar)
+        restaurantLabel.text = event.restaurant.name
+    }
+    
+    fileprivate func setupSubviews() {
+        contentView.addSubview(containerView);
+        
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(restaurantLabel)
+        containerView.addSubview(distanceLabel)
+        containerView.addSubview(timeLabel)
+        containerView.addSubview(avatarImageView)
+        containerView.addSubview(participantsContainer)
+        containerView.addSubview(timeImageView)
+        containerView.addSubview(distanceImageView)
+    }
+    
+    fileprivate func createConstraints() {
+        
+        containerView <- [
+            Leading(Constants.horizontalPadding),
+            Trailing(Constants.horizontalPadding),
+            Top(Constants.verticalPadding),
+            Bottom(Constants.verticalPadding)
+        ]
+        
+        avatarImageView <- [
+            Size(Constants.avatarSize),
+            Top(Constants.avatarVerticalPadding),
+            Bottom(Constants.avatarVerticalPadding),
+            Leading(Constants.avatarLeftPadding)
+        ]
+        
+        titleLabel <- [
+            Top(Constants.titleTopPadding),
+            Leading(Constants.titleLeftPadding).to(avatarImageView),
+            Bottom(Constants.titleBottomPadding).to(participantsContainer),
+            Trailing(<=0).to(timeImageView)
+        ]
+        
+        participantsContainer <- [
+            Leading().to(titleLabel, .leading),
+            Size(CGSize(width: 50, height: 10))
+        ]
+        
+        restaurantLabel <- [
+            Top(Constants.restaurantNameTopPadding).to(participantsContainer),
+            Leading().to(titleLabel, .leading)
+        ]
+        
+        timeImageView <- [
+            Size(Constants.iconSize),
+            Top(Constants.iconVerticalPadding),
+            Trailing(Constants.iconRightPaddingToContainer)
+        ]
+        
+        distanceImageView <- [
+            Size(Constants.iconSize),
+            Bottom(Constants.iconVerticalPadding),
+            Trailing(Constants.iconRightPaddingToContainer)
+        ]
+        
+        timeLabel <- [
+            Leading(Constants.timeLeftPadding).to(timeImageView),
+            CenterY().to(timeImageView)
+        ]
+        
+        distanceLabel <- [
+            Leading().to(timeLabel, .leading),
+            CenterY().to(distanceImageView)
+        ]
     }
 }
 

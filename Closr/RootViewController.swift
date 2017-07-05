@@ -11,14 +11,6 @@ import CoreLocation
 
 class RootViewController: UIViewController {
     
-    fileprivate lazy var demoTableViewController: UINavigationController = {
-        let storyboard = UIStoryboard(name: "Places", bundle: nil)
-        
-        let controller = storyboard.instantiateViewController(withIdentifier: "PlaceController") as! PlacesTableViewController
-        
-        return UINavigationController(rootViewController: controller)
-    }()
-    
     fileprivate var loginController: LoginViewController {
         let loginController         = LoginViewController()
         loginController.delegate    = self

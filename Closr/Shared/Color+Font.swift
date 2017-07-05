@@ -9,8 +9,10 @@
 import UIKit
 
 struct AppColor {
-    static let brand        = UIColor(red:232 / 255.0, green:111 / 255.0, blue:1 / 255.0,  alpha:1)
+    static let brand        = UIColor(red:232 / 255, green:111 / 255, blue:1 / 255,  alpha:1)
     static let secondary    = UIColor(red: 243 / 255, green: 186 / 255, blue: 177 / 255, alpha: 1.0)
+    
+    static let border       = UIColor(red: 149 / 255, green: 152 / 255, blue: 154 / 255, alpha: 0.2)
     
     static let title            = UIColor(red: 89 / 255, green: 89 / 255, blue: 87 / 255, alpha: 1.0)
     static let greyText         = UIColor(red: 149 / 255, green: 149 / 255, blue: 149 / 255, alpha: 1.0)
@@ -22,8 +24,6 @@ struct AppColor {
     
     static let greyBackground = UIColor(red: 159 / 255, green: 159 / 255, blue: 160 / 255, alpha: 0.56)
     static let brandBackground = UIColor(red: 86 / 255, green: 34 / 255, blue: 26 / 255, alpha: 0.1)
-    
-    static let joinEventText = UIColor(red: 0 / 255, green: 3 / 255, blue: 5 / 255, alpha: 1.0)
 }
 
 struct AppFont {
@@ -85,30 +85,5 @@ struct AppFont {
         return UIFont.systemFont(ofSize: 13, weight: UIFontWeightLight)
     }()
     
-    static let joinEventSmallText: UIFont = {
-       
-        return UIFont.systemFont(ofSize: 10, weight: UIFontWeightLight)
-    }()
-    
-    static let joinEventlargeTitle: UIFont = {
-       
-        return UIFont.systemFont(ofSize: 16, weight: UIFontWeightLight)
-    }()
-
-
-    
     static let extraSmallText: UIFont = UIFont.systemFont(ofSize: 8, weight: UIFontWeightLight)
-}
-
-extension UIViewController {
-    
-    func transparentNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage     = UIImage()
-    }
-    
-    func defaultNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UINavigationBar.appearance().backgroundImage(for: .default), for: .default)
-        navigationController?.navigationBar.shadowImage     = UINavigationBar.appearance().shadowImage
-    }
 }
