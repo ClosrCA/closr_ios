@@ -21,13 +21,13 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         let promotionController = UINavigationController(rootViewController: PromotionListViewController())
-        promotionController.tabBarItem = UITabBarItem(title: "Promo", image: UIImage(named: "promotion"), tag: Tabs.promotion.rawValue)
+        promotionController.tabBarItem = UITabBarItem(title: "Promotion", image: UIImage(named: "promotion"), tag: Tabs.promotion.rawValue)
         
         let resturantController = UINavigationController(rootViewController: RestaurantListViewController())
-        resturantController.tabBarItem = UITabBarItem(title: "Res", image: UIImage(named: "restaurant"), tag: Tabs.restaurant.rawValue)
+        resturantController.tabBarItem = UITabBarItem(title: "Restaurant", image: UIImage(named: "restaurant"), tag: Tabs.restaurant.rawValue)
         
-        let eventController = UINavigationController(rootViewController: UIViewController())
-        eventController.tabBarItem = UITabBarItem(title: "Events", image: UIImage(named: "event"), tag: Tabs.event.rawValue)
+        let eventController = UINavigationController(rootViewController: JoinEventListViewController())
+        eventController.tabBarItem = UITabBarItem(title: "Event", image: UIImage(named: "event"), tag: Tabs.event.rawValue)
         
         let profileController = UINavigationController(rootViewController: ProfileViewController())
         profileController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: Tabs.profile.rawValue)
