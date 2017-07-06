@@ -9,6 +9,7 @@
 import Foundation
 
 struct Event {
+    var title: String?
     var restaurant: YelpPlace
     var time: String?
     var date: String?
@@ -17,6 +18,8 @@ struct Event {
     var maxAge: Double?
     var numberOfPeople: Int = 3
     var gender: String?
+    var author: User?
+    var participants = [User]()
     
     var rawDate: Date? {
         guard let time = time, let date = date else {

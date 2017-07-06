@@ -52,8 +52,6 @@ class PromotionListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = ""
         
         buildNavigationItems()
         

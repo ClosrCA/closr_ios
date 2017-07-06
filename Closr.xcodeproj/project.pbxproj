@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		301494944B454DD413B1D6D0 /* Pods_ClosrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */; };
-		360856F41E8F2C6900C50FDA /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F31E8F2C6900C50FDA /* EventListViewController.swift */; };
+		360856F41E8F2C6900C50FDA /* ProfileEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F31E8F2C6900C50FDA /* ProfileEventListViewController.swift */; };
 		360856F71E8F2CF800C50FDA /* NearbyEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F61E8F2CF800C50FDA /* NearbyEventTableViewCell.swift */; };
 		360856FA1E8F2D7E00C50FDA /* EventListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F91E8F2D7E00C50FDA /* EventListConstant.swift */; };
 		360856FC1E8F2DB400C50FDA /* EventListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856FB1E8F2DB400C50FDA /* EventListFont.swift */; };
 		360856FE1E8F2DE100C50FDA /* EventListColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856FD1E8F2DE100C50FDA /* EventListColor.swift */; };
 		360857011E8F2E5100C50FDA /* EventListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */; };
+		361AABCA1F047A340088426D /* JoinEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361AABC91F047A340088426D /* JoinEventListViewController.swift */; };
+		361AABD11F04B00A0088426D /* JoinEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361AABD01F04B00A0088426D /* JoinEventTableViewCell.swift */; };
 		36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */; };
 		36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B851E7A37B500868A29 /* Assets.xcassets */; };
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
@@ -93,12 +95,14 @@
 		2D49278ECCB91E5347BDEBE1 /* Pods-ClosrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Closr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		353B364B06A9A5F276964D4C /* Pods-ClosrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrUITests/Pods-ClosrUITests.release.xcconfig"; sourceTree = "<group>"; };
-		360856F31E8F2C6900C50FDA /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListViewController.swift; path = Event/EventListViewController.swift; sourceTree = "<group>"; };
+		360856F31E8F2C6900C50FDA /* ProfileEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileEventListViewController.swift; path = Event/ProfileEventListViewController.swift; sourceTree = "<group>"; };
 		360856F61E8F2CF800C50FDA /* NearbyEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearbyEventTableViewCell.swift; path = Event/EventListTableView/NearbyEventTableViewCell.swift; sourceTree = "<group>"; };
 		360856F91E8F2D7E00C50FDA /* EventListConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListConstant.swift; path = Event/EventListTableView/EventListConstant.swift; sourceTree = "<group>"; };
 		360856FB1E8F2DB400C50FDA /* EventListFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListFont.swift; path = Event/EventListTableView/EventListFont.swift; sourceTree = "<group>"; };
 		360856FD1E8F2DE100C50FDA /* EventListColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListColor.swift; path = Event/EventListTableView/EventListColor.swift; sourceTree = "<group>"; };
 		360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListSectionHeader.swift; path = Event/EventListTableView/EventListSectionHeader.swift; sourceTree = "<group>"; };
+		361AABC91F047A340088426D /* JoinEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinEventListViewController.swift; sourceTree = "<group>"; };
+		361AABD01F04B00A0088426D /* JoinEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinEventTableViewCell.swift; sourceTree = "<group>"; };
 		36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36D94B851E7A37B500868A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +219,15 @@
 				360856FD1E8F2DE100C50FDA /* EventListColor.swift */,
 			);
 			name = EventListParameter;
+			sourceTree = "<group>";
+		};
+		361AABCD1F048CB30088426D /* JoinEvent */ = {
+			isa = PBXGroup;
+			children = (
+				361AABC91F047A340088426D /* JoinEventListViewController.swift */,
+				361AABD01F04B00A0088426D /* JoinEventTableViewCell.swift */,
+			);
+			name = JoinEvent;
 			sourceTree = "<group>";
 		};
 		406E760EAE7372BF6ED1E497 /* Pods */ = {
@@ -454,8 +467,9 @@
 		E4713F141E39B747004CC166 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				361AABCD1F048CB30088426D /* JoinEvent */,
 				E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */,
-				360856F31E8F2C6900C50FDA /* EventListViewController.swift */,
+				360856F31E8F2C6900C50FDA /* ProfileEventListViewController.swift */,
 				69F13CAA1E82B2E000E3483F /* Model */,
 				E458B1DA1E6701B900EE7736 /* View */,
 			);
@@ -779,7 +793,7 @@
 				E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */,
 				E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */,
 				E42563041E7190420078E9ED /* ReviewHelper.swift in Sources */,
-				360856F41E8F2C6900C50FDA /* EventListViewController.swift in Sources */,
+				360856F41E8F2C6900C50FDA /* ProfileEventListViewController.swift in Sources */,
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
 				E42562F91E703CD10078E9ED /* RestaurantDetailDescriptionCell.swift in Sources */,
 				360856FE1E8F2DE100C50FDA /* EventListColor.swift in Sources */,
@@ -796,6 +810,7 @@
 				E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */,
 				E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */,
 				4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */,
+				361AABCA1F047A340088426D /* JoinEventListViewController.swift in Sources */,
 				E46ECDFD1E51313C00785BE6 /* String+Format.swift in Sources */,
 				E477F0181E5DDBB400ED7806 /* ImageCarouselCell.swift in Sources */,
 				E477F00D1E5DC74D00ED7806 /* Location.swift in Sources */,
@@ -811,6 +826,7 @@
 				E4E99E041E7A31F100A10DA7 /* RestaurantListViewController.swift in Sources */,
 				69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */,
 				E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */,
+				361AABD11F04B00A0088426D /* JoinEventTableViewCell.swift in Sources */,
 				E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */,
 				69BEF7A31E8A114300D33F38 /* EventThumbnailFactory.swift in Sources */,
 				69E750821E86122A00E7EFB0 /* SegmentControlTableViewCell.swift in Sources */,

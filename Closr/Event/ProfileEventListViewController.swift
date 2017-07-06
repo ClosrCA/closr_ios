@@ -9,7 +9,7 @@
 import UIKit
 import EasyPeasy
 
-class EventListViewController: UIViewController {
+class ProfileEventListViewController: UIViewController {
     
     fileprivate lazy var tableView: UITableView = {
         let tableView                   = UITableView()
@@ -39,9 +39,9 @@ class EventListViewController: UIViewController {
     
 }
 
-extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
+extension ProfileEventListViewController: UITableViewDelegate, UITableViewDataSource {
     
-    enum EventListSection: Int {
+    enum ProfileEventListSection: Int {
         case current
         case nearby
         case count
@@ -56,7 +56,7 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return EventListSection.count.rawValue
+        return ProfileEventListSection.count.rawValue
     }
     
     
@@ -64,7 +64,7 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: EventListSectionHeader.reuseIdentifier) as! EventListSectionHeader
         
-        let section = EventListSection(rawValue: section)!
+        let section = ProfileEventListSection(rawValue: section)!
         
         switch section {
         case .current:
@@ -82,7 +82,7 @@ extension EventListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let section = EventListSection(rawValue: indexPath.section)!
+        let section = ProfileEventListSection(rawValue: indexPath.section)!
         
         switch section {
         case .current:
