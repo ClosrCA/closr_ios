@@ -1,5 +1,5 @@
 //
-//  RestaurantDetailImageCell.swift
+//  ImageCarouselViewController.swift
 //  Closr
 //
 //  Created by Tao on 2017-02-22.
@@ -9,17 +9,19 @@
 import UIKit
 import EasyPeasy
 
-protocol RestaurantDetailImageCellDataSource: class {
-    func imageURLStringFor(cell: RestaurantDetailImageCell) -> [String]
+protocol ImageCarouselViewControllerDelegate {
+    func imageURLStringFor(controller: ImageCarouselViewController) -> [String]
 }
 
-class RestaurantDetailImageCell: UITableViewCell, Reusable {
+class ImageCarouselViewController: UIViewController {
 
-    weak var dataSource: RestaurantDetailImageCellDataSource?
+    static let preferredHeight: CGFloat = 176
+    
+    var delegate: ImageCarouselViewControllerDelegate?
     
     func loadImages() {
         collectionView.reloadData()
-        pageControl.numberOfPages = dataSource?.imageURLStringFor(cell: self).count ?? 0
+        pageControl.numberOfPages = delegate?.imageURLStringFor(controller: self).count ?? 0
     }
     
     fileprivate lazy var collectionView: UICollectionView = {
@@ -27,7 +29,7 @@ class RestaurantDetailImageCell: UITableViewCell, Reusable {
         layout.minimumLineSpacing       = 0
         layout.minimumInteritemSpacing  = 0
         layout.scrollDirection          = .horizontal
-        layout.itemSize                 = CGSize(width: Device.screenWidth, height: RestaurantDetailConstant.heroImageHeight)
+        layout.itemSize                 = CGSize(width: Device.screenWidth, height: ImageCarouselViewController.preferredHeight)
         
         let collectionView                                          = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource                                   = self
@@ -48,24 +50,13 @@ class RestaurantDetailImageCell: UITableViewCell, Reusable {
         return pageControl
     }()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        contentView.addSubview(collectionView)
-        contentView.addSubview(pageControl)
+        view.addSubview(collectionView)
+        view.addSubview(pageControl)
         
-        createConstraints()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    fileprivate func createConstraints() {
-        collectionView <- [
-            Edges(),
-            Height(RestaurantDetailConstant.heroImageHeight)
-        ]
+        collectionView <- Edges()
         
         pageControl <- [
             Bottom(),
@@ -76,19 +67,19 @@ class RestaurantDetailImageCell: UITableViewCell, Reusable {
     }
 }
 
-extension RestaurantDetailImageCell: UICollectionViewDataSource {
+extension ImageCarouselViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.imageURLStringFor(cell: self).count ?? 0
+        return delegate?.imageURLStringFor(controller: self).count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCarouselCell.reuseIdentifier, for: indexPath) as! ImageCarouselCell
         
-        if let image = dataSource?.imageURLStringFor(cell: self)[indexPath.item] {
+        if let image = delegate?.imageURLStringFor(controller: self)[indexPath.item] {
             cell.update(imageURLString: image)
         }
         
@@ -96,7 +87,7 @@ extension RestaurantDetailImageCell: UICollectionViewDataSource {
     }
 }
 
-extension RestaurantDetailImageCell: UICollectionViewDelegate {
+extension ImageCarouselViewController: UICollectionViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
         let width = Device.screenWidth

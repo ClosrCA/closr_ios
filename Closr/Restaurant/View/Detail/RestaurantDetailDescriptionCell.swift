@@ -94,55 +94,6 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
     
     fileprivate func createConstraints() {
         
-        nameLabel <- [
-            Leading(),
-            Trailing(),
-            Top(RestaurantDetailConstant.restaurantNameTopPadding)
-        ]
         
-        reviewBackground <- [
-            Top(RestaurantDetailConstant.reviewTopPadding).to(nameLabel, .bottom),
-            CenterX()
-        ]
-        
-        cuisineLabel <- [
-            Leading(),
-            Trailing(),
-            Top(RestaurantDetailConstant.cuisineTopPadding).to(reviewBackground, .bottom)
-        ]
-        
-        openHoursTitleLabel <- [
-            Top(RestaurantDetailConstant.infoSectionVerticalPadding).to(cuisineLabel, .bottom),
-            Leading(RestaurantDetailConstant.infoSectionLeadingPadding)
-        ]
-        
-        phoneTitleLabel <- [
-            Top(RestaurantDetailConstant.infoInternalPadding).to(openHoursTitleLabel, .bottom),
-            Trailing().to(openHoursTitleLabel, .trailing)
-        ]
-        
-        addressTitleLabel <- [
-            Top(RestaurantDetailConstant.infoInternalPadding).to(phoneTitleLabel, .bottom),
-            Trailing().to(phoneTitleLabel, .trailing),
-            Bottom(RestaurantDetailConstant.infoSectionVerticalPadding)
-        ]
-        
-        openHoursLabel <- [
-            Leading(8).to(openHoursTitleLabel, .trailing),
-            Trailing(<=8),
-            CenterY().to(openHoursTitleLabel, .centerY)
-        ]
-        
-        phoneLabel <- [
-            Leading(8).to(phoneTitleLabel, .trailing),
-            Trailing(<=8),
-            CenterY().to(phoneTitleLabel, .centerY)
-        ]
-        
-        addressLabel <- [
-            Leading(8).to(addressTitleLabel, .trailing),
-            Trailing(<=8),
-            CenterY().to(addressTitleLabel, .centerY),
-        ]
     }
 }
