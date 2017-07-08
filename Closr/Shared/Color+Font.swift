@@ -24,6 +24,9 @@ struct AppColor {
     
     static let greyBackground = UIColor(red: 159 / 255, green: 159 / 255, blue: 160 / 255, alpha: 0.56)
     static let brandBackground = UIColor(red: 86 / 255, green: 34 / 255, blue: 26 / 255, alpha: 0.1)
+    static let blackText = UIColor(red: 0/255, green: 3/255, blue: 5/255, alpha: 1.0)
+    
+    static let opqueBackground = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1.0)
 }
 
 struct AppFont {
@@ -72,18 +75,10 @@ struct AppFont {
         
         return UIFont.systemFont(ofSize: 20, weight: UIFontWeightRegular)
     }()
-    
-    static let smallText: UIFont = {
-        if Device.is_3_5_inches || Device.is_4_inches {
-            return UIFont.systemFont(ofSize: 11, weight: UIFontWeightLight)
-        }
-        
-        if Device.is_4_7_inches {
-            return UIFont.systemFont(ofSize: 12, weight: UIFontWeightLight)
-        }
-        
-        return UIFont.systemFont(ofSize: 13, weight: UIFontWeightLight)
-    }()
+  
+    static let smallText: UIFont = UIFont.systemFont(ofSize: 10, weight: UIFontWeightLight)
     
     static let extraSmallText: UIFont = UIFont.systemFont(ofSize: 8, weight: UIFontWeightLight)
+    
+    
 }
