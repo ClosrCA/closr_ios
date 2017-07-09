@@ -14,6 +14,9 @@ class RestaurantDetailViewController: UIViewController {
     struct Constants {
         static let segmentedControlHeight: CGFloat              = 28
         static let segmentedControlHorizontalOffset: CGFloat    = -5
+        
+        static let childControllerViewVerticalPadding: CGFloat      = 15
+        static let childControllerViewHorizontalPadding: CGFloat    = 10
     }
     
     var search: YelpPlaceSearch?
@@ -41,6 +44,13 @@ class RestaurantDetailViewController: UIViewController {
         control.addTarget(self, action: #selector(onSegmentedControl(sender:)), for: .valueChanged)
         
         return control
+    }()
+    
+    fileprivate lazy var detailTableViewController: DetailTableViewController = {
+        let controller          = DetailTableViewController()
+        controller.dataSource   = self
+        
+        return controller
     }()
     
     fileprivate lazy var createEventButton: UIButton = {
@@ -87,6 +97,7 @@ class RestaurantDetailViewController: UIViewController {
     
     fileprivate func loadData() {
         carouselViewController.loadImages()
+        detailTableViewController.reload()
     }
     
     fileprivate func buildUI() {
@@ -95,6 +106,10 @@ class RestaurantDetailViewController: UIViewController {
         carouselViewController.didMove(toParentViewController: self)
         
         view.addSubview(segmentedControl)
+        
+        addChildViewController(detailTableViewController)
+        view.addSubview(detailTableViewController.view)
+        detailTableViewController.didMove(toParentViewController: self)
     }
     
     fileprivate func createConstraints() {
@@ -110,6 +125,13 @@ class RestaurantDetailViewController: UIViewController {
             Leading(Constants.segmentedControlHorizontalOffset),
             Trailing(Constants.segmentedControlHorizontalOffset),
             Height(Constants.segmentedControlHeight)
+        ]
+        
+        detailTableViewController.view <- [
+            Top(Constants.childControllerViewVerticalPadding).to(segmentedControl),
+            Leading(Constants.childControllerViewHorizontalPadding),
+            Trailing(Constants.childControllerViewHorizontalPadding),
+            Bottom(Constants.childControllerViewVerticalPadding)
         ]
     }
     
@@ -133,5 +155,11 @@ extension RestaurantDetailViewController: ImageCarouselViewControllerDelegate {
     func imageURLStringFor(controller: ImageCarouselViewController) -> [String] {
         
         return restaurant?.photos ?? []
+    }
+}
+
+extension RestaurantDetailViewController: DetailTableViewControllerDataSource {
+    func restaurantOfDetail(controller: DetailTableViewController) -> YelpPlace? {
+        return restaurant
     }
 }

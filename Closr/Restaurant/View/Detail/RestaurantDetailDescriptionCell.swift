@@ -11,6 +11,14 @@ import EasyPeasy
 
 class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
 
+    struct Constatns {
+        static let verticalPadding: CGFloat = 10
+        static let horizontalPadding: CGFloat = 20
+        
+        static let ratingImageSize: CGSize = CGSize(width: 102, height: 18)
+        static let infoLeftPadding: CGFloat = Device.screenWidth / 5
+    }
+    
     fileprivate lazy var nameLabel: UILabel = {
         let nameLabel            = UILabel.makeLabel(font: AppFont.largeTitle, textColor: AppColor.title)
         nameLabel.numberOfLines  = 0
@@ -18,8 +26,8 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         return nameLabel
     }()
     
-    fileprivate lazy var reviewBackground: UIView   = UIView()
-    fileprivate lazy var cuisineLabel: UILabel      = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand)
+    fileprivate lazy var reviewImageView: UIImageView   = UIImageView()
+    fileprivate lazy var cuisineLabel: UILabel          = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand)
     
     fileprivate lazy var openHoursTitleLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand, text: "Open hours:")
     fileprivate lazy var phoneTitleLabel: UILabel     = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand, text: "Phone:")
@@ -50,9 +58,11 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         
         cuisineLabel.text = cuisineAndPrice
         
-        if let rating = restaurant.rating {
-            addReview(rating: rating)
-        }
+        
+        let ratingImage = UIImage(named: ReviewHelper.yelpRegularReviewImageName(rating: restaurant.rating ?? 0))
+        reviewImageView.image = ratingImage
+        
+        // TODO: open hours parsing
     }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -67,22 +77,9 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    fileprivate func addReview(rating: Double) {
-        let review = ReviewHelper.buildReviewView(rating: rating, scoreImage: UIImage(named: "review_star"), halfScoreImage: UIImage(named: "review_star_half"))
-        
-        reviewBackground <- Size(review.preferredSize)
-        
-        if let reviewView = review.reviewView {
-            reviewBackground.addSubview(reviewView)
-            
-            reviewView <- Edges()
-        }
-    }
-    
     fileprivate func buildSubViews() {
         contentView.addSubview(nameLabel)
-        contentView.addSubview(reviewBackground)
+        contentView.addSubview(reviewImageView)
         contentView.addSubview(cuisineLabel)
         contentView.addSubview(openHoursTitleLabel)
         contentView.addSubview(openHoursLabel)
@@ -93,7 +90,56 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
     }
     
     fileprivate func createConstraints() {
+        nameLabel <- [
+            Leading(Constatns.horizontalPadding),
+            Trailing(Constatns.horizontalPadding),
+            Top(Constatns.verticalPadding)
+        ]
         
+        reviewImageView <- [
+            Size(Constatns.ratingImageSize),
+            Top(Constatns.verticalPadding).to(nameLabel),
+            CenterX()
+        ]
         
+        cuisineLabel <- [
+            Leading(Constatns.horizontalPadding),
+            Trailing(Constatns.horizontalPadding),
+            Top(Constatns.verticalPadding).to(reviewImageView)
+        ]
+        
+        openHoursTitleLabel <- [
+            Leading(Constatns.infoLeftPadding),
+            Top(Constatns.verticalPadding).to(cuisineLabel)
+        ]
+        
+        openHoursLabel <- [
+            Leading(Constatns.horizontalPadding).to(openHoursTitleLabel),
+            Trailing(<=Constatns.horizontalPadding),
+            CenterY().to(openHoursTitleLabel)
+        ]
+        
+        phoneTitleLabel <- [
+            Trailing().to(openHoursTitleLabel, .trailing),
+            Top(Constatns.verticalPadding).to(openHoursTitleLabel)
+        ]
+        
+        phoneLabel <- [
+            Leading(Constatns.horizontalPadding).to(phoneTitleLabel),
+            Trailing(<=Constatns.horizontalPadding),
+            CenterY().to(phoneTitleLabel)
+        ]
+        
+        addressTitleLabel <- [
+            Trailing().to(openHoursTitleLabel, .trailing),
+            Top(Constatns.verticalPadding).to(phoneTitleLabel),
+            Bottom(Constatns.verticalPadding)
+        ]
+        
+        addressLabel <- [
+            Leading(Constatns.horizontalPadding).to(addressTitleLabel),
+            Trailing(<=Constatns.horizontalPadding),
+            CenterY().to(addressTitleLabel)
+        ]
     }
 }
