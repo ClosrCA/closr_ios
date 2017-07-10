@@ -33,7 +33,7 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
     fileprivate lazy var phoneTitleLabel: UILabel     = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand, text: "Phone:")
     fileprivate lazy var addressTitleLabel: UILabel   = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand, text: "Address:")
     
-    fileprivate lazy var openHoursLabel: UILabel    = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var openHoursLabel: UILabel    = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText, numberOfLines: 0)
     fileprivate lazy var phoneLabel: UILabel        = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     fileprivate lazy var addressLabel: UILabel      = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
@@ -62,7 +62,18 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         let ratingImage = UIImage(named: ReviewHelper.yelpRegularReviewImageName(rating: restaurant.rating ?? 0))
         reviewImageView.image = ratingImage
         
-        // TODO: open hours parsing
+        updateOpenHours(with: restaurant)
+    }
+    
+    func updateOpenHours(with restaurant: YelpPlace) {
+        guard let hours = restaurant.hours?.first else {
+            return
+        }
+        
+        var hoursText = ""
+        hours.readableHours.forEach { hoursText.append($0.key + " " + $0.value.startTime + " - " + $0.value.endTime + "\n") }
+        
+        openHoursLabel.text = hoursText
     }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
