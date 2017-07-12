@@ -119,17 +119,13 @@ struct OpenHours: Mappable {
 }
 
 extension OpenHours {
-    var readableHours: [String: (startTime: String, endTime: String)] {
+    var readableHours: [(weekDay: String, startTime: String, endTime: String)] {
         
         guard let hours = hours, !hours.isEmpty else {
-            return [:]
+            return []
         }
         
-        var hoursDictionary = [String: (startTime: String, endTime: String)]()
-        
-        hours.forEach { hoursDictionary[weekdaySring($0.day)] = (formattedTime($0.startTime), formattedTime($0.endTime)) }
-        
-        return hoursDictionary
+        return hours.map { (weekdaySring($0.day), formattedTime($0.startTime), formattedTime($0.endTime)) }
     }
     
     func weekdaySring(_ weekday: Int) -> String {

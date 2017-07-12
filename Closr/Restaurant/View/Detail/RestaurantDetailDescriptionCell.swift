@@ -33,7 +33,7 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
     fileprivate lazy var phoneTitleLabel: UILabel     = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand, text: "Phone:")
     fileprivate lazy var addressTitleLabel: UILabel   = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand, text: "Address:")
     
-    fileprivate lazy var openHoursLabel: UILabel    = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText, numberOfLines: 0)
+    fileprivate lazy var openHoursLabel: UILabel    = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText, numberOfLines: 0, alignment: .left)
     fileprivate lazy var phoneLabel: UILabel        = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     fileprivate lazy var addressLabel: UILabel      = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
@@ -71,7 +71,13 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         }
         
         var hoursText = ""
-        hours.readableHours.forEach { hoursText.append($0.key + " " + $0.value.startTime + " - " + $0.value.endTime + "\n") }
+        hours.readableHours.forEach {
+            hoursText.append($0.weekDay + " " + $0.startTime + " - " + $0.endTime)
+            
+            if let lastItem = hours.readableHours.last, lastItem != $0 {
+                hoursText.append("\n")
+            }
+        }
         
         openHoursLabel.text = hoursText
     }
@@ -125,14 +131,14 @@ class RestaurantDetailDescriptionCell: UITableViewCell, Reusable {
         ]
         
         openHoursLabel <- [
+            Top().to(openHoursTitleLabel, .top),
             Leading(Constatns.horizontalPadding).to(openHoursTitleLabel),
             Trailing(<=Constatns.horizontalPadding),
-            CenterY().to(openHoursTitleLabel)
         ]
         
         phoneTitleLabel <- [
             Trailing().to(openHoursTitleLabel, .trailing),
-            Top(Constatns.verticalPadding).to(openHoursTitleLabel)
+            Top(Constatns.verticalPadding).to(openHoursLabel)
         ]
         
         phoneLabel <- [
