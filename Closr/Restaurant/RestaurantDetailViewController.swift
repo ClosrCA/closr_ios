@@ -17,6 +17,9 @@ class RestaurantDetailViewController: UIViewController {
         
         static let childControllerViewVerticalPadding: CGFloat      = 15
         static let childControllerViewHorizontalPadding: CGFloat    = 10
+        
+        static let createEventButtonHeight: CGFloat = 30
+        static let createEventButtonPadding: CGFloat = 8
     }
     
     var search: YelpPlaceSearch?
@@ -53,6 +56,8 @@ class RestaurantDetailViewController: UIViewController {
         return controller
     }()
     
+    fileprivate lazy var eventListViewController: JoinEventListViewController = JoinEventListViewController()
+    
     fileprivate lazy var createEventButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Event", for: .normal)
@@ -60,7 +65,7 @@ class RestaurantDetailViewController: UIViewController {
         button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
         button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
         
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 2
         button.clipsToBounds = true
         
         return button
@@ -104,12 +109,14 @@ class RestaurantDetailViewController: UIViewController {
         addChildViewController(carouselViewController)
         view.addSubview(carouselViewController.view)
         carouselViewController.didMove(toParentViewController: self)
-        
+                
         view.addSubview(segmentedControl)
         
         addChildViewController(detailTableViewController)
         view.addSubview(detailTableViewController.view)
         detailTableViewController.didMove(toParentViewController: self)
+        
+        view.addSubview(createEventButton)
     }
     
     fileprivate func createConstraints() {
@@ -127,17 +134,48 @@ class RestaurantDetailViewController: UIViewController {
             Height(Constants.segmentedControlHeight)
         ]
         
-        detailTableViewController.view <- [
-            Top(Constants.childControllerViewVerticalPadding).to(segmentedControl),
-            Leading(Constants.childControllerViewHorizontalPadding),
-            Trailing(Constants.childControllerViewHorizontalPadding),
-            Bottom(Constants.childControllerViewVerticalPadding)
+        createEventButton <- [
+            Height(Constants.createEventButtonHeight),
+            Leading(Constants.createEventButtonPadding),
+            Trailing(Constants.createEventButtonPadding),
+            Bottom(Constants.createEventButtonPadding)
         ]
+    }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        
+        if eventListViewController.parent != nil {
+            eventListViewController.view <- [
+                Top(Constants.childControllerViewVerticalPadding).to(segmentedControl),
+                Leading(Constants.childControllerViewHorizontalPadding),
+                Trailing(Constants.childControllerViewHorizontalPadding),
+                Bottom(Constants.childControllerViewVerticalPadding).to(createEventButton)
+            ]
+        }
+        
+        if detailTableViewController.parent != nil {
+            detailTableViewController.view <- [
+                Top(Constants.childControllerViewVerticalPadding).to(segmentedControl),
+                Leading(Constants.childControllerViewHorizontalPadding),
+                Trailing(Constants.childControllerViewHorizontalPadding),
+                Bottom(Constants.childControllerViewVerticalPadding).to(createEventButton)
+            ]
+        }
     }
     
     @objc
     fileprivate func onSegmentedControl(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            cycleFrom(controller: eventListViewController, to: detailTableViewController)
+        case 1:
+            cycleFrom(controller: detailTableViewController, to: eventListViewController)
+        default:
+            break
+        }
         
+        updateViewConstraints()
     }
     
     @objc
