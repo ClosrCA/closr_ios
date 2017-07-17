@@ -11,41 +11,52 @@ import EasyPeasy
 
 class RestaurantDetailViewController: UIViewController {
 
+    struct Constants {
+        static let segmentedControlHeight: CGFloat              = 28
+        static let segmentedControlHorizontalOffset: CGFloat    = -5
+        
+        static let childControllerViewVerticalPadding: CGFloat      = 15
+        static let childControllerViewHorizontalPadding: CGFloat    = 10
+        
+        static let createEventButtonHeight: CGFloat = 30
+        static let createEventButtonPadding: CGFloat = 8
+    }
+    
     var search: YelpPlaceSearch?
     
     fileprivate var placeID: String
     
     fileprivate var restaurant: YelpPlace? {
         didSet {
-            tableView.reloadData()
+            loadData()
         }
     }
     
-    enum Section: Int {
+    fileprivate lazy var carouselViewController: ImageCarouselViewController = {
+        let controller      = ImageCarouselViewController()
+        controller.delegate = self
         
-        static let count = 3
-        
-        case imageCarousel
-        case description
-        case event
-    }
-    
-    fileprivate lazy var tableView: UITableView = {
-        let tableView                                       = UITableView(frame: .zero, style: .plain)
-        tableView.dataSource                                = self
-        tableView.delegate                                  = self
-        tableView.estimatedRowHeight                        = 200
-        tableView.estimatedSectionHeaderHeight              = 80
-        tableView.rowHeight                                 = UITableViewAutomaticDimension
-        tableView.tableFooterView                           = self.makeFooterView()
-        tableView.allowsSelection                           = false
-        
-        tableView.register(RestaurantDetailImageCell.self, forCellReuseIdentifier: RestaurantDetailImageCell.reuseIdentifier)
-        tableView.register(RestaurantDetailDescriptionCell.self, forCellReuseIdentifier: RestaurantDetailDescriptionCell.reuseIdentifier)
-        tableView.register(RestaurantDetailEventCell.self, forCellReuseIdentifier: RestaurantDetailEventCell.reuseIdentifier)
-        
-        return tableView
+        return controller
     }()
+    
+    fileprivate lazy var segmentedControl: UISegmentedControl = {
+        let control                     = UISegmentedControl(items: ["Details", "Events"])
+        control.tintColor               = AppColor.brand
+        control.selectedSegmentIndex    = 0
+        
+        control.addTarget(self, action: #selector(onSegmentedControl(sender:)), for: .valueChanged)
+        
+        return control
+    }()
+    
+    fileprivate lazy var detailTableViewController: DetailTableViewController = {
+        let controller          = DetailTableViewController()
+        controller.dataSource   = self
+        
+        return controller
+    }()
+    
+    fileprivate lazy var eventListViewController: JoinEventListViewController = JoinEventListViewController()
     
     fileprivate lazy var createEventButton: UIButton = {
         let button = UIButton()
@@ -54,7 +65,7 @@ class RestaurantDetailViewController: UIViewController {
         button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
         button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
         
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 2
         button.clipsToBounds = true
         
         return button
@@ -74,7 +85,11 @@ class RestaurantDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = UIColor.white
+        
         buildUI()
+        
+        createConstraints()
         
         // TODO: Loading indicator
         
@@ -85,26 +100,82 @@ class RestaurantDetailViewController: UIViewController {
         })
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        transparentNavigationBar()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        transitionCoordinator?.animate(alongsideTransition: { [weak self] (context) in
-            self?.defaultNavigationBar()
-        }, completion: nil)
-        
+    fileprivate func loadData() {
+        carouselViewController.loadImages()
+        detailTableViewController.reload()
     }
     
     fileprivate func buildUI() {
+        addChildViewController(carouselViewController)
+        view.addSubview(carouselViewController.view)
+        carouselViewController.didMove(toParentViewController: self)
+                
+        view.addSubview(segmentedControl)
         
-        view.addSubview(tableView)
+        addChildViewController(detailTableViewController)
+        view.addSubview(detailTableViewController.view)
+        detailTableViewController.didMove(toParentViewController: self)
         
-        tableView <- Edges(EdgeInsets(top: -44, left: 0, bottom: 0, right: 0))
+        view.addSubview(createEventButton)
+    }
+    
+    fileprivate func createConstraints() {
+        carouselViewController.view <- [
+            Top(),
+            Leading(),
+            Trailing(),
+            Height(ImageCarouselViewController.preferredHeight)
+        ]
+        
+        segmentedControl <- [
+            Top().to(carouselViewController.view),
+            Leading(Constants.segmentedControlHorizontalOffset),
+            Trailing(Constants.segmentedControlHorizontalOffset),
+            Height(Constants.segmentedControlHeight)
+        ]
+        
+        createEventButton <- [
+            Height(Constants.createEventButtonHeight),
+            Leading(Constants.createEventButtonPadding),
+            Trailing(Constants.createEventButtonPadding),
+            Bottom(Constants.createEventButtonPadding)
+        ]
+    }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        
+        if eventListViewController.parent != nil {
+            eventListViewController.view <- [
+                Top(Constants.childControllerViewVerticalPadding).to(segmentedControl),
+                Leading(Constants.childControllerViewHorizontalPadding),
+                Trailing(Constants.childControllerViewHorizontalPadding),
+                Bottom(Constants.childControllerViewVerticalPadding).to(createEventButton)
+            ]
+        }
+        
+        if detailTableViewController.parent != nil {
+            detailTableViewController.view <- [
+                Top(Constants.childControllerViewVerticalPadding).to(segmentedControl),
+                Leading(Constants.childControllerViewHorizontalPadding),
+                Trailing(Constants.childControllerViewHorizontalPadding),
+                Bottom(Constants.childControllerViewVerticalPadding).to(createEventButton)
+            ]
+        }
+    }
+    
+    @objc
+    fileprivate func onSegmentedControl(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            cycleFrom(controller: eventListViewController, to: detailTableViewController)
+        case 1:
+            cycleFrom(controller: detailTableViewController, to: eventListViewController)
+        default:
+            break
+        }
+        
+        updateViewConstraints()
     }
     
     @objc
@@ -115,91 +186,18 @@ class RestaurantDetailViewController: UIViewController {
         
         present(UINavigationController(rootViewController: createEventController), animated: true)
     }
-    
-    fileprivate func makeFooterView() -> UIView {
-        let footerHeight = 2*RestaurantDetailConstant.EventList.createEventButtonPadding + RestaurantDetailConstant.EventList.createEventButtonHeight
-        
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: footerHeight))
-        
-        footer.addSubview(createEventButton)
-        
-        createEventButton <- Edges(RestaurantDetailConstant.EventList.createEventButtonPadding).with(.high)
-        
-        return footer
-    }
 }
 
-extension RestaurantDetailViewController: UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return Section.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if let section = Section(rawValue: section) {
-            switch section {
-            case .event: return 0
-            default: return 1
-            }
-        }
-        
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if let section = Section(rawValue: indexPath.section) {
-            switch section {
-            case .imageCarousel:
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantDetailImageCell.reuseIdentifier, for: indexPath) as! RestaurantDetailImageCell
-                cell.dataSource = self
-                
-                cell.loadImages()
-                
-                return cell
-            case .event:
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantDetailEventCell.reuseIdentifier, for: indexPath) as! RestaurantDetailEventCell
-                
-                return cell
-            case .description:
-                let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantDetailDescriptionCell.reuseIdentifier, for: indexPath) as! RestaurantDetailDescriptionCell
-                
-                if let restaurant = restaurant {
-                    cell.update(restaurant: restaurant)
-                }
-                return cell
-            }
-        }
-        
-        return UITableViewCell()
-    }
-}
 
-extension RestaurantDetailViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == Section.event.rawValue {
-            return UITableViewAutomaticDimension
-        }
-        
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == Section.event.rawValue {
-            return RestaurantDetailEventTitleView()
-        }
-        
-        return nil
-    }
-}
-
-extension RestaurantDetailViewController: RestaurantDetailImageCellDataSource {
-    func imageURLStringFor(cell: RestaurantDetailImageCell) -> [String] {
+extension RestaurantDetailViewController: ImageCarouselViewControllerDelegate {
+    func imageURLStringFor(controller: ImageCarouselViewController) -> [String] {
         
         return restaurant?.photos ?? []
+    }
+}
+
+extension RestaurantDetailViewController: DetailTableViewControllerDataSource {
+    func restaurantOfDetail(controller: DetailTableViewController) -> YelpPlace? {
+        return restaurant
     }
 }

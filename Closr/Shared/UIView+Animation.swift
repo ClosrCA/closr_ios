@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate let cAnimationDuration = 0.3
+let cAnimationDuration = 0.3
 
 extension UIView {
     

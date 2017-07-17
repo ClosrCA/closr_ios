@@ -37,4 +37,23 @@ extension UIViewController {
         tabBarAppearance.shadowImage    = UIImage()
         tabBarAppearance.backgroundImage = UIImage()
     }
+    
+    func cycleFrom(controller: UIViewController, to newController: UIViewController) {
+        
+        controller.willMove(toParentViewController: nil)
+        
+        addChildViewController(newController)
+        view.addSubview(newController.view)
+        
+        newController.view.alpha = 0
+        
+        UIView.animate(withDuration: cAnimationDuration, animations: { 
+            controller.view.alpha = 0
+            newController.view.alpha = 1
+        }) { _ in
+            controller.view.removeFromSuperview()
+            controller.removeFromParentViewController()
+            newController.didMove(toParentViewController: self)
+        }
+    }
 }

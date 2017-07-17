@@ -19,14 +19,17 @@ enum RestaurantListSection: Int {
 class RestaurantListViewController: UIViewController {
     
     fileprivate lazy var tableView: UITableView = {
-        let tableView                   = UITableView()
+        let tableView                   = UITableView(frame: .zero, style: .grouped)
         tableView.delegate              = self
         tableView.dataSource            = self
         tableView.estimatedRowHeight    = 200
         tableView.rowHeight             = UITableViewAutomaticDimension
+        tableView.backgroundColor       = UIColor.white
         
         tableView.estimatedSectionHeaderHeight  = 40
         tableView.sectionHeaderHeight           = UITableViewAutomaticDimension
+        tableView.separatorStyle                = .singleLineEtched
+        tableView.sectionFooterHeight           = 0.0
         
         tableView.register(RestaurantTableViewCell.self, forCellReuseIdentifier: RestaurantTableViewCell.reuseIdentifier)
         tableView.register(CategoryCarouselTableViewCell.self, forCellReuseIdentifier: CategoryCarouselTableViewCell.reuseIdentifier)

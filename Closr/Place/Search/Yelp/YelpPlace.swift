@@ -27,7 +27,7 @@ struct YelpPlace: Mappable {
     var phone: String?
     var photos: [String]?
     var categories: [Category]?
-    var hours: OpenHours?
+    var hours: [OpenHours]?
     
     init?(map: Map) {
         
@@ -86,6 +86,7 @@ struct Category: Mappable {
 
 struct OpenHours: Mappable {
     var isOpenNow: Bool = false
+    var hoursType: String = "REGULAR"
     var hours: [Hours]?
     
     init?(map: Map) {
@@ -94,13 +95,14 @@ struct OpenHours: Mappable {
     
     mutating func mapping(map: Map) {
         isOpenNow <- map["is_open_now"]
-        hours     <- map["hours"]
+        hours     <- map["open"]
+        hoursType <- map["hours_type"]
     }
     
     struct Hours: Mappable {
-        var day: Int?
-        var endTime: String?  // "2300"
-        var startTime: String?
+        var day: Int = 0
+        var endTime: String = ""  // "2300"
+        var startTime: String = ""
         var isOvernight: Bool = false
         
         init?(map: Map) {
@@ -113,6 +115,44 @@ struct OpenHours: Mappable {
             startTime       <- map["start"]
             isOvernight     <- map["is_overnight"]
         }
+    }
+}
+
+extension OpenHours {
+    var readableHours: [(weekDay: String, startTime: String, endTime: String)] {
+        
+        guard let hours = hours, !hours.isEmpty else {
+            return []
+        }
+        
+        return hours.map { (weekdaySring($0.day), formattedTime($0.startTime), formattedTime($0.endTime)) }
+    }
+    
+    func weekdaySring(_ weekday: Int) -> String {
+        switch weekday {
+        case 0:
+            return "Mon"
+        case 1:
+            return "Tue"
+        case 2:
+            return "Wed"
+        case 3:
+            return "Thu"
+        case 4:
+            return "Fri"
+        case 5:
+            return "Sat"
+        default:
+            return "Sun"
+        }
+    }
+    
+    func formattedTime(_ rawString: String) -> String {
+        var mutableString = rawString
+        
+        mutableString.insert(":", at: mutableString.index(mutableString.startIndex, offsetBy: 2))
+        
+        return mutableString
     }
 }
 
