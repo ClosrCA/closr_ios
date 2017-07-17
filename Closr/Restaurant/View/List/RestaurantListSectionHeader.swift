@@ -11,7 +11,7 @@ import EasyPeasy
 
 class RestaurantListSectionHeader: UITableViewHeaderFooterView, Reusable {
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
     fileprivate lazy var accessoryLabel: UILabel = UILabel.makeLabel(font: AppFont.extraSmallText, textColor: AppColor.greyText)
     
@@ -43,7 +43,7 @@ class RestaurantListSectionHeader: UITableViewHeaderFooterView, Reusable {
         titleLabel <- [
             Top(10),
             Leading(10),
-            Bottom(10)
+            Bottom()
         ]
         
         accessoryImageView <- [
