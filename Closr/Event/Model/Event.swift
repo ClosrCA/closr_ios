@@ -14,6 +14,7 @@ struct Event {
     var time: String?
     var date: String?
     var purpose: String?
+    var share: String?
     var minAge: Double?
     var maxAge: Double?
     var numberOfPeople: Int = 3

@@ -80,5 +80,6 @@ struct AppFont {
     
     static let extraSmallText: UIFont = UIFont.systemFont(ofSize: 8, weight: UIFontWeightLight)
     
+    static let titleText: UIFont = UIFont.systemFont(ofSize: 15, weight: UIFontWeightRegular)
     
 }
