@@ -15,32 +15,31 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
     
     fileprivate struct Constants {
         
-        static let avatarImageSize: CGSize                 = CGSize(width: 55, height: 55)
-        static let avatarTopPadding: CGFloat               = 2.5
+        static let avatarImageSize: CGSize          = CGSize(width: 55, height: 55)
+        static let avatarTopPadding: CGFloat        = 10
+        static let avatarLeftPadding: CGFloat       = 18
         
         static let eventTitlePadding: CGFloat              = 6
         
         static let participationImageSize: CGSize          = CGSize(width: 47.5, height: 10)
         
-        static let timeImageSize: CGSize                   = CGSize(width: 11.81, height: 14.16)
-        static let timeImageBottomPadding: CGFloat         = 23.4
+        static let timeImageSize: CGSize                   = CGSize(width: 15, height: 15)
+        static let timeImageBottomPadding: CGFloat         = 10
         
         static let dateLabelLeadingPadding: CGFloat        = 6
-        static let dataLabelBottomPadding: CGFloat         = 24.5
-        
     }
-    
-    // TODO: - replace
     
     fileprivate lazy var avatarImageView: UIImageView = {
         let view                = UIImageView()
         view.layer.borderColor  = AppColor.brand.cgColor
         view.layer.borderWidth  = 1
+        view.layer.cornerRadius = Constants.avatarImageSize.height / 2
         view.clipsToBounds      = true
         
         return view
     }()
     
+    // TODO: - replace
     fileprivate lazy var participantsContainer: UIView = {
         
         let view                = UIView()
@@ -87,45 +86,32 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         avatarImageView <- [
         
             Size(Constants.avatarImageSize),
-            Top(Constants.avatarTopPadding).to(contentView),
-            Leading(0).to(contentView)
-        
+            Top(Constants.avatarTopPadding),
+            Leading(Constants.avatarLeftPadding)
         ]
         
         eventTitleLabel <- [
-            
             Top(Constants.eventTitlePadding).to(avatarImageView),
-            Leading(0).to(contentView)
+            Leading().to(avatarImageView, .leading)
 
         ]
         
         participantsContainer <- [
-            
             Size(Constants.participationImageSize),
             Top(Constants.eventTitlePadding).to(eventTitleLabel),
-            Leading(0).to(contentView)
-        
+            Leading().to(eventTitleLabel, .leading)
         ]
         
         timeImageView <- [
-        
             Size(Constants.timeImageSize),
-            Leading(0).to(contentView),
-            Bottom(Constants.timeImageBottomPadding).to(contentView)
-        
+            Leading().to(eventTitleLabel, .leading),
+            Bottom(Constants.timeImageBottomPadding)
         ]
         
         dateLabel <- [
-        
             Leading(Constants.dateLabelLeadingPadding).to(timeImageView),
-            Bottom(Constants.dataLabelBottomPadding).to(contentView)
-        
+            Bottom().to(timeImageView, .bottom),
+            Trailing()
         ]
-        
-        
-       
     }
-
-    
-    
 }

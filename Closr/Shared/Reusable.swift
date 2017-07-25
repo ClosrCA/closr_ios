@@ -6,7 +6,7 @@
 //  Copyright © 2017 closr. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol Reusable {
     

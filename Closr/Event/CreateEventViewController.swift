@@ -46,7 +46,7 @@ class CreateEventViewController: UIViewController {
     
     fileprivate func buildUI() {
         
-        let closeItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(onClose))
+        let closeItem = UIBarButtonItem(title: "X", style: .plain, target: self, action: #selector(onClose))
         navigationController?.navigationBar.tintColor = UIColor.gray
         navigationItem.leftBarButtonItem = closeItem
         
@@ -242,16 +242,16 @@ extension CreateEventViewController: SegmentControlTableViewCellDelegate {
         case three
         case four
         
-        static let segmentItems = ["1", "2", "3"]
+        static let segmentItems = ["2", "3", "4"]
         
         var value: Int {
             switch self {
             case .two:
-                return 1
-            case .three:
                 return 2
-            case .four:
+            case .three:
                 return 3
+            case .four:
+                return 4
             }
         }
     }

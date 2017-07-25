@@ -90,10 +90,10 @@ class User: NSObject, NSCoding {
 extension User {
     
     class var isAuthenticated: Bool {
-        return User.currentUser != nil
+        return User.current != nil
     }
     
-    class var currentUser: User? {
+    class var current: User? {
         if let data = UserDefaults.standard.data(forKey: User.userDefaultsKey) {
             return NSKeyedUnarchiver.unarchiveObject(with: data) as? User
         }

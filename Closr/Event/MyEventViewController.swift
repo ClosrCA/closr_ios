@@ -12,10 +12,13 @@ import EasyPeasy
 class MyEventViewController: UIViewController {
     
     fileprivate lazy var tableView: UITableView = {
-        let tableView                   = UITableView()
+        let tableView                   = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource            = self
         tableView.estimatedRowHeight    = 200
         tableView.rowHeight             = UITableViewAutomaticDimension
+        tableView.separatorStyle        = .none
+        tableView.sectionFooterHeight   = 0
+        tableView.backgroundColor       = .white
 
         tableView.register(MyEventTableViewCell.self, forCellReuseIdentifier: MyEventTableViewCell.reuseIdentifier)
         return tableView
@@ -28,30 +31,33 @@ class MyEventViewController: UIViewController {
         
         view.addSubview(tableView)
         tableView <- Edges()
-  
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-   
 }
 
-extension MyEventViewController: UITableViewDataSource{
+extension MyEventViewController: UITableViewDataSource {
 
-    
     enum MyEventSection: Int {
+        
+        static let count = 3
+        
         case joined
         case hosted
         case past
-        case count
+        
+        var header: String {
+            switch self {
+            case .joined:
+                return "Joined Events"
+            case .hosted:
+                return "Hosted History"
+            case .past:
+                return "Past Event"
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return MyEventSection.count.rawValue
+        return MyEventSection.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,14 +71,14 @@ extension MyEventViewController: UITableViewDataSource{
             return 1
         case .past:
             return 1
-        default:
-            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let section = MyEventSection(rawValue: indexPath.section)!
+        guard let section = MyEventSection(rawValue: indexPath.section) else {
+            return UITableViewCell()
+        }
         
         switch section {
         case .joined:
@@ -87,26 +93,16 @@ extension MyEventViewController: UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: MyEventTableViewCell.reuseIdentifier, for: indexPath) as! MyEventTableViewCell
             
             return cell
-        default:
-            return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        let section = MyEventSection(rawValue: section)!
-        
-        
-        switch section {
-        case .joined:
-            return "Joined Events"
-        case .hosted:
-            return "Hosted History"
-        case .past:
-            return "Past Event"
-        default:
+        guard let section = MyEventSection(rawValue: section) else {
             return nil
         }
+        
+        return section.header
     }
 
 
