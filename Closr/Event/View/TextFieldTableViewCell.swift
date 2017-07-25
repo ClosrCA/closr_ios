@@ -17,25 +17,27 @@ protocol TextFieldTableViewCellDelegate: class {
 class TextFieldTableViewCell: UITableViewCell, Reusable {
 
     enum Section {
-        case address
         case date
         case time
+        case eventName
         case purpose
+        case share
     }
     
     fileprivate struct Constants {
-        static let contentPadding: CGFloat              = 10
-        static let textFieldVerticalPadding: CGFloat    = 8
-        static let textFieldHeight: CGFloat             = 30
+        static let contentPadding: CGFloat              = 27
+        static let textFieldVerticalPadding: CGFloat    = 7
+        static let textFieldHeight: CGFloat             = 23
+        
     }
     
     weak var delegate: TextFieldTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.titleText, textColor: AppColor.blackText)
     
     fileprivate lazy var textField: UITextField = {
         let textField                                       = UITextField()
-        textField.backgroundColor                           = UIColor.lightGray
+        textField.backgroundColor                           = UIColor.white
         textField.borderStyle                               = .roundedRect
         textField.delegate                                  = self
         
@@ -59,6 +61,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
         return timePicker
     }()
     
+    
     fileprivate lazy var purposePicker: UIPickerView = {
         let picker          = UIPickerView()
         picker.delegate     = self
@@ -81,36 +84,57 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     func update(title: String?, text: String?, section: Section) {
         
-        titleLabel.text = title
+         titleLabel.text = title
         
         switch section {
-        case .address:
-            textField.text  = text
-            textField.backgroundColor = UIColor.white
-            textField.borderStyle     = .none
-            textField.isUserInteractionEnabled = false
-            return
+        
         case .date:
             let formatter           = DateFormatter()
             formatter.dateFormat    = String.createEventDateFormat
             textField.text          = formatter.string(from: Date())
-            
+            textField.layer.borderWidth = 0.5
+            textField.layer.cornerRadius = 7
+            textField.layer.borderColor = AppColor.brand.cgColor
             textField.inputView = datePicker
+            
         case .time:
             let formatter           = DateFormatter()
             formatter.dateFormat    = String.createEventTimeFormat
             textField.text          = formatter.string(from: Date())
-            
+            textField.layer.borderWidth = 0.5
+            textField.layer.borderColor = AppColor.brand.cgColor
             textField.inputView = timePicker
+            
+        case .eventName:
+            textField.layer.borderWidth = 0.5
+            textField.layer.borderColor = AppColor.brand.cgColor
+            textField <- [
+            
+                Height(23),
+                Width(321.1),
+                
+            ]
         case .purpose:
+            textField.layer.borderWidth = 0.5
+            textField.layer.borderColor = AppColor.brand.cgColor
             textField.inputView = purposePicker
+        case .share:
+            textField.layer.borderWidth = 0.5
+            textField.layer.borderColor = AppColor.brand.cgColor
+            textField <- [
+            
+                Height(47),
+                Width(321.1)
+            
+            ]
+            
         }
         
         textField.inputAccessoryView    = toolBar
-        textField.backgroundColor       = UIColor.lightGray
+        textField.backgroundColor       = UIColor.white
         textField.borderStyle           = .roundedRect
-        
         textField.isUserInteractionEnabled  = true
+        
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -161,7 +185,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     fileprivate func createConstraints() {
         titleLabel <- [
-            Top(Constants.contentPadding),
+            Top(Constants.textFieldVerticalPadding),
             Leading(Constants.contentPadding)
         ]
         

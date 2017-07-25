@@ -20,7 +20,7 @@ class RootViewController: UIViewController {
     
     fileprivate var profileConfirmController: ProfileConfirmViewController {
         let confirmViewController       = ProfileConfirmViewController()
-        confirmViewController.user      = User.currentUser
+        confirmViewController.user      = User.current
         confirmViewController.delegate  = self
         
         return confirmViewController

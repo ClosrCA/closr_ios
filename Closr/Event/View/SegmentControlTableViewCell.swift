@@ -16,14 +16,15 @@ protocol SegmentControlTableViewCellDelegate: class {
 class SegmentControlTableViewCell: UITableViewCell, Reusable {
 
     struct Constants {
-        static let titlePadding: CGFloat = 10
+        static let titlePadding: CGFloat = 23
+        static let titleTopPadding: CGFloat = 10
         static let segmentControlPadding: CGFloat = 10
-        static let segmentControlHeight: CGFloat = 30
+        static let segmentControlHeight: CGFloat = 28
     }
     
     weak var delegate: SegmentControlTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.blackText)
     
     fileprivate lazy var segmentControl: UISegmentedControl = {
         let segmentControl = UISegmentedControl()
@@ -83,14 +84,15 @@ class SegmentControlTableViewCell: UITableViewCell, Reusable {
     fileprivate func createConstraints() {
         titleLabel <- [
             Leading(Constants.titlePadding),
-            Top(Constants.titlePadding)
+            Top(Constants.titleTopPadding)
         ]
         
         segmentControl <- [
-            Leading(Constants.segmentControlPadding).with(.custom(999)),
-            Trailing(Constants.segmentControlPadding),
-            Bottom(Constants.segmentControlPadding).with(.custom(999)),
-            Height(Constants.segmentControlHeight).with(.high)
+            Top(12).to(titleLabel),
+            Leading(Constants.titlePadding),
+            Trailing(Constants.titlePadding),
+            Bottom(31),
+            Height(Constants.segmentControlHeight)
         ]
     }
     

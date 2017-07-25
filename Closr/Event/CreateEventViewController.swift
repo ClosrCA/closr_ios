@@ -62,24 +62,25 @@ class CreateEventViewController: UIViewController {
     }
     
     fileprivate func makeFooter() -> UIView {
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 60))
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 24.73))
         
         let button = UIButton()
-        button.setTitle("Create New Event", for: .normal)
+        button.setTitle("ADD NEW EVENT", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 9)
         button.setTitleColor(UIColor.white, for: .normal)
         button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
         button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
         
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 2
         button.clipsToBounds = true
         
         footer.addSubview(button)
         
         button <- [
-            Top(8),
-            Bottom(8),
-            Leading(20).with(.high),
-            Trailing(20).with(.high)
+            Top(0),
+            Bottom(0),
+            Leading(96.9).with(.high),
+            Trailing(96.9).with(.high)
         ]
         
         return footer
@@ -87,7 +88,6 @@ class CreateEventViewController: UIViewController {
     
     @objc
     fileprivate func onCreateEvent() {
-        // TODO: - create new event
         
         presentingViewController?.dismiss(animated: true)
     }
@@ -103,10 +103,11 @@ extension CreateEventViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     fileprivate enum TextFieldRow: Int {
-        case address
         case date
         case time
+        case eventName
         case purpose
+        case share
         case count
     }
     
@@ -145,14 +146,16 @@ extension CreateEventViewController: UITableViewDataSource, UITableViewDelegate 
                     cell.delegate   = self
                     
                     switch row {
-                    case .address:
-                        cell.update(title: "Address", text: place?.address?.displayAddress?.first, section: .address)
                     case .date:
                         cell.update(title: "Date", text: event?.date, section: .date)
                     case .time:
                         cell.update(title: "Time", text: event?.time, section: .time)
+                    case .eventName:
+                        cell.update(title: "Event Name", text: place?.address?.displayAddress?.first, section: .eventName)
                     case .purpose:
                         cell.update(title: "Purpose", text: event?.purpose, section: .purpose)
+                    case .share:
+                        cell.update(title: "Anything you'd to share", text: event?.share, section: .share)
                     default:
                         break
                     }
@@ -175,7 +178,7 @@ extension CreateEventViewController: UITableViewDataSource, UITableViewDelegate 
                 cell.delegate = self
                 
                 if indexPath.row == 0 {
-                    cell.update(title: "Number of People", items: NumberOfPeople.segmentItems, selectedIndex: NumberOfPeople.three.rawValue)
+                    cell.update(title: "No. of People", items: NumberOfPeople.segmentItems, selectedIndex: NumberOfPeople.three.rawValue)
                 } else {
                     cell.update(title: nil, items: Gender.segmentItems, selectedIndex: 2)
                 }

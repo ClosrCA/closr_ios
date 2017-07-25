@@ -17,9 +17,12 @@ protocol RangeSliderTableViewCellDelegate: class {
 class RangeSliderTableViewCell: UITableViewCell, Reusable {
 
     struct Constants {
-        static let labelPadding: CGFloat = 10
-        static let sliderPadding: CGFloat = 10
-        static let sliderHeight: CGFloat = 44
+        static let labelPadding: CGFloat = 23
+        static let labelTopPadding: CGFloat = 7
+        static let sliderPadding: CGFloat = 23
+        static let sliderTopPadding: CGFloat = 7
+        static let sliderBottomPadding: CGFloat = 5
+        static let sliderHeight: CGFloat = 32
         
         static let minAge: Double = 19
         static let maxAge: Double = 80
@@ -28,9 +31,9 @@ class RangeSliderTableViewCell: UITableViewCell, Reusable {
     
     weak var delegate: RangeSliderTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText, text: "Age")
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.titleText, textColor: AppColor.blackText, text: "Age")
     
-    fileprivate lazy var rangeLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.brand, text: "no age limit")
+    fileprivate lazy var rangeLabel: UILabel = UILabel.makeLabel(font: AppFont.titleText, textColor: AppColor.blackText, text: "19-80")
     
     fileprivate lazy var rangeSlider: RangeSlider = {
         let rangeSlider = RangeSlider()
@@ -72,20 +75,20 @@ class RangeSliderTableViewCell: UITableViewCell, Reusable {
     fileprivate func createConstraints() {
         titleLabel <- [
             Leading(Constants.labelPadding),
-            Top(Constants.labelPadding)
+            Top(Constants.labelTopPadding)
         ]
         
         rangeLabel <- [
             Trailing(Constants.labelPadding),
-            Top(Constants.labelPadding)
+            Top(Constants.labelTopPadding)
         ]
         
         rangeSlider <- [
-            Top(Constants.sliderPadding).to(titleLabel, .bottom),
+            Top(Constants.sliderTopPadding).to(titleLabel, .bottom),
             Leading(Constants.sliderPadding),
             Trailing(Constants.sliderPadding),
             Height(Constants.sliderHeight),
-            Bottom(Constants.sliderPadding)
+            Bottom(Constants.sliderBottomPadding)
         ]
     }
 
