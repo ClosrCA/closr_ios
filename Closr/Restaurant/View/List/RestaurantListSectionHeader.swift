@@ -11,9 +11,8 @@ import EasyPeasy
 
 class RestaurantListSectionHeader: UITableViewHeaderFooterView, Reusable {
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
-    
-    fileprivate lazy var accessoryLabel: UILabel = UILabel.makeLabel(font: AppFont.extraSmallText, textColor: AppColor.greyText)
+    fileprivate lazy var titleLabel: UILabel        = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
+    fileprivate lazy var accessoryLabel: UILabel    = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
     fileprivate lazy var accessoryImageView: UIImageView = UIImageView()
     
@@ -41,15 +40,15 @@ class RestaurantListSectionHeader: UITableViewHeaderFooterView, Reusable {
     
     func createConstraints() {
         titleLabel <- [
-            Top(10),
-            Leading(10),
+            Top(AppSizeMetric.defaultPadding),
+            Leading(AppSizeMetric.defaultPadding),
             Bottom()
         ]
         
         accessoryImageView <- [
-            Size(15),
+            Size(AppSizeMetric.iconSize),
             CenterY(),
-            Trailing(10)
+            Trailing(AppSizeMetric.defaultPadding)
         ]
         
         accessoryLabel <- [

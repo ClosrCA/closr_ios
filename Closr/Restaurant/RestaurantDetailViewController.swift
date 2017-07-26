@@ -17,9 +17,6 @@ class RestaurantDetailViewController: UIViewController {
         
         static let childControllerViewVerticalPadding: CGFloat      = 15
         static let childControllerViewHorizontalPadding: CGFloat    = 10
-        
-        static let createEventButtonHeight: CGFloat = 30
-        static let createEventButtonPadding: CGFloat = 8
     }
     
     var search: YelpPlaceSearch?
@@ -61,12 +58,9 @@ class RestaurantDetailViewController: UIViewController {
     fileprivate lazy var createEventButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Event", for: .normal)
-        button.setTitleColor(AppColor.lightButtonTitle, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
         button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
-        
-        button.layer.cornerRadius = 2
-        button.clipsToBounds = true
         
         return button
     }()
@@ -76,6 +70,8 @@ class RestaurantDetailViewController: UIViewController {
         self.placeID = placeID
         
         super.init(nibName: nil, bundle: nil)
+        
+        hidesBottomBarWhenPushed = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -135,10 +131,10 @@ class RestaurantDetailViewController: UIViewController {
         ]
         
         createEventButton <- [
-            Height(Constants.createEventButtonHeight),
-            Leading(Constants.createEventButtonPadding),
-            Trailing(Constants.createEventButtonPadding),
-            Bottom(Constants.createEventButtonPadding)
+            Height(AppSizeMetric.buttonHeight),
+            Leading(),
+            Trailing(),
+            Bottom()
         ]
     }
     

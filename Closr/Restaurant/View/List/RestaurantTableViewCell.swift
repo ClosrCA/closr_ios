@@ -19,7 +19,6 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         static let imagePadding: CGFloat                    = 15
         static let restaurantNameTopPadding: CGFloat        = 20
         static let contentHorizontalPadding: CGFloat        = 13
-        static let contentVerticalPadding: CGFloat          = 8
     }
     
     fileprivate lazy var restaurantImageView: UIImageView = {
@@ -36,13 +35,13 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var nameLabel: UILabel = UILabel.makeLabel(font: AppFont.thinTitle, textColor: AppColor.brand)
     
-    fileprivate lazy var addressLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var addressLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
     
-    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
     
-    fileprivate lazy var priceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title)
+    fileprivate lazy var priceLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.title)
     
-    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title)
+    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.title)
     
     
     func update(restaurant: YelpPlace, placeHolder: UIImage?, promoted: Bool) {
@@ -64,7 +63,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         
         selectionStyle = .none
         
-        setUpViews()
+        setupSubviews()
         createConstraints()
     }
     
@@ -81,7 +80,7 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         reviewImageView.image = nil
     }
     
-    fileprivate func setUpViews() {
+    fileprivate func setupSubviews() {
         contentView.addSubview(reviewImageView)
         contentView.addSubview(restaurantImageView)
         contentView.addSubview(nameLabel)
@@ -109,11 +108,11 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         categoryLabel <- [
             Leading().to(nameLabel, .leading),
             Trailing(<=Constants.contentHorizontalPadding),
-            Top(Constants.contentVerticalPadding).to(nameLabel)
+            Top().to(nameLabel)
         ]
         
         addressLabel <- [
-            Top(Constants.contentVerticalPadding).to(categoryLabel),
+            Top(AppSizeMetric.defaultPadding).to(categoryLabel),
             Leading().to(nameLabel, .leading),
             Trailing(<=Constants.contentHorizontalPadding)
         ]
@@ -121,17 +120,17 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
         reviewImageView <- [
             Size(Constants.reviewSize),
             Leading().to(nameLabel, .leading),
-            Top(Constants.contentVerticalPadding).to(addressLabel)
+            Top(AppSizeMetric.defaultPadding).to(addressLabel)
         ]
         
         priceLabel <- [
-            Top(Constants.contentVerticalPadding).to(reviewImageView),
+            Top(AppSizeMetric.defaultPadding).to(reviewImageView),
             Leading().to(nameLabel, .leading),
             Trailing(<=Constants.contentHorizontalPadding)
         ]
         
         distanceLabel <- [
-            Top(Constants.contentVerticalPadding).to(priceLabel),
+            Top().to(priceLabel),
             Leading().to(nameLabel,.leading),
             Trailing(<=Constants.contentHorizontalPadding)
         ]

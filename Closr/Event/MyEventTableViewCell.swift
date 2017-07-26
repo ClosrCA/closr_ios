@@ -22,7 +22,7 @@ class MyEventTableViewCell: UITableViewCell, Reusable {
         let eventCollectionView                              = UICollectionView(frame: .zero, collectionViewLayout: layout)
         eventCollectionView.dataSource                       = self
         eventCollectionView.delegate                         = self
-        eventCollectionView.backgroundColor                  = AppColor.opqueBackground
+        eventCollectionView.backgroundColor                  = .white
         eventCollectionView.showsHorizontalScrollIndicator   = false
         
         eventCollectionView.register(MyEventCollectionViewCell.self, forCellWithReuseIdentifier: MyEventCollectionViewCell.reuseIdentifier)

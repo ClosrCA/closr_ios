@@ -39,6 +39,8 @@
 		69FA43301F26FA1200A16BB8 /* MyEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA432B1F26FA1200A16BB8 /* MyEventCollectionViewCell.swift */; };
 		69FA43311F26FA1200A16BB8 /* MyEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA432C1F26FA1200A16BB8 /* MyEventTableViewCell.swift */; };
 		69FA43321F26FA1200A16BB8 /* MyEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA432D1F26FA1200A16BB8 /* MyEventViewController.swift */; };
+		69FA43361F2851E800A16BB8 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA43351F2851E800A16BB8 /* EventDetailViewController.swift */; };
+		69FA43391F2854C400A16BB8 /* EventInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA43381F2854C400A16BB8 /* EventInfoTableViewCell.swift */; };
 		A188F4BD87B3ACCD9E2C5CE6 /* Pods_Closr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EB2C47AC3DCFBC8CA59712 /* Pods_Closr.framework */; };
 		E42562F91E703CD10078E9ED /* RestaurantDetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42562F61E703CD10078E9ED /* RestaurantDetailDescriptionCell.swift */; };
 		E42562FA1E703CD10078E9ED /* ImageCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42562F71E703CD10078E9ED /* ImageCarouselViewController.swift */; };
@@ -63,7 +65,7 @@
 		E477EFF91E56652600ED7806 /* PromotionListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477EFF81E56652600ED7806 /* PromotionListConstant.swift */; };
 		E477EFFB1E5668DA00ED7806 /* PromotionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477EFFA1E5668DA00ED7806 /* PromotionCollectionViewCell.swift */; };
 		E477EFFD1E56692400ED7806 /* PromotionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477EFFC1E56692400ED7806 /* PromotionContainerView.swift */; };
-		E477F0051E56710300ED7806 /* Color+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0041E56710300ED7806 /* Color+Font.swift */; };
+		E477F0051E56710300ED7806 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0041E56710300ED7806 /* AppAppearance.swift */; };
 		E477F0071E567DBF00ED7806 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0061E567DBF00ED7806 /* Reusable.swift */; };
 		E477F0091E57305600ED7806 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F0081E57305600ED7806 /* TabBarController.swift */; };
 		E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E477F00A1E5730A100ED7806 /* PromotionListViewController.swift */; };
@@ -134,6 +136,8 @@
 		69FA432B1F26FA1200A16BB8 /* MyEventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyEventCollectionViewCell.swift; path = Event/MyEventCollectionViewCell.swift; sourceTree = "<group>"; };
 		69FA432C1F26FA1200A16BB8 /* MyEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyEventTableViewCell.swift; path = Event/MyEventTableViewCell.swift; sourceTree = "<group>"; };
 		69FA432D1F26FA1200A16BB8 /* MyEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyEventViewController.swift; path = Event/MyEventViewController.swift; sourceTree = "<group>"; };
+		69FA43351F2851E800A16BB8 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = Event/EventDetailViewController.swift; sourceTree = "<group>"; };
+		69FA43381F2854C400A16BB8 /* EventInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventInfoTableViewCell.swift; path = Event/EventInfoTableViewCell.swift; sourceTree = "<group>"; };
 		6A7B4D8EF80D28ADA80777C1 /* Pods_Closr_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Closr_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E93C733ACEB26E3D0C76266 /* Pods_Closr_ClosrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Closr_ClosrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67206956609D6F4E129FFC4 /* Pods-Closr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,7 +172,7 @@
 		E477EFF81E56652600ED7806 /* PromotionListConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionListConstant.swift; path = Promotion/View/PromotionListConstant.swift; sourceTree = "<group>"; };
 		E477EFFA1E5668DA00ED7806 /* PromotionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionCollectionViewCell.swift; path = Promotion/View/PromotionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E477EFFC1E56692400ED7806 /* PromotionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionContainerView.swift; path = Promotion/View/PromotionContainerView.swift; sourceTree = "<group>"; };
-		E477F0041E56710300ED7806 /* Color+Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Color+Font.swift"; path = "Shared/Color+Font.swift"; sourceTree = "<group>"; };
+		E477F0041E56710300ED7806 /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppAppearance.swift; path = Shared/AppAppearance.swift; sourceTree = "<group>"; };
 		E477F0061E567DBF00ED7806 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = Shared/Reusable.swift; sourceTree = "<group>"; };
 		E477F0081E57305600ED7806 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E477F00A1E5730A100ED7806 /* PromotionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionListViewController.swift; path = Promotion/PromotionListViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +314,15 @@
 			name = MyEvent;
 			sourceTree = "<group>";
 		};
+		69FA43371F28547B00A16BB8 /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+				69FA43351F2851E800A16BB8 /* EventDetailViewController.swift */,
+				69FA43381F2854C400A16BB8 /* EventInfoTableViewCell.swift */,
+			);
+			name = EventDetail;
+			sourceTree = "<group>";
+		};
 		6B63B94B507121C38A05698A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,7 +394,7 @@
 				E46ECDFC1E51313C00785BE6 /* String+Format.swift */,
 				E42563001E718B430078E9ED /* UILabel+Make.swift */,
 				E4A885B91E53414F0093829E /* KeyboardObserver.swift */,
-				E477F0041E56710300ED7806 /* Color+Font.swift */,
+				E477F0041E56710300ED7806 /* AppAppearance.swift */,
 				6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */,
 				6942D1061EFA1B6500988471 /* UIView+Animation.swift */,
 				E477F0061E567DBF00ED7806 /* Reusable.swift */,
@@ -491,6 +504,7 @@
 			children = (
 				69FA43331F26FA1D00A16BB8 /* JoinEvent */,
 				69FA43341F26FA2D00A16BB8 /* MyEvent */,
+				69FA43371F28547B00A16BB8 /* EventDetail */,
 				69FA43271F26F96900A16BB8 /* EventViewController.swift */,
 				E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */,
 				360856F31E8F2C6900C50FDA /* ProfileEventListViewController.swift */,
@@ -810,9 +824,10 @@
 				69FA432F1F26FA1200A16BB8 /* JoinEventTableViewCell.swift in Sources */,
 				69FA432E1F26FA1200A16BB8 /* JoinEventListViewController.swift in Sources */,
 				69BA88571EDA375B0039E237 /* CategoryCollectionViewCell.swift in Sources */,
-				E477F0051E56710300ED7806 /* Color+Font.swift in Sources */,
+				E477F0051E56710300ED7806 /* AppAppearance.swift in Sources */,
 				E477EFFD1E56692400ED7806 /* PromotionContainerView.swift in Sources */,
 				E477F00F1E5DCB7600ED7806 /* RestaurantDetailViewController.swift in Sources */,
+				69FA43391F2854C400A16BB8 /* EventInfoTableViewCell.swift in Sources */,
 				360856FC1E8F2DB400C50FDA /* EventListFont.swift in Sources */,
 				360856FA1E8F2D7E00C50FDA /* EventListConstant.swift in Sources */,
 				E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */,
@@ -821,6 +836,7 @@
 				360856F41E8F2C6900C50FDA /* ProfileEventListViewController.swift in Sources */,
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
 				E42562F91E703CD10078E9ED /* RestaurantDetailDescriptionCell.swift in Sources */,
+				69FA43361F2851E800A16BB8 /* EventDetailViewController.swift in Sources */,
 				360856FE1E8F2DE100C50FDA /* EventListColor.swift in Sources */,
 				E42562FA1E703CD10078E9ED /* ImageCarouselViewController.swift in Sources */,
 				E42563011E718B430078E9ED /* UILabel+Make.swift in Sources */,

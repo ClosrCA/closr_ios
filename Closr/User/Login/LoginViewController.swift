@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
                                                                                           NSFontAttributeName: AppFont.smallText])
         
         attributedString.append(NSAttributedString(string: highlightedString, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
-                                                                                           NSForegroundColorAttributeName: AppColor.hightedText,
+                                                                                           NSForegroundColorAttributeName: UIColor.white,
                                                                                            NSFontAttributeName: AppFont.smallText]))
         
         attributedString.append(NSAttributedString(string: theRest, attributes: [NSForegroundColorAttributeName: AppColor.lightGreyText,
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController {
     }()
     
     fileprivate lazy var subtitleLable = UILabel.makeLabel(font: AppFont.title,
-                                                           textColor: AppColor.hightedText,
+                                                           textColor: .white,
                                                            text: NSLocalizedString("Build friendships, one table at a time", comment: ""))
     
     

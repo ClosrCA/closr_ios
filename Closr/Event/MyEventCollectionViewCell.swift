@@ -14,16 +14,12 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
     static let preferredSize: CGSize = CGSize(width: 125, height: 145)
     
     fileprivate struct Constants {
-        
-        static let avatarImageSize: CGSize          = CGSize(width: 55, height: 55)
-        static let avatarTopPadding: CGFloat        = 10
         static let avatarLeftPadding: CGFloat       = 18
         
         static let eventTitlePadding: CGFloat              = 6
         
         static let participationImageSize: CGSize          = CGSize(width: 47.5, height: 10)
         
-        static let timeImageSize: CGSize                   = CGSize(width: 15, height: 15)
         static let timeImageBottomPadding: CGFloat         = 10
         
         static let dateLabelLeadingPadding: CGFloat        = 6
@@ -33,7 +29,7 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         let view                = UIImageView()
         view.layer.borderColor  = AppColor.brand.cgColor
         view.layer.borderWidth  = 1
-        view.layer.cornerRadius = Constants.avatarImageSize.height / 2
+        view.layer.cornerRadius = AppSizeMetric.avatarSize.height / 2
         view.clipsToBounds      = true
         
         return view
@@ -48,9 +44,9 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         return view
     }()
     
-    fileprivate lazy var eventTitleLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.blackText)
+    fileprivate lazy var eventTitleLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
-    fileprivate lazy var dateLabel: UILabel = UILabel.makeLabel(font: AppFont.extraSmallText, textColor: AppColor.blackText)
+    fileprivate lazy var dateLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
     
      fileprivate lazy var timeImageView: UIImageView = UIImageView(image: UIImage(named: "time_icon"))
     
@@ -84,9 +80,8 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
     fileprivate func createConstraints() {
         
         avatarImageView <- [
-        
-            Size(Constants.avatarImageSize),
-            Top(Constants.avatarTopPadding),
+            Size(AppSizeMetric.avatarSize),
+            Top(AppSizeMetric.defaultPadding),
             Leading(Constants.avatarLeftPadding)
         ]
         
@@ -103,7 +98,7 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         ]
         
         timeImageView <- [
-            Size(Constants.timeImageSize),
+            Size(AppSizeMetric.iconSize),
             Leading().to(eventTitleLabel, .leading),
             Bottom(Constants.timeImageBottomPadding)
         ]

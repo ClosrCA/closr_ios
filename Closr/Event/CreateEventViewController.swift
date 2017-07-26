@@ -38,52 +38,53 @@ class CreateEventViewController: UIViewController {
         return tableView
     }()
     
+    fileprivate lazy var createEventButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("ADD NEW EVENT", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
+        button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavItem()
+        
         buildUI()
     }
     
-    fileprivate func buildUI() {
+    fileprivate func setupNavItem() {
         
         let closeItem = UIBarButtonItem(title: "X", style: .plain, target: self, action: #selector(onClose))
         navigationController?.navigationBar.tintColor = UIColor.gray
         navigationItem.leftBarButtonItem = closeItem
-        
+    }
+    
+    fileprivate func buildUI() {
         view.addSubview(tableView)
-        tableView <- Edges()
+        view.addSubview(createEventButton)
         
-        tableView.tableFooterView = makeFooter()
+        tableView <- [
+            Top(),
+            Leading(),
+            Trailing(),
+            Bottom(AppSizeMetric.buttonHeight)
+        ]
+        
+        createEventButton <- [
+            Height(AppSizeMetric.buttonHeight),
+            Leading(),
+            Bottom(),
+            Trailing()
+        ]
     }
     
     @objc
     fileprivate func onClose() {
         presentingViewController?.dismiss(animated: true)
-    }
-    
-    fileprivate func makeFooter() -> UIView {
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 24.73))
-        
-        let button = UIButton()
-        button.setTitle("ADD NEW EVENT", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 9)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
-        button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
-        
-        button.layer.cornerRadius = 2
-        button.clipsToBounds = true
-        
-        footer.addSubview(button)
-        
-        button <- [
-            Top(0),
-            Bottom(0),
-            Leading(96.9).with(.high),
-            Trailing(96.9).with(.high)
-        ]
-        
-        return footer
     }
     
     @objc
