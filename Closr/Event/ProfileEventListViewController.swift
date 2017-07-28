@@ -21,7 +21,7 @@ class ProfileEventListViewController: UIViewController {
         
         tableView.register(NearbyEventTableViewCell.self, forCellReuseIdentifier: NearbyEventTableViewCell.reuseIdentifier)
         tableView.register(EventCollectionTableViewCell.self, forCellReuseIdentifier: EventCollectionTableViewCell.reuseIdentifier)
-        tableView.register(EventListSectionHeader.self, forHeaderFooterViewReuseIdentifier: EventListSectionHeader.reuseIdentifier)
+        tableView.register(TableViewSectionHeader.self, forHeaderFooterViewReuseIdentifier: TableViewSectionHeader.reuseIdentifier)
         
         return tableView
     }()
@@ -62,7 +62,7 @@ extension ProfileEventListViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: EventListSectionHeader.reuseIdentifier) as! EventListSectionHeader
+        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableViewSectionHeader.reuseIdentifier) as! TableViewSectionHeader
         
         let section = ProfileEventListSection(rawValue: section)!
         

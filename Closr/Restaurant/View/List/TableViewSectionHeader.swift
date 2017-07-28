@@ -1,5 +1,5 @@
 //
-//  RestaurantListSectionHeader.swift
+//  TableViewSectionHeader.swift
 //  Closr
 //
 //  Created by ZHITAO TIAN on 2017-05-27.
@@ -9,7 +9,7 @@
 import UIKit
 import EasyPeasy
 
-class RestaurantListSectionHeader: UITableViewHeaderFooterView, Reusable {
+class TableViewSectionHeader: UITableViewHeaderFooterView, Reusable {
     
     fileprivate lazy var titleLabel: UILabel        = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
     fileprivate lazy var accessoryLabel: UILabel    = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)

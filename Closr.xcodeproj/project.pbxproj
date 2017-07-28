@@ -13,7 +13,6 @@
 		360856FA1E8F2D7E00C50FDA /* EventListConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856F91E8F2D7E00C50FDA /* EventListConstant.swift */; };
 		360856FC1E8F2DB400C50FDA /* EventListFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856FB1E8F2DB400C50FDA /* EventListFont.swift */; };
 		360856FE1E8F2DE100C50FDA /* EventListColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360856FD1E8F2DE100C50FDA /* EventListColor.swift */; };
-		360857011E8F2E5100C50FDA /* EventListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */; };
 		36D94ACD1E5E889E00868A29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */; };
 		36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B851E7A37B500868A29 /* Assets.xcassets */; };
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
@@ -28,7 +27,7 @@
 		695A316A1ECC3AC50087183F /* ReviewHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A31691ECC3AC50087183F /* ReviewHelperTests.swift */; };
 		69BA88571EDA375B0039E237 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */; };
 		69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */; };
-		69BA885B1EDA460B0039E237 /* RestaurantListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA885A1EDA460B0039E237 /* RestaurantListSectionHeader.swift */; };
+		69BA885B1EDA460B0039E237 /* TableViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA885A1EDA460B0039E237 /* TableViewSectionHeader.swift */; };
 		69BD54901E86C20C0037A7EE /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BD548F1E86C20C0037A7EE /* EventCollectionViewCell.swift */; };
 		69BEF7A31E8A114300D33F38 /* EventThumbnailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEF7A21E8A114300D33F38 /* EventThumbnailFactory.swift */; };
 		69E750821E86122A00E7EFB0 /* SegmentControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */; };
@@ -107,7 +106,6 @@
 		360856F91E8F2D7E00C50FDA /* EventListConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListConstant.swift; path = Event/EventListTableView/EventListConstant.swift; sourceTree = "<group>"; };
 		360856FB1E8F2DB400C50FDA /* EventListFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListFont.swift; path = Event/EventListTableView/EventListFont.swift; sourceTree = "<group>"; };
 		360856FD1E8F2DE100C50FDA /* EventListColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListColor.swift; path = Event/EventListTableView/EventListColor.swift; sourceTree = "<group>"; };
-		360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventListSectionHeader.swift; path = Event/EventListTableView/EventListSectionHeader.swift; sourceTree = "<group>"; };
 		36D94ACC1E5E889E00868A29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36D94B851E7A37B500868A29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48B494F9B1CEF7FCA9E464A3 /* Pods-Closr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Closr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Closr/Pods-Closr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,7 +123,7 @@
 		695A31691ECC3AC50087183F /* ReviewHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelperTests.swift; sourceTree = "<group>"; };
 		69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCarouselTableViewCell.swift; sourceTree = "<group>"; };
-		69BA885A1EDA460B0039E237 /* RestaurantListSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantListSectionHeader.swift; sourceTree = "<group>"; };
+		69BA885A1EDA460B0039E237 /* TableViewSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSectionHeader.swift; sourceTree = "<group>"; };
 		69BD548F1E86C20C0037A7EE /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventCollectionViewCell.swift; path = Event/View/EventCollectionViewCell.swift; sourceTree = "<group>"; };
 		69BEF7A21E8A114300D33F38 /* EventThumbnailFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventThumbnailFactory.swift; path = Event/View/EventThumbnailFactory.swift; sourceTree = "<group>"; };
 		69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentControlTableViewCell.swift; path = Event/View/SegmentControlTableViewCell.swift; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				360856F61E8F2CF800C50FDA /* NearbyEventTableViewCell.swift */,
-				360857001E8F2E5100C50FDA /* EventListSectionHeader.swift */,
 				360856F91E8F2D7E00C50FDA /* EventListConstant.swift */,
 				360856F81E8F2D3D00C50FDA /* EventListParameter */,
 			);
@@ -574,7 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				E4E99DFD1E7A31B400A10DA7 /* RestaurantTableViewCell.swift */,
-				69BA885A1EDA460B0039E237 /* RestaurantListSectionHeader.swift */,
+				69BA885A1EDA460B0039E237 /* TableViewSectionHeader.swift */,
 				69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */,
 				69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */,
 			);
@@ -846,7 +843,6 @@
 				E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */,
 				E4AAB7391E3ECC12001EB362 /* PlaceSearchRequest.swift in Sources */,
 				E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */,
-				360857011E8F2E5100C50FDA /* EventListSectionHeader.swift in Sources */,
 				69FA43281F26F96900A16BB8 /* EventViewController.swift in Sources */,
 				691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */,
 				E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */,
@@ -859,7 +855,7 @@
 				69FA43301F26FA1200A16BB8 /* MyEventCollectionViewCell.swift in Sources */,
 				4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */,
 				691B58FB1E877A0C00ABEF6A /* EventCollectionTableViewCell.swift in Sources */,
-				69BA885B1EDA460B0039E237 /* RestaurantListSectionHeader.swift in Sources */,
+				69BA885B1EDA460B0039E237 /* TableViewSectionHeader.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
 				E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */,
 				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,
