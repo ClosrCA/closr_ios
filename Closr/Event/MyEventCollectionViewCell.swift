@@ -44,9 +44,9 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         return view
     }()
     
-    fileprivate lazy var eventTitleLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var eventTitleLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_gray)
     
-    fileprivate lazy var dateLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var dateLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_gray)
     
      fileprivate lazy var timeImageView: UIImageView = UIImageView(image: UIImage(named: "time_icon"))
     

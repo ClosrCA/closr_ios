@@ -24,7 +24,7 @@ class SegmentControlTableViewCell: UITableViewCell, Reusable {
     
     weak var delegate: SegmentControlTableViewCellDelegate?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
     
     fileprivate lazy var segmentControl: UISegmentedControl = {
         let segmentControl = UISegmentedControl()

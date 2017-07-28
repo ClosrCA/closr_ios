@@ -33,12 +33,12 @@ class EventCollectionViewCell: UICollectionViewCell, Reusable {
     
     fileprivate var thumbnail: UIView?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.title)
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_dark)
     fileprivate lazy var dateLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.brand)
     
     func update(title: String?, date: Date?, avatars: [String]?, isCurrent: Bool = true) {
         
-        dateLabel.textColor = isCurrent ? AppColor.brand : AppColor.greyText
+        dateLabel.textColor = isCurrent ? AppColor.brand : AppColor.text_gray
         
         titleLabel.text = title
     

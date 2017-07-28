@@ -47,13 +47,13 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
     
     }()
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.title, text: "Event Title")
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_dark, text: "Event Title")
     
-    fileprivate lazy var restaurantLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title, text: "Restaurant Name")
+    fileprivate lazy var restaurantLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_dark, text: "Restaurant Name")
 
-    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title, text: "10.5km")
+    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_dark, text: "10.5km")
 
-    fileprivate lazy var timeLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title, text: "25 min")
+    fileprivate lazy var timeLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_dark, text: "25 min")
 
     fileprivate lazy var avatarImageView: UIImageView = {
         

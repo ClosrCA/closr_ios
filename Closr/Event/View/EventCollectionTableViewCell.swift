@@ -13,7 +13,7 @@ class EventCollectionTableViewCell: UITableViewCell, Reusable {
 
     var isCurrent: Bool = true {
         didSet {
-            collectionView.backgroundColor = isCurrent ? AppColor.brandBackground : UIColor.white
+            collectionView.backgroundColor = isCurrent ? AppColor.background_brand : UIColor.white
         }
     }
     
@@ -27,7 +27,7 @@ class EventCollectionTableViewCell: UITableViewCell, Reusable {
         let collectionView                              = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource                       = self
         collectionView.delegate                         = self
-        collectionView.backgroundColor                  = AppColor.brandBackground
+        collectionView.backgroundColor                  = AppColor.background_brand
         collectionView.showsHorizontalScrollIndicator   = false
         
         collectionView.register(EventCollectionViewCell.self, forCellWithReuseIdentifier: EventCollectionViewCell.reuseIdentifier)

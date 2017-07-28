@@ -12,5 +12,5 @@ import EasyPeasy
 class EventInfoTableViewCell: UITableViewCell {
 
     fileprivate lazy var locationIcon: UIImageView = UIImageView()
-    fileprivate lazy var locationLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
+    fileprivate lazy var locationLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
 }

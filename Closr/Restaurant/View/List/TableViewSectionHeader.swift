@@ -11,8 +11,8 @@ import EasyPeasy
 
 class TableViewSectionHeader: UITableViewHeaderFooterView, Reusable {
     
-    fileprivate lazy var titleLabel: UILabel        = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
-    fileprivate lazy var accessoryLabel: UILabel    = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var titleLabel: UILabel        = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
+    fileprivate lazy var accessoryLabel: UILabel    = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_gray)
     
     fileprivate lazy var accessoryImageView: UIImageView = UIImageView()
     

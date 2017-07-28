@@ -41,7 +41,7 @@ class CategoryCollectionViewCell: UICollectionViewCell, Reusable {
         return imageView
     }()
     
-    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.title)
+    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_dark)
     
     func update(with item: CategoryItem) {
         categoryLabel.text      = item.title

@@ -444,18 +444,18 @@
 		E4713ED71E399ED2004CC166 /* Closr */ = {
 			isa = PBXGroup;
 			children = (
+				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
+				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
+				E477F0081E57305600ED7806 /* TabBarController.swift */,
+				6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */,
 				E42563021E7190250078E9ED /* Review */,
 				4CA91CCF1E5778DC00A8F51C /* Restaurant */,
-				E46ECDE81E50D6B200785BE6 /* Shared */,
 				E4AAB7411E407E05001EB362 /* Image */,
 				E477EFF61E5664D400ED7806 /* Promotion */,
 				E4713F141E39B747004CC166 /* Event */,
 				E4713F121E39B736004CC166 /* User */,
 				E4713F091E39B4B6004CC166 /* Place */,
-				E4713ED81E399ED2004CC166 /* AppDelegate.swift */,
-				E4713EDA1E399ED2004CC166 /* RootViewController.swift */,
-				E477F0081E57305600ED7806 /* TabBarController.swift */,
-				6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */,
+				E46ECDE81E50D6B200785BE6 /* Shared */,
 				E458B1D11E65A56B00EE7736 /* Resources */,
 			);
 			path = Closr;

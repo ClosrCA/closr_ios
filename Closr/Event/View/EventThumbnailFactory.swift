@@ -15,7 +15,7 @@ class EventThumbnailFactory {
     
     static func thumbnail(images: [String], required: Int) -> UIView {
         
-        let placeholder = UIImage.imageWith(color: AppColor.lightGreyText, within: CGSize(width: 1, height: 1))
+        let placeholder = UIImage.imageWith(color: AppColor.text_light_gray, within: CGSize(width: 1, height: 1))
         
         func makeBackground() -> UIView {
             let view = UIView()
