@@ -7,28 +7,97 @@
 //
 
 import UIKit
+import EasyPeasy
 
 class EventDetailViewController: UIViewController {
 
     enum EventSection: Int {
+        
+        static let count = 1
+        
         case info
         case attendant
         case purpose
         case gallery
         case map
+        
+        var header: String {
+            switch  self {
+            case .info:
+                return "Restaurant & Time:"
+            case .attendant:
+                return "Attending:"
+            case .purpose:
+                return "Purpose:"
+            case .gallery:
+                return "Restaurant Photos"
+            case .map:
+                return "Directions:"
+            }
+        }
     }
     
     fileprivate lazy var tableView: UITableView = {
         let tableView                           = UITableView(frame: .zero, style: .grouped)
+        tableView.delegate                      = self
+        tableView.dataSource                    = self
         tableView.sectionFooterHeight           = 0
         tableView.estimatedSectionHeaderHeight  = 20
         tableView.sectionHeaderHeight           = UITableViewAutomaticDimension
         tableView.estimatedRowHeight            = 80
         tableView.rowHeight                     = UITableViewAutomaticDimension
+        tableView.allowsSelection               = false
+        tableView.separatorStyle                = .none
+        tableView.backgroundColor               = .white
         
-        
+        tableView.register(TableViewSectionHeader.self, forHeaderFooterViewReuseIdentifier: TableViewSectionHeader.reuseIdentifier)
+        tableView.register(EventInfoTableViewCell.self, forCellReuseIdentifier: EventInfoTableViewCell.reuseIdentifier)
         
         return tableView
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(tableView)
+        tableView <- Edges()
+    }
+}
 
+extension EventDetailViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return EventSection.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let section = EventSection(rawValue: indexPath.section) else {
+            return UITableViewCell()
+        }
+        
+        switch section {
+        case .info:
+            let cell = tableView.dequeueReusableCell(withIdentifier: EventInfoTableViewCell.reuseIdentifier, for: indexPath) as! EventInfoTableViewCell
+            cell.update(address: "downtonw Toronto", readableTime: "Event starts in 2 hours")
+            
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let section = EventSection(rawValue: section) else {
+            return nil
+        }
+        
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableViewSectionHeader.reuseIdentifier) as! TableViewSectionHeader
+        
+        header.update(title: section.header)
+        
+        return header
+    }
 }

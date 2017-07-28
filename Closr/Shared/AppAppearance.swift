@@ -23,7 +23,6 @@ struct AppColor {
 }
 
 struct AppFont {
-    
     static let largeTitle: UIFont   = UIFont.systemFont(ofSize: 28, weight: UIFontWeightSemibold)
     static let thinTitle: UIFont    = UIFont(name: "AvenirNextCondensed-Bold", size: 20)!
     static let title: UIFont        = UIFont.systemFont(ofSize: 18, weight: UIFontWeightSemibold)
@@ -34,6 +33,7 @@ struct AppFont {
 struct AppSizeMetric {
     static let buttonHeight: CGFloat    = 44
     static let defaultPadding: CGFloat  = 8
+    static let breathPadding: CGFloat   = 20
     static let avatarSize: CGSize       = CGSize(width: 55, height: 55)
     static let iconSize: CGSize         = CGSize(width: 12, height: 12)
 }

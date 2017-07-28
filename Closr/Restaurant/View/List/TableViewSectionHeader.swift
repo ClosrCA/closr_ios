@@ -16,7 +16,7 @@ class TableViewSectionHeader: UITableViewHeaderFooterView, Reusable {
     
     fileprivate lazy var accessoryImageView: UIImageView = UIImageView()
     
-    func update(title: String? = " ", accessoryTitle: String? = nil, accessoryImage: UIImage? = nil) {
+    func update(title: String, accessoryTitle: String? = nil, accessoryImage: UIImage? = nil) {
         titleLabel.text             = title
         accessoryLabel.text         = accessoryTitle
         accessoryImageView.image    = accessoryImage

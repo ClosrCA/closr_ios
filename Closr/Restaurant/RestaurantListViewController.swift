@@ -143,7 +143,7 @@ extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSour
             case .category:
                 header.update(title: "CATEGORIES")
             case .restaurant:
-                header.update(accessoryTitle: "Powered by", accessoryImage: UIImage(named: "yelp_logo"))
+                header.update(title: "", accessoryTitle: "Powered by", accessoryImage: UIImage(named: "yelp_logo"))
             default:
                 break
             }
