@@ -9,8 +9,20 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import ObjectiveC
+
+private var dataRequestKey = "dataRequestKey"
 
 extension UIImageView {
+    
+    fileprivate var dataRequest: DataRequest? {
+        get {
+            return objc_getAssociatedObject(self, &dataRequestKey) as? DataRequest
+        }
+        set {
+            objc_setAssociatedObject(self, &dataRequestKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
     
     func loadImage(URLString: String?, placeholder: UIImage? = nil) {
         
@@ -33,7 +45,7 @@ extension UIImageView {
             return
         }
         
-        Alamofire.request(URL).responseImage { [weak self] (response) in
+        dataRequest = Alamofire.request(URL).responseImage { [weak self] (response) in
             
             switch response.result {
             case .success(let value):
@@ -43,5 +55,9 @@ extension UIImageView {
                 return
             }
         }
+    }
+    
+    func cancelLoading() {
+        dataRequest?.cancel()
     }
 }

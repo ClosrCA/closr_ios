@@ -15,14 +15,10 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
     
     fileprivate struct Constants {
         static let avatarLeftPadding: CGFloat       = 18
-        
-        static let eventTitlePadding: CGFloat              = 6
-        
-        static let participationImageSize: CGSize          = CGSize(width: 47.5, height: 10)
-        
-        static let timeImageBottomPadding: CGFloat         = 10
-        
-        static let dateLabelLeadingPadding: CGFloat        = 6
+        static let eventTitlePadding: CGFloat       = 6
+        static let participationImageSize: CGSize   = CGSize(width: 47.5, height: 10)
+        static let timeImageBottomPadding: CGFloat  = 10
+        static let dateLabelLeadingPadding: CGFloat = 6
     }
     
     fileprivate lazy var avatarImageView: UIImageView = {
@@ -48,14 +44,18 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
     
     fileprivate lazy var dateLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_gray)
     
-     fileprivate lazy var timeImageView: UIImageView = UIImageView(image: UIImage(named: "time_icon"))
+    fileprivate lazy var timeImageView: UIImageView = {
+        let imageView           = UIImageView(image: UIImage(named: "icon_time"))
+        imageView.contentMode   = .scaleAspectFit
+        
+        return imageView
+    }()
     
     
     fileprivate func testData() {
-    
-        eventTitleLabel.text = "Event Title"
-        dateLabel.text = "05.05.1995 at 5:00pm"
         
+        eventTitleLabel.text    = "Event Title"
+        dateLabel.text          = "05.05.1995 at 5:00pm"
     }
     
     override init(frame: CGRect) {

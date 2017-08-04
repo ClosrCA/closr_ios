@@ -26,7 +26,7 @@ class CategoryCollectionViewCell: UICollectionViewCell, Reusable {
     }
     
     fileprivate lazy var shadowBackgroundImageView: UIImageView = {
-        let background = UIImage(named: "category_background")
+        let background = UIImage(named: "icon_category_background")
         
         let imageView           = UIImageView(image: background)
         imageView.contentMode   = .scaleAspectFill

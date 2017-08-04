@@ -13,14 +13,14 @@ class EventInfoTableViewCell: UITableViewCell, Reusable {
 
     fileprivate lazy var locationIcon: UIImageView = {
         let imageView   = UIImageView()
-        imageView.image = UIImage(named: "distance_icon")
+        imageView.image = UIImage(named: "icon_location")
         
         return imageView
     }()
     
     fileprivate lazy var timeIcon: UIImageView = {
         let imageView   = UIImageView()
-        imageView.image = UIImage(named: "time_icon")
+        imageView.image = UIImage(named: "icon_time")
         
         return imageView
     }()

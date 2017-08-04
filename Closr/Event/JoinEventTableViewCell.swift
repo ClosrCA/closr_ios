@@ -13,10 +13,8 @@ import EasyPeasy
 class JoinEventTableViewCell: UITableViewCell, Reusable{
     
     struct Constants {
-        static let horizontalPadding: CGFloat   = 8
         static let verticalPadding: CGFloat     = 13
         
-        static let avatarSize: CGSize               = CGSize(width: 55, height: 55)
         static let avatarVerticalPadding: CGFloat   = 9
         static let avatarLeftPadding: CGFloat       = 13
         
@@ -26,12 +24,11 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
         
         static let restaurantNameTopPadding: CGFloat = 6
         
-        static let iconSize: CGSize                     = CGSize(width: 15, height: 15)
         static let iconRightPaddingToContainer: CGFloat = 64
         static let iconVerticalPadding: CGFloat         = 14
         static let iconVerticalSpace: CGFloat           = 16
         
-        static let timeLeftPadding: CGFloat = 8
+        static let attendantContainerSize: CGSize = CGSize(width: 50, height: 15)
     }
     
     fileprivate lazy var containerView: UIView = {
@@ -59,24 +56,27 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
         
         let imageView                   = UIImageView(image: UIImage(named: "user"))
         imageView.contentMode           = .center
-        imageView.layer.cornerRadius    = Constants.avatarSize.height / 2
+        imageView.layer.cornerRadius    = AppSizeMetric.avatarSize.height / 2
         imageView.clipsToBounds         = true
         
         return imageView
     }()
 
-    // TODO: generator
-    fileprivate lazy var participantsContainer: UIView = {
+    fileprivate lazy var attendantsContainer: UIView = UIView()
+    
+    fileprivate lazy var timeImageView: UIImageView = {
+        let imageView           = UIImageView(image: UIImage(named: "icon_time"))
+        imageView.contentMode   = .scaleAspectFit
         
-        let view                = UIView()
-        view.backgroundColor    = UIColor.brown
-        
-        return view
+        return imageView
     }()
     
-    fileprivate lazy var timeImageView: UIImageView = UIImageView(image: UIImage(named: "time_icon"))
-    
-    fileprivate lazy var distanceImageView: UIImageView = UIImageView(image: UIImage(named: "distance_icon"))
+    fileprivate lazy var distanceImageView: UIImageView = {
+        let imageView           = UIImageView(image: UIImage(named: "icon_location"))
+        imageView.contentMode   = .scaleAspectFit
+        
+        return imageView
+    }()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -96,6 +96,69 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
         titleLabel.text = event.title
         avatarImageView.loadImage(URLString: event.author?.avatar)
         restaurantLabel.text = event.restaurant.name
+        
+        generateAttendantView(with: event.participants.count + 1, capablility: event.numberOfPeople)
+    }
+    
+    // TODO: testing purpose
+    func update(with attending: Int, capability: Int) {
+        generateAttendantView(with: attending, capablility: capability)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        avatarImageView.cancelLoading()
+        
+        titleLabel.text         = ""
+        avatarImageView.image   = nil
+        restaurantLabel.text    = ""
+        
+        attendantsContainer.subviews.forEach { $0.removeFromSuperview() }
+    }
+    
+    fileprivate func generateAttendantView(with attending: Int, capablility: Int) {
+        for index in 0..<attending {
+            
+            let orangeAvatar = attendantImageView()
+            
+            layout(attendant: orangeAvatar, at: index)
+        }
+        
+        let availablity = capablility - attending
+        
+        for index in 0..<availablity {
+            
+            let blackAvatar = availablityImageView()
+            
+            layout(attendant: blackAvatar, at: attending + index)
+        }
+    }
+    
+    fileprivate func attendantImageView() -> UIImageView {
+        let imageView           = UIImageView(image: UIImage(named: "icon_user_orange"))
+        imageView.contentMode   = .scaleAspectFit
+        
+        return imageView
+    }
+    
+    fileprivate func availablityImageView() -> UIImageView {
+        let imageView           = UIImageView(image: UIImage(named: "icon_user"))
+        imageView.contentMode   = .scaleAspectFit
+        
+        return imageView
+    }
+    
+    fileprivate func layout(attendant: UIImageView, at index: Int) {
+        attendantsContainer.addSubview(attendant)
+        
+        let leadingPadding = CGFloat(index) * (AppSizeMetric.defaultPadding + AppSizeMetric.iconSize.width)
+        
+        attendant <- [
+            Size(AppSizeMetric.iconSize),
+            CenterY(),
+            Leading(leadingPadding)
+        ]
     }
     
     fileprivate func setupSubviews() {
@@ -106,7 +169,7 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
         containerView.addSubview(distanceLabel)
         containerView.addSubview(timeLabel)
         containerView.addSubview(avatarImageView)
-        containerView.addSubview(participantsContainer)
+        containerView.addSubview(attendantsContainer)
         containerView.addSubview(timeImageView)
         containerView.addSubview(distanceImageView)
     }
@@ -114,14 +177,14 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
     fileprivate func createConstraints() {
         
         containerView <- [
-            Leading(Constants.horizontalPadding),
-            Trailing(Constants.horizontalPadding),
+            Leading(AppSizeMetric.defaultPadding),
+            Trailing(AppSizeMetric.defaultPadding),
             Top(Constants.verticalPadding),
             Bottom(Constants.verticalPadding)
         ]
         
         avatarImageView <- [
-            Size(Constants.avatarSize),
+            Size(AppSizeMetric.avatarSize),
             Top(Constants.avatarVerticalPadding),
             Bottom(Constants.avatarVerticalPadding),
             Leading(Constants.avatarLeftPadding)
@@ -130,34 +193,34 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
         titleLabel <- [
             Top(Constants.titleTopPadding),
             Leading(Constants.titleLeftPadding).to(avatarImageView),
-            Bottom(Constants.titleBottomPadding).to(participantsContainer),
+            Bottom(Constants.titleBottomPadding).to(attendantsContainer),
             Trailing(<=0).to(timeImageView)
         ]
         
-        participantsContainer <- [
+        attendantsContainer <- [
             Leading().to(titleLabel, .leading),
-            Size(CGSize(width: 50, height: 10))
+            Size(Constants.attendantContainerSize)
         ]
         
         restaurantLabel <- [
-            Top(Constants.restaurantNameTopPadding).to(participantsContainer),
+            Top(Constants.restaurantNameTopPadding).to(attendantsContainer),
             Leading().to(titleLabel, .leading)
         ]
         
         timeImageView <- [
-            Size(Constants.iconSize),
+            Size(AppSizeMetric.iconSize),
             Top(Constants.iconVerticalPadding),
             Trailing(Constants.iconRightPaddingToContainer)
         ]
         
         distanceImageView <- [
-            Size(Constants.iconSize),
+            Size(AppSizeMetric.iconSize),
             Bottom(Constants.iconVerticalPadding),
             Trailing(Constants.iconRightPaddingToContainer)
         ]
         
         timeLabel <- [
-            Leading(Constants.timeLeftPadding).to(timeImageView),
+            Leading(AppSizeMetric.defaultPadding).to(timeImageView),
             CenterY().to(timeImageView)
         ]
         

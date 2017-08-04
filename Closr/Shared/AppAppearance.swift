@@ -35,5 +35,5 @@ struct AppSizeMetric {
     static let defaultPadding: CGFloat  = 8
     static let breathPadding: CGFloat   = 20
     static let avatarSize: CGSize       = CGSize(width: 55, height: 55)
-    static let iconSize: CGSize         = CGSize(width: 12, height: 12)
+    static let iconSize: CGSize         = CGSize(width: 15, height: 15)
 }
