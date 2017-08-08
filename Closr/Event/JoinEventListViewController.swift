@@ -58,7 +58,7 @@ extension JoinEventListViewController: UITableViewDelegate, UITableViewDataSourc
                 
         let cell = tableView.dequeueReusableCell(withIdentifier: JoinEventTableViewCell.reuseIdentifier,for:indexPath) as! JoinEventTableViewCell
         
-        cell.update(with: 3, capability: 5)
+        cell.updateMockEvent(with: 3, capability: 5)
         
         return cell
     }

@@ -48,6 +48,9 @@ struct YelpAPIConsole {
 }
 
 enum SearchError: Error {
+    
+    static let yelpTokenExpired = "UNAUTHORIZED_ACCESS_TOKEN"
+    
     case accessDenied
     case tokenExpired
     
@@ -58,6 +61,7 @@ enum SearchError: Error {
         }
     }
 }
+
 class YelpPlaceSearch {
     
     var searchRequest: PlaceSearchRequest
@@ -154,12 +158,14 @@ class YelpPlaceSearch {
                     
                     let json = JSON(value)
                     
-                    // TODO: handle expired token
-                    
-                    if let error = json["error"]["text"].string {
+                    if let error = json["error"]["description"].string {
                         print("\nerror: \(error)\n")
                         print("description: \(json["error"]["description"].stringValue)\n")
                         print("\(String(describing: response.request?.allHTTPHeaderFields!))")
+                        
+                        if json["error"]["code"].string == SearchError.yelpTokenExpired {
+                            renewAccessToken()
+                        }
                     }
                     
                     weakSelf.total = json["total"].intValue
@@ -176,12 +182,7 @@ class YelpPlaceSearch {
             })
         }
         
-        if let token = accessToken {
-            
-            sendRequest(token: token)
-            
-        } else {
-            
+        func renewAccessToken() {
             renewAccessToekn(success: { (token) in
                 
                 YelpPlaceSearch.store(token: token)
@@ -191,6 +192,15 @@ class YelpPlaceSearch {
             }, failure: { (error) in
                 completion?(nil, error)
             })
+        }
+        
+        if let token = accessToken {
+            
+            sendRequest(token: token)
+            
+        } else {
+            
+            renewAccessToken()
         }
     }
     
@@ -208,8 +218,6 @@ class YelpPlaceSearch {
                     completion?(value, nil)
                     
                 case .failure(let error):
-                    
-                    // TODO: handle expired token
                     
                     completion?(nil, error)
                 }
@@ -245,7 +253,7 @@ class YelpPlaceSearch {
                 
                 let json = JSON(value)
                 
-                if let error = json["error"]["text"].string {
+                if let error = json["error"]["description"].string {
                     print("\nerror: \(error)\n")
                     print("description: \(json["error"]["description"].stringValue)\n")
                     print("\(String(describing: response.request?.allHTTPHeaderFields!))")

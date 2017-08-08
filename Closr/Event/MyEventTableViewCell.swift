@@ -56,7 +56,7 @@ extension MyEventTableViewCell : UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyEventCollectionViewCell.reuseIdentifier, for: indexPath) as! MyEventCollectionViewCell
         
-        
+        cell.updateMockEvent(with: 2, capability: 4)
         return cell
     }
 }

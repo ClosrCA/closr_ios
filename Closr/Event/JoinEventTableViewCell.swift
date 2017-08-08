@@ -28,7 +28,7 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
         static let iconVerticalPadding: CGFloat         = 14
         static let iconVerticalSpace: CGFloat           = 16
         
-        static let attendantContainerSize: CGSize = CGSize(width: 50, height: 15)
+        static let attendantContainerSize: CGSize = CGSize(width: 50, height: 12)
     }
     
     fileprivate lazy var containerView: UIView = {
@@ -101,7 +101,10 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
     }
     
     // TODO: testing purpose
-    func update(with attending: Int, capability: Int) {
+    func updateMockEvent(with attending: Int, capability: Int) {
+        titleLabel.text = "Dinner at Zen Cafe"
+        avatarImageView.image = UIImage(named: "icon_user")
+        restaurantLabel.text = "Zen Cafe"
         generateAttendantView(with: attending, capablility: capability)
     }
     
