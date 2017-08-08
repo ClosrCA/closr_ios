@@ -13,7 +13,7 @@ class EventDetailViewController: UIViewController {
 
     enum EventSection: Int {
         
-        static let count = 1
+        static let count = 2
         
         case info
         case attendant
@@ -52,6 +52,7 @@ class EventDetailViewController: UIViewController {
         
         tableView.register(TableViewSectionHeader.self, forHeaderFooterViewReuseIdentifier: TableViewSectionHeader.reuseIdentifier)
         tableView.register(EventInfoTableViewCell.self, forCellReuseIdentifier: EventInfoTableViewCell.reuseIdentifier)
+        tableView.register(EventAttendantTableViewCell.self, forCellReuseIdentifier: EventAttendantTableViewCell.reuseIdentifier)
         
         return tableView
     }()
@@ -84,6 +85,11 @@ extension EventDetailViewController: UITableViewDataSource, UITableViewDelegate 
             cell.update(address: "downtonw Toronto", readableTime: "Event starts in 2 hours")
             
             return cell
+        case .attendant:
+            let cell = tableView.dequeueReusableCell(withIdentifier: EventAttendantTableViewCell.reuseIdentifier, for: indexPath) as! EventAttendantTableViewCell
+            cell.dataSource = self
+            cell.load()
+            return cell
         default:
             return UITableViewCell()
         }
@@ -99,5 +105,20 @@ extension EventDetailViewController: UITableViewDataSource, UITableViewDelegate 
         header.update(title: section.header)
         
         return header
+    }
+}
+
+extension EventDetailViewController: EventAttendantTableViewCellDataSource {
+    func eventAttendantHost() -> User {
+        return User(name: "Chianne", birthday: nil, gender: nil, email: nil, phone: nil, avatar: nil)
+    }
+    
+    func eventAttendantGuests() -> [User] {
+        let guest = User(name: "Yale", birthday: nil, gender: nil, email: nil, phone: nil, avatar: nil)
+        return [guest]
+    }
+    
+    func capability() -> Int {
+        return 4
     }
 }

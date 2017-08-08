@@ -118,6 +118,15 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         ]
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        avatarImageView.cancelLoading()
+        titleLabel.text = ""
+        
+        attendantsContainerView.subviews.forEach { $0.removeFromSuperview() }
+    }
+    
     fileprivate func createConstraints() {
         
         avatarImageView <- [
