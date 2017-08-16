@@ -42,9 +42,10 @@ class EventAttendantTableViewCell: UITableViewCell, Reusable {
         contentView.addSubview(collectionView)
         
         collectionView <- [
-            Top(AppSizeMetric.breathPadding),
+            Top(AppSizeMetric.defaultPadding),
             Leading(AppSizeMetric.breathPadding),
             Trailing(AppSizeMetric.breathPadding),
+            Bottom(AppSizeMetric.defaultPadding),
             Height(EventAttendantCollectionViewCell.preferredSize.height)
         ]
     }

@@ -25,8 +25,8 @@ class EventInfoTableViewCell: UITableViewCell, Reusable {
         return imageView
     }()
     
-    fileprivate lazy var addressLabel: UILabel     = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
-    fileprivate lazy var timeLabel: UILabel        = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
+    fileprivate lazy var addressLabel: UILabel     = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_dark)
+    fileprivate lazy var timeLabel: UILabel        = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_dark)
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -13,11 +13,11 @@ class EventDetailViewController: UIViewController {
 
     enum EventSection: Int {
         
-        static let count = 2
+        static let count = 3
         
         case info
         case attendant
-        case purpose
+//        case purpose
         case gallery
         case map
         
@@ -27,10 +27,10 @@ class EventDetailViewController: UIViewController {
                 return "Restaurant & Time:"
             case .attendant:
                 return "Attending:"
-            case .purpose:
-                return "Purpose:"
+//            case .purpose:
+//                return "Purpose:"
             case .gallery:
-                return "Restaurant Photos"
+                return "Restaurant Photos:"
             case .map:
                 return "Directions:"
             }
@@ -53,6 +53,7 @@ class EventDetailViewController: UIViewController {
         tableView.register(TableViewSectionHeader.self, forHeaderFooterViewReuseIdentifier: TableViewSectionHeader.reuseIdentifier)
         tableView.register(EventInfoTableViewCell.self, forCellReuseIdentifier: EventInfoTableViewCell.reuseIdentifier)
         tableView.register(EventAttendantTableViewCell.self, forCellReuseIdentifier: EventAttendantTableViewCell.reuseIdentifier)
+        tableView.register(EventGalleryTableViewCell.self, forCellReuseIdentifier: EventGalleryTableViewCell.reuseIdentifier)
         
         return tableView
     }()
@@ -90,6 +91,11 @@ extension EventDetailViewController: UITableViewDataSource, UITableViewDelegate 
             cell.dataSource = self
             cell.load()
             return cell
+        case .gallery:
+            let cell = tableView.dequeueReusableCell(withIdentifier: EventGalleryTableViewCell.reuseIdentifier, for: indexPath) as! EventGalleryTableViewCell
+            cell.dataSource = self
+            cell.loadImages()
+            return cell
         default:
             return UITableViewCell()
         }
@@ -120,5 +126,14 @@ extension EventDetailViewController: EventAttendantTableViewCellDataSource {
     
     func capability() -> Int {
         return 4
+    }
+}
+
+extension EventDetailViewController: EventGalleryTableViewCellDataSource {
+    func imageURLs(in cell: EventGalleryTableViewCell) -> [String] {
+        return ["https://s3-media4.fl.yelpcdn.com/bphoto/--8oiPVp0AsjoWHqaY1rDQ/o.jpg",
+                "https://s3-media4.fl.yelpcdn.com/bphoto/--8oiPVp0AsjoWHqaY1rDQ/o.jpg",
+                "https://s3-media4.fl.yelpcdn.com/bphoto/--8oiPVp0AsjoWHqaY1rDQ/o.jpg",
+                "https://s3-media4.fl.yelpcdn.com/bphoto/--8oiPVp0AsjoWHqaY1rDQ/o.jpg"]
     }
 }
