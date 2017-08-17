@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import CoreLocation
 import EasyPeasy
 
 class EventDetailViewController: UIViewController {
 
+    struct Constant {
+        static let googleMapURL: String = "https://www.google.com/maps"
+        static let appleMapURL: String  = "http://maps.apple.com"
+    }
+    
     enum EventSection: Int {
         
-        static let count = 3
+        static let count = 4
         
         case info
         case attendant
@@ -54,6 +60,7 @@ class EventDetailViewController: UIViewController {
         tableView.register(EventInfoTableViewCell.self, forCellReuseIdentifier: EventInfoTableViewCell.reuseIdentifier)
         tableView.register(EventAttendantTableViewCell.self, forCellReuseIdentifier: EventAttendantTableViewCell.reuseIdentifier)
         tableView.register(EventGalleryTableViewCell.self, forCellReuseIdentifier: EventGalleryTableViewCell.reuseIdentifier)
+        tableView.register(EventMapTableViewCell.self, forCellReuseIdentifier: EventMapTableViewCell.reuseIdentifier)
         
         return tableView
     }()
@@ -96,8 +103,12 @@ extension EventDetailViewController: UITableViewDataSource, UITableViewDelegate 
             cell.dataSource = self
             cell.loadImages()
             return cell
-        default:
-            return UITableViewCell()
+        case .map:
+            let cell = tableView.dequeueReusableCell(withIdentifier: EventMapTableViewCell.reuseIdentifier, for: indexPath) as! EventMapTableViewCell
+            cell.dataSource = self
+            cell.delegate   = self
+            
+            return cell
         }
     }
     
@@ -135,5 +146,41 @@ extension EventDetailViewController: EventGalleryTableViewCellDataSource {
                 "https://s3-media4.fl.yelpcdn.com/bphoto/--8oiPVp0AsjoWHqaY1rDQ/o.jpg",
                 "https://s3-media4.fl.yelpcdn.com/bphoto/--8oiPVp0AsjoWHqaY1rDQ/o.jpg",
                 "https://s3-media4.fl.yelpcdn.com/bphoto/--8oiPVp0AsjoWHqaY1rDQ/o.jpg"]
+    }
+}
+
+extension EventDetailViewController: EventMapTableViewCellDataSource {
+    func mapCenter(in cell: EventMapTableViewCell) -> CLLocationCoordinate2D {
+        return CLLocationCoordinate2D.downtownToronto
+    }
+    
+    func distance(in cell: EventMapTableViewCell) -> CLLocationDistance {
+        return 500
+    }
+}
+
+extension EventDetailViewController: EventMapTableViewCellDelegate {
+    func didSelectOpenMap(cell: EventMapTableViewCell) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let openGoogleMapAction = UIAlertAction(title: "Open Google Map", style: .default) { _ in
+            if let googleURL = URL(string: Constant.googleMapURL) {
+                UIApplication.shared.openURL(googleURL)
+            }
+        }
+        
+        let openAppleMapAction = UIAlertAction(title: "Open Apple Map", style: .default) { _ in
+            if let appleURL = URL(string: Constant.appleMapURL) {
+                UIApplication.shared.openURL(appleURL)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Canel", style: .cancel)
+        
+        actionSheet.addAction(openGoogleMapAction)
+        actionSheet.addAction(openAppleMapAction)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true)
     }
 }
