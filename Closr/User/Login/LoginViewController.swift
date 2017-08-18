@@ -61,14 +61,14 @@ class LoginViewController: UIViewController {
         let highlightedString = NSLocalizedString("Terms", comment: "")
         let theRest = NSLocalizedString(" of use", comment: "")
         
-        let attributedString = NSMutableAttributedString(string: textString, attributes: [NSForegroundColorAttributeName: AppColor.lightGreyText,
+        let attributedString = NSMutableAttributedString(string: textString, attributes: [NSForegroundColorAttributeName: AppColor.text_light_gray,
                                                                                           NSFontAttributeName: AppFont.smallText])
         
         attributedString.append(NSAttributedString(string: highlightedString, attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
                                                                                            NSForegroundColorAttributeName: UIColor.white,
                                                                                            NSFontAttributeName: AppFont.smallText]))
         
-        attributedString.append(NSAttributedString(string: theRest, attributes: [NSForegroundColorAttributeName: AppColor.lightGreyText,
+        attributedString.append(NSAttributedString(string: theRest, attributes: [NSForegroundColorAttributeName: AppColor.text_light_gray,
                                                                                  NSFontAttributeName: AppFont.smallText]))
         
         termsLabel.numberOfLines    = 0

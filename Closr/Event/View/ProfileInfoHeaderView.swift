@@ -36,11 +36,11 @@ class ProfileInfoHeaderView: UITableViewHeaderFooterView {
 
     fileprivate lazy var nameLabel: UILabel = UILabel.makeLabel(font: AppFont.title, textColor: AppColor.brand)
     
-    fileprivate lazy var birthdayLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var birthdayLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_gray)
     
-    fileprivate lazy var phoneLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var phoneLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_gray)
     
-    fileprivate lazy var emailLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
+    fileprivate lazy var emailLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_gray)
     
     func update(user: User) {
         // TODO: avatar placeholder

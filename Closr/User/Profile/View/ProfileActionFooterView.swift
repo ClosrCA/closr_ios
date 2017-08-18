@@ -29,7 +29,7 @@ class ProfileActionFooterView: UIView {
     
     fileprivate lazy var faqButton: UIButton = self.makeActionButton(title: "FAQ", action: #selector(onFAQSelected))
     fileprivate lazy var contactButton: UIButton = self.makeActionButton(title: "Contact Closr", action: #selector(onContactUsSelected))
-    fileprivate lazy var signOutButton: UIButton = self.makeActionButton(title: "Sign Out", background: AppColor.greyBackground, action: #selector(onSignOutSelected))
+    fileprivate lazy var signOutButton: UIButton = self.makeActionButton(title: "Sign Out", background: AppColor.background_gray, action: #selector(onSignOutSelected))
     
     fileprivate func makeActionButton(title: String, titleColor: UIColor = .white, background: UIColor = AppColor.brand, action: Selector) -> UIButton {
         let button = UIButton()

@@ -10,35 +10,37 @@ import UIKit
 import EasyPeasy
 
 enum CategoryItem: Int {
+    
+    static let count = 4
+    
+    case cafe
     case burger
     case steak
-    case pizza
-    
-    case count
+    case buffet
     
     var image: UIImage? {
         switch self {
+        case .cafe:
+            return UIImage(named: "icon_category_cafe")
         case .burger:
-            return UIImage(named: "burgers")
+            return UIImage(named: "icon_category_burger")
         case .steak:
-            return UIImage(named: "steak")
-        case .pizza:
-            return UIImage(named: "pizza")
-        default:
-            return nil
+            return UIImage(named: "icon_category_steak")
+        case .buffet:
+            return UIImage(named: "icon_category_buffet")
         }
     }
     
     var title: String {
         switch self {
+        case .cafe:
+            return "CAFE"
         case .burger:
             return "BURGERS"
         case .steak:
             return "STEAKHOUSE"
-        case .pizza:
-            return "PIZZA"
-        default:
-            return ""
+        case .buffet:
+            return "BUFFET"
         }
     }
 }
@@ -84,7 +86,7 @@ class CategoryCarouselTableViewCell: UITableViewCell, Reusable {
 
 extension CategoryCarouselTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return CategoryItem.count.rawValue
+        return CategoryItem.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

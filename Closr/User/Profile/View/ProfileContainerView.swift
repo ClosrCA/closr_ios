@@ -42,7 +42,7 @@ class ProfileContainerView: UIView {
         let imageView                                       = UIImageView()
         imageView.layer.cornerRadius                        = ProfileConstant.AvatarImage.size / 2
         imageView.layer.borderWidth                         = 1.0
-        imageView.layer.borderColor                         = AppColor.lightGreyText.cgColor
+        imageView.layer.borderColor                         = AppColor.text_light_gray.cgColor
         imageView.clipsToBounds                             = true
         // TODO: internal light border
         
@@ -52,30 +52,30 @@ class ProfileContainerView: UIView {
     fileprivate (set) lazy var nameLabel: UILabel = {
         let label                                       = UILabel()
         label.font                                      = AppFont.title
-        label.textColor                                 = AppColor.title
+        label.textColor                                 = AppColor.text_dark
         label.numberOfLines                             = 0
         
         return label
     }()
     
     fileprivate (set) lazy var birthDayTextField: UITextField   = self.makeTextFieldWith(icon: UIImage(named: "birthday")!,
-                                                                                         backgroundColor: AppColor.greyBackground,
-                                                                                         textColor: AppColor.greyText,
+                                                                                         backgroundColor: AppColor.background_gray,
+                                                                                         textColor: AppColor.text_gray,
                                                                                          editable: false)
     
     fileprivate (set) lazy var genderTextField: UITextField     = self.makeTextFieldWith(icon: UIImage(named: "gender")!,
-                                                                                         backgroundColor: AppColor.greyBackground,
-                                                                                         textColor: AppColor.greyText,
+                                                                                         backgroundColor: AppColor.background_gray,
+                                                                                         textColor: AppColor.text_gray,
                                                                                          editable: false)
     
     fileprivate (set) lazy var emailTextField: UITextField      = self.makeTextFieldWith(icon: UIImage(named: "email")!,
-                                                                                         backgroundColor: AppColor.greyBackground,
-                                                                                         textColor: AppColor.greyText,
+                                                                                         backgroundColor: AppColor.background_gray,
+                                                                                         textColor: AppColor.text_gray,
                                                                                          editable: true)
     
     fileprivate (set) lazy var phoneTextField: UITextField      = self.makeTextFieldWith(icon: UIImage(named: "phone")!,
-                                                                                         backgroundColor: AppColor.greyBackground,
-                                                                                         textColor: AppColor.greyText,
+                                                                                         backgroundColor: AppColor.background_gray,
+                                                                                         textColor: AppColor.text_gray,
                                                                                          editable: true)
     
     fileprivate (set) lazy var confirmButton: UIButton = {

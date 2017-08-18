@@ -33,7 +33,7 @@ class RestaurantListViewController: UIViewController {
         
         tableView.register(RestaurantTableViewCell.self, forCellReuseIdentifier: RestaurantTableViewCell.reuseIdentifier)
         tableView.register(CategoryCarouselTableViewCell.self, forCellReuseIdentifier: CategoryCarouselTableViewCell.reuseIdentifier)
-        tableView.register(RestaurantListSectionHeader.self, forHeaderFooterViewReuseIdentifier: RestaurantListSectionHeader.reuseIdentifier)
+        tableView.register(TableViewSectionHeader.self, forHeaderFooterViewReuseIdentifier: TableViewSectionHeader.reuseIdentifier)
         
         return tableView
     }()
@@ -136,14 +136,14 @@ extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RestaurantListSectionHeader.reuseIdentifier) as! RestaurantListSectionHeader
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableViewSectionHeader.reuseIdentifier) as! TableViewSectionHeader
         
         if let section = RestaurantListSection(rawValue: section) {
             switch section {
             case .category:
                 header.update(title: "CATEGORIES")
             case .restaurant:
-                header.update(accessoryTitle: "Powered by", accessoryImage: UIImage(named: "yelp_logo"))
+                header.update(title: "", accessoryTitle: "Powered by", accessoryImage: UIImage(named: "yelp_logo"))
             default:
                 break
             }

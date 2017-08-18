@@ -11,18 +11,13 @@ import EasyPeasy
 
 class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
     
-    static let preferredSize: CGSize = CGSize(width: 125, height: 145)
+    static let preferredSize: CGSize = CGSize(width: 125, height: 130)
     
     fileprivate struct Constants {
         static let avatarLeftPadding: CGFloat       = 18
-        
-        static let eventTitlePadding: CGFloat              = 6
-        
-        static let participationImageSize: CGSize          = CGSize(width: 47.5, height: 10)
-        
-        static let timeImageBottomPadding: CGFloat         = 10
-        
-        static let dateLabelLeadingPadding: CGFloat        = 6
+        static let eventTitlePadding: CGFloat       = 6
+        static let timeImageBottomPadding: CGFloat  = 10
+        static let dateLabelLeadingPadding: CGFloat = 6
     }
     
     fileprivate lazy var avatarImageView: UIImageView = {
@@ -35,39 +30,42 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         return view
     }()
     
-    // TODO: - replace
-    fileprivate lazy var participantsContainer: UIView = {
+    fileprivate lazy var attendantsContainerView: UIView = UIView()
+    
+    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_dark)
+    
+    fileprivate lazy var dateLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_dark)
+    
+    fileprivate lazy var timeImageView: UIImageView = {
+        let imageView           = UIImageView(image: UIImage(named: "icon_time"))
+        imageView.contentMode   = .scaleAspectFit
         
-        let view                = UIView()
-        view.backgroundColor    = UIColor.brown
-        
-        return view
+        return imageView
     }()
     
-    fileprivate lazy var eventTitleLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
-    
-    fileprivate lazy var dateLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.greyText)
-    
-     fileprivate lazy var timeImageView: UIImageView = UIImageView(image: UIImage(named: "time_icon"))
-    
-    
-    fileprivate func testData() {
-    
-        eventTitleLabel.text = "Event Title"
-        dateLabel.text = "05.05.1995 at 5:00pm"
+    func update(event: Event) {
+        titleLabel.text = event.title
+        avatarImageView.loadImage(URLString: event.author?.avatar)
         
+        generateAttendantView(with: event.participants.count + 1, capablility: event.numberOfPeople)
+    }
+    
+    // TODO: - testing purpose
+    func updateMockEvent(with attending: Int, capability: Int) {
+        titleLabel.text    = "Dinner at Zen Cafe"
+        dateLabel.text     = "05.05.1995 at 5:00pm"
+        
+        generateAttendantView(with: attending, capablility: capability)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         contentView.addSubview(avatarImageView)
-        contentView.addSubview(eventTitleLabel)
+        contentView.addSubview(titleLabel)
         contentView.addSubview(dateLabel)
-        contentView.addSubview(participantsContainer)
+        contentView.addSubview(attendantsContainerView)
         contentView.addSubview(timeImageView)
-        
-        testData()
 
         createConstraints()
     }
@@ -76,6 +74,58 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         fatalError("init(coder:) has not been implemented")
     }
    
+    fileprivate func generateAttendantView(with attending: Int, capablility: Int) {
+        for index in 0..<attending {
+            
+            let orangeAvatar = attendantImageView()
+            
+            layout(attendant: orangeAvatar, at: index)
+        }
+        
+        let availablity = capablility - attending
+        
+        for index in 0..<availablity {
+            
+            let blackAvatar = availablityImageView()
+            
+            layout(attendant: blackAvatar, at: attending + index)
+        }
+    }
+    
+    fileprivate func attendantImageView() -> UIImageView {
+        let imageView           = UIImageView(image: UIImage(named: "icon_user_orange"))
+        imageView.contentMode   = .scaleAspectFit
+        
+        return imageView
+    }
+    
+    fileprivate func availablityImageView() -> UIImageView {
+        let imageView           = UIImageView(image: UIImage(named: "icon_user"))
+        imageView.contentMode   = .scaleAspectFit
+        
+        return imageView
+    }
+    
+    fileprivate func layout(attendant: UIImageView, at index: Int) {
+        attendantsContainerView.addSubview(attendant)
+        
+        let leadingPadding = CGFloat(index) * (AppSizeMetric.defaultPadding + AppSizeMetric.iconSize.width)
+        
+        attendant <- [
+            Size(AppSizeMetric.iconSize),
+            CenterY(),
+            Leading(leadingPadding)
+        ]
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        avatarImageView.cancelLoading()
+        titleLabel.text = ""
+        
+        attendantsContainerView.subviews.forEach { $0.removeFromSuperview() }
+    }
     
     fileprivate func createConstraints() {
         
@@ -85,21 +135,22 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
             Leading(Constants.avatarLeftPadding)
         ]
         
-        eventTitleLabel <- [
+        titleLabel <- [
             Top(Constants.eventTitlePadding).to(avatarImageView),
             Leading().to(avatarImageView, .leading)
 
         ]
         
-        participantsContainer <- [
-            Size(Constants.participationImageSize),
-            Top(Constants.eventTitlePadding).to(eventTitleLabel),
-            Leading().to(eventTitleLabel, .leading)
+        attendantsContainerView <- [
+            Height(AppSizeMetric.iconSize.height),
+            Top(Constants.eventTitlePadding).to(titleLabel),
+            Leading().to(titleLabel, .leading),
+            Trailing()
         ]
         
         timeImageView <- [
             Size(AppSizeMetric.iconSize),
-            Leading().to(eventTitleLabel, .leading),
+            Leading().to(titleLabel, .leading),
             Bottom(Constants.timeImageBottomPadding)
         ]
         

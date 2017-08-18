@@ -58,8 +58,14 @@ extension JoinEventListViewController: UITableViewDelegate, UITableViewDataSourc
                 
         let cell = tableView.dequeueReusableCell(withIdentifier: JoinEventTableViewCell.reuseIdentifier,for:indexPath) as! JoinEventTableViewCell
         
+        cell.updateMockEvent(with: 3, capability: 5)
+        
         return cell
     }
     
-      
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = EventDetailViewController()
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
+

@@ -35,13 +35,13 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     fileprivate lazy var nameLabel: UILabel = UILabel.makeLabel(font: AppFont.thinTitle, textColor: AppColor.brand)
     
-    fileprivate lazy var addressLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
+    fileprivate lazy var addressLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
     
-    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.greyText)
+    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
     
-    fileprivate lazy var priceLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.title)
+    fileprivate lazy var priceLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_dark)
     
-    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.title)
+    fileprivate lazy var categoryLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_dark)
     
     
     func update(restaurant: YelpPlace, placeHolder: UIImage?, promoted: Bool) {
