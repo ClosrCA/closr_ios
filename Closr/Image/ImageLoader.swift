@@ -61,3 +61,29 @@ extension UIImageView {
         dataRequest?.cancel()
     }
 }
+
+extension UIImage {
+    static func loadImage(url: String?) -> UIImage? {
+        guard let urlString = url else {
+            return nil
+        }
+        
+        guard let URL = URL(string: urlString) else {
+            return nil
+        }
+        
+        var image = UIImage()
+        
+        Alamofire.request(URL).responseImage { (response) in
+            
+            switch response.result {
+            case .success(let value):
+                image = value
+            case .failure(_):
+                return
+            }
+        }
+        
+        return image
+    }
+}

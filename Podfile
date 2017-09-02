@@ -17,10 +17,14 @@ target 'Closr' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
   
-  pod 'Firebase'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
 #UI
   pod 'WARangeSlider'
+  # to replace with MessageKit
+  pod 'JSQMessagesViewController'
 end
 
 target 'ClosrTests' do

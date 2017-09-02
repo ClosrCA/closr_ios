@@ -33,7 +33,7 @@ class EventMapTableViewCell: UITableViewCell, Reusable {
     
     lazy var openMapButton: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
+        button.setBackgroundColor(color: AppColor.brand, for: .normal)
         button.setTitle("Open map", for: .normal)
         button.setTitleColor(AppColor.text_dark, for: .normal)
         button.titleLabel?.font = AppFont.title

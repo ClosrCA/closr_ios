@@ -64,7 +64,9 @@ extension JoinEventListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailViewController = EventDetailViewController()
+        let detailViewController                        = EventDetailViewController()
+        detailViewController.hidesBottomBarWhenPushed   = true
+        
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

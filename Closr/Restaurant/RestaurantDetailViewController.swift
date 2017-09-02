@@ -59,7 +59,7 @@ class RestaurantDetailViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Create Event", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
+        button.setBackgroundColor(color: AppColor.brand, for: .normal)
         button.addTarget(self, action: #selector(onCreateEvent), for: .touchUpInside)
         
         return button
