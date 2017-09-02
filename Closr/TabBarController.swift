@@ -29,10 +29,14 @@ class TabBarController: UITabBarController {
         let eventController = UINavigationController(rootViewController: EventViewController())
         eventController.tabBarItem = UITabBarItem(title: "Event", image: UIImage(named: "event"), tag: Tabs.event.rawValue)
         
-        let profileController = UINavigationController(rootViewController: MyProfileViewController())
-        profileController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: Tabs.profile.rawValue)
         
-        viewControllers = [resturantController, promotionController, eventController, profileController]
+        let profileController           = MyProfileViewController()
+        profileController.user          = User.current
+        
+        let navController           = UINavigationController(rootViewController: profileController)
+        navController.tabBarItem    = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: Tabs.profile.rawValue)
+        
+        viewControllers = [resturantController, promotionController, eventController, navController]
     }
 
 }

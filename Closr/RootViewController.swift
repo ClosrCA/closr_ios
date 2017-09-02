@@ -19,10 +19,11 @@ class RootViewController: UIViewController {
         return loginController
     }
     
-    fileprivate var profileConfirmController: ProfileConfirmViewController {
-        let confirmViewController       = ProfileConfirmViewController()
-        confirmViewController.user      = User.current
-        confirmViewController.delegate  = self
+    fileprivate var profileConfirmController: MyProfileViewController {
+        let confirmViewController           = MyProfileViewController()
+        confirmViewController.isConfirming  = true
+        confirmViewController.user          = User.current
+        confirmViewController.delegate      = self
         
         return confirmViewController
     }
@@ -91,8 +92,8 @@ extension RootViewController: LoginControllerDelegate {
     }
 }
 
-extension RootViewController: ProfileConfirmViewControllerDelegate {
-    func profileConfirmViewControllerDidSelectConfirm(controller: ProfileConfirmViewController) {
+extension RootViewController: MyProfileViewControllerDelegate {
+    func didSelectConfirm(controller: MyProfileViewController) {
         
         remove(controller: controller)
         
