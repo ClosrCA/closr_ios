@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import FirebaseAuth
 
 class RootViewController: UIViewController {
     
@@ -29,7 +30,7 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if User.isAuthenticated {
+        if Auth.auth().currentUser != nil {
             let tabBarController = TabBarController()
             display(controller: tabBarController)
         } else {
@@ -55,11 +56,15 @@ class RootViewController: UIViewController {
     @objc
     fileprivate func didSignout() {
         
-        childViewControllers.forEach { remove(controller: $0) }
-        
-        User.clear()
-        
-        display(controller: loginController)
+        do {
+            try User.logout()
+            childViewControllers.forEach { remove(controller: $0) }
+            display(controller: loginController)
+        } catch {
+            let alertController = UIAlertController(title: "Opps", message: error.localizedDescription, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(alertController, animated: true)
+        }
     }
     
     deinit {
@@ -69,11 +74,11 @@ class RootViewController: UIViewController {
 
 extension RootViewController: LoginControllerDelegate {
     
-    func didFinishLogin(loginController: LoginViewController) {
+    func didFinishLogin(loginController: LoginViewController, needConfirm: Bool) {
         
         remove(controller: loginController)
         
-        display(controller: profileConfirmController)
+        display(controller: needConfirm ? profileConfirmController : TabBarController())
     }
     
     func didFailLogin(loginController: LoginViewController, withError error: Error) {

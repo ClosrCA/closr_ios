@@ -11,6 +11,8 @@ import EasyPeasy
 import FBSDKCoreKit
 import FBSDKLoginKit
 import SwiftyJSON
+import FirebaseAuth
+import Firebase
 
 enum LoginException: Error {
     case cancelled
@@ -25,7 +27,7 @@ enum LoginException: Error {
 }
 
 protocol LoginControllerDelegate: class {
-    func didFinishLogin(loginController: LoginViewController)
+    func didFinishLogin(loginController: LoginViewController, needConfirm: Bool)
     func didFailLogin(loginController: LoginViewController, withError error: Error)
 }
 
@@ -82,7 +84,6 @@ class LoginViewController: UIViewController {
                                                            textColor: .white,
                                                            text: NSLocalizedString("Build friendships, one table at a time", comment: ""))
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,6 +96,7 @@ class LoginViewController: UIViewController {
         
         createConstraints()
     }
+    
     
     fileprivate func createConstraints() {
         backgroundImageView <- Edges()
@@ -127,21 +129,41 @@ class LoginViewController: UIViewController {
     @objc
     fileprivate func didTapFacebookLogin(sender: UIButton) {
         
-        loginWithFacebook(success: { [unowned self] in
+        loginWithFacebook(success: {
             
-            self.loadFacebookProfile(success: { 
-                self.delegate?.didFinishLogin(loginController: self)
+            self.authenticateFirebase(success: { (firebaseID) in
+                
+                self.checkIfExistingUser(with: firebaseID, completion: { (existed) in
+                    if existed {
+                        
+                        self.delegate?.didFinishLogin(loginController: self, needConfirm: false)
+                        
+                    } else {
+                        
+                        self.loadFacebookProfile(success: {
+                            
+                            // TODO: assign firebaseID to user and post new user to server, firebaseID used as user token
+                            
+                            self.delegate?.didFinishLogin(loginController: self, needConfirm: true)
+                            
+                        }, failure: { (error) in
+                            
+                            self.delegate?.didFailLogin(loginController: self, withError: error)
+                        })
+                    }
+                })
                 
             }, failure: { (error) in
                 
                 self.delegate?.didFailLogin(loginController: self, withError: error)
             })
             
-        }, cancellation: { [unowned self] in
+            
+        }, cancellation: {
             
             self.delegate?.didFailLogin(loginController: self, withError: LoginException.cancelled)
             
-        }) { [unowned self] (error) in
+        }) { (error) in
             
             self.delegate?.didFailLogin(loginController: self, withError: error)
             
@@ -184,13 +206,36 @@ class LoginViewController: UIViewController {
                             
                             if let response = response {
                                 
-                                User(profile: JSON(response)).store()
+                                User.current = User(profile: JSON(response))
                                 
                                 success?()
                                 return
                             }
-                            
         }
+    }
+    
+    fileprivate func authenticateFirebase(success: ((String) -> Void)?, failure: ((Error) -> Void)?) {
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        Auth.auth().signIn(with: credential) { (user, error) in
+            guard error == nil else {
+                failure?(error!)
+                return
+            }
+            
+            guard let user = user else {
+                failure?(LoginException.profileFailLoading)
+                return
+            }
+            
+            success?(user.uid)
+        }
+    }
+    
+    fileprivate func checkIfExistingUser(with facebookID: String, completion: ((Bool) -> Void)?) {
+        // TODO: check with server
+        completion?(false)
     }
 
 }

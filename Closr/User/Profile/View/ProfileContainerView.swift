@@ -83,7 +83,7 @@ class ProfileContainerView: UIView {
         button.setTitle("Get Closr", for: .normal)
         button.titleLabel?.font = AppFont.title
         button.setTitleColor(.white, for: .normal)
-        button.setBackgroundImage(UIImage.imageWith(color: AppColor.brand, within: CGSize(width: 1, height: 1)), for: .normal)
+        button.setBackgroundColor(color: AppColor.brand, for: .normal)
         button.addTarget(self, action: #selector(onConfirm), for: .touchUpInside)
         
         return button

@@ -17,11 +17,15 @@
 		6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */; };
 		6942D1051EFA0BD600988471 /* UIViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */; };
 		6942D1071EFA1B6500988471 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1061EFA1B6500988471 /* UIView+Animation.swift */; };
+		694DA1B41F5324D400FFB2D2 /* ChatAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694DA1B31F5324D400FFB2D2 /* ChatAvatar.swift */; };
+		694DA1B61F5328BE00FFB2D2 /* UIButton+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694DA1B51F5328BE00FFB2D2 /* UIButton+Background.swift */; };
 		695A316A1ECC3AC50087183F /* ReviewHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A31691ECC3AC50087183F /* ReviewHelperTests.swift */; };
 		698CFD751F43F99900ECF7AA /* EventGalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */; };
 		69BA88571EDA375B0039E237 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */; };
 		69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */; };
 		69BA885B1EDA460B0039E237 /* TableViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA885A1EDA460B0039E237 /* TableViewSectionHeader.swift */; };
+		69BC381E1F527211008A4592 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BC381D1F527210008A4592 /* MyProfileViewController.swift */; };
+		69BC38211F5276CC008A4592 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BC38201F5276CC008A4592 /* ChatViewController.swift */; };
 		69BD54901E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BD548F1E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift */; };
 		69C810BA1F316B7000113A41 /* EventAttendantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C810B91F316B7000113A41 /* EventAttendantTableViewCell.swift */; };
 		69E322701F4536CC00061903 /* EventMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E3226F1F4536CC00061903 /* EventMapTableViewCell.swift */; };
@@ -108,11 +112,15 @@
 		6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Appearance.swift"; path = "Shared/UIViewController+Appearance.swift"; sourceTree = "<group>"; };
 		6942D1061EFA1B6500988471 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Animation.swift"; path = "Shared/UIView+Animation.swift"; sourceTree = "<group>"; };
+		694DA1B31F5324D400FFB2D2 /* ChatAvatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatAvatar.swift; path = Event/Model/ChatAvatar.swift; sourceTree = "<group>"; };
+		694DA1B51F5328BE00FFB2D2 /* UIButton+Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Background.swift"; path = "Shared/UIButton+Background.swift"; sourceTree = "<group>"; };
 		695A31691ECC3AC50087183F /* ReviewHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelperTests.swift; sourceTree = "<group>"; };
 		698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventGalleryTableViewCell.swift; path = Event/EventGalleryTableViewCell.swift; sourceTree = "<group>"; };
 		69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCarouselTableViewCell.swift; sourceTree = "<group>"; };
 		69BA885A1EDA460B0039E237 /* TableViewSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSectionHeader.swift; sourceTree = "<group>"; };
+		69BC381D1F527210008A4592 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileViewController.swift; path = User/Profile/MyProfileViewController.swift; sourceTree = "<group>"; };
+		69BC38201F5276CC008A4592 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Event/ChatViewController.swift; sourceTree = "<group>"; };
 		69BD548F1E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventAttendantCollectionViewCell.swift; path = Event/View/EventAttendantCollectionViewCell.swift; sourceTree = "<group>"; };
 		69C810B91F316B7000113A41 /* EventAttendantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventAttendantTableViewCell.swift; path = Event/EventAttendantTableViewCell.swift; sourceTree = "<group>"; };
 		69E3226F1F4536CC00061903 /* EventMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventMapTableViewCell.swift; path = Event/EventMapTableViewCell.swift; sourceTree = "<group>"; };
@@ -245,6 +253,14 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		69BC381F1F5276B6008A4592 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				69BC38201F5276CC008A4592 /* ChatViewController.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		69BEF7A11E8A0F1D00D33F38 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				69F13CAE1E82B38100E3483F /* Event.swift */,
+				694DA1B31F5324D400FFB2D2 /* ChatAvatar.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -347,7 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */,
-				E46ECDF91E511E9500785BE6 /* Model */,
+				69BC381D1F527210008A4592 /* MyProfileViewController.swift */,
 				E46ECDEB1E50DA0600785BE6 /* View */,
 			);
 			name = Profile;
@@ -369,6 +386,7 @@
 				E477F00C1E5DC74D00ED7806 /* Location.swift */,
 				E46ECDFC1E51313C00785BE6 /* String+Format.swift */,
 				E42563001E718B430078E9ED /* UILabel+Make.swift */,
+				694DA1B51F5328BE00FFB2D2 /* UIButton+Background.swift */,
 				E4A885B91E53414F0093829E /* KeyboardObserver.swift */,
 				E477F0041E56710300ED7806 /* AppAppearance.swift */,
 				6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */,
@@ -471,6 +489,7 @@
 			children = (
 				E46ECDE11E50D66400785BE6 /* Login */,
 				E46ECDDE1E50D5D900785BE6 /* Profile */,
+				E46ECDF91E511E9500785BE6 /* Model */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -479,6 +498,7 @@
 			isa = PBXGroup;
 			children = (
 				69FA43271F26F96900A16BB8 /* EventViewController.swift */,
+				69BC381F1F5276B6008A4592 /* Chat */,
 				69FA43331F26FA1D00A16BB8 /* JoinEvent */,
 				69FA43341F26FA2D00A16BB8 /* MyEvent */,
 				69FA43371F28547B00A16BB8 /* EventDetail */,
@@ -818,6 +838,7 @@
 				E4AAB73E1E3ECC93001EB362 /* YelpPlaceSearch.swift in Sources */,
 				69FA43281F26F96900A16BB8 /* EventViewController.swift in Sources */,
 				69E322701F4536CC00061903 /* EventMapTableViewCell.swift in Sources */,
+				694DA1B61F5328BE00FFB2D2 /* UIButton+Background.swift in Sources */,
 				691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */,
 				E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */,
 				69C810BA1F316B7000113A41 /* EventAttendantTableViewCell.swift in Sources */,
@@ -825,13 +846,16 @@
 				4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */,
 				E46ECDFD1E51313C00785BE6 /* String+Format.swift in Sources */,
 				E477F0181E5DDBB400ED7806 /* ImageCarouselCell.swift in Sources */,
+				69BC381E1F527211008A4592 /* MyProfileViewController.swift in Sources */,
 				E477F00D1E5DC74D00ED7806 /* Location.swift in Sources */,
+				69BC38211F5276CC008A4592 /* ChatViewController.swift in Sources */,
 				E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */,
 				69FA43301F26FA1200A16BB8 /* MyEventCollectionViewCell.swift in Sources */,
 				4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */,
 				69BA885B1EDA460B0039E237 /* TableViewSectionHeader.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
 				E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */,
+				694DA1B41F5324D400FFB2D2 /* ChatAvatar.swift in Sources */,
 				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,
 				E46A44921E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift in Sources */,
 				E4E99E041E7A31F100A10DA7 /* RestaurantListViewController.swift in Sources */,

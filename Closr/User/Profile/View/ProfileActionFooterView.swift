@@ -35,7 +35,7 @@ class ProfileActionFooterView: UIView {
         let button = UIButton()
         button.setTitle(title, for: .normal)
         button.setTitleColor(titleColor, for: .normal)
-        button.setBackgroundImage(UIImage.imageWith(color: background, within: CGSize(width: 1, height: 1)), for: .normal)
+        button.setBackgroundColor(color: background, for: .normal)
         
         button.layer.cornerRadius   = 10
         button.clipsToBounds        = true

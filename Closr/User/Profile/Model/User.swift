@@ -8,10 +8,16 @@
 
 import Foundation
 import SwiftyJSON
+import FirebaseAuth
 
-class User: NSObject, NSCoding {
-
-    fileprivate static let userDefaultsKey = "closr_user_profile_key"
+struct User {
+    
+    static var current: User?
+    
+    static func logout() throws {
+        try Auth.auth().signOut()
+        current = nil
+    }
     
     enum Gender: String {
         case female = "female"
@@ -25,7 +31,8 @@ class User: NSObject, NSCoding {
         }
     }
     
-    var fbID: String?
+    var facebookID: String?
+    var firbaseID: String?
     var name: String?
     var birthday: Date?
     var gender: Gender?
@@ -34,8 +41,6 @@ class User: NSObject, NSCoding {
     var avatar: String?
     
     init(name: String?, birthday: Date?, gender: Gender?, email: String?, phone: String?, avatar: String?) {
-        super.init()
-        
         self.name = name
         self.birthday = birthday
         self.gender = gender
@@ -45,9 +50,8 @@ class User: NSObject, NSCoding {
     }
     
     init(profile: JSON) {
-        super.init()
         
-        fbID = profile["id"].string
+        facebookID = profile["id"].string
         name = profile["name"].string
         gender = Gender(rawValue: profile["gender"].stringValue)
         email = profile["email"].string
@@ -59,54 +63,5 @@ class User: NSObject, NSCoding {
             dateFormatter.dateFormat = String.birthdayFormat_fb
             self.birthday = dateFormatter.date(from: birthday)
         }
-    }
-    
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(fbID, forKey: "facebookID")
-        aCoder.encode(name, forKey: "name")
-        aCoder.encode(birthday, forKey: "birthday")
-        aCoder.encode(gender?.rawValue, forKey: "gender")
-        aCoder.encode(email, forKey: "email")
-        aCoder.encode(phone, forKey: "phone")
-        aCoder.encode(avatar, forKey: "avatar")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        self.fbID = aDecoder.decodeObject(forKey: "facebookID") as? String
-        self.name = aDecoder.decodeObject(forKey: "name") as? String
-        self.birthday = aDecoder.decodeObject(forKey: "birthday") as? Date
-        
-        if let genderString = aDecoder.decodeObject(forKey: "gender") as? String {
-            self.gender = Gender(rawValue: genderString)
-        }
-        
-        self.email = aDecoder.decodeObject(forKey: "email") as? String
-        self.phone = aDecoder.decodeObject(forKey: "phone") as? String
-        self.avatar = aDecoder.decodeObject(forKey: "avatar") as? String
-    }
-}
-
-extension User {
-    
-    class var isAuthenticated: Bool {
-        return User.current != nil
-    }
-    
-    class var current: User? {
-        if let data = UserDefaults.standard.data(forKey: User.userDefaultsKey) {
-            return NSKeyedUnarchiver.unarchiveObject(with: data) as? User
-        }
-        
-        return nil
-    }
-    
-    class func clear() {
-        UserDefaults.standard.removeObject(forKey: User.userDefaultsKey)
-    }
-    
-    func store() {
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: self)
-        UserDefaults.standard.set(encodedData, forKey: User.userDefaultsKey)
     }
 }
