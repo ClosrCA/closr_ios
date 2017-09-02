@@ -13,7 +13,6 @@
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
 		4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */; };
 		69173E9D1F12948200F791A5 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69173E9C1F12948200F791A5 /* DetailTableViewController.swift */; };
-		691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */; };
 		6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */; };
 		6942D1051EFA0BD600988471 /* UIViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */; };
 		6942D1071EFA1B6500988471 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1061EFA1B6500988471 /* UIView+Animation.swift */; };
@@ -47,12 +46,9 @@
 		E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */; };
 		E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */; };
 		E458B1DE1E6701FC00EE7736 /* RangeSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */; };
-		E46A44921E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A44911E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift */; };
-		E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */; };
+		E46A44921E8CA4BE00B9CB10 /* ProfileAvatarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A44911E8CA4BE00B9CB10 /* ProfileAvatarHeaderView.swift */; };
 		E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE41E50D66400785BE6 /* LoginViewController.swift */; };
 		E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE91E50D6C400785BE6 /* Device.swift */; };
-		E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDEC1E50DA2400785BE6 /* ProfileContainerView.swift */; };
-		E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDEE1E50DD9500785BE6 /* ProfileConstant.swift */; };
 		E46ECDF81E50E49B00785BE6 /* Image+Editing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDF71E50E49B00785BE6 /* Image+Editing.swift */; };
 		E46ECDFB1E511EB400785BE6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDFA1E511EB400785BE6 /* User.swift */; };
 		E46ECDFD1E51313C00785BE6 /* String+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDFC1E51313C00785BE6 /* String+Format.swift */; };
@@ -108,7 +104,6 @@
 		4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50163C0A5221D5BF6257B9A8 /* Pods-ClosrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.release.xcconfig"; sourceTree = "<group>"; };
 		69173E9C1F12948200F791A5 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailTableViewController.swift; path = Restaurant/DetailTableViewController.swift; sourceTree = "<group>"; };
-		691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileActionFooterView.swift; path = User/Profile/View/ProfileActionFooterView.swift; sourceTree = "<group>"; };
 		6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Appearance.swift"; path = "Shared/UIViewController+Appearance.swift"; sourceTree = "<group>"; };
 		6942D1061EFA1B6500988471 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Animation.swift"; path = "Shared/UIView+Animation.swift"; sourceTree = "<group>"; };
@@ -146,12 +141,9 @@
 		E458B1D81E66FFA100EE7736 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventViewController.swift; path = Event/CreateEventViewController.swift; sourceTree = "<group>"; };
 		E458B1DB1E6701E700EE7736 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldTableViewCell.swift; path = Event/View/TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		E458B1DD1E6701FC00EE7736 /* RangeSliderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeSliderTableViewCell.swift; path = Event/View/RangeSliderTableViewCell.swift; sourceTree = "<group>"; };
-		E46A44911E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileInfoHeaderView.swift; path = Event/View/ProfileInfoHeaderView.swift; sourceTree = "<group>"; };
-		E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileConfirmViewController.swift; path = User/Profile/ProfileConfirmViewController.swift; sourceTree = "<group>"; };
+		E46A44911E8CA4BE00B9CB10 /* ProfileAvatarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileAvatarHeaderView.swift; path = Event/View/ProfileAvatarHeaderView.swift; sourceTree = "<group>"; };
 		E46ECDE41E50D66400785BE6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E46ECDE91E50D6C400785BE6 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Shared/Device.swift; sourceTree = "<group>"; };
-		E46ECDEC1E50DA2400785BE6 /* ProfileContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileContainerView.swift; path = User/Profile/View/ProfileContainerView.swift; sourceTree = "<group>"; };
-		E46ECDEE1E50DD9500785BE6 /* ProfileConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileConstant.swift; path = User/Profile/View/ProfileConstant.swift; sourceTree = "<group>"; };
 		E46ECDF71E50E49B00785BE6 /* Image+Editing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Image+Editing.swift"; path = "Image/Image+Editing.swift"; sourceTree = "<group>"; };
 		E46ECDFA1E511EB400785BE6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = User/Profile/Model/User.swift; sourceTree = "<group>"; };
 		E46ECDFC1E51313C00785BE6 /* String+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Format.swift"; path = "Shared/String+Format.swift"; sourceTree = "<group>"; };
@@ -363,7 +355,6 @@
 		E46ECDDE1E50D5D900785BE6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E46ECDDF1E50D61800785BE6 /* ProfileConfirmViewController.swift */,
 				69BC381D1F527210008A4592 /* MyProfileViewController.swift */,
 				E46ECDEB1E50DA0600785BE6 /* View */,
 			);
@@ -400,10 +391,7 @@
 		E46ECDEB1E50DA0600785BE6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E46ECDEC1E50DA2400785BE6 /* ProfileContainerView.swift */,
-				691B58FC1E87875C00ABEF6A /* ProfileActionFooterView.swift */,
-				E46A44911E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift */,
-				E46ECDEE1E50DD9500785BE6 /* ProfileConstant.swift */,
+				E46A44911E8CA4BE00B9CB10 /* ProfileAvatarHeaderView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -839,8 +827,6 @@
 				69FA43281F26F96900A16BB8 /* EventViewController.swift in Sources */,
 				69E322701F4536CC00061903 /* EventMapTableViewCell.swift in Sources */,
 				694DA1B61F5328BE00FFB2D2 /* UIButton+Background.swift in Sources */,
-				691B58FD1E87875C00ABEF6A /* ProfileActionFooterView.swift in Sources */,
-				E46ECDE01E50D61800785BE6 /* ProfileConfirmViewController.swift in Sources */,
 				69C810BA1F316B7000113A41 /* EventAttendantTableViewCell.swift in Sources */,
 				E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */,
 				4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */,
@@ -854,10 +840,8 @@
 				4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */,
 				69BA885B1EDA460B0039E237 /* TableViewSectionHeader.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
-				E46ECDEF1E50DD9500785BE6 /* ProfileConstant.swift in Sources */,
 				694DA1B41F5324D400FFB2D2 /* ChatAvatar.swift in Sources */,
-				E46ECDED1E50DA2400785BE6 /* ProfileContainerView.swift in Sources */,
-				E46A44921E8CA4BE00B9CB10 /* ProfileInfoHeaderView.swift in Sources */,
+				E46A44921E8CA4BE00B9CB10 /* ProfileAvatarHeaderView.swift in Sources */,
 				E4E99E041E7A31F100A10DA7 /* RestaurantListViewController.swift in Sources */,
 				69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */,
 				E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */,
