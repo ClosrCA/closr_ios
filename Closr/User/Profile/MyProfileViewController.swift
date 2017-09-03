@@ -95,6 +95,8 @@ class MyProfileViewController: UIViewController {
         return toolBar
     }()
     
+    fileprivate lazy var keyboardObbserver: KeyboardObserver = KeyboardObserver()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,7 +109,16 @@ class MyProfileViewController: UIViewController {
         setupProfileHeader()
         setupFooterIfNeeded()
         
-        tableView.reloadData()
+        addKeyboardObserver()
+    }
+    
+    fileprivate func addKeyboardObserver() {
+        keyboardObbserver.addObserver(didAppear: { [weak self] (keyboardSize) in
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            self?.tableView.contentInset = contentInsets
+        }) { [weak self] (keyboardSize) in
+            self?.tableView.contentInset = .zero
+        }
     }
     
     fileprivate func setupProfileHeader() {
@@ -182,18 +193,18 @@ class MyProfileViewController: UIViewController {
     @objc
     fileprivate func onToolBarDone() {
         
-        updateBirthdayFieldIfNeeded()
+        updateBirthdayFieldWhenDone()
         
         tableView.endEditing(true)
     }
     
-    fileprivate func updateBirthdayFieldIfNeeded() {
+    fileprivate func updateBirthdayFieldWhenDone() {
         let indexPath = IndexPath(row: Form.birthday.rawValue, section: 0)
-        let cell = tableView.cellForRow(at: indexPath)
         
-        if cell?.isFirstResponder ?? false {
+        if let cell = tableView.cellForRow(at: indexPath), cell.isFirstResponder {
+        
             user?.birthday = birthdayPickerView.date
-            cell?.setNeedsLayout()
+            cell.setNeedsLayout()
         }
     }
 
@@ -254,6 +265,8 @@ extension MyProfileViewController: ProfileFormTableViewCellDataSource, ProfileFo
         }
         return nil
     }
+    
+    // MARK: - delegate
     
     func didReturn(text: String?, from cell: ProfileFormTableViewCell) {
         
