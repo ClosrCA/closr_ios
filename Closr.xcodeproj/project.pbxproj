@@ -13,6 +13,7 @@
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
 		4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */; };
 		690C6D5D1F5C57F500F933A6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690C6D5C1F5C57F500F933A6 /* Validator.swift */; };
+		690C6D5F1F5C74AE00F933A6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690C6D5E1F5C74AE00F933A6 /* SettingsTableViewController.swift */; };
 		69173E9D1F12948200F791A5 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69173E9C1F12948200F791A5 /* DetailTableViewController.swift */; };
 		6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */; };
 		6942D1051EFA0BD600988471 /* UIViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */; };
@@ -106,6 +107,7 @@
 		4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50163C0A5221D5BF6257B9A8 /* Pods-ClosrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.release.xcconfig"; sourceTree = "<group>"; };
 		690C6D5C1F5C57F500F933A6 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validator.swift; path = Shared/Validator.swift; sourceTree = "<group>"; };
+		690C6D5E1F5C74AE00F933A6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = User/Profile/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		69173E9C1F12948200F791A5 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailTableViewController.swift; path = Restaurant/DetailTableViewController.swift; sourceTree = "<group>"; };
 		6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Appearance.swift"; path = "Shared/UIViewController+Appearance.swift"; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				69BC381D1F527210008A4592 /* MyProfileViewController.swift */,
+				690C6D5E1F5C74AE00F933A6 /* SettingsTableViewController.swift */,
 				E46ECDEB1E50DA0600785BE6 /* View */,
 			);
 			name = Profile;
@@ -857,6 +860,7 @@
 				E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */,
 				69E750821E86122A00E7EFB0 /* SegmentControlTableViewCell.swift in Sources */,
 				69BD54901E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift in Sources */,
+				690C6D5F1F5C74AE00F933A6 /* SettingsTableViewController.swift in Sources */,
 				69F13CAF1E82B38100E3483F /* Event.swift in Sources */,
 				E477F0071E567DBF00ED7806 /* Reusable.swift in Sources */,
 				E477EFFB1E5668DA00ED7806 /* PromotionCollectionViewCell.swift in Sources */,

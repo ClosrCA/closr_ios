@@ -100,8 +100,6 @@ class MyProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "log out", style: .done, target: self, action: #selector(logout))
-        
         view.addSubview(tableView)
         
         tableView <- Edges()
@@ -181,11 +179,6 @@ class MyProfileViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         
         present(alertController, animated: true)
-    }
-    
-    @objc
-    fileprivate func logout() {
-        NotificationCenter.default.post(name: NotificationName.signout, object: nil)
     }
     
     @objc
@@ -333,11 +326,39 @@ extension MyProfileViewController: ProfileFormTableViewCellDataSource, ProfileFo
         
         return Form(rawValue: row)
     }
+    
 }
 
 extension MyProfileViewController: ProfileAvatarHeaderViewDelegate {
+    
+    fileprivate var settingsPreferredRect: CGRect {
+        let height: CGFloat  = 100
+        let width: CGFloat   = 110
+        
+        let x = view.frame.maxX - width - AppSizeMetric.defaultPadding
+        let y = view.frame.minY + AppSizeMetric.breathPadding
+        
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
     func didSelectEditAvatar() {
         showImagePickerActionSheet()
+    }
+    
+    func didSelectMore(source: UIView) {
+        let settingsController                      = SettingsTableViewController()
+        settingsController.modalPresentationStyle   = .popover
+        
+        settingsController.popoverPresentationController?.sourceView = source
+        settingsController.popoverPresentationController?.delegate   = self
+        
+        present(settingsController, animated: true)
+    }
+}
+
+extension MyProfileViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
 

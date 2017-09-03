@@ -11,6 +11,7 @@ import EasyPeasy
 
 protocol ProfileAvatarHeaderViewDelegate: class {
     func didSelectEditAvatar()
+    func didSelectMore(source: UIView)
 }
 
 class ProfileAvatarHeaderView: UIView {
@@ -45,7 +46,7 @@ class ProfileAvatarHeaderView: UIView {
     fileprivate lazy var moreButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "icon_menu"), for: .normal)
-        button.addTarget(self, action: #selector(selectEdit), for: .touchUpInside)
+        button.addTarget(self, action: #selector(selectMore), for: .touchUpInside)
         
         return button
     }()
@@ -98,6 +99,6 @@ class ProfileAvatarHeaderView: UIView {
     
     @objc
     fileprivate func selectMore() {
-        
+        delegate?.didSelectMore(source: moreButton)
     }
 }
