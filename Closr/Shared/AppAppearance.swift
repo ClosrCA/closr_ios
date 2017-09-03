@@ -32,6 +32,7 @@ struct AppFont {
 
 struct AppSizeMetric {
     static let buttonHeight: CGFloat    = 44
+    static let textFieldHeight: CGFloat = 32
     static let defaultPadding: CGFloat  = 8
     static let breathPadding: CGFloat   = 20
     static let avatarSize: CGSize       = CGSize(width: 55, height: 55)

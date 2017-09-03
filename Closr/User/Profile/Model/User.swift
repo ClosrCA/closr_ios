@@ -49,6 +49,14 @@ struct User {
         self.avatar = avatar
     }
     
+    init(userInfo: UserInfo) {
+        name        = userInfo.displayName
+        email       = userInfo.email
+        phone       = userInfo.phoneNumber
+        avatar      = userInfo.photoURL?.absoluteString
+        firbaseID   = userInfo.uid
+    }
+    
     init(profile: JSON) {
         
         facebookID = profile["id"].string

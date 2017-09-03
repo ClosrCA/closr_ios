@@ -13,6 +13,10 @@ let cAnimationDuration = 0.2
 extension UIView {
     
     func fadeIn() {
+        if alpha >= 1.0 {
+            return
+        }
+        
         alpha = 0.0
         isHidden = false
         
@@ -22,6 +26,10 @@ extension UIView {
     }
     
     func fadeOut() {
+        if alpha <= 0 {
+            return
+        }
+        
         alpha = 1.0
         isHidden = false
         

@@ -12,6 +12,8 @@
 		36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B851E7A37B500868A29 /* Assets.xcassets */; };
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
 		4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */; };
+		690C6D5D1F5C57F500F933A6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690C6D5C1F5C57F500F933A6 /* Validator.swift */; };
+		690C6D5F1F5C74AE00F933A6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690C6D5E1F5C74AE00F933A6 /* SettingsTableViewController.swift */; };
 		69173E9D1F12948200F791A5 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69173E9C1F12948200F791A5 /* DetailTableViewController.swift */; };
 		6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */; };
 		6942D1051EFA0BD600988471 /* UIViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */; };
@@ -19,6 +21,7 @@
 		694DA1B41F5324D400FFB2D2 /* ChatAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694DA1B31F5324D400FFB2D2 /* ChatAvatar.swift */; };
 		694DA1B61F5328BE00FFB2D2 /* UIButton+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694DA1B51F5328BE00FFB2D2 /* UIButton+Background.swift */; };
 		695A316A1ECC3AC50087183F /* ReviewHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A31691ECC3AC50087183F /* ReviewHelperTests.swift */; };
+		695C9B5A1F5B6B250074B714 /* ProfileFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C9B591F5B6B250074B714 /* ProfileFormTableViewCell.swift */; };
 		698CFD751F43F99900ECF7AA /* EventGalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */; };
 		69BA88571EDA375B0039E237 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */; };
 		69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */; };
@@ -103,6 +106,8 @@
 		4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Promotion/Model/Promotion.swift; sourceTree = "<group>"; };
 		4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50163C0A5221D5BF6257B9A8 /* Pods-ClosrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.release.xcconfig"; sourceTree = "<group>"; };
+		690C6D5C1F5C57F500F933A6 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validator.swift; path = Shared/Validator.swift; sourceTree = "<group>"; };
+		690C6D5E1F5C74AE00F933A6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = User/Profile/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		69173E9C1F12948200F791A5 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailTableViewController.swift; path = Restaurant/DetailTableViewController.swift; sourceTree = "<group>"; };
 		6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Appearance.swift"; path = "Shared/UIViewController+Appearance.swift"; sourceTree = "<group>"; };
@@ -110,6 +115,7 @@
 		694DA1B31F5324D400FFB2D2 /* ChatAvatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatAvatar.swift; path = Event/Model/ChatAvatar.swift; sourceTree = "<group>"; };
 		694DA1B51F5328BE00FFB2D2 /* UIButton+Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Background.swift"; path = "Shared/UIButton+Background.swift"; sourceTree = "<group>"; };
 		695A31691ECC3AC50087183F /* ReviewHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelperTests.swift; sourceTree = "<group>"; };
+		695C9B591F5B6B250074B714 /* ProfileFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileFormTableViewCell.swift; path = User/Profile/ProfileFormTableViewCell.swift; sourceTree = "<group>"; };
 		698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventGalleryTableViewCell.swift; path = Event/EventGalleryTableViewCell.swift; sourceTree = "<group>"; };
 		69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCarouselTableViewCell.swift; sourceTree = "<group>"; };
@@ -356,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				69BC381D1F527210008A4592 /* MyProfileViewController.swift */,
+				690C6D5E1F5C74AE00F933A6 /* SettingsTableViewController.swift */,
 				E46ECDEB1E50DA0600785BE6 /* View */,
 			);
 			name = Profile;
@@ -373,6 +380,7 @@
 		E46ECDE81E50D6B200785BE6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				690C6D5C1F5C57F500F933A6 /* Validator.swift */,
 				E46ECDE91E50D6C400785BE6 /* Device.swift */,
 				E477F00C1E5DC74D00ED7806 /* Location.swift */,
 				E46ECDFC1E51313C00785BE6 /* String+Format.swift */,
@@ -392,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				E46A44911E8CA4BE00B9CB10 /* ProfileAvatarHeaderView.swift */,
+				695C9B591F5B6B250074B714 /* ProfileFormTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -816,6 +825,7 @@
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
 				E42562F91E703CD10078E9ED /* RestaurantDetailDescriptionCell.swift in Sources */,
 				69FA43361F2851E800A16BB8 /* EventDetailViewController.swift in Sources */,
+				695C9B5A1F5B6B250074B714 /* ProfileFormTableViewCell.swift in Sources */,
 				E42562FA1E703CD10078E9ED /* ImageCarouselViewController.swift in Sources */,
 				E42563011E718B430078E9ED /* UILabel+Make.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,
@@ -834,6 +844,7 @@
 				E477F0181E5DDBB400ED7806 /* ImageCarouselCell.swift in Sources */,
 				69BC381E1F527211008A4592 /* MyProfileViewController.swift in Sources */,
 				E477F00D1E5DC74D00ED7806 /* Location.swift in Sources */,
+				690C6D5D1F5C57F500F933A6 /* Validator.swift in Sources */,
 				69BC38211F5276CC008A4592 /* ChatViewController.swift in Sources */,
 				E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */,
 				69FA43301F26FA1200A16BB8 /* MyEventCollectionViewCell.swift in Sources */,
@@ -849,6 +860,7 @@
 				E477F00B1E5730A100ED7806 /* PromotionListViewController.swift in Sources */,
 				69E750821E86122A00E7EFB0 /* SegmentControlTableViewCell.swift in Sources */,
 				69BD54901E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift in Sources */,
+				690C6D5F1F5C74AE00F933A6 /* SettingsTableViewController.swift in Sources */,
 				69F13CAF1E82B38100E3483F /* Event.swift in Sources */,
 				E477F0071E567DBF00ED7806 /* Reusable.swift in Sources */,
 				E477EFFB1E5668DA00ED7806 /* PromotionCollectionViewCell.swift in Sources */,

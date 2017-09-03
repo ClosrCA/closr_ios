@@ -9,11 +9,20 @@
 import UIKit
 import EasyPeasy
 
+protocol ProfileAvatarHeaderViewDelegate: class {
+    func didSelectEditAvatar()
+    func didSelectMore(source: UIView)
+}
+
 class ProfileAvatarHeaderView: UIView {
 
+    static let preferredHeight: CGFloat = 230
+    
+    weak var delegate: ProfileAvatarHeaderViewDelegate?
+    
     fileprivate struct Constants {
         static let avatarSize: CGSize           = CGSize(width: 126, height: 126)
-        static let avatarTopPadding: CGFloat    = 32
+        static let avatarTopPadding: CGFloat    = 60
         
         static let editButtonSize: CGSize       = CGSize(width: 40, height: 40)
     }
@@ -37,7 +46,7 @@ class ProfileAvatarHeaderView: UIView {
     fileprivate lazy var moreButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "icon_menu"), for: .normal)
-        button.addTarget(self, action: #selector(selectEdit), for: .touchUpInside)
+        button.addTarget(self, action: #selector(selectMore), for: .touchUpInside)
         
         return button
     }()
@@ -45,6 +54,10 @@ class ProfileAvatarHeaderView: UIView {
     func update(avatarURL: String?, showMenu: Bool) {
         avatarImageView.loadImage(URLString: avatarURL, placeholder: UIImage(named: "icon_user"))
         moreButton.isHidden = !showMenu
+    }
+    
+    func update(avatarImage: UIImage) {
+        avatarImageView.image = avatarImage
     }
     
     override init(frame: CGRect) {
@@ -81,11 +94,11 @@ class ProfileAvatarHeaderView: UIView {
     
     @objc
     fileprivate func selectEdit() {
-        
+        delegate?.didSelectEditAvatar()
     }
     
     @objc
     fileprivate func selectMore() {
-        
+        delegate?.didSelectMore(source: moreButton)
     }
 }

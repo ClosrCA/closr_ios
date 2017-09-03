@@ -33,10 +33,9 @@ class TabBarController: UITabBarController {
         let profileController           = MyProfileViewController()
         profileController.user          = User.current
         
-        let navController           = UINavigationController(rootViewController: profileController)
-        navController.tabBarItem    = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: Tabs.profile.rawValue)
+        profileController.tabBarItem    = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: Tabs.profile.rawValue)
         
-        viewControllers = [resturantController, promotionController, eventController, navController]
+        viewControllers = [resturantController, promotionController, eventController, profileController]
     }
 
 }
