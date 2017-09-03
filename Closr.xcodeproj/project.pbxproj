@@ -19,6 +19,7 @@
 		694DA1B41F5324D400FFB2D2 /* ChatAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694DA1B31F5324D400FFB2D2 /* ChatAvatar.swift */; };
 		694DA1B61F5328BE00FFB2D2 /* UIButton+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694DA1B51F5328BE00FFB2D2 /* UIButton+Background.swift */; };
 		695A316A1ECC3AC50087183F /* ReviewHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A31691ECC3AC50087183F /* ReviewHelperTests.swift */; };
+		695C9B5A1F5B6B250074B714 /* ProfileFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C9B591F5B6B250074B714 /* ProfileFormTableViewCell.swift */; };
 		698CFD751F43F99900ECF7AA /* EventGalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */; };
 		69BA88571EDA375B0039E237 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */; };
 		69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */; };
@@ -110,6 +111,7 @@
 		694DA1B31F5324D400FFB2D2 /* ChatAvatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatAvatar.swift; path = Event/Model/ChatAvatar.swift; sourceTree = "<group>"; };
 		694DA1B51F5328BE00FFB2D2 /* UIButton+Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Background.swift"; path = "Shared/UIButton+Background.swift"; sourceTree = "<group>"; };
 		695A31691ECC3AC50087183F /* ReviewHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelperTests.swift; sourceTree = "<group>"; };
+		695C9B591F5B6B250074B714 /* ProfileFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileFormTableViewCell.swift; path = User/Profile/ProfileFormTableViewCell.swift; sourceTree = "<group>"; };
 		698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventGalleryTableViewCell.swift; path = Event/EventGalleryTableViewCell.swift; sourceTree = "<group>"; };
 		69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCarouselTableViewCell.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				E46A44911E8CA4BE00B9CB10 /* ProfileAvatarHeaderView.swift */,
+				695C9B591F5B6B250074B714 /* ProfileFormTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				E4AAB73C1E3ECC6B001EB362 /* YelpPlace.swift in Sources */,
 				E42562F91E703CD10078E9ED /* RestaurantDetailDescriptionCell.swift in Sources */,
 				69FA43361F2851E800A16BB8 /* EventDetailViewController.swift in Sources */,
+				695C9B5A1F5B6B250074B714 /* ProfileFormTableViewCell.swift in Sources */,
 				E42562FA1E703CD10078E9ED /* ImageCarouselViewController.swift in Sources */,
 				E42563011E718B430078E9ED /* UILabel+Make.swift in Sources */,
 				E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */,

@@ -11,9 +11,11 @@ import EasyPeasy
 
 class ProfileAvatarHeaderView: UIView {
 
+    static let preferredHeight: CGFloat = 230
+    
     fileprivate struct Constants {
         static let avatarSize: CGSize           = CGSize(width: 126, height: 126)
-        static let avatarTopPadding: CGFloat    = 32
+        static let avatarTopPadding: CGFloat    = 60
         
         static let editButtonSize: CGSize       = CGSize(width: 40, height: 40)
     }
