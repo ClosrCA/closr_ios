@@ -31,7 +31,10 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if Auth.auth().currentUser != nil {
+        if let authUser = Auth.auth().currentUser {
+            
+            prepopulateProfileBeforeFetch(authUser: authUser)
+            
             let tabBarController = TabBarController()
             display(controller: tabBarController)
         } else {
@@ -65,6 +68,12 @@ class RootViewController: UIViewController {
             let alertController = UIAlertController(title: "Opps", message: error.localizedDescription, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: .default))
             present(alertController, animated: true)
+        }
+    }
+    
+    fileprivate func prepopulateProfileBeforeFetch(authUser: FirebaseAuth.User) {
+        if let providerData = authUser.providerData.first {
+            User.current = User(userInfo: providerData)
         }
     }
     

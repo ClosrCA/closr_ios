@@ -18,14 +18,18 @@ protocol ProfileFormTableViewCellDataSource: class {
 }
 
 protocol ProfileFormTableViewCellDelegate: class {
-    func didReturn(from cell: ProfileFormTableViewCell)
-    func didEndEditing(from cell: ProfileFormTableViewCell)
+    func didReturn(text: String?, from cell: ProfileFormTableViewCell)
+    func didEndEditing(text: String?, from cell: ProfileFormTableViewCell)
 }
 
 class ProfileFormTableViewCell: UITableViewCell, Reusable {
 
     weak var dataSource: ProfileFormTableViewCellDataSource?
     weak var delegate: ProfileFormTableViewCellDelegate?
+    
+    override var isFirstResponder: Bool {
+        return textField.isFirstResponder
+    }
     
     fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
     
@@ -62,9 +66,12 @@ class ProfileFormTableViewCell: UITableViewCell, Reusable {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        titleLabel.text         = dataSource?.title(for: self)
-        textField.text          = dataSource?.text(for: self)
-        textField.placeholder   = dataSource?.title(for: self)
+        titleLabel.text                 = dataSource?.title(for: self)
+        textField.text                  = dataSource?.text(for: self)
+        textField.placeholder           = dataSource?.title(for: self)
+        textField.inputView             = dataSource?.inputView(for: self)
+        textField.inputAccessoryView    = dataSource?.inputAccesaryView(for: self)
+        textField.keyboardType          = dataSource?.keyboardType(for: self) ?? .default
         
         animateTitleIfNeeded(text: textField.text)
     }
@@ -107,13 +114,13 @@ class ProfileFormTableViewCell: UITableViewCell, Reusable {
 
 extension ProfileFormTableViewCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate?.didReturn(from: self)
+        delegate?.didReturn(text: textField.text, from: self)
         
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.didEndEditing(from: self)
+        delegate?.didEndEditing(text: textField.text, from: self)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

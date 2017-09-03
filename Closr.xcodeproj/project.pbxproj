@@ -12,6 +12,7 @@
 		36D94B861E7A37B500868A29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D94B851E7A37B500868A29 /* Assets.xcassets */; };
 		4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA91CD71E577AAF00A8F51C /* Notification.swift */; };
 		4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */; };
+		690C6D5D1F5C57F500F933A6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690C6D5C1F5C57F500F933A6 /* Validator.swift */; };
 		69173E9D1F12948200F791A5 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69173E9C1F12948200F791A5 /* DetailTableViewController.swift */; };
 		6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */; };
 		6942D1051EFA0BD600988471 /* UIViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */; };
@@ -104,6 +105,7 @@
 		4CFFEE761E7B0B31009E8CB7 /* Promotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promotion.swift; path = Promotion/Model/Promotion.swift; sourceTree = "<group>"; };
 		4D653DC0E498BF0870733AE2 /* Pods_ClosrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50163C0A5221D5BF6257B9A8 /* Pods-ClosrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests.release.xcconfig"; sourceTree = "<group>"; };
+		690C6D5C1F5C57F500F933A6 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validator.swift; path = Shared/Validator.swift; sourceTree = "<group>"; };
 		69173E9C1F12948200F791A5 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailTableViewController.swift; path = Restaurant/DetailTableViewController.swift; sourceTree = "<group>"; };
 		6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Appearance.swift"; path = "Shared/UIViewController+Appearance.swift"; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 		E46ECDE81E50D6B200785BE6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				690C6D5C1F5C57F500F933A6 /* Validator.swift */,
 				E46ECDE91E50D6C400785BE6 /* Device.swift */,
 				E477F00C1E5DC74D00ED7806 /* Location.swift */,
 				E46ECDFC1E51313C00785BE6 /* String+Format.swift */,
@@ -838,6 +841,7 @@
 				E477F0181E5DDBB400ED7806 /* ImageCarouselCell.swift in Sources */,
 				69BC381E1F527211008A4592 /* MyProfileViewController.swift in Sources */,
 				E477F00D1E5DC74D00ED7806 /* Location.swift in Sources */,
+				690C6D5D1F5C57F500F933A6 /* Validator.swift in Sources */,
 				69BC38211F5276CC008A4592 /* ChatViewController.swift in Sources */,
 				E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */,
 				69FA43301F26FA1200A16BB8 /* MyEventCollectionViewCell.swift in Sources */,

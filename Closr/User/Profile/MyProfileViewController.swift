@@ -65,7 +65,7 @@ class MyProfileViewController: UIViewController {
         return tableView
     }()
     
-    fileprivate (set) lazy var confirmButton: UIButton = {
+    fileprivate lazy var confirmButton: UIButton = {
         let button = UIButton()
         button.setTitle("Get Started", for: .normal)
         button.titleLabel?.font = AppFont.title
@@ -74,6 +74,25 @@ class MyProfileViewController: UIViewController {
         button.addTarget(self, action: #selector(onConfirm), for: .touchUpInside)
         
         return button
+    }()
+    
+    fileprivate lazy var birthdayPickerView: UIDatePicker = {
+        let pickerView              = UIDatePicker()
+        pickerView.datePickerMode   = .date
+        // TODO: default to 1990
+        return pickerView
+    }()
+    
+    fileprivate lazy var toolBar: UIToolbar = {
+        let toolBar         = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 44))
+        toolBar.tintColor   = AppColor.brand
+        
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(onToolBarDone))
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.items = [leftSpace, doneItem]
+        
+        return toolBar
     }()
     
     override func viewDidLoad() {
@@ -110,6 +129,46 @@ class MyProfileViewController: UIViewController {
         }
     }
     
+    fileprivate func validateForm(text: String?, cell: ProfileFormTableViewCell) {
+        guard let row = tableView.indexPath(for: cell)?.row else {
+            return
+        }
+        
+        guard let form = Form(rawValue: row) else {
+            return
+        }
+        
+        let validator = Validator()
+        
+        switch form {
+        case .name:
+            let result = validator.validate(name: text)
+            if !result.valid {
+                popAlert(with: result.message)
+                return
+            }
+            user?.name = text
+        case .email:
+            let result = validator.validate(email: text)
+            if !result.valid {
+                popAlert(with: result.message)
+                return
+            }
+            user?.email = text
+        case .phone:
+            user?.phone = text
+        default:
+            break
+        }
+    }
+    
+    fileprivate func popAlert(with message: String?) {
+        let alertController = UIAlertController(title: "Ooops", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        present(alertController, animated: true)
+    }
+    
     @objc
     fileprivate func logout() {
         NotificationCenter.default.post(name: NotificationName.signout, object: nil)
@@ -118,6 +177,24 @@ class MyProfileViewController: UIViewController {
     @objc
     fileprivate func onConfirm() {
         delegate?.didSelectConfirm(controller: self)
+    }
+    
+    @objc
+    fileprivate func onToolBarDone() {
+        
+        updateBirthdayFieldIfNeeded()
+        
+        tableView.endEditing(true)
+    }
+    
+    fileprivate func updateBirthdayFieldIfNeeded() {
+        let indexPath = IndexPath(row: Form.birthday.rawValue, section: 0)
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        if cell?.isFirstResponder ?? false {
+            user?.birthday = birthdayPickerView.date
+            cell?.setNeedsLayout()
+        }
     }
 
 }
@@ -165,19 +242,28 @@ extension MyProfileViewController: ProfileFormTableViewCellDataSource, ProfileFo
     }
     
     func inputView(for cell: ProfileFormTableViewCell) -> UIView? {
+        if form(from: cell) == .birthday {
+            return birthdayPickerView
+        }
         return nil
     }
     
     func inputAccesaryView(for cell: ProfileFormTableViewCell) -> UIView? {
+        if form(from: cell) == .birthday || form(from: cell) == .phone {
+            return toolBar
+        }
         return nil
     }
     
-    func didReturn(from cell: ProfileFormTableViewCell) {
+    func didReturn(text: String?, from cell: ProfileFormTableViewCell) {
         
+        tableView.endEditing(true)
+        
+        validateForm(text: text, cell: cell)
     }
     
-    func didEndEditing(from cell: ProfileFormTableViewCell) {
-        
+    func didEndEditing(text: String?, from cell: ProfileFormTableViewCell) {
+        validateForm(text: text, cell: cell)
     }
     
     fileprivate func form(from cell: ProfileFormTableViewCell) -> Form? {
