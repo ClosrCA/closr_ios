@@ -122,8 +122,11 @@ class MyProfileViewController: UIViewController {
     }
     
     fileprivate func setupProfileHeader() {
-        let profileHeader = ProfileAvatarHeaderView(frame: CGRect(x: 0, y: 0, width: 0, height: ProfileAvatarHeaderView.preferredHeight))
+        let profileHeader       = ProfileAvatarHeaderView(frame: CGRect(x: 0, y: 0, width: 0, height: ProfileAvatarHeaderView.preferredHeight))
+        profileHeader.delegate  = self
+        
         profileHeader.update(avatarURL: user?.avatar, showMenu: !isConfirming)
+        
         tableView.tableHeaderView = profileHeader
     }
     
@@ -207,7 +210,51 @@ class MyProfileViewController: UIViewController {
             cell.setNeedsLayout()
         }
     }
+    
+    fileprivate func showImagePickerActionSheet() {
+        let actionSheet = UIAlertController(title: "Import photo", message: nil, preferredStyle: .actionSheet)
+        
+        let fromCamera = UIAlertAction(title: "Camera", style: .default) { (_) in
+            self.showImagePickerForCamera()
+        }
+        
+        let fromPhotos = UIAlertAction(title: "Photos", style: .default) { (_) in
+            self.showImagePickerForPhotoPicker()
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        actionSheet.addAction(fromCamera)
+        actionSheet.addAction(fromPhotos)
+        actionSheet.addAction(cancel)
+        
+        present(actionSheet, animated: true)
+    }
 
+    fileprivate func showImagePickerForCamera() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            popAlert(with: "YourTable can't access the Camera.")
+            return
+        }
+        
+        showImagePicker(for: .camera)
+    }
+    
+    fileprivate func showImagePickerForPhotoPicker() {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            popAlert(with: "YourTable can't access your Photo library.")
+            return
+        }
+        
+        showImagePicker(for: .photoLibrary)
+    }
+    
+    fileprivate func showImagePicker(for sourceType: UIImagePickerControllerSourceType) {
+        let imagePicker         = UIImagePickerController()
+        imagePicker.delegate    = self
+        imagePicker.sourceType  = sourceType
+        present(imagePicker, animated: true)
+    }
 }
 
 extension MyProfileViewController: UITableViewDataSource, UITableViewDelegate {
@@ -285,5 +332,24 @@ extension MyProfileViewController: ProfileFormTableViewCellDataSource, ProfileFo
         }
         
         return Form(rawValue: row)
+    }
+}
+
+extension MyProfileViewController: ProfileAvatarHeaderViewDelegate {
+    func didSelectEditAvatar() {
+        showImagePickerActionSheet()
+    }
+}
+
+extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            //TODO: - upload to backend
+            if let header = tableView.tableHeaderView as? ProfileAvatarHeaderView {
+                header.update(avatarImage: image)
+            }
+        }
+        
+        dismiss(animated: true)
     }
 }

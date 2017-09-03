@@ -9,9 +9,15 @@
 import UIKit
 import EasyPeasy
 
+protocol ProfileAvatarHeaderViewDelegate: class {
+    func didSelectEditAvatar()
+}
+
 class ProfileAvatarHeaderView: UIView {
 
     static let preferredHeight: CGFloat = 230
+    
+    weak var delegate: ProfileAvatarHeaderViewDelegate?
     
     fileprivate struct Constants {
         static let avatarSize: CGSize           = CGSize(width: 126, height: 126)
@@ -49,6 +55,10 @@ class ProfileAvatarHeaderView: UIView {
         moreButton.isHidden = !showMenu
     }
     
+    func update(avatarImage: UIImage) {
+        avatarImageView.image = avatarImage
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -83,7 +93,7 @@ class ProfileAvatarHeaderView: UIView {
     
     @objc
     fileprivate func selectEdit() {
-        
+        delegate?.didSelectEditAvatar()
     }
     
     @objc
