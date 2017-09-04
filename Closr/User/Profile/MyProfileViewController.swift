@@ -331,25 +331,20 @@ extension MyProfileViewController: ProfileFormTableViewCellDataSource, ProfileFo
 
 extension MyProfileViewController: ProfileAvatarHeaderViewDelegate {
     
-    fileprivate var settingsPreferredRect: CGRect {
-        let height: CGFloat  = 100
-        let width: CGFloat   = 110
-        
-        let x = view.frame.maxX - width - AppSizeMetric.defaultPadding
-        let y = view.frame.minY + AppSizeMetric.breathPadding
-        
-        return CGRect(x: x, y: y, width: width, height: height)
-    }
-    
     func didSelectEditAvatar() {
         showImagePickerActionSheet()
     }
     
     func didSelectMore(source: UIView) {
+        let sourceRectX = source.bounds.width / 2
+        let sourceRectY = source.bounds.height / 2
+        
         let settingsController                      = SettingsTableViewController()
         settingsController.modalPresentationStyle   = .popover
         
         settingsController.popoverPresentationController?.sourceView = source
+        settingsController.popoverPresentationController?.sourceRect = CGRect(x: sourceRectX, y: sourceRectY, width: 1, height: 1)
+        settingsController.popoverPresentationController?.permittedArrowDirections = .up
         settingsController.popoverPresentationController?.delegate   = self
         
         present(settingsController, animated: true)
