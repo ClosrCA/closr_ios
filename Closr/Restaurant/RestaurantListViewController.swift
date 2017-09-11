@@ -61,7 +61,7 @@ class RestaurantListViewController: UIViewController {
     }
     
     fileprivate var placeSearch: YelpPlaceSearch!
-    fileprivate lazy var location: Location = Location()
+    
     fileprivate var refreshWhenTypingTimer: Timer?
     
     override func viewDidLoad() {
@@ -86,7 +86,7 @@ class RestaurantListViewController: UIViewController {
         
         refreshControl.beginRefreshing()
         
-        location.getCurrentLocation { [unowned self] (location, error) in
+        Location.getCurrentLocation { [unowned self] (location, error) in
             if error != nil {
                 // TODO: location error popup
             }

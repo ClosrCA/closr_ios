@@ -24,7 +24,7 @@ class ProfileAvatarHeaderView: UIView {
         static let avatarSize: CGSize           = CGSize(width: 126, height: 126)
         static let avatarTopPadding: CGFloat    = 60
         
-        static let editButtonSize: CGSize       = CGSize(width: 40, height: 40)
+        static let moreButtonSize: CGSize       = CGSize(width: 40, height: 40)
     }
     
     fileprivate lazy var avatarImageView: UIImageView = {
@@ -45,7 +45,7 @@ class ProfileAvatarHeaderView: UIView {
     
     fileprivate lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "icon_menu"), for: .normal)
+        button.setImage(UIImage(named: "icon_menu"), for: .normal)
         button.addTarget(self, action: #selector(selectMore), for: .touchUpInside)
         
         return button
@@ -87,6 +87,7 @@ class ProfileAvatarHeaderView: UIView {
         ]
         
         moreButton <- [
+            Size(Constants.moreButtonSize),
             Top(Constants.avatarTopPadding),
             Trailing(AppSizeMetric.breathPadding)
         ]

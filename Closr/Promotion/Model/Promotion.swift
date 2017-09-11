@@ -11,10 +11,12 @@ import Foundation
 struct Promotion {
     var resturantID: String!
     var resturantName: String?
+    var address: String?
     var distance: String?
     var imageURL: String?
     var startDate: Date?
     var endDate: Date?
+    var duration: String?
     var discount: String?
     var price: String?
     var currency: String?

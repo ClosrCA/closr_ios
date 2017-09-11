@@ -10,11 +10,13 @@ import CoreLocation
 
 class Location: NSObject {
     
+    fileprivate static var shared = Location()
+    
     fileprivate lazy var locationManager: CLLocationManager = CLLocationManager()
     
     fileprivate var completion: ((CLLocation, Error?) -> Void)?
     
-    override init() {
+    fileprivate override init() {
         super.init()
         
         locationManager.delegate        = self
@@ -22,10 +24,10 @@ class Location: NSObject {
         locationManager.requestWhenInUseAuthorization()
     }
     
-    func getCurrentLocation(completion: ((CLLocation, Error?) -> Void)?) {
-        locationManager.startUpdatingLocation()
+    static func getCurrentLocation(completion: ((CLLocation, Error?) -> Void)?) {
+        shared.locationManager.startUpdatingLocation()
         
-        self.completion = completion
+        shared.completion = completion
     }
 }
 

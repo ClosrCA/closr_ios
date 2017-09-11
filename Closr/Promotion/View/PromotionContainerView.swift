@@ -51,7 +51,7 @@ class PromotionContainerView: UIView {
 
     fileprivate lazy var backgroundImageView: UIImageView = {
         let imageView                                       = UIImageView()
-        imageView.image                                     = UIImage(named: "promotion_label")
+        imageView.image                                     = UIImage(named: "promotion_background")
         
         return imageView
     }()
