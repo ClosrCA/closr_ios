@@ -20,7 +20,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let promotionController = UINavigationController(rootViewController: PromotionListViewController())
+        let promotionController = UINavigationController(rootViewController: PromotionViewController())
         promotionController.tabBarItem = UITabBarItem(title: "Promotion", image: UIImage(named: "promotion"), tag: Tabs.promotion.rawValue)
         
         let resturantController = UINavigationController(rootViewController: RestaurantListViewController())

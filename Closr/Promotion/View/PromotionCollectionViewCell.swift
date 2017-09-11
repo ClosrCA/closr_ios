@@ -11,23 +11,68 @@ import EasyPeasy
 
 class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
     
-    func update(promotion: Promotion) {
-        
-        thumbnailImageView.loadImage(URLString: promotion.imageURL, placeholder: nil)
-        
-        nameLabel.text      = promotion.resturantName
-        distanceLabel.text  = promotion.distance
-        
-        promotionContainerView.updateWith(promotion: promotion)
+    static let preferredSize: CGSize = CGSize(width: 295, height: 170)
+    
+    fileprivate struct Constants {
+        static let backgroundHeight: CGFloat = 92
     }
+    
+    fileprivate lazy var backgroundImageView: UIImageView = {
+        let imageView                   = UIImageView()
+        imageView.layer.cornerRadius    = 4
+        imageView.clipsToBounds         = true
+        
+        return imageView
+    }()
+    
+    fileprivate lazy var backgroundOverlay: UIImageView = {
+        let imageView   = UIImageView()
+        imageView.image = UIImage(named: "promotion_overlay")
+        
+        return imageView
+    }()
+    
+    fileprivate lazy var restaurantNameLabel: UILabel = UILabel.makeLabel(font: AppFont.title, textColor: AppColor.text_light)
+    
+    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_light)
+    
+    fileprivate lazy var locationIconImageView: UIImageView = {
+        let imageView   = UIImageView()
+        imageView.image = UIImage(named: "icon_location")
+        
+        return imageView
+    }()
+    
+    fileprivate lazy var timeIconImageView: UIImageView = {
+        let imageView   = UIImageView()
+        imageView.image = UIImage(named: "icon_time")
+        
+        return imageView
+    }()
+    
+    fileprivate lazy var durationLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_dark)
+    
+    fileprivate lazy var locationLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_gray)
+    
+    fileprivate lazy var promotionContainerView: PromotionContainerView = PromotionContainerView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(thumbnailImageView)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(locationIconImageView)
+        contentView.layer.cornerRadius  = 4
+        contentView.layer.borderColor   = AppColor.background_brand.cgColor
+        contentView.layer.borderWidth   = 1
+        contentView.clipsToBounds       = true
+        
+        contentView.addSubview(backgroundImageView)
+        contentView.addSubview(backgroundOverlay)
+        contentView.addSubview(restaurantNameLabel)
         contentView.addSubview(distanceLabel)
+        
+        contentView.addSubview(locationIconImageView)
+        contentView.addSubview(timeIconImageView)
+        contentView.addSubview(durationLabel)
+        contentView.addSubview(locationLabel)
         contentView.addSubview(promotionContainerView)
         
         createConstraints()
@@ -37,68 +82,83 @@ class PromotionCollectionViewCell: UICollectionViewCell, Reusable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate lazy var thumbnailImageView: UIImageView = {
-        let imageView                                       = UIImageView()
-        imageView.backgroundColor                           = AppColor.background_gray
+    func update(promotion: Promotion) {
         
-        return imageView
-    }()
-    
-    fileprivate lazy var locationIconImageView: UIImageView = {
-        let imageView = UIImageView()
+        backgroundImageView.loadImage(URLString: promotion.imageURL, placeholder: nil)
         
-        return imageView
-    }()
-    
-    fileprivate lazy var nameLabel: UILabel = UILabel.makeLabel(font: AppFont.thinTitle, textColor: AppColor.text_dark)
-    
-    fileprivate lazy var distanceLabel: UILabel = UILabel.makeLabel(font: AppFont.smallText, textColor: AppColor.text_gray)
-    
-    fileprivate lazy var promotionContainerView: PromotionContainerView = PromotionContainerView(frame: .zero)
+        restaurantNameLabel.text    = promotion.resturantName
+        locationLabel.text          = promotion.address
+        distanceLabel.text          = promotion.distance
+        durationLabel.text          = promotion.duration
+        
+        promotionContainerView.updateWith(promotion: promotion)
+    }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        thumbnailImageView.af_cancelImageRequest()
-        thumbnailImageView.image    = nil
-        nameLabel.text              = nil
+        backgroundImageView.af_cancelImageRequest()
+        backgroundImageView.image   = nil
+        restaurantNameLabel.text    = nil
         distanceLabel.text          = nil
+        locationLabel.text          = nil
+        durationLabel.text          = nil
         
         promotionContainerView.prepareForReuse()
     }
     
     fileprivate func createConstraints() {
         
-        thumbnailImageView <- [
-            Leading(),
-            Top(),
-            Trailing(),
-            Height(floor(frame.width / PromotionListConstant.Cell.imageAspectRatio))
+        backgroundImageView <- [
+            Top(AppSizeMetric.defaultPadding),
+            Leading(AppSizeMetric.defaultPadding),
+            Trailing(AppSizeMetric.defaultPadding),
+            Height(Constants.backgroundHeight)
         ]
         
-        nameLabel <- [
-            Leading(),
-            Top(PromotionListConstant.Cell.nameTopPadding).to(thumbnailImageView, .bottom),
-            Trailing().to(promotionContainerView, .leading),
-            Bottom(PromotionListConstant.Cell.nameBottomPadding).to(distanceLabel, .top)
+        backgroundOverlay <- [
+            Top(AppSizeMetric.defaultPadding),
+            Leading(AppSizeMetric.defaultPadding),
+            Trailing(AppSizeMetric.defaultPadding),
+            Height(Constants.backgroundHeight)
         ]
         
-        locationIconImageView <- [
-            Size(20),
-            Leading(),
-            Top().to(distanceLabel, .top)
+        restaurantNameLabel <- [
+            Leading(AppSizeMetric.breathPadding),
+            Bottom(AppSizeMetric.defaultPadding).to(backgroundImageView, .bottom)
         ]
         
         distanceLabel <- [
-            Leading().to(locationIconImageView, .trailing),
-            Trailing(>=0).to(promotionContainerView, .leading)
+            Trailing(AppSizeMetric.breathPadding),
+            Bottom().to(restaurantNameLabel, .bottom)
+        ]
+        
+        timeIconImageView <- [
+            Leading(AppSizeMetric.defaultPadding),
+            Top(AppSizeMetric.defaultPadding).to(backgroundImageView),
+            Size(AppSizeMetric.iconSize)
+        ]
+        
+        locationIconImageView <- [
+            Leading(AppSizeMetric.defaultPadding),
+            Top(AppSizeMetric.defaultPadding).to(timeIconImageView),
+            Size(AppSizeMetric.iconSize)
+        ]
+        
+        durationLabel <- [
+            Leading(AppSizeMetric.defaultPadding).to(timeIconImageView),
+            CenterY().to(timeIconImageView)
+        ]
+        
+        locationLabel <- [
+            Leading(AppSizeMetric.defaultPadding).to(locationIconImageView),
+            CenterY().to(locationIconImageView)
         ]
         
         promotionContainerView <- [
-            Height(PromotionListConstant.Cell.promotionLabelHeight),
-            Width(PromotionListConstant.Cell.promotionLabelWidth),
-            Bottom().to(distanceLabel, .bottom),
-            Trailing()
+            Size(50),
+            Trailing(AppSizeMetric.breathPadding),
+            Bottom(AppSizeMetric.breathPadding)
         ]
     }
 }

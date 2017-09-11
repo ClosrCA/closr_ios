@@ -17,9 +17,10 @@ struct AppColor {
     static let text_dark         = UIColor(red: 89 / 255, green: 89 / 255, blue: 87 / 255, alpha: 1.0)
     static let text_gray         = UIColor(red: 149 / 255, green: 149 / 255, blue: 149 / 255, alpha: 1.0)
     static let text_light_gray   = UIColor(red: 220 / 255, green: 221 / 255, blue: 221 / 255, alpha: 1.0)
+    static let text_light        = UIColor.white
     
     static let background_gray   = UIColor(red: 159 / 255, green: 159 / 255, blue: 160 / 255, alpha: 0.56)
-    static let background_brand  = UIColor(red: 86 / 255, green: 34 / 255, blue: 26 / 255, alpha: 0.1)
+    static let background_brand  = UIColor(red: 233 / 255, green: 120 / 255, blue: 16 / 255, alpha: 0.2)
 }
 
 struct AppFont {
