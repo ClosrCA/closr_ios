@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Promotion {
     var resturantID: String!
@@ -22,4 +23,5 @@ struct Promotion {
     var currency: String?
     var quantity: String?
     var item: String?
+    var coordinate: CLLocationCoordinate2D?
 }

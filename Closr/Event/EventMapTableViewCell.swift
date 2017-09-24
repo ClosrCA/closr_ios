@@ -86,7 +86,7 @@ class EventMapTableViewCell: UITableViewCell, Reusable {
         super.didMoveToSuperview()
         
         if let center = dataSource?.mapCenter(in: self) {
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan.defaultMapSpan)
             mapView.setRegion(region, animated: true)
             
             let annotation          = MKPointAnnotation()
