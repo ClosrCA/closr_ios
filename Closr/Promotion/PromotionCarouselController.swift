@@ -35,11 +35,20 @@ class PromotionCarouselController: UIViewController {
         return collectionView
     }()
     
+    fileprivate lazy var pageControl: UIPageControl = {
+        let pageControl                                         = UIPageControl()
+        pageControl.hidesForSinglePage                          = true
+        pageControl.currentPageIndicatorTintColor               = AppColor.brand
+        pageControl.pageIndicatorTintColor                      = AppColor.background_gray
+        
+        return pageControl
+    }()
     
     fileprivate var placeSearch: YelpPlaceSearch!
     
     fileprivate var promotions = [Promotion]() {
         didSet {
+            pageControl.numberOfPages = promotions.count
             collectionView.reloadData()
         }
     }
@@ -48,6 +57,7 @@ class PromotionCarouselController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(collectionView)
+        view.addSubview(pageControl)
         
         createConstraints()
         
@@ -56,6 +66,13 @@ class PromotionCarouselController: UIViewController {
 
     fileprivate func createConstraints() {
         collectionView <- Edges()
+        
+        pageControl <- [
+            Bottom(),
+            Leading(),
+            Trailing(),
+            Height(40)
+        ]
     }
     
     fileprivate func makeFilterButton(title: String) -> UIButton {
@@ -121,5 +138,12 @@ extension PromotionCarouselController: UICollectionViewDelegate {
         detailController.search = placeSearch
         
         navigationController?.pushViewController(detailController, animated: true)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offsetX = scrollView.contentOffset.x
+        let width = Device.screenWidth
+        
+        pageControl.currentPage = Int(offsetX / width)
     }
 }
