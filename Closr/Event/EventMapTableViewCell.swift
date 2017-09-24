@@ -45,6 +45,7 @@ class EventMapTableViewCell: UITableViewCell, Reusable {
     lazy var mapView: MKMapView = {
         let map                         = MKMapView()
         map.isUserInteractionEnabled    = false
+        map.delegate                    = self
         
         return map
     }()
@@ -85,8 +86,12 @@ class EventMapTableViewCell: UITableViewCell, Reusable {
         super.didMoveToSuperview()
         
         if let center = dataSource?.mapCenter(in: self) {
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             mapView.setRegion(region, animated: true)
+            
+            let annotation          = MKPointAnnotation()
+            annotation.coordinate   = center
+            mapView.addAnnotation(annotation)
         }
         
         if let distance = dataSource?.distance(in: self) {
@@ -98,5 +103,18 @@ class EventMapTableViewCell: UITableViewCell, Reusable {
     fileprivate func openMap() {
         delegate?.didSelectOpenMap(cell: self)
     }
+}
 
+extension EventMapTableViewCell: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        annotationView.annotation = annotation
+        annotationView.image      = UIImage(named: "annotation_active")
+        
+        return annotationView
+    }
 }
