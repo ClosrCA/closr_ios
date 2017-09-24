@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import MapKit
 
 class Location: NSObject {
     
@@ -66,5 +67,9 @@ extension CLLocationCoordinate2D: CustomStringConvertible {
     public var description: String {
         return "\(latitude),\(longitude)"
     }
+}
+
+extension MKCoordinateSpan {
+    static let defaultMapSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
 }
 

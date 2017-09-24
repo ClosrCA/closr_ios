@@ -13,7 +13,8 @@ import EasyPeasy
 class PromotionViewController: UIViewController {
 
     fileprivate lazy var mapView: MKMapView = {
-        let map = MKMapView()
+        let map         = MKMapView()
+        map.delegate    = self
         
         return map
     }()
@@ -36,7 +37,12 @@ class PromotionViewController: UIViewController {
         return button
     }()
     
-    fileprivate lazy var carouselController: PromotionCarouselController = PromotionCarouselController()
+    fileprivate lazy var carouselController: PromotionCarouselController = {
+        let controller          = PromotionCarouselController()
+        controller.delegate     = self
+        
+        return controller
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +56,21 @@ class PromotionViewController: UIViewController {
         view.addSubview(zoomOutButton)
         
         createConstraints()
+    }
+    
+    fileprivate func centerMapTo(item: Int) {
+        let annotations = mapView.annotations
+        
+        guard annotations.count > item else {
+            return
+        }
+        
+        for (index, annotation) in annotations.enumerated() {
+            mapView.view(for: annotation)?.image = (index == item) ? UIImage(named: "annotation_active") : UIImage(named: "annotation")
+        }
+
+        let region = MKCoordinateRegion(center: annotations[item].coordinate, span: MKCoordinateSpan.defaultMapSpan)
+        mapView.setRegion(region, animated: true)
     }
     
     fileprivate func createConstraints() {
@@ -82,12 +103,52 @@ class PromotionViewController: UIViewController {
     
     @objc
     fileprivate func zoomIn() {
-        
+        zoomTo(level: 0.8)
     }
     
     @objc
     fileprivate func zoomOut() {
-        
+        zoomTo(level: 1.2)
     }
+    
+    fileprivate func zoomTo(level: Double) {
+        var region = mapView.region
+        var span = region.span
+        span.latitudeDelta = span.latitudeDelta * level
+        span.longitudeDelta = span.longitudeDelta * level
+        
+        region.span = span
+        mapView.setRegion(region, animated: true)
+    }
+}
 
+extension PromotionViewController: PromotionCarouselControllerDelegate {
+    func didScrollTo(item: Int) {
+        centerMapTo(item: item)
+    }
+    
+    func didFinishLoading(_ controller: PromotionCarouselController, coordinates: [CLLocationCoordinate2D]) {
+        let annotations = coordinates.map { coordinate -> MKPointAnnotation in
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            return annotation
+        }
+        
+        mapView.addAnnotations(annotations)
+        didScrollTo(item: 0)
+    }
+}
+
+let kAnnotationReuseIdentifier = "AnnotationView"
+extension PromotionViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let annotationView      = mapView.dequeueReusableAnnotationView(withIdentifier: kAnnotationReuseIdentifier) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: kAnnotationReuseIdentifier)
+        annotationView.image    = UIImage(named: "annotation")
+        
+        return annotationView
+    }
 }

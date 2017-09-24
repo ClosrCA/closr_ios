@@ -10,11 +10,18 @@ import UIKit
 import EasyPeasy
 import CoreLocation
 
+protocol PromotionCarouselControllerDelegate: class {
+    func didFinishLoading(_ controller: PromotionCarouselController, coordinates: [CLLocationCoordinate2D])
+    func didScrollTo(item: Int)
+}
+
 class PromotionCarouselController: UIViewController {
 
     fileprivate struct Constants {
         static let cardHorizontalSpacing: CGFloat = (Device.screenWidth - PromotionCollectionViewCell.preferredSize.width)/2
     }
+    
+    weak var delegate: PromotionCarouselControllerDelegate?
     
     fileprivate lazy var collectionView: UICollectionView = {
         
@@ -35,19 +42,36 @@ class PromotionCarouselController: UIViewController {
         return collectionView
     }()
     
+    fileprivate lazy var pageControl: UIPageControl = {
+        let pageControl                                         = UIPageControl()
+        pageControl.hidesForSinglePage                          = true
+        pageControl.currentPageIndicatorTintColor               = AppColor.brand
+        pageControl.pageIndicatorTintColor                      = AppColor.background_gray
+        
+        return pageControl
+    }()
     
     fileprivate var placeSearch: YelpPlaceSearch!
     
     fileprivate var promotions = [Promotion]() {
         didSet {
+            pageControl.numberOfPages = promotions.count
             collectionView.reloadData()
+            
+            let coordinates = promotions.flatMap { $0.coordinate }
+            delegate?.didFinishLoading(self, coordinates: coordinates)
         }
+    }
+    
+    func scrollTo(item: Int) {
+        collectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(collectionView)
+        view.addSubview(pageControl)
         
         createConstraints()
         
@@ -56,6 +80,13 @@ class PromotionCarouselController: UIViewController {
 
     fileprivate func createConstraints() {
         collectionView <- Edges()
+        
+        pageControl <- [
+            Bottom(),
+            Leading(),
+            Trailing(),
+            Height(40)
+        ]
     }
     
     fileprivate func makeFilterButton(title: String) -> UIButton {
@@ -70,18 +101,23 @@ class PromotionCarouselController: UIViewController {
     
     fileprivate func reloadData() {
         
-        Location.getCurrentLocation { [unowned self] (location, error) in
-            if error != nil {
+        Location.getCurrentLocation { [weak self] (location, error) in
+            guard let weakSelf = self else {
+                return
+            }
+            
+            guard error == nil else {
                 // TODO: location error popup
+                return
             }
             
             let searchRequest = PlaceSearchRequest(center: location.coordinate, radius: CLLocationDistance.defaultRadius, type: YelpAPIConsole.PlaceType.food)
-            self.placeSearch  = YelpPlaceSearch(searchRequest: searchRequest)
+            weakSelf.placeSearch  = YelpPlaceSearch(searchRequest: searchRequest)
             
-            self.placeSearch.fetchPlaces { [unowned self] (places, error) in
+            weakSelf.placeSearch.fetchPlaces { (places, error) in
                 if let places = places, error == nil {
                     
-                    self.promotions = places.map { Promotion(resturantID: $0.placeID, resturantName: $0.name, address: $0.address?.displayAddress?.first, distance: $0.distance?.readableDescription, imageURL: $0.imageURL, startDate: nil, endDate: nil, duration: "M-F, 10am - 10pm", discount: "30%", price: nil, currency: nil, quantity: nil, item: nil) }
+                    weakSelf.promotions = places.map { Promotion(resturantID: $0.placeID, resturantName: $0.name, address: $0.address?.displayAddress?.first, distance: $0.distance?.readableDescription, imageURL: $0.imageURL, startDate: nil, endDate: nil, duration: "M-F, 10am - 10pm", discount: "30%", price: nil, currency: nil, quantity: nil, item: nil, coordinate: $0.coordinates) }
                 }
             }
         }
@@ -122,4 +158,16 @@ extension PromotionCarouselController: UICollectionViewDelegate {
         
         navigationController?.pushViewController(detailController, animated: true)
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offsetX = scrollView.contentOffset.x
+        let width = Device.screenWidth
+        
+        let currentPage = Int(offsetX / width)
+        if currentPage != pageControl.currentPage {
+            delegate?.didScrollTo(item: currentPage)
+            pageControl.currentPage = currentPage
+        }
+    }
 }
+
