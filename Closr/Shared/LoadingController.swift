@@ -1,5 +1,5 @@
 //
-//  LoadingViewController.swift
+//  LoadingController.swift
 //  Closr
 //
 //  Created by ZHITAO TIAN on 2017-12-15.
@@ -9,13 +9,15 @@
 import UIKit
 import EasyPeasy
 
-class LoadingViewController: UIViewController {
+class LoadingController: UIViewController {
 
-    fileprivate static let shared: LoadingViewController = LoadingViewController()
+    fileprivate static let shared: LoadingController = LoadingController()
     
     static func startLoadingOn(_ viewController: UIViewController) {
         viewController.addChildViewController(shared)
+        shared.view.frame = viewController.view.bounds
         viewController.view.addSubview(shared.view)
+        shared.didMove(toParentViewController: viewController)
         
         shared.startAnimation()
     }
@@ -26,15 +28,13 @@ class LoadingViewController: UIViewController {
     
     fileprivate lazy var indicator: UIActivityIndicatorView = {
         let indicator           = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        indicator.tintColor     = AppColor.brand
-        indicator.color         = AppColor.background_brand
         
         return indicator
     }()
     
     fileprivate lazy var indicatorBackground: UIView = {
         let view                    = UIView()
-        view.backgroundColor        = AppColor.background_gray
+        view.backgroundColor        = .black
         view.layer.cornerRadius     = 10
         view.clipsToBounds          = true
         
@@ -57,22 +57,24 @@ class LoadingViewController: UIViewController {
         
         indicatorBackground <- [
             CenterY(),
-            Leading(AppSizeMetric.breathPadding),
-            Trailing(AppSizeMetric.breathPadding)
+            Height(120),
+            Leading(50),
+            Trailing(50)
         ]
     }
     
     fileprivate func startAnimation() {
+        view.alpha = 0.9
         indicator.fadeIn()
         indicator.startAnimating()
     }
     
     fileprivate func teardown() {
         indicator.stopAnimating()
-        view.fadeOut()
-        
-        willMove(toParentViewController: nil)
-        view.removeFromSuperview()
-        removeFromParentViewController()
+        view.fadeOut {
+            self.willMove(toParentViewController: nil)
+            self.view.removeFromSuperview()
+            self.removeFromParentViewController()
+        }
     }
 }

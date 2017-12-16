@@ -87,9 +87,12 @@ class RestaurantDetailViewController: UIViewController {
         
         createConstraints()
         
-        // TODO: Loading indicator
+        LoadingController.startLoadingOn(self)
         
         search?.fetch(placeID: placeID, completion: { [weak self] (place, error) in
+            
+            LoadingController.stopLoading()
+            
             if error == nil {
                 self?.restaurant = place
             }

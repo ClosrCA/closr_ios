@@ -12,7 +12,7 @@ let cAnimationDuration = 0.2
 
 extension UIView {
     
-    func fadeIn() {
+    func fadeIn(completion: (() -> Void)? = nil) {
         if alpha >= 1.0 {
             return
         }
@@ -22,10 +22,12 @@ extension UIView {
         
         UIView.animate(withDuration: cAnimationDuration, delay: 0.0, options: .curveEaseIn, animations: { [weak self] in
             self?.alpha = 1.0
-        })
+        }) { (_) in
+            completion?()
+        }
     }
     
-    func fadeOut() {
+    func fadeOut(completion: (() -> Void)? = nil) {
         if alpha <= 0 {
             return
         }
@@ -35,7 +37,9 @@ extension UIView {
         
         UIView.animate(withDuration: cAnimationDuration, delay: 0.0, options: .curveEaseOut, animations: { [weak self] in
             self?.alpha = 0.0
-        })
+        }) { (_) in
+            completion?()
+        }
     }
     
     func fadeOutAndPop() {
