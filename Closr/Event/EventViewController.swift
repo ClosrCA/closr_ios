@@ -53,11 +53,11 @@ class EventViewController: UIViewController {
         super.updateViewConstraints()
         
         if joinEventListController.parent != nil {
-            joinEventListController.view <- Edges()
+            joinEventListController.view.easy.layout(Edges())
         }
         
         if myEventListController.parent != nil {
-            myEventListController.view <- Edges()
+            myEventListController.view.easy.layout(Edges())
         }
     }
 }
