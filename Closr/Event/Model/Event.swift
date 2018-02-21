@@ -10,7 +10,7 @@ import Foundation
 
 struct Event {
     var title: String?
-    var restaurant: YelpPlace
+    var restaurant: YelpPlace!
     var time: String?
     var date: String?
     var purpose: String?
@@ -38,4 +38,12 @@ struct Event {
     init(restaurant: YelpPlace) {
         self.restaurant = restaurant
     }
+    
+    init() {
+        
+    }
+}
+
+extension Event {
+    static let mockEvent: Event = Event()
 }

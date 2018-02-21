@@ -15,6 +15,7 @@
 		690C6D5D1F5C57F500F933A6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690C6D5C1F5C57F500F933A6 /* Validator.swift */; };
 		690C6D5F1F5C74AE00F933A6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690C6D5E1F5C74AE00F933A6 /* SettingsTableViewController.swift */; };
 		69173E9D1F12948200F791A5 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69173E9C1F12948200F791A5 /* DetailTableViewController.swift */; };
+		692E08082021E6150021E0F1 /* ChatHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692E08072021E6150021E0F1 /* ChatHeaderViewController.swift */; };
 		6942D1031EF8BE8B00988471 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */; };
 		6942D1051EFA0BD600988471 /* UIViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */; };
 		6942D1071EFA1B6500988471 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6942D1061EFA1B6500988471 /* UIView+Animation.swift */; };
@@ -22,12 +23,13 @@
 		694DA1B61F5328BE00FFB2D2 /* UIButton+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694DA1B51F5328BE00FFB2D2 /* UIButton+Background.swift */; };
 		695A316A1ECC3AC50087183F /* ReviewHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A31691ECC3AC50087183F /* ReviewHelperTests.swift */; };
 		695C9B5A1F5B6B250074B714 /* ProfileFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C9B591F5B6B250074B714 /* ProfileFormTableViewCell.swift */; };
+		6974FE56203DEE3400EFA66C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974FE55203DEE3400EFA66C /* ChatViewController.swift */; };
 		698CFD751F43F99900ECF7AA /* EventGalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */; };
 		69BA88571EDA375B0039E237 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */; };
 		69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */; };
 		69BA885B1EDA460B0039E237 /* TableViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA885A1EDA460B0039E237 /* TableViewSectionHeader.swift */; };
 		69BC381E1F527211008A4592 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BC381D1F527210008A4592 /* MyProfileViewController.swift */; };
-		69BC38211F5276CC008A4592 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BC38201F5276CC008A4592 /* ChatViewController.swift */; };
+		69BC38211F5276CC008A4592 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BC38201F5276CC008A4592 /* MessageViewController.swift */; };
 		69BD54901E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BD548F1E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift */; };
 		69C3FDCB1F66267600F3E2D4 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3FDCA1F66267600F3E2D4 /* PromotionViewController.swift */; };
 		69C810BA1F316B7000113A41 /* EventAttendantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C810B91F316B7000113A41 /* EventAttendantTableViewCell.swift */; };
@@ -111,6 +113,7 @@
 		690C6D5C1F5C57F500F933A6 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validator.swift; path = Shared/Validator.swift; sourceTree = "<group>"; };
 		690C6D5E1F5C74AE00F933A6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = User/Profile/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		69173E9C1F12948200F791A5 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailTableViewController.swift; path = Restaurant/DetailTableViewController.swift; sourceTree = "<group>"; };
+		692E08072021E6150021E0F1 /* ChatHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatHeaderViewController.swift; path = Event/ChatHeaderViewController.swift; sourceTree = "<group>"; };
 		6942D1021EF8BE8B00988471 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Appearance.swift"; path = "Shared/UIViewController+Appearance.swift"; sourceTree = "<group>"; };
 		6942D1061EFA1B6500988471 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Animation.swift"; path = "Shared/UIView+Animation.swift"; sourceTree = "<group>"; };
@@ -118,13 +121,14 @@
 		694DA1B51F5328BE00FFB2D2 /* UIButton+Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Background.swift"; path = "Shared/UIButton+Background.swift"; sourceTree = "<group>"; };
 		695A31691ECC3AC50087183F /* ReviewHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelperTests.swift; sourceTree = "<group>"; };
 		695C9B591F5B6B250074B714 /* ProfileFormTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileFormTableViewCell.swift; path = User/Profile/ProfileFormTableViewCell.swift; sourceTree = "<group>"; };
+		6974FE55203DEE3400EFA66C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Event/ChatViewController.swift; sourceTree = "<group>"; };
 		698AA55F1FF95B1A00796CD3 /* Closr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Closr.entitlements; sourceTree = "<group>"; };
 		698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventGalleryTableViewCell.swift; path = Event/EventGalleryTableViewCell.swift; sourceTree = "<group>"; };
 		69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCarouselTableViewCell.swift; sourceTree = "<group>"; };
 		69BA885A1EDA460B0039E237 /* TableViewSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSectionHeader.swift; sourceTree = "<group>"; };
 		69BC381D1F527210008A4592 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileViewController.swift; path = User/Profile/MyProfileViewController.swift; sourceTree = "<group>"; };
-		69BC38201F5276CC008A4592 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Event/ChatViewController.swift; sourceTree = "<group>"; };
+		69BC38201F5276CC008A4592 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = Event/MessageViewController.swift; sourceTree = "<group>"; };
 		69BD548F1E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventAttendantCollectionViewCell.swift; path = Event/View/EventAttendantCollectionViewCell.swift; sourceTree = "<group>"; };
 		69C3FDCA1F66267600F3E2D4 /* PromotionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionViewController.swift; path = Promotion/PromotionViewController.swift; sourceTree = "<group>"; };
 		69C810B91F316B7000113A41 /* EventAttendantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventAttendantTableViewCell.swift; path = Event/EventAttendantTableViewCell.swift; sourceTree = "<group>"; };
@@ -259,7 +263,9 @@
 		69BC381F1F5276B6008A4592 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				69BC38201F5276CC008A4592 /* ChatViewController.swift */,
+				69BC38201F5276CC008A4592 /* MessageViewController.swift */,
+				6974FE55203DEE3400EFA66C /* ChatViewController.swift */,
+				692E08072021E6150021E0F1 /* ChatHeaderViewController.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -908,8 +914,9 @@
 				E477F0181E5DDBB400ED7806 /* ImageCarouselCell.swift in Sources */,
 				69BC381E1F527211008A4592 /* MyProfileViewController.swift in Sources */,
 				E477F00D1E5DC74D00ED7806 /* Location.swift in Sources */,
+				692E08082021E6150021E0F1 /* ChatHeaderViewController.swift in Sources */,
 				690C6D5D1F5C57F500F933A6 /* Validator.swift in Sources */,
-				69BC38211F5276CC008A4592 /* ChatViewController.swift in Sources */,
+				69BC38211F5276CC008A4592 /* MessageViewController.swift in Sources */,
 				E458B1DC1E6701E700EE7736 /* TextFieldTableViewCell.swift in Sources */,
 				69FA43301F26FA1200A16BB8 /* MyEventCollectionViewCell.swift in Sources */,
 				4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */,
@@ -920,6 +927,7 @@
 				E46A44921E8CA4BE00B9CB10 /* ProfileAvatarHeaderView.swift in Sources */,
 				E4E99E041E7A31F100A10DA7 /* RestaurantListViewController.swift in Sources */,
 				69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */,
+				6974FE56203DEE3400EFA66C /* ChatViewController.swift in Sources */,
 				E4A885BA1E53414F0093829E /* KeyboardObserver.swift in Sources */,
 				69173E9D1F12948200F791A5 /* DetailTableViewController.swift in Sources */,
 				E477F00B1E5730A100ED7806 /* PromotionCarouselController.swift in Sources */,

@@ -92,47 +92,47 @@ class RestaurantTableViewCell: UITableViewCell, Reusable {
     
     fileprivate func createConstraints() {
         
-        restaurantImageView <- [
+        restaurantImageView.easy.layout(
             Size(Constants.imageSize),
             Top(Constants.imagePadding),
             Leading(Constants.imagePadding),
             Bottom(Constants.imagePadding)
-        ]
+        )
         
-        nameLabel <- [
+        nameLabel.easy.layout(
             Top(Constants.restaurantNameTopPadding),
             Leading(Constants.contentHorizontalPadding).to(restaurantImageView),
             Trailing(<=Constants.contentHorizontalPadding)
-        ]
+        )
         
-        categoryLabel <- [
+        categoryLabel.easy.layout(
             Leading().to(nameLabel, .leading),
             Trailing(<=Constants.contentHorizontalPadding),
             Top().to(nameLabel)
-        ]
+        )
         
-        addressLabel <- [
+        addressLabel.easy.layout(
             Top(AppSizeMetric.defaultPadding).to(categoryLabel),
             Leading().to(nameLabel, .leading),
             Trailing(<=Constants.contentHorizontalPadding)
-        ]
+        )
         
-        reviewImageView <- [
+        reviewImageView.easy.layout(
             Size(Constants.reviewSize),
             Leading().to(nameLabel, .leading),
             Top(AppSizeMetric.defaultPadding).to(addressLabel)
-        ]
+        )
         
-        priceLabel <- [
+        priceLabel.easy.layout(
             Top(AppSizeMetric.defaultPadding).to(reviewImageView),
             Leading().to(nameLabel, .leading),
             Trailing(<=Constants.contentHorizontalPadding)
-        ]
+        )
         
-        distanceLabel <- [
+        distanceLabel.easy.layout(
             Top().to(priceLabel),
             Leading().to(nameLabel,.leading),
             Trailing(<=Constants.contentHorizontalPadding)
-        ]
+        )
     }
 }

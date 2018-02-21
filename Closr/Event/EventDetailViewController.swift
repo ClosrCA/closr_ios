@@ -9,7 +9,6 @@
 import UIKit
 import CoreLocation
 import EasyPeasy
-import FirebaseAuth
 
 class EventDetailViewController: UIViewController {
 
@@ -75,7 +74,7 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(tableView)
-        tableView <- Edges()
+        tableView.easy.layout(Edges())
         
         // TODO: check joined to determin bar button item
         navigationItem.rightBarButtonItem = chatBarButtonItem
@@ -83,11 +82,9 @@ class EventDetailViewController: UIViewController {
     
     @objc
     fileprivate func selectChat() {
-        let chatViewController                  = ChatViewController()
-        // TODO: replace with event id
-        chatViewController.channelID            = "1"
-        chatViewController.senderId             = Auth.auth().currentUser?.uid
-        chatViewController.senderDisplayName    = Auth.auth().currentUser?.displayName
+        // TODO: pass real event
+        
+        let chatViewController = ChatViewController(event: Event.mockEvent)
         
         navigationController?.pushViewController(chatViewController, animated: true)
     }
