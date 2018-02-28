@@ -23,6 +23,7 @@ open class Event: JSONEncodable {
     public var attendees: [Profile]?
     public var author: Profile?
     public var hasFinished: Bool?
+    public var isDeleted: Bool?
     public var lng: Double?
     public var lat: Double?
     public var createdAt: String?
@@ -46,6 +47,7 @@ open class Event: JSONEncodable {
         nillableDictionary["attendees"] = self.attendees?.encodeToJSON()
         nillableDictionary["author"] = self.author?.encodeToJSON()
         nillableDictionary["hasFinished"] = self.hasFinished
+        nillableDictionary["isDeleted"] = self.isDeleted
         nillableDictionary["lng"] = self.lng
         nillableDictionary["lat"] = self.lat
         nillableDictionary["createdAt"] = self.createdAt
