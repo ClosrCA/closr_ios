@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import EasyPeasy
+import SwaggerClient
 
 class EventDetailViewController: UIViewController {
 
@@ -143,13 +144,16 @@ extension EventDetailViewController: UITableViewDataSource, UITableViewDelegate 
 }
 
 extension EventDetailViewController: EventAttendantTableViewCellDataSource {
-    func eventAttendantHost() -> User {
-        return User(name: "Chianne", birthday: nil, gender: nil, email: nil, phone: nil, avatar: nil)
+    func eventAttendantHost() -> Profile {
+        let user = Profile()
+        user.displayName = "Chianne"
+        return user
     }
     
-    func eventAttendantGuests() -> [User] {
-        let guest = User(name: "Yale", birthday: nil, gender: nil, email: nil, phone: nil, avatar: nil)
-        return [guest]
+    func eventAttendantGuests() -> [Profile] {
+        let user = Profile()
+        user.displayName = "Yale"
+        return [user]
     }
     
     func capability() -> Int {

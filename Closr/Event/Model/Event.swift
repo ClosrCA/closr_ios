@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwaggerClient
 
 struct Event {
     var title: String?
@@ -19,8 +20,8 @@ struct Event {
     var maxAge: Double?
     var numberOfPeople: Int = 3
     var gender: String?
-    var author: User?
-    var participants = [User]()
+    var author: Profile?
+    var participants = [Profile]()
     
     var rawDate: Date? {
         guard let time = time, let date = date else {

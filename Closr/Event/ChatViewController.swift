@@ -9,6 +9,7 @@
 import UIKit
 import EasyPeasy
 import FirebaseAuth
+import SwaggerClient
 
 class ChatViewController: UIViewController {
 
@@ -84,12 +85,12 @@ extension ChatViewController: MessageViewControllerDelegate {
 
 extension ChatViewController: ChatHeaderViewControllerDelegate {
     func chatterName() -> [String] {
-        guard let hostName = event.author?.name else {
+        guard let hostName = event.author?.displayName else {
             return [""]
         }
         
         var chatter = [hostName]
-        let participants = event.participants.map{ $0.name ?? "" }
+        let participants = event.participants.map{ $0.displayName ?? "" }
         
         chatter.append(contentsOf: participants)
         
@@ -107,11 +108,11 @@ extension ChatViewController: ChatHeaderViewControllerDelegate {
 }
 
 extension ChatViewController {
-    fileprivate func findUserBy(firebaseId: String) -> User? {
-        if event.author?.firbaseID == firebaseId {
+    fileprivate func findUserBy(firebaseId: String) -> Profile? {
+        if event.author?.firebaseID == firebaseId {
             return event.author
         }
         
-        return event.participants.filter{ $0.firbaseID == firebaseId }.first
+        return event.participants.filter{ $0.firebaseID == firebaseId }.first
     }
 }
