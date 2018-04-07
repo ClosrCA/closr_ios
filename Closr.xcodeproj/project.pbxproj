@@ -58,7 +58,7 @@
 		E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE41E50D66400785BE6 /* LoginViewController.swift */; };
 		E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDE91E50D6C400785BE6 /* Device.swift */; };
 		E46ECDF81E50E49B00785BE6 /* Image+Editing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDF71E50E49B00785BE6 /* Image+Editing.swift */; };
-		E46ECDFB1E511EB400785BE6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDFA1E511EB400785BE6 /* User.swift */; };
+		E46ECDFB1E511EB400785BE6 /* UserAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDFA1E511EB400785BE6 /* UserAuthenticator.swift */; };
 		E46ECDFD1E51313C00785BE6 /* String+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46ECDFC1E51313C00785BE6 /* String+Format.swift */; };
 		E4713ED91E399ED2004CC166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713ED81E399ED2004CC166 /* AppDelegate.swift */; };
 		E4713EDB1E399ED2004CC166 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4713EDA1E399ED2004CC166 /* RootViewController.swift */; };
@@ -161,7 +161,7 @@
 		E46ECDE41E50D66400785BE6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E46ECDE91E50D6C400785BE6 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Shared/Device.swift; sourceTree = "<group>"; };
 		E46ECDF71E50E49B00785BE6 /* Image+Editing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Image+Editing.swift"; path = "Image/Image+Editing.swift"; sourceTree = "<group>"; };
-		E46ECDFA1E511EB400785BE6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = User/Profile/Model/User.swift; sourceTree = "<group>"; };
+		E46ECDFA1E511EB400785BE6 /* UserAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserAuthenticator.swift; path = User/Profile/Model/UserAuthenticator.swift; sourceTree = "<group>"; };
 		E46ECDFC1E51313C00785BE6 /* String+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Format.swift"; path = "Shared/String+Format.swift"; sourceTree = "<group>"; };
 		E4713ED51E399ED2004CC166 /* Closr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Closr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4713ED81E399ED2004CC166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -278,6 +278,14 @@
 				69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		69C4D54920792F710034D50A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E46ECDFA1E511EB400785BE6 /* UserAuthenticator.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		69E322711F4541E700061903 /* CreateEvent */ = {
@@ -418,14 +426,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		E46ECDF91E511E9500785BE6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E46ECDFA1E511EB400785BE6 /* User.swift */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		E4713ECC1E399ED2004CC166 = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +463,7 @@
 				E4713F141E39B747004CC166 /* Event */,
 				E4713F121E39B736004CC166 /* User */,
 				E4713F091E39B4B6004CC166 /* Place */,
+				69C4D54920792F710034D50A /* Helper */,
 				E46ECDE81E50D6B200785BE6 /* Shared */,
 				E458B1D11E65A56B00EE7736 /* Resources */,
 			);
@@ -500,7 +501,6 @@
 			children = (
 				E46ECDE11E50D66400785BE6 /* Login */,
 				E46ECDDE1E50D5D900785BE6 /* Profile */,
-				E46ECDF91E511E9500785BE6 /* Model */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -944,7 +944,7 @@
 				69FA43311F26FA1200A16BB8 /* MyEventTableViewCell.swift in Sources */,
 				E4AAB7431E407E25001EB362 /* ImageLoader.swift in Sources */,
 				6942D1071EFA1B6500988471 /* UIView+Animation.swift in Sources */,
-				E46ECDFB1E511EB400785BE6 /* User.swift in Sources */,
+				E46ECDFB1E511EB400785BE6 /* UserAuthenticator.swift in Sources */,
 				E4E99DFE1E7A31B400A10DA7 /* RestaurantTableViewCell.swift in Sources */,
 				6942D1051EFA0BD600988471 /* UIViewController+Appearance.swift in Sources */,
 			);

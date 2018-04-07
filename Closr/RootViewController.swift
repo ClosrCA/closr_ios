@@ -22,7 +22,7 @@ class RootViewController: UIViewController {
     fileprivate var profileConfirmController: MyProfileViewController {
         let confirmViewController           = MyProfileViewController()
         confirmViewController.isConfirming  = true
-        confirmViewController.user          = User.current
+        confirmViewController.profile       = UserAuthenticator.currentProfile
         confirmViewController.delegate      = self
         
         return confirmViewController
@@ -61,7 +61,7 @@ class RootViewController: UIViewController {
     fileprivate func didSignout() {
         
         do {
-            try User.logout()
+            try UserAuthenticator.logout()
             childViewControllers.forEach { remove(controller: $0) }
             display(controller: loginController)
         } catch {
@@ -73,7 +73,7 @@ class RootViewController: UIViewController {
     
     fileprivate func prepopulateProfileBeforeFetch(authUser: FirebaseAuth.User) {
         if let providerData = authUser.providerData.first {
-            User.current = User(userInfo: providerData)
+            UserAuthenticator.populateProfile(with: providerData)
         }
     }
     

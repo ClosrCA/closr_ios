@@ -8,10 +8,11 @@
 
 import UIKit
 import EasyPeasy
+import SwaggerClient
 
 protocol EventAttendantTableViewCellDataSource: class {
-    func eventAttendantHost() -> User
-    func eventAttendantGuests() -> [User]
+    func eventAttendantHost() -> Profile
+    func eventAttendantGuests() -> [Profile]
     func capability() -> Int
 }
 
@@ -41,13 +42,13 @@ class EventAttendantTableViewCell: UITableViewCell, Reusable {
         
         contentView.addSubview(collectionView)
         
-        collectionView <- [
+        collectionView.easy.layout(
             Top(AppSizeMetric.defaultPadding),
             Leading(AppSizeMetric.breathPadding),
             Trailing(AppSizeMetric.breathPadding),
             Bottom(AppSizeMetric.defaultPadding),
             Height(EventAttendantCollectionViewCell.preferredSize.height)
-        ]
+        )
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,13 +72,13 @@ extension EventAttendantTableViewCell: UICollectionViewDataSource, UICollectionV
         switch indexPath.item {
         case 0:
             let host = dataSource?.eventAttendantHost()
-            cell.update(with: host?.avatar, name: host?.name, isHost: true)
+            cell.update(with: host?.avatar, name: host?.displayName, isHost: true)
         default:
             let guests = dataSource?.eventAttendantGuests() ?? []
             
             if guests.count >= indexPath.item {
                 let guest = guests[indexPath.item - 1]
-                cell.update(with: guest.avatar, name: guest.name, isHost: false)
+                cell.update(with: guest.avatar, name: guest.displayName, isHost: false)
             } else {
                 cell.update()
             }

@@ -13,6 +13,7 @@ import FBSDKLoginKit
 import SwiftyJSON
 import FirebaseAuth
 import Firebase
+import SwaggerClient
 
 enum LoginException: Error {
     case cancelled
@@ -99,31 +100,27 @@ class LoginViewController: UIViewController {
     
     
     fileprivate func createConstraints() {
-        backgroundImageView <- Edges()
-        backgroundOverlay   <- Edges()
+        backgroundImageView.easy.layout(Edges())
+        backgroundOverlay.easy.layout(Edges())
         
-        logoImageView <- [
+        logoImageView.easy.layout(
             Size(Constants.logoSize),
             Top(Constants.logoTopPadding),
-            CenterX()
-        ]
+            CenterX())
         
-        subtitleLable <- [
+        subtitleLable.easy.layout(
             Top().to(logoImageView),
-            CenterX()
-        ]
+            CenterX())
         
-        termsLabel <- [
+        termsLabel.easy.layout(
             Leading(Constants.termsLabelPadding),
             Trailing(Constants.termsLabelPadding),
-            Top(Constants.termsLabelPadding).to(facebookLoginButton, .bottom)
-        ]
+            Top(Constants.termsLabelPadding).to(facebookLoginButton, .bottom))
         
-        facebookLoginButton <- [
+        facebookLoginButton.easy.layout(
             Leading(),
             Trailing(),
-            Bottom(Constants.facebookButtonBottomPadding)
-        ]
+            Bottom(Constants.facebookButtonBottomPadding))
     }
     
     @objc
@@ -133,24 +130,14 @@ class LoginViewController: UIViewController {
             
             self.authenticateFirebase(success: { (firebaseID) in
                 
-                self.checkIfExistingUser(with: firebaseID, completion: { (existed) in
-                    if existed {
-                        
-                        self.delegate?.didFinishLogin(loginController: self, needConfirm: false)
-                        
-                    } else {
-                        
-                        self.loadFacebookProfile(success: {
-                            
-                            // TODO: assign firebaseID to user and post new user to server, firebaseID used as user token
-                            
-                            self.delegate?.didFinishLogin(loginController: self, needConfirm: true)
-                            
-                        }, failure: { (error) in
-                            
-                            self.delegate?.didFailLogin(loginController: self, withError: error)
-                        })
+                self.login(with: firebaseID, completion: { (isNewUser, error) in
+                    
+                    if let error = error {
+                        self.delegate?.didFailLogin(loginController: self, withError: error)
+                        return
                     }
+                    
+                    self.delegate?.didFinishLogin(loginController: self, needConfirm: isNewUser)
                 })
                 
             }, failure: { (error) in
@@ -191,29 +178,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    fileprivate func loadFacebookProfile(success: (() -> Void)?, failure: ((Error) -> Void)?) {
-        
-        FBSDKGraphRequest(graphPath: "me",
-                          parameters: ["fields": "email, name, gender, birthday, picture.type(large)"],
-                          tokenString: FBSDKAccessToken.current().tokenString,
-                          version: "v2.8",
-                          httpMethod: "GET").start { (connection, response, error) in
-                            
-                            if let error = error {
-                                failure?(error)
-                                return
-                            }
-                            
-                            if let response = response {
-                                
-                                User.current = User(profile: JSON(response))
-                                
-                                success?()
-                                return
-                            }
-        }
-    }
-    
     fileprivate func authenticateFirebase(success: ((String) -> Void)?, failure: ((Error) -> Void)?) {
         
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
@@ -233,9 +197,18 @@ class LoginViewController: UIViewController {
         }
     }
     
-    fileprivate func checkIfExistingUser(with facebookID: String, completion: ((Bool) -> Void)?) {
-        // TODO: check with server
-        completion?(false)
+    fileprivate func login(with firebaseID: String, completion: ((Bool, Error?) -> Void)?) {
+        
+        let authBody = AuthBody()
+        authBody.accessToken = FBSDKAccessToken.current().tokenString
+        authBody.firebaseId = firebaseID
+        
+        AuthenticationAPI.facebookLogin(authBody: authBody) { (response, error) in
+            UserAuthenticator.currentProfile    = response?.profile
+            UserAuthenticator.currentToken      = response?.token
+            
+            completion?(response?.isNewUser ?? false, error)
+        }
     }
 
 }

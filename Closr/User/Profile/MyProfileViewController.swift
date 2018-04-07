@@ -8,6 +8,7 @@
 
 import UIKit
 import EasyPeasy
+import SwaggerClient
 
 protocol MyProfileViewControllerDelegate: class {
     func didSelectConfirm(controller: MyProfileViewController)
@@ -48,7 +49,7 @@ class MyProfileViewController: UIViewController {
 
     var isConfirming: Bool = false
     
-    var user: User?
+    var profile: Profile?
     
     weak var delegate: MyProfileViewControllerDelegate?
     
@@ -102,7 +103,7 @@ class MyProfileViewController: UIViewController {
         
         view.addSubview(tableView)
         
-        tableView <- Edges()
+        tableView.easy.layout(Edges())
         
         setupProfileHeader()
         setupFooterIfNeeded()
@@ -123,7 +124,7 @@ class MyProfileViewController: UIViewController {
         let profileHeader       = ProfileAvatarHeaderView(frame: CGRect(x: 0, y: 0, width: 0, height: ProfileAvatarHeaderView.preferredHeight))
         profileHeader.delegate  = self
         
-        profileHeader.update(avatarURL: user?.avatar, showMenu: !isConfirming)
+        profileHeader.update(avatarURL: profile?.avatar, showMenu: !isConfirming)
         
         tableView.tableHeaderView = profileHeader
     }
@@ -132,12 +133,12 @@ class MyProfileViewController: UIViewController {
         if isConfirming {
             view.addSubview(confirmButton)
             
-            confirmButton <- [
+            confirmButton.easy.layout(
                 Leading(),
                 Bottom(),
                 Trailing(),
                 Height(AppSizeMetric.buttonHeight)
-            ]
+            )
         }
     }
     
@@ -159,16 +160,16 @@ class MyProfileViewController: UIViewController {
                 popAlert(with: result.message)
                 return
             }
-            user?.name = text
+            profile?.displayName = text
         case .email:
             let result = validator.validate(email: text)
             if !result.valid {
                 popAlert(with: result.message)
                 return
             }
-            user?.email = text
+            profile?.email = text
         case .phone:
-            user?.phone = text
+            profile?.phone = text
         default:
             break
         }
@@ -199,7 +200,7 @@ class MyProfileViewController: UIViewController {
         
         if let cell = tableView.cellForRow(at: indexPath), cell.isFirstResponder {
         
-            user?.birthday = birthdayPickerView.date
+            profile?.birthday = birthdayPickerView.date.description
             cell.setNeedsLayout()
         }
     }
@@ -278,13 +279,13 @@ extension MyProfileViewController: ProfileFormTableViewCellDataSource, ProfileFo
         
         switch form {
         case .name:
-            return user?.name
+            return profile?.displayName
         case .email:
-            return user?.email
+            return profile?.email
         case .birthday:
-            return user?.birthday?.description
+            return profile?.birthday
         case .phone:
-            return user?.phone
+            return profile?.phone
         }
     }
     

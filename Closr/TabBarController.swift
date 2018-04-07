@@ -31,7 +31,7 @@ class TabBarController: UITabBarController {
         
         
         let profileController           = MyProfileViewController()
-        profileController.user          = User.current
+        profileController.profile       = UserAuthenticator.currentProfile
         
         profileController.tabBarItem    = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: Tabs.profile.rawValue)
         
