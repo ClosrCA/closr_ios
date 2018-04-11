@@ -8,6 +8,7 @@
 
 import UIKit
 import EasyPeasy
+import SwaggerClient
 
 class CreateEventViewController: UIViewController {
     
@@ -16,12 +17,13 @@ class CreateEventViewController: UIViewController {
             tableView.reloadData()
             
             if let restaurant = place {
-                event = Event(restaurant: restaurant)
+                eventForm.yelpID = restaurant.placeID
             }
         }
     }
     
-    fileprivate var event: Event?
+    fileprivate var eventForm = EventCreate()
+    
     
     fileprivate lazy var tableView: UITableView = {
         let tableView                                       = UITableView(frame: .zero, style: .plain)
@@ -67,19 +69,19 @@ class CreateEventViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(createEventButton)
         
-        tableView <- [
+        tableView.easy.layout(
             Top(),
             Leading(),
             Trailing(),
             Bottom(AppSizeMetric.buttonHeight)
-        ]
+        )
         
-        createEventButton <- [
+        createEventButton.easy.layout(
             Height(AppSizeMetric.buttonHeight),
             Leading(),
             Bottom(),
             Trailing()
-        ]
+        )
     }
     
     @objc
@@ -89,8 +91,17 @@ class CreateEventViewController: UIViewController {
     
     @objc
     fileprivate func onCreateEvent() {
-        
-        presentingViewController?.dismiss(animated: true)
+        LoadingController.startLoadingOn(self)
+        EventAPI.createEvent(authorization: UserAuthenticator.currentToken ?? "", eventCreate: eventForm) { [weak self] (response, error) in
+            //TODO: 2 states of loading result
+            LoadingController.stopLoading()
+            
+            guard error == nil else {
+                return
+            }
+            
+            self?.presentingViewController?.dismiss(animated: true)
+        }
     }
 }
 
@@ -147,16 +158,17 @@ extension CreateEventViewController: UITableViewDataSource, UITableViewDelegate 
                     cell.delegate   = self
                     
                     switch row {
+                    // TODO: parse date and time from single start time property
                     case .date:
-                        cell.update(title: "Date", text: event?.date, section: .date)
+                        cell.update(title: "Date", text: eventForm.startTime, section: .date)
                     case .time:
-                        cell.update(title: "Time", text: event?.time, section: .time)
+                        cell.update(title: "Time", text: eventForm.startTime, section: .time)
                     case .eventName:
                         cell.update(title: "Event Name", text: place?.address?.displayAddress?.first, section: .eventName)
                     case .purpose:
-                        cell.update(title: "Purpose", text: event?.purpose, section: .purpose)
+                        cell.update(title: "Purpose", text: eventForm.purpose, section: .purpose)
                     case .share:
-                        cell.update(title: "Anything you'd to share", text: event?.share, section: .share)
+                        cell.update(title: "Anything you'd to share", text: eventForm.description, section: .share)
                     default:
                         break
                     }
@@ -195,7 +207,7 @@ extension CreateEventViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isRowOfGender(indexPath: indexPath) {
-            return event?.numberOfPeople == 2 ? UITableViewAutomaticDimension : 0
+            return eventForm.capacity == 2 ? UITableViewAutomaticDimension : 0
         }
         
         return UITableViewAutomaticDimension
@@ -217,11 +229,11 @@ extension CreateEventViewController: TextFieldTableViewCellDelegate {
             let section = TextFieldRow(rawValue: row) {
             switch section {
             case .date:
-                event?.date = text
+                eventForm.startTime = text
             case .time:
-                event?.time = text
+                eventForm.startTime = text
             case .purpose:
-                event?.purpose = text
+                eventForm.purpose = text
             default:
                 break 
             }
@@ -231,30 +243,19 @@ extension CreateEventViewController: TextFieldTableViewCellDelegate {
 
 extension CreateEventViewController: RangeSliderTableViewCellDelegate {
     func rangeSliderDidChangeRange(_ cell: RangeSliderTableViewCell, minValue: Double, maxValue: Double) {
-        event?.minAge = minValue
-        event?.maxAge = maxValue
+        eventForm.minAge = minValue
+        eventForm.maxAge = maxValue
     }
 }
 
 extension CreateEventViewController: SegmentControlTableViewCellDelegate {
     
     enum NumberOfPeople: Int {
-        case two
-        case three
-        case four
+        case two = 2
+        case three = 3
+        case four = 4
         
         static let segmentItems = ["2", "3", "4"]
-        
-        var value: Int {
-            switch self {
-            case .two:
-                return 2
-            case .three:
-                return 3
-            case .four:
-                return 4
-            }
-        }
     }
     
     enum Gender: Int {
@@ -279,13 +280,13 @@ extension CreateEventViewController: SegmentControlTableViewCellDelegate {
         }
         
         if row == 0 {
-            event?.numberOfPeople = NumberOfPeople(rawValue: index)!.value
+            eventForm.capacity = Double((NumberOfPeople(rawValue: index) ?? .three).rawValue)
             
             tableView.beginUpdates()
             tableView.endUpdates()
             
         } else {
-            event?.gender = Gender(rawValue: index)?.description
+            eventForm.gender = Gender(rawValue: index)?.description
         }
     }
 }

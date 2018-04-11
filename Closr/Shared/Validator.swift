@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwaggerClient
 
 struct Validator {
     
@@ -16,7 +17,7 @@ struct Validator {
         }
         
         let trimmed = name.trimmingCharacters(in: .whitespaces)
-        guard trimmed.characters.count >= 2 else {
+        guard trimmed.count >= 2 else {
             return (false, "Please provide a valid name")
         }
         
@@ -32,7 +33,7 @@ struct Validator {
         return (result, result ? nil : "Please provide a valid email")
     }
     
-    func validate(event: Event) {
+    func validate(event: EventCreate) {
         
     }
 }

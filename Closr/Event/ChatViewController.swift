@@ -89,10 +89,14 @@ extension ChatViewController: ChatHeaderViewControllerDelegate {
             return [""]
         }
         
-        var chatter = [hostName]
-        let participants = event.participants.map{ $0.displayName ?? "" }
+        guard let participants = event.attendees else {
+            return [""]
+        }
         
-        chatter.append(contentsOf: participants)
+        var chatter = [hostName]
+        let participantNames = participants.map{ $0.displayName ?? "" }
+        
+        chatter.append(contentsOf: participantNames)
         
         return chatter
     }
@@ -100,7 +104,11 @@ extension ChatViewController: ChatHeaderViewControllerDelegate {
     func chatHeaderAvatarImage() -> [String?] {
         var avatars = [event.author?.avatar]
         
-        let participantAvatars = event.participants.map{ $0.avatar }
+        guard let participants = event.attendees else {
+            return avatars
+        }
+        
+        let participantAvatars = participants.map{ $0.avatar }
         avatars.append(contentsOf: participantAvatars)
         
         return avatars
@@ -113,6 +121,6 @@ extension ChatViewController {
             return event.author
         }
         
-        return event.participants.filter{ $0.firebaseID == firebaseId }.first
+        return event.attendees?.filter{ $0.firebaseID == firebaseId }.first
     }
 }

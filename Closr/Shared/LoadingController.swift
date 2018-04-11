@@ -53,14 +53,14 @@ class LoadingController: UIViewController {
         view.addSubview(indicatorBackground)
         view.addSubview(indicator)
         
-        indicator <- Center()
+        indicator.easy.layout(Center())
         
-        indicatorBackground <- [
+        indicatorBackground.easy.layout(
             CenterY(),
             Height(120),
             Leading(50),
             Trailing(50)
-        ]
+        )
     }
     
     fileprivate func startAnimation() {

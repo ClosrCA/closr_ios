@@ -8,7 +8,7 @@
 
 import UIKit
 import EasyPeasy
-
+import SwaggerClient
 
 class JoinEventTableViewCell: UITableViewCell, Reusable{
     
@@ -95,17 +95,10 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
     func update(with event: Event) {
         titleLabel.text = event.title
         avatarImageView.loadImage(URLString: event.author?.avatar)
-        restaurantLabel.text = event.restaurant.name
+        // TODO: restaurant name from yelp id
+        restaurantLabel.text = event.yelpID
         
-        generateAttendantView(with: event.participants.count + 1, capablility: event.numberOfPeople)
-    }
-    
-    // TODO: testing purpose
-    func updateMockEvent(with attending: Int, capability: Int) {
-        titleLabel.text = "Dinner at Zen Cafe"
-        avatarImageView.image = UIImage(named: "icon_user")
-        restaurantLabel.text = "Zen Cafe"
-        generateAttendantView(with: attending, capablility: capability)
+        generateAttendantView(with: (event.attendees?.count ?? 0) + 1, capablility: Int(event.capacity ?? 0))
     }
     
     override func prepareForReuse() {
@@ -157,11 +150,11 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
         
         let leadingPadding = CGFloat(index) * (AppSizeMetric.defaultPadding + AppSizeMetric.iconSize.width)
         
-        attendant <- [
+        attendant.easy.layout(
             Size(AppSizeMetric.iconSize),
             CenterY(),
             Leading(leadingPadding)
-        ]
+        )
     }
     
     fileprivate func setupSubviews() {
@@ -179,58 +172,58 @@ class JoinEventTableViewCell: UITableViewCell, Reusable{
     
     fileprivate func createConstraints() {
         
-        containerView <- [
+        containerView.easy.layout(
             Leading(AppSizeMetric.defaultPadding),
             Trailing(AppSizeMetric.defaultPadding),
             Top(Constants.verticalPadding),
             Bottom(Constants.verticalPadding)
-        ]
+        )
         
-        avatarImageView <- [
+        avatarImageView.easy.layout(
             Size(AppSizeMetric.avatarSize),
             Top(Constants.avatarVerticalPadding),
             Bottom(Constants.avatarVerticalPadding),
             Leading(Constants.avatarLeftPadding)
-        ]
+        )
         
-        titleLabel <- [
+        titleLabel.easy.layout(
             Top(Constants.titleTopPadding),
             Leading(Constants.titleLeftPadding).to(avatarImageView),
             Bottom(Constants.titleBottomPadding).to(attendantsContainer),
             Trailing(<=0).to(timeImageView)
-        ]
+        )
         
-        attendantsContainer <- [
+        attendantsContainer.easy.layout(
             Leading().to(titleLabel, .leading),
             Size(Constants.attendantContainerSize)
-        ]
+        )
         
-        restaurantLabel <- [
+        restaurantLabel.easy.layout(
             Top(Constants.restaurantNameTopPadding).to(attendantsContainer),
             Leading().to(titleLabel, .leading)
-        ]
+        )
         
-        timeImageView <- [
+        timeImageView.easy.layout(
             Size(AppSizeMetric.iconSize),
             Top(Constants.iconVerticalPadding),
             Trailing(Constants.iconRightPaddingToContainer)
-        ]
+        )
         
-        distanceImageView <- [
+        distanceImageView.easy.layout(
             Size(AppSizeMetric.iconSize),
             Bottom(Constants.iconVerticalPadding),
             Trailing(Constants.iconRightPaddingToContainer)
-        ]
+        )
         
-        timeLabel <- [
+        timeLabel.easy.layout(
             Leading(AppSizeMetric.defaultPadding).to(timeImageView),
             CenterY().to(timeImageView)
-        ]
+        )
         
-        distanceLabel <- [
+        distanceLabel.easy.layout(
             Leading().to(timeLabel, .leading),
             CenterY().to(distanceImageView)
-        ]
+        )
     }
 }
 

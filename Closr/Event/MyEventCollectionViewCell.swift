@@ -8,6 +8,7 @@
 
 import UIKit
 import EasyPeasy
+import SwaggerClient
 
 class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
     
@@ -47,7 +48,7 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         titleLabel.text = event.title
         avatarImageView.loadImage(URLString: event.author?.avatar)
         
-        generateAttendantView(with: event.participants.count + 1, capablility: event.numberOfPeople)
+        generateAttendantView(with: (event.attendees?.count ?? 0) + 1, capablility: Int(event.capacity ?? 0))
     }
     
     // TODO: - testing purpose
@@ -111,11 +112,11 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
         
         let leadingPadding = CGFloat(index) * (AppSizeMetric.defaultPadding + AppSizeMetric.iconSize.width)
         
-        attendant <- [
+        attendant.easy.layout(
             Size(AppSizeMetric.iconSize),
             CenterY(),
             Leading(leadingPadding)
-        ]
+        )
     }
     
     override func prepareForReuse() {
@@ -129,35 +130,34 @@ class MyEventCollectionViewCell: UICollectionViewCell, Reusable {
     
     fileprivate func createConstraints() {
         
-        avatarImageView <- [
+        avatarImageView.easy.layout(
             Size(AppSizeMetric.avatarSize),
             Top(AppSizeMetric.defaultPadding),
             Leading(Constants.avatarLeftPadding)
-        ]
+        )
         
-        titleLabel <- [
+        titleLabel.easy.layout(
             Top(Constants.eventTitlePadding).to(avatarImageView),
             Leading().to(avatarImageView, .leading)
-
-        ]
+        )
         
-        attendantsContainerView <- [
+        attendantsContainerView.easy.layout(
             Height(AppSizeMetric.iconSize.height),
             Top(Constants.eventTitlePadding).to(titleLabel),
             Leading().to(titleLabel, .leading),
             Trailing()
-        ]
+        )
         
-        timeImageView <- [
+        timeImageView.easy.layout(
             Size(AppSizeMetric.iconSize),
             Leading().to(titleLabel, .leading),
             Bottom(Constants.timeImageBottomPadding)
-        ]
+        )
         
-        dateLabel <- [
+        dateLabel.easy.layout(
             Leading(Constants.dateLabelLeadingPadding).to(timeImageView),
             Bottom().to(timeImageView, .bottom),
             Trailing()
-        ]
+        )
     }
 }

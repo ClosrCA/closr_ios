@@ -8,9 +8,16 @@
 
 import UIKit
 import EasyPeasy
+import SwaggerClient
+import CoreLocation
 
 class JoinEventListViewController: UIViewController {
     
+    fileprivate var events: [Event]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     fileprivate lazy var tableView: UITableView = {
         let tableView                   = UITableView()
@@ -24,47 +31,55 @@ class JoinEventListViewController: UIViewController {
         return tableView
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(tableView)
         
-        tableView <- Edges()
+        tableView.easy.layout(Edges())
         
-        tableView.reloadData()
+        loadEvents()
     }
     
+    fileprivate func loadEvents() {
+        LoadingController.startLoadingOn(self)
+        
+        EventAPI.getEvents(page: 1, pageSize: 20, radius: CLLocationDistance.longDistance) { [weak self] (response, error) in
+            
+            LoadingController.stopLoading()
+            
+            guard error == nil else {
+                return
+            }
+            
+            self?.events = response?.events
+        }
+    }
 }
 
 extension JoinEventListViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // TODO: replace when model up
-        
-        return 5
+        return events?.count ?? 0
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-    }
-    
  
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
         let cell = tableView.dequeueReusableCell(withIdentifier: JoinEventTableViewCell.reuseIdentifier,for:indexPath) as! JoinEventTableViewCell
         
-        cell.updateMockEvent(with: 3, capability: 5)
+        if let event = events?[indexPath.row] {
+            cell.update(with: event)
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailViewController                        = EventDetailViewController()
+        guard let event = events?[indexPath.row] else { return }
+        
+        let detailViewController                        = EventDetailViewController(event: event)
         detailViewController.hidesBottomBarWhenPushed   = true
         
         navigationController?.pushViewController(detailViewController, animated: true)
