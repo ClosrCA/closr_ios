@@ -360,13 +360,30 @@ extension MyProfileViewController: UIPopoverPresentationControllerDelegate {
 
 extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            //TODO: - upload to backend
-            if let header = tableView.tableHeaderView as? ProfileAvatarHeaderView {
-                header.update(avatarImage: image)
-            }
+        guard
+            let image = info[UIImagePickerControllerOriginalImage] as? UIImage,
+            let imageURL = info[UIImagePickerControllerReferenceURL] as? URL,
+            let token = UserAuthenticator.currentToken else {
+                
+            dismiss(animated: true)
+            return
         }
         
-        dismiss(animated: true)
+        LoadingController.startLoadingOn(self)
+        
+        AuthenticationAPI.uploadAvatar(authorization: token, upload: imageURL) { [weak self] (error) in
+            // TODO: 2 states for stoploading
+            LoadingController.stopLoading()
+            
+            guard let weakSelf = self, error == nil else {
+                return
+            }
+            
+            if let header = weakSelf.tableView.tableHeaderView as? ProfileAvatarHeaderView {
+                header.update(avatarImage: image)
+            }
+            
+            weakSelf.dismiss(animated: true)
+        }
     }
 }

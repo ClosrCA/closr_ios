@@ -77,26 +77,26 @@ class ProfileFormTableViewCell: UITableViewCell, Reusable {
     }
     
     fileprivate func createConstraints() {
-        titleLabel <- [
+        titleLabel.easy.layout(
             Top(AppSizeMetric.defaultPadding),
             Leading(AppSizeMetric.breathPadding),
             Height(20)
-        ]
+        )
         
-        textField <- [
+        textField.easy.layout(
             Top(AppSizeMetric.defaultPadding).to(titleLabel),
             Leading(AppSizeMetric.breathPadding),
             Trailing(AppSizeMetric.breathPadding),
             Height(AppSizeMetric.textFieldHeight),
             Bottom(AppSizeMetric.defaultPadding)
-        ]
+        )
         
-        underLine <- [
+        underLine.easy.layout(
             Leading(AppSizeMetric.breathPadding),
             Trailing(AppSizeMetric.breathPadding),
             Top().to(textField),
             Height(2)
-        ]
+        )
     }
     
     fileprivate func animateTitleIfNeeded(text: String?) {
@@ -130,7 +130,7 @@ extension ProfileFormTableViewCell: UITextFieldDelegate {
             return true
         }
         
-        let textFieldRange = NSMakeRange(0, text.characters.count)
+        let textFieldRange = NSMakeRange(0, text.count)
         if NSEqualRanges(textFieldRange, range) && string.isEmpty {
             animateTitleIfNeeded(text: nil)
         } else {
