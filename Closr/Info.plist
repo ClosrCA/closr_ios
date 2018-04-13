@@ -40,11 +40,16 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>To update profile image</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To find restaurant nearby</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To update profile image</string>
-	<key>NSCameraUsageDescription</key>
 	<string>To update profile image</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>

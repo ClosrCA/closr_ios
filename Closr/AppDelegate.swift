@@ -11,6 +11,7 @@ import CoreData
 import FBSDKCoreKit
 import Firebase
 import UserNotifications
+import SwaggerClient
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -111,6 +112,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
+    }
+    
+    private func setupEnvironment() {
+        // TODO: distinguish env url from buid settings
+        let baseURL = "http://ec2-52-60-147-109.ca-central-1.compute.amazonaws.com"
+        SwaggerClientAPI.basePath = baseURL
     }
 }
 
