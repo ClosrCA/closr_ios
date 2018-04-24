@@ -20,8 +20,8 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let promotionController = UINavigationController(rootViewController: PromotionViewController())
-        promotionController.tabBarItem = UITabBarItem(title: "Promotion", image: UIImage(named: "promotion"), tag: Tabs.promotion.rawValue)
+//        let promotionController = UINavigationController(rootViewController: PromotionViewController())
+//        promotionController.tabBarItem = UITabBarItem(title: "Promotion", image: UIImage(named: "promotion"), tag: Tabs.promotion.rawValue)
         
         let resturantController = UINavigationController(rootViewController: RestaurantListViewController())
         resturantController.tabBarItem = UITabBarItem(title: "Restaurant", image: UIImage(named: "restaurant"), tag: Tabs.restaurant.rawValue)
@@ -35,7 +35,7 @@ class TabBarController: UITabBarController {
         
         profileController.tabBarItem    = UITabBarItem(title: "Profile", image: UIImage(named: "profile"), tag: Tabs.profile.rawValue)
         
-        viewControllers = [resturantController, promotionController, eventController, profileController]
+        viewControllers = [resturantController, eventController, profileController]
     }
 
 }
