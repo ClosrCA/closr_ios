@@ -19,7 +19,9 @@ open class EventCreate: JSONEncodable {
     public var maxAge: Double?
     public var capacity: Double?
     public var gender: String?
+    /** user current location, will be updated to restaurant location later */
     public var lng: Double?
+    /** user current location, will be updated to restaurant location later */
     public var lat: Double?
 
     public init() {}

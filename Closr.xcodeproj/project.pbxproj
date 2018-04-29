@@ -596,7 +596,6 @@
 				E4713ED21E399ED2004CC166 /* Frameworks */,
 				E4713ED31E399ED2004CC166 /* Resources */,
 				72AEF6F365887734CA548AF5 /* [CP] Embed Pods Frameworks */,
-				AD17B846AA0FEC53A103F5C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -616,7 +615,6 @@
 				E4713EE91E399ED3004CC166 /* Frameworks */,
 				E4713EEA1E399ED3004CC166 /* Resources */,
 				E3B50A67D50AE809037655D1 /* [CP] Embed Pods Frameworks */,
-				B14D7671E633B67FA2FF859E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -819,36 +817,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Closr/Pods-Closr-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AD17B846AA0FEC53A103F5C7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Closr/Pods-Closr-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B14D7671E633B67FA2FF859E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClosrTests/Pods-ClosrTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3B50A67D50AE809037655D1 /* [CP] Embed Pods Frameworks */ = {

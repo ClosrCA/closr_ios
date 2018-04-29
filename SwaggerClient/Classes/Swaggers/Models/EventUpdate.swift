@@ -15,6 +15,10 @@ open class EventUpdate: JSONEncodable {
     public var purpose: String?
     public var minAge: Double?
     public var maxAge: Double?
+    /** user current location */
+    public var lat: Double?
+    /** user current location */
+    public var lng: Double?
 
     public init() {}
 
@@ -26,6 +30,8 @@ open class EventUpdate: JSONEncodable {
         nillableDictionary["purpose"] = self.purpose
         nillableDictionary["minAge"] = self.minAge
         nillableDictionary["maxAge"] = self.maxAge
+        nillableDictionary["lat"] = self.lat
+        nillableDictionary["lng"] = self.lng
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

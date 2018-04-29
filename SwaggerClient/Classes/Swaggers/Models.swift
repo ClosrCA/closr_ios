@@ -234,6 +234,8 @@ class Decoders {
             result.purpose = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["purpose"] as AnyObject?)
             result.minAge = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["minAge"] as AnyObject?)
             result.maxAge = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["maxAge"] as AnyObject?)
+            result.lat = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lat"] as AnyObject?)
+            result.lng = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lng"] as AnyObject?)
             return result
         }
 
