@@ -75,22 +75,22 @@ class ProfileAvatarHeaderView: UIView {
     }
     
     fileprivate func createConstraints() {
-        avatarImageView <- [
+        avatarImageView.easy.layout(
             Top(Constants.avatarTopPadding),
             CenterX(),
             Size(Constants.avatarSize)
-        ]
+        )
         
-        editButton <- [
+        editButton.easy.layout(
             Leading(AppSizeMetric.breathPadding).to(avatarImageView),
             CenterY().to(avatarImageView)
-        ]
+        )
         
-        moreButton <- [
+        moreButton.easy.layout(
             Size(Constants.moreButtonSize),
             Top(Constants.avatarTopPadding),
             Trailing(AppSizeMetric.breathPadding)
-        ]
+        )
     }
     
     @objc

@@ -11,11 +11,20 @@ import SwiftyJSON
 import FirebaseAuth
 import SwaggerClient
 
+private let kUserDefaultsToken = "closr.current.token"
+
 struct UserAuthenticator {
     
     static var currentProfile: Profile?
     
-    static var currentToken: String?
+    static var currentToken: String? {
+        get {
+            return UserDefaults.standard.string(forKey: kUserDefaultsToken)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: kUserDefaultsToken)
+        }
+    }
     
     static func logout() throws {
         try Auth.auth().signOut()
