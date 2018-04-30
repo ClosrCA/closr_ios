@@ -35,10 +35,10 @@ class MyEventTableViewCell: UITableViewCell, Reusable {
         
         contentView.addSubview(eventCollectionView)
         
-        eventCollectionView <- [
+        eventCollectionView.easy.layout(
             Edges(),
             Height(MyEventCollectionViewCell.preferredSize.height)
-        ]
+        )
     }
     
     required init?(coder aDecoder: NSCoder) {

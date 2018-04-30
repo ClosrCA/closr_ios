@@ -15,8 +15,7 @@ class ChatViewController: UIViewController {
 
     lazy var messageViewController: MessageViewController = {
         let controller = MessageViewController()
-        // TODO: replace with event id
-        controller.channelID            = "1"
+        controller.channelID            = self.event.id
         controller.senderId             = Auth.auth().currentUser?.uid
         controller.senderDisplayName    = Auth.auth().currentUser?.displayName
         controller.delegate             = self
