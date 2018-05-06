@@ -60,7 +60,7 @@ class RestaurantListViewController: UIViewController {
         }
     }
     
-    fileprivate var placeSearch: YelpPlaceSearch!
+    fileprivate var placeSearch: YelpPlaceSearch?
     
     fileprivate var refreshWhenTypingTimer: Timer?
     
@@ -76,9 +76,9 @@ class RestaurantListViewController: UIViewController {
     fileprivate func setupSubviews() {
         view.addSubview(tableView)
         tableView.addSubview(refreshControl)
-        tableView <- Edges()
+        tableView.easy.layout(Edges())
         
-        navigationItem.titleView = searchBarController.searchBar
+//        navigationItem.titleView = searchBarController.searchBar
     }
     
     @objc
@@ -93,7 +93,7 @@ class RestaurantListViewController: UIViewController {
             
             self.placeSearch = YelpPlaceSearch.foodSearch(with: location)
             
-            self.placeSearch.fetchPlaces { (places, error) in
+            self.placeSearch?.fetchPlaces { (places, error) in
                 
                 self.refreshControl.endRefreshing()
                 
@@ -163,6 +163,20 @@ extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSour
         
         navigationController?.pushViewController(detailController, animated: true)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height {
+            placeSearch?.nextPage { [weak self] (places, error) in
+                guard let places = places, error == nil else {
+                    return
+                }
+                self?.restaurants.append(contentsOf: places)
+            }
+        }
+    }
 }
 
 extension RestaurantListViewController: UISearchControllerDelegate {
@@ -172,13 +186,13 @@ extension RestaurantListViewController: UISearchControllerDelegate {
 extension RestaurantListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
-        guard let searchText = searchController.searchBar.text, searchText.characters.count > 2 else {
+        guard let searchText = searchController.searchBar.text, searchText.count > 2 else {
             return
         }
         
         // TODO: generic solution for cities
         
-        placeSearch.searchRequest.keyword = searchText
+        placeSearch?.searchRequest.keyword = searchText
         
         refreshTimer()
     }
@@ -193,7 +207,7 @@ extension RestaurantListViewController: UISearchResultsUpdating {
         
         refreshControl.beginRefreshing()
         
-        placeSearch.fetchPlaces { (places, error) in
+        placeSearch?.fetchPlaces { (places, error) in
             
             self.refreshControl.endRefreshing()
             

@@ -10,8 +10,8 @@ import Foundation
 import CoreLocation
 import ObjectMapper
 
-typealias PlacesHandler = (([YelpPlace]?, Error?) -> Void)
-typealias PlaceDetailHandler = ((YelpPlace?, Error?) -> Void)
+typealias PlacesHandler = (([YelpPlace]?, String?) -> Void)
+typealias PlaceDetailHandler = ((YelpPlace?, String?) -> Void)
 
 struct YelpPlace: Mappable {
     var placeID: String!
@@ -159,8 +159,7 @@ extension OpenHours {
 extension CLLocationCoordinate2D: Mappable {
     
     public init?(map: Map) {
-        latitude = 0.0
-        longitude = 0.0
+        self.init(latitude: 0, longitude: 0)
     }
     
     mutating public func mapping(map: Map) {

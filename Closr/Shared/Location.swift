@@ -49,7 +49,7 @@ extension Location: CLLocationManagerDelegate {
 }
 
 extension CLLocationDistance {
-    static let defaultRadius: CLLocationDistance = 2000.0
+    static let defaultRadius: CLLocationDistance = 5000.0
     static let shortDistance: CLLocationDistance = 500.0
     static let longDistance: CLLocationDistance  = 20000.0
     

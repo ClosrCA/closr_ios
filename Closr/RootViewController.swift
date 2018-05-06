@@ -31,7 +31,7 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let authUser = Auth.auth().currentUser {
+        if let authUser = Auth.auth().currentUser, UserAuthenticator.currentToken != nil {
             
             prepopulateProfileBeforeFetch(authUser: authUser)
             

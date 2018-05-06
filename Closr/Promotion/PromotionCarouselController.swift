@@ -79,14 +79,14 @@ class PromotionCarouselController: UIViewController {
     }
 
     fileprivate func createConstraints() {
-        collectionView <- Edges()
+        collectionView.easy.layout(Edges())
         
-        pageControl <- [
+        pageControl.easy.layout(
             Bottom(),
             Leading(),
             Trailing(),
             Height(40)
-        ]
+        )
     }
     
     fileprivate func makeFilterButton(title: String) -> UIButton {
@@ -111,8 +111,7 @@ class PromotionCarouselController: UIViewController {
                 return
             }
             
-            let searchRequest = PlaceSearchRequest(center: location.coordinate, radius: CLLocationDistance.defaultRadius, type: YelpAPIConsole.PlaceType.food)
-            weakSelf.placeSearch  = YelpPlaceSearch(searchRequest: searchRequest)
+            weakSelf.placeSearch  = YelpPlaceSearch.foodSearch(with: location)
             
             weakSelf.placeSearch.fetchPlaces { (places, error) in
                 if let places = places, error == nil {

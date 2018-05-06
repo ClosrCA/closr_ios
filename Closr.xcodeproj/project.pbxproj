@@ -31,6 +31,7 @@
 		69BC381E1F527211008A4592 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BC381D1F527210008A4592 /* MyProfileViewController.swift */; };
 		69BC38211F5276CC008A4592 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BC38201F5276CC008A4592 /* MessageViewController.swift */; };
 		69BD54901E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BD548F1E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift */; };
+		69C15517209F8464001F1AA0 /* YelpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C15516209F8464001F1AA0 /* YelpAPI.swift */; };
 		69C3FDCB1F66267600F3E2D4 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3FDCA1F66267600F3E2D4 /* PromotionViewController.swift */; };
 		69C810BA1F316B7000113A41 /* EventAttendantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C810B91F316B7000113A41 /* EventAttendantTableViewCell.swift */; };
 		69CF0BFE1FE479C3008D7960 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF0BFD1FE479C3008D7960 /* LoadingController.swift */; };
@@ -129,6 +130,7 @@
 		69BC381D1F527210008A4592 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyProfileViewController.swift; path = User/Profile/MyProfileViewController.swift; sourceTree = "<group>"; };
 		69BC38201F5276CC008A4592 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = Event/MessageViewController.swift; sourceTree = "<group>"; };
 		69BD548F1E86C20C0037A7EE /* EventAttendantCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventAttendantCollectionViewCell.swift; path = Event/View/EventAttendantCollectionViewCell.swift; sourceTree = "<group>"; };
+		69C15516209F8464001F1AA0 /* YelpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YelpAPI.swift; path = Place/Search/Yelp/YelpAPI.swift; sourceTree = "<group>"; };
 		69C3FDCA1F66267600F3E2D4 /* PromotionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionViewController.swift; path = Promotion/PromotionViewController.swift; sourceTree = "<group>"; };
 		69C810B91F316B7000113A41 /* EventAttendantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventAttendantTableViewCell.swift; path = Event/EventAttendantTableViewCell.swift; sourceTree = "<group>"; };
 		69CF0BFD1FE479C3008D7960 /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingController.swift; path = Shared/LoadingController.swift; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 			children = (
 				E4AAB73B1E3ECC6A001EB362 /* YelpPlace.swift */,
 				E4AAB73D1E3ECC93001EB362 /* YelpPlaceSearch.swift */,
+				69C15516209F8464001F1AA0 /* YelpAPI.swift */,
 			);
 			name = Yelp;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				E477F0051E56710300ED7806 /* AppAppearance.swift in Sources */,
 				E477EFFD1E56692400ED7806 /* PromotionContainerView.swift in Sources */,
 				E477F00F1E5DCB7600ED7806 /* RestaurantDetailViewController.swift in Sources */,
+				69C15517209F8464001F1AA0 /* YelpAPI.swift in Sources */,
 				69FA43391F2854C400A16BB8 /* EventInfoTableViewCell.swift in Sources */,
 				E46ECDEA1E50D6C400785BE6 /* Device.swift in Sources */,
 				E46ECDE61E50D66400785BE6 /* LoginViewController.swift in Sources */,

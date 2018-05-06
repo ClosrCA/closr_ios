@@ -26,11 +26,7 @@ class LoadingController: UIViewController {
         shared.teardown()
     }
     
-    fileprivate lazy var indicator: UIActivityIndicatorView = {
-        let indicator           = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        
-        return indicator
-    }()
+    fileprivate lazy var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     fileprivate lazy var indicatorBackground: UIView = {
         let view                    = UIView()
