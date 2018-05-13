@@ -371,19 +371,22 @@ extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigation
         
         LoadingController.startLoadingOn(self)
         
-        AuthenticationAPI.uploadAvatar(authorization: token, upload: imageURL) { [weak self] (error) in
+        AuthenticationAPI.uploadAvatar(authorization: token, upload: imageURL) { (error) in
+            
+            defer {
+                self.dismiss(animated: true)
+            }
+            
             // TODO: 2 states for stoploading
             LoadingController.stopLoading()
             
-            guard let weakSelf = self, error == nil else {
+            guard error == nil else {
                 return
             }
             
-            if let header = weakSelf.tableView.tableHeaderView as? ProfileAvatarHeaderView {
+            if let header = self.tableView.tableHeaderView as? ProfileAvatarHeaderView {
                 header.update(avatarImage: image)
             }
-            
-            weakSelf.dismiss(animated: true)
         }
     }
 }
