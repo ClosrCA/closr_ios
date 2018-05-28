@@ -360,27 +360,23 @@ extension MyProfileViewController: UIPopoverPresentationControllerDelegate {
 
 extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        defer {
+            dismiss(animated: true)
+        }
+        
         guard
             let image = info[UIImagePickerControllerOriginalImage] as? UIImage,
-            let imageURL = info[UIImagePickerControllerReferenceURL] as? URL,
-            let token = UserAuthenticator.currentToken else {
-                
-            dismiss(animated: true)
-            return
-        }
+            let imageURL = info[UIImagePickerControllerImageURL] as? URL,
+            let token = UserAuthenticator.currentToken else { return }
         
         LoadingController.startLoadingOn(self)
         
         AuthenticationAPI.uploadAvatar(authorization: token, upload: imageURL) { (error) in
             
-            defer {
-                self.dismiss(animated: true)
-            }
-            
-            // TODO: 2 states for stoploading
             LoadingController.stopLoading()
             
             guard error == nil else {
+                self.popAlert(with: error.debugDescription)
                 return
             }
             
