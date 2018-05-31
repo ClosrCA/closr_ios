@@ -25,6 +25,7 @@
 		695C9B5A1F5B6B250074B714 /* ProfileFormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C9B591F5B6B250074B714 /* ProfileFormTableViewCell.swift */; };
 		6974FE56203DEE3400EFA66C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974FE55203DEE3400EFA66C /* ChatViewController.swift */; };
 		698CFD751F43F99900ECF7AA /* EventGalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */; };
+		6992EE9420BBA8A4005869BB /* UIViewController+Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6992EE9320BBA8A4005869BB /* UIViewController+Popup.swift */; };
 		69BA88571EDA375B0039E237 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */; };
 		69BA88591EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */; };
 		69BA885B1EDA460B0039E237 /* TableViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA885A1EDA460B0039E237 /* TableViewSectionHeader.swift */; };
@@ -35,7 +36,6 @@
 		69C3FDCB1F66267600F3E2D4 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3FDCA1F66267600F3E2D4 /* PromotionViewController.swift */; };
 		69C810BA1F316B7000113A41 /* EventAttendantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C810B91F316B7000113A41 /* EventAttendantTableViewCell.swift */; };
 		69CF0BFE1FE479C3008D7960 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF0BFD1FE479C3008D7960 /* LoadingController.swift */; };
-		69CF0C001FE4832D008D7960 /* PopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF0BFF1FE4832D008D7960 /* PopupController.swift */; };
 		69E322701F4536CC00061903 /* EventMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E3226F1F4536CC00061903 /* EventMapTableViewCell.swift */; };
 		69E750821E86122A00E7EFB0 /* SegmentControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */; };
 		69FA43281F26F96900A16BB8 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FA43271F26F96900A16BB8 /* EventViewController.swift */; };
@@ -124,6 +124,7 @@
 		6974FE55203DEE3400EFA66C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Event/ChatViewController.swift; sourceTree = "<group>"; };
 		698AA55F1FF95B1A00796CD3 /* Closr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Closr.entitlements; sourceTree = "<group>"; };
 		698CFD741F43F99900ECF7AA /* EventGalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventGalleryTableViewCell.swift; path = Event/EventGalleryTableViewCell.swift; sourceTree = "<group>"; };
+		6992EE9320BBA8A4005869BB /* UIViewController+Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController+Popup.swift"; path = "Shared/UIViewController+Popup.swift"; sourceTree = "<group>"; };
 		69BA88561EDA375B0039E237 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		69BA88581EDA3AF40039E237 /* CategoryCarouselTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCarouselTableViewCell.swift; sourceTree = "<group>"; };
 		69BA885A1EDA460B0039E237 /* TableViewSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSectionHeader.swift; sourceTree = "<group>"; };
@@ -134,7 +135,6 @@
 		69C3FDCA1F66267600F3E2D4 /* PromotionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromotionViewController.swift; path = Promotion/PromotionViewController.swift; sourceTree = "<group>"; };
 		69C810B91F316B7000113A41 /* EventAttendantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventAttendantTableViewCell.swift; path = Event/EventAttendantTableViewCell.swift; sourceTree = "<group>"; };
 		69CF0BFD1FE479C3008D7960 /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingController.swift; path = Shared/LoadingController.swift; sourceTree = "<group>"; };
-		69CF0BFF1FE4832D008D7960 /* PopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PopupController.swift; path = Shared/PopupController.swift; sourceTree = "<group>"; };
 		69E3226F1F4536CC00061903 /* EventMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventMapTableViewCell.swift; path = Event/EventMapTableViewCell.swift; sourceTree = "<group>"; };
 		69E750811E86122A00E7EFB0 /* SegmentControlTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentControlTableViewCell.swift; path = Event/View/SegmentControlTableViewCell.swift; sourceTree = "<group>"; };
 		69FA43271F26F96900A16BB8 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventViewController.swift; path = Event/EventViewController.swift; sourceTree = "<group>"; };
@@ -407,11 +407,11 @@
 				E4A885B91E53414F0093829E /* KeyboardObserver.swift */,
 				E477F0041E56710300ED7806 /* AppAppearance.swift */,
 				6942D1041EFA0BD600988471 /* UIViewController+Appearance.swift */,
+				6992EE9320BBA8A4005869BB /* UIViewController+Popup.swift */,
 				6942D1061EFA1B6500988471 /* UIView+Animation.swift */,
 				E477F0061E567DBF00ED7806 /* Reusable.swift */,
 				4CA91CD71E577AAF00A8F51C /* Notification.swift */,
 				69CF0BFD1FE479C3008D7960 /* LoadingController.swift */,
-				69CF0BFF1FE4832D008D7960 /* PopupController.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -878,6 +878,7 @@
 				694DA1B61F5328BE00FFB2D2 /* UIButton+Background.swift in Sources */,
 				69C810BA1F316B7000113A41 /* EventAttendantTableViewCell.swift in Sources */,
 				E458B1D91E66FFA100EE7736 /* CreateEventViewController.swift in Sources */,
+				6992EE9420BBA8A4005869BB /* UIViewController+Popup.swift in Sources */,
 				4CFFEE771E7B0B31009E8CB7 /* Promotion.swift in Sources */,
 				E46ECDFD1E51313C00785BE6 /* String+Format.swift in Sources */,
 				E477F0181E5DDBB400ED7806 /* ImageCarouselCell.swift in Sources */,
@@ -891,7 +892,6 @@
 				4CA91CD81E577AAF00A8F51C /* Notification.swift in Sources */,
 				69BA885B1EDA460B0039E237 /* TableViewSectionHeader.swift in Sources */,
 				E4713EE11E399ED2004CC166 /* Closr.xcdatamodeld in Sources */,
-				69CF0C001FE4832D008D7960 /* PopupController.swift in Sources */,
 				694DA1B41F5324D400FFB2D2 /* ChatAvatar.swift in Sources */,
 				E46A44921E8CA4BE00B9CB10 /* ProfileAvatarHeaderView.swift in Sources */,
 				E4E99E041E7A31F100A10DA7 /* RestaurantListViewController.swift in Sources */,

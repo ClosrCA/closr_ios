@@ -92,15 +92,16 @@ class CreateEventViewController: UIViewController {
     @objc
     fileprivate func onCreateEvent() {
         LoadingController.startLoadingOn(self)
-        EventAPI.createEvent(authorization: UserAuthenticator.currentToken ?? "", eventCreate: eventForm) { [weak self] (response, error) in
-            //TODO: 2 states of loading result
+        EventAPI.createEvent(authorization: UserAuthenticator.currentToken ?? "", eventCreate: eventForm) { (response, error) in
+            
             LoadingController.stopLoading()
             
             guard error == nil else {
+                self.popAlert(with: error.debugDescription)
                 return
             }
             
-            self?.presentingViewController?.dismiss(animated: true)
+            self.presentingViewController?.dismiss(animated: true)
         }
     }
 }

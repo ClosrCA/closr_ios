@@ -175,13 +175,6 @@ class MyProfileViewController: UIViewController {
         }
     }
     
-    fileprivate func popAlert(with message: String?) {
-        let alertController = UIAlertController(title: "Ooops", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        
-        present(alertController, animated: true)
-    }
-    
     @objc
     fileprivate func onConfirm() {
         delegate?.didSelectConfirm(controller: self)
