@@ -10,19 +10,11 @@ import UIKit
 import EasyPeasy
 
 protocol TextFieldTableViewCellDelegate: class {
-    func textFieldTableViewCellDidFinishEditing(cell: TextFieldTableViewCell, text: String?)
+    func textFieldTableViewCellDidFinishEditing(cell: TextFieldTableViewCell, rowType: TextFieldRowType?)
     func textFieldTableViewCellDidBeginEditing(cell: TextFieldTableViewCell)
 }
 
 class TextFieldTableViewCell: UITableViewCell, Reusable {
-
-    enum Section {
-        case date
-        case time
-        case eventName
-        case purpose
-        case share
-    }
     
     fileprivate struct Constants {
         static let contentPadding: CGFloat              = 27
@@ -32,6 +24,8 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     }
     
     weak var delegate: TextFieldTableViewCellDelegate?
+    
+    fileprivate var fieldType: TextFieldRowType?
     
     fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
     
@@ -82,59 +76,61 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
         return toolBar
     }()
     
-    func update(title: String?, text: String?, section: Section) {
+    func update(title: String?, type: TextFieldRowType) {
         
-         titleLabel.text = title
+        fieldType = type
+        titleLabel.text = title
         
-        switch section {
+        switch type {
         
-        case .date:
-            let formatter           = DateFormatter()
-            formatter.dateFormat    = String.createEventDateFormat
-            textField.text          = formatter.string(from: Date())
+        case .date(let raw):
+            if let rawDate = raw {
+                let formatter           = DateFormatter()
+                formatter.dateFormat    = String.createEventDateFormat
+                textField.text          = formatter.string(from: rawDate)
+            }
             textField.layer.borderWidth = 0.5
             textField.layer.cornerRadius = 7
             textField.layer.borderColor = AppColor.brand.cgColor
             textField.inputView = datePicker
             
-        case .time:
-            let formatter           = DateFormatter()
-            formatter.dateFormat    = String.createEventTimeFormat
-            textField.text          = formatter.string(from: Date())
+        case .time(let raw):
+            if let rawDate = raw {
+                let formatter           = DateFormatter()
+                formatter.dateFormat    = String.createEventTimeFormat
+                textField.text          = formatter.string(from: rawDate)
+            }
             textField.layer.borderWidth = 0.5
             textField.layer.borderColor = AppColor.brand.cgColor
             textField.inputView = timePicker
             
-        case .eventName:
+        case .title(let title):
+            textField.text = title
             textField.layer.borderWidth = 0.5
             textField.layer.borderColor = AppColor.brand.cgColor
-            textField <- [
-            
+            textField.easy.layout(
                 Height(23),
-                Width(321.1),
-                
-            ]
-        case .purpose:
+                Width(321.1)
+            )
+        case .purpose(let purpose):
+            textField.text = purpose
             textField.layer.borderWidth = 0.5
             textField.layer.borderColor = AppColor.brand.cgColor
             textField.inputView = purposePicker
-        case .share:
+        case .share(let share):
+            textField.text = share
             textField.layer.borderWidth = 0.5
             textField.layer.borderColor = AppColor.brand.cgColor
-            textField <- [
-            
+            textField.easy.layout(
                 Height(47),
                 Width(321.1)
-            
-            ]
-            
+            )
         }
         
         textField.inputAccessoryView    = toolBar
         textField.backgroundColor       = UIColor.white
         textField.borderStyle           = .roundedRect
         textField.isUserInteractionEnabled  = true
-        
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -153,7 +149,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     @objc
     fileprivate func onDonePicking() {
         textField.resignFirstResponder()
-        delegate?.textFieldTableViewCellDidFinishEditing(cell: self, text: textField.text)
+        delegate?.textFieldTableViewCellDidFinishEditing(cell: self, rowType: fieldType)
     }
     
     @objc
@@ -162,6 +158,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
         formatter.dateFormat = String.createEventTimeFormat
         
         textField.text = formatter.string(from: timePicker.date)
+        fieldType = .time(timePicker.date)
     }
     
     @objc
@@ -170,6 +167,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
         formatter.dateFormat = String.createEventDateFormat
         
         textField.text = formatter.string(from: datePicker.date)
+        fieldType = .date(datePicker.date)
     }
 
     override func prepareForReuse() {
@@ -181,21 +179,22 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
         textField.borderStyle                               = .roundedRect
         textField.inputView                                 = nil
         textField.inputAccessoryView                        = nil
+        fieldType                                           = nil
     }
     
     fileprivate func createConstraints() {
-        titleLabel <- [
+        titleLabel.easy.layout(
             Top(Constants.textFieldVerticalPadding),
             Leading(Constants.contentPadding)
-        ]
+        )
         
-        textField <- [
+        textField.easy.layout(
             Top(Constants.textFieldVerticalPadding).to(titleLabel),
             Leading(Constants.contentPadding),
             Trailing(Constants.contentPadding),
             Bottom(Constants.textFieldVerticalPadding),
             Height(Constants.textFieldHeight)
-        ]
+        )
     }
     
 }
@@ -205,47 +204,34 @@ extension TextFieldTableViewCell: UITextFieldDelegate {
         delegate?.textFieldTableViewCellDidBeginEditing(cell: self)
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.textFieldTableViewCellDidFinishEditing(cell: self, text: textField.text)
+        guard let fieldType = fieldType else { return }
+        if case .title = fieldType {
+            self.fieldType = .title(textField.text)
+        }
+        if case .share = fieldType {
+            self.fieldType = .share(textField.text)
+        }
+        delegate?.textFieldTableViewCellDidFinishEditing(cell: self, rowType: self.fieldType)
     }
 }
 
 extension TextFieldTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
-    enum Purpose: Int, CustomStringConvertible {
-        
-        static let count = 4
-        
-        case business
-        case casual
-        case dating
-        case foodie
-        
-        var description: String {
-            switch self {
-            case .business: return "Business/Networking"
-            case .casual: return "Casual chatting"
-            case .dating: return "Dating"
-            case .foodie: return "Foodie lovers"
-            }
-        }
-    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Purpose.count
+        return Purpose.forDisplay.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if let purpose = Purpose(rawValue: row) {
-            return purpose.description
-        }
-        
-        return nil
+        return Purpose.forDisplay[row].description
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textField.text = Purpose(rawValue: row)?.description
+        let purpose = Purpose(rawValue: row)
+        textField.text = purpose?.description
+        fieldType = .purpose(purpose?.description)
     }
 }

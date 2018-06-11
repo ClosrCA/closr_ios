@@ -11,11 +11,13 @@ import MapKit
 
 class Location: NSObject {
     
-    fileprivate static var shared = Location()
+    static let shared = Location()
     
     fileprivate lazy var locationManager: CLLocationManager = CLLocationManager()
     
     fileprivate var completion: ((CLLocation, Error?) -> Void)?
+    
+    fileprivate (set) var current: CLLocation?
     
     fileprivate override init() {
         super.init()
@@ -36,6 +38,8 @@ extension Location: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last, location.horizontalAccuracy < 100 {
+            
+            current = location
             
             completion?(location, nil)
             
