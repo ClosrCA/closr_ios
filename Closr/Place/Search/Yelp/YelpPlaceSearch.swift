@@ -33,7 +33,7 @@ class YelpPlaceSearch {
     
     class func foodSearch(with location: CLLocation) -> YelpPlaceSearch {
         
-        let searchRequest = PlaceSearchRequest(center: location.coordinate, radius: CLLocationDistance.defaultRadius, type: .food)
+        let searchRequest = PlaceSearchRequest(center: location.coordinate, radius: CLLocationDistance.defaultRadius, type: .restaurant)
         
         return YelpPlaceSearch(searchRequest: searchRequest)
     }
