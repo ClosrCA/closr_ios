@@ -27,7 +27,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     
     fileprivate var fieldType: TextFieldRowType?
     
-    fileprivate lazy var titleLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
+    fileprivate lazy var headlineLabel: UILabel = UILabel.makeLabel(font: AppFont.text, textColor: AppColor.text_gray)
     
     fileprivate lazy var textField: UITextField = {
         let textField                                       = UITextField()
@@ -79,31 +79,31 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     func update(title: String?, type: TextFieldRowType) {
         
         fieldType = type
-        titleLabel.text = title
+        headlineLabel.text = title
         
         switch type {
         
         case .date(let raw):
-            if let rawDate = raw {
-                let formatter           = DateFormatter()
-                formatter.dateFormat    = String.createEventDateFormat
-                textField.text          = formatter.string(from: rawDate)
-            }
             textField.layer.borderWidth = 0.5
             textField.layer.cornerRadius = 7
             textField.layer.borderColor = AppColor.brand.cgColor
             textField.inputView = datePicker
             
+            let rawDate = raw ?? Date()
+            let formatter           = DateFormatter()
+            formatter.dateFormat    = String.createEventDateFormat
+            textField.text          = formatter.string(from: rawDate)
+            textFieldDidEndEditing(textField)
         case .time(let raw):
-            if let rawDate = raw {
-                let formatter           = DateFormatter()
-                formatter.dateFormat    = String.createEventTimeFormat
-                textField.text          = formatter.string(from: rawDate)
-            }
             textField.layer.borderWidth = 0.5
             textField.layer.borderColor = AppColor.brand.cgColor
             textField.inputView = timePicker
             
+            let rawDate = raw ?? Date()
+            let formatter           = DateFormatter()
+            formatter.dateFormat    = String.createEventTimeFormat
+            textField.text          = formatter.string(from: rawDate)
+            textFieldDidEndEditing(textField)
         case .title(let title):
             textField.text = title
             textField.layer.borderWidth = 0.5
@@ -113,10 +113,15 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
                 Width(321.1)
             )
         case .purpose(let purpose):
-            textField.text = purpose
             textField.layer.borderWidth = 0.5
             textField.layer.borderColor = AppColor.brand.cgColor
             textField.inputView = purposePicker
+            
+            if purpose == nil {
+                pickerView(purposePicker, didSelectRow: 0, inComponent: 0)
+            } else {
+                textField.text = purpose
+            }
         case .share(let share):
             textField.text = share
             textField.layer.borderWidth = 0.5
@@ -136,7 +141,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(headlineLabel)
         contentView.addSubview(textField)
         
         createConstraints()
@@ -173,7 +178,7 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        titleLabel.text                                     = nil
+        headlineLabel.text                                     = nil
         textField.text                                      = nil
         textField.backgroundColor                           = UIColor.lightGray
         textField.borderStyle                               = .roundedRect
@@ -183,13 +188,13 @@ class TextFieldTableViewCell: UITableViewCell, Reusable {
     }
     
     fileprivate func createConstraints() {
-        titleLabel.easy.layout(
+        headlineLabel.easy.layout(
             Top(Constants.textFieldVerticalPadding),
             Leading(Constants.contentPadding)
         )
         
         textField.easy.layout(
-            Top(Constants.textFieldVerticalPadding).to(titleLabel),
+            Top(Constants.textFieldVerticalPadding).to(headlineLabel),
             Leading(Constants.contentPadding),
             Trailing(Constants.contentPadding),
             Bottom(Constants.textFieldVerticalPadding),
@@ -230,8 +235,8 @@ extension TextFieldTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let purpose = Purpose(rawValue: row)
-        textField.text = purpose?.description
-        fieldType = .purpose(purpose?.description)
+        let purpose = Purpose.forDisplay[row]
+        textField.text = purpose.description
+        fieldType = .purpose(purpose.description)
     }
 }

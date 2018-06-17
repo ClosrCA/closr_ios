@@ -75,25 +75,25 @@ class SegmentControlTableViewCell: UITableViewCell, Reusable {
         super.updateConstraints()
         
         if titleLabel.text?.isEmpty ?? true {
-            segmentControl <- Top(Constants.segmentControlPadding)
+            segmentControl.easy.layout(Top(Constants.segmentControlPadding))
         } else {
-            segmentControl <- Top(Constants.segmentControlPadding).to(titleLabel, .bottom)
+            segmentControl.easy.layout(Top(Constants.segmentControlPadding).to(titleLabel, .bottom))
         }
     }
     
     fileprivate func createConstraints() {
-        titleLabel <- [
+        titleLabel.easy.layout(
             Leading(Constants.titlePadding),
             Top(Constants.titleTopPadding)
-        ]
+        )
         
-        segmentControl <- [
+        segmentControl.easy.layout(
             Top(12).to(titleLabel),
             Leading(Constants.titlePadding),
             Trailing(Constants.titlePadding),
             Bottom(31),
             Height(Constants.segmentControlHeight)
-        ]
+        )
     }
     
     @objc

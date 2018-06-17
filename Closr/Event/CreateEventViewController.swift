@@ -207,12 +207,17 @@ class CreateEventViewController: UIViewController {
     fileprivate func combine(day: Date, time: Date) -> Date? {
         let calendar = Calendar.current
         let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
-        var dateCompnents = calendar.dateComponents([.year, .month, .day], from: day)
-        dateCompnents.hour = timeComponents.hour
-        dateCompnents.minute = timeComponents.minute
-        dateCompnents.second = timeComponents.second
+        let dayCompnents = calendar.dateComponents([.year, .month, .day], from: day)
         
-        return dateCompnents.date
+        var newComponents = calendar.dateComponents(in: calendar.timeZone, from: Date())
+        newComponents.year = dayCompnents.year
+        newComponents.month = dayCompnents.month
+        newComponents.day = dayCompnents.day
+        newComponents.hour = timeComponents.hour
+        newComponents.minute = timeComponents.minute
+        newComponents.second = timeComponents.second
+        
+        return newComponents.date
     }
 }
 
@@ -326,11 +331,21 @@ extension CreateEventViewController: RangeSliderTableViewCellDelegate {
 extension CreateEventViewController: SegmentControlTableViewCellDelegate {
     
     enum NumberOfPeople: Int {
-        case two = 2
-        case three = 3
-        case four = 4
+        case two
+        case three
+        case four
         
         static let segmentItems = ["2", "3", "4"]
+        var number: Double {
+            switch self {
+            case .two:
+                return 2
+            case .three:
+                return 3
+            case .four:
+                return 4
+            }
+        }
     }
     
     enum Gender: Int {
@@ -355,7 +370,7 @@ extension CreateEventViewController: SegmentControlTableViewCellDelegate {
         }
         
         if row == 0 {
-            eventForm.capacity = Double((NumberOfPeople(rawValue: index) ?? .three).rawValue)
+            eventForm.capacity = (NumberOfPeople(rawValue: index) ?? .three).number
             
             tableView.beginUpdates()
             tableView.endUpdates()
