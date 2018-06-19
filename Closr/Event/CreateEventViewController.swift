@@ -9,6 +9,58 @@
 import UIKit
 import EasyPeasy
 import SwaggerClient
+import CoreLocation
+
+enum Purpose: Int, CustomStringConvertible {
+    
+    static let forDisplay: [Purpose] = [.business, .foodie]
+    
+    case business
+    case casual
+    case dating
+    case foodie
+    
+    var description: String {
+        switch self {
+        case .business: return "Business/Networking"
+        case .casual: return "Casual chatting"
+        case .dating: return "Dating"
+        case .foodie: return "Foodie lovers"
+        }
+    }
+}
+enum Section: Int {
+    case textField
+    case ageFilter
+    case numberFilter
+    case count
+}
+
+enum TextFieldRowType {
+    
+    static let rows: [TextFieldRowType] = [.date(nil), .time(nil), .title(nil), .purpose(nil), .share(nil)]
+    
+    case date(Date?)
+    case time(Date?)
+    case title(String?)
+    case purpose(String?)
+    case share(String?)
+    
+    var headline: String {
+        switch self {
+        case .date:
+            return "Date"
+        case .time:
+            return "Start time"
+        case .title:
+            return "Event name"
+        case .purpose:
+            return "Purpose"
+        case .share:
+            return "Anything you'd like to share"
+        }
+    }
+}
 
 class CreateEventViewController: UIViewController {
     
@@ -23,7 +75,7 @@ class CreateEventViewController: UIViewController {
     }
     
     fileprivate var eventForm = EventCreate()
-    
+    fileprivate var startTime: (day: Date?, time: Date?)
     
     fileprivate lazy var tableView: UITableView = {
         let tableView                                       = UITableView(frame: .zero, style: .plain)
@@ -91,6 +143,21 @@ class CreateEventViewController: UIViewController {
     
     @objc
     fileprivate func onCreateEvent() {
+        if let basicError = validateBasicsOnCreation() {
+            popAlert(with: basicError)
+            return
+        }
+        
+        if let dateMissing = validateAndFormEventDate() {
+            popAlert(with: dateMissing)
+            return
+        }
+        
+        if let locationMissing = validateUserLocation() {
+            popAlert(with: locationMissing)
+            return
+        }
+        
         LoadingController.startLoadingOn(self)
         EventAPI.createEvent(authorization: UserAuthenticator.currentToken ?? "", eventCreate: eventForm) { (response, error) in
             
@@ -104,26 +171,57 @@ class CreateEventViewController: UIViewController {
             self.presentingViewController?.dismiss(animated: true)
         }
     }
+    
+    fileprivate func validateAndFormEventDate() -> String? {
+        guard let day = startTime.day, let time = startTime.time else {
+            return "Please choose a day and time for the event"
+        }
+        
+        let date = combine(day: day, time: time)
+        eventForm.startTime = date?.description
+        return nil
+    }
+    
+    fileprivate func validateUserLocation() -> String? {
+        let coordinate = Location.shared.current?.coordinate
+        guard let lat = coordinate?.latitude, let lng = coordinate?.longitude else {
+            return "Please enable location service in Settings"
+        }
+        eventForm.lat = lat
+        eventForm.lng = lng
+        return nil
+    }
+    
+    fileprivate func validateBasicsOnCreation() -> String? {
+        var errorMessage: String?
+        if eventForm.yelpID == nil {
+            errorMessage = "Can not create event on given restaurant"
+        } else if eventForm.purpose == nil {
+            errorMessage = "Please select a purpose"
+        } else if eventForm.capacity == nil {
+            errorMessage = "Please select the number of people"
+        }
+        return errorMessage
+    }
+    
+    fileprivate func combine(day: Date, time: Date) -> Date? {
+        let calendar = Calendar.current
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+        let dayCompnents = calendar.dateComponents([.year, .month, .day], from: day)
+        
+        var newComponents = calendar.dateComponents(in: calendar.timeZone, from: Date())
+        newComponents.year = dayCompnents.year
+        newComponents.month = dayCompnents.month
+        newComponents.day = dayCompnents.day
+        newComponents.hour = timeComponents.hour
+        newComponents.minute = timeComponents.minute
+        newComponents.second = timeComponents.second
+        
+        return newComponents.date
+    }
 }
 
 extension CreateEventViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    fileprivate enum Section: Int {
-        case textField
-        case ageFilter
-        case numberFilter
-        case count
-    }
-    
-    fileprivate enum TextFieldRow: Int {
-        case date
-        case time
-        case eventName
-        case purpose
-        case share
-        case count
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return Section.count.rawValue
     }
@@ -133,7 +231,7 @@ extension CreateEventViewController: UITableViewDataSource, UITableViewDelegate 
         if let section = Section(rawValue: section) {
             switch section {
             case .textField:
-                return TextFieldRow.count.rawValue
+                return TextFieldRowType.rows.count
             case .ageFilter:
                 return 1
             case .numberFilter:
@@ -152,30 +250,13 @@ extension CreateEventViewController: UITableViewDataSource, UITableViewDelegate 
             switch section {
             case .textField:
                 
-                if let row = TextFieldRow(rawValue: indexPath.row) {
-                    
-                    let cell        = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.reuseIdentifier, for: indexPath) as! TextFieldTableViewCell
-                    
-                    cell.delegate   = self
-                    
-                    switch row {
-                    // TODO: parse date and time from single start time property
-                    case .date:
-                        cell.update(title: "Date", text: eventForm.startTime, section: .date)
-                    case .time:
-                        cell.update(title: "Time", text: eventForm.startTime, section: .time)
-                    case .eventName:
-                        cell.update(title: "Event Name", text: place?.address?.displayAddress?.first, section: .eventName)
-                    case .purpose:
-                        cell.update(title: "Purpose", text: eventForm.purpose, section: .purpose)
-                    case .share:
-                        cell.update(title: "Anything you'd to share", text: eventForm.description, section: .share)
-                    default:
-                        break
-                    }
-                    
-                    return cell
-                }
+                let cell        = tableView.dequeueReusableCell(withIdentifier: TextFieldTableViewCell.reuseIdentifier, for: indexPath) as! TextFieldTableViewCell
+                cell.delegate   = self
+                
+                let textFieldRow = TextFieldRowType.rows[indexPath.row]
+                cell.update(title: textFieldRow.headline, type: textFieldRow)
+                
+                return cell
                 
             case .ageFilter:
                 
@@ -221,23 +302,21 @@ extension CreateEventViewController: UITableViewDataSource, UITableViewDelegate 
 }
 
 extension CreateEventViewController: TextFieldTableViewCellDelegate {
-    func textFieldTableViewCellDidBeginEditing(cell: TextFieldTableViewCell) {
-        
-    }
+    func textFieldTableViewCellDidBeginEditing(cell: TextFieldTableViewCell) {}
     
-    func textFieldTableViewCellDidFinishEditing(cell: TextFieldTableViewCell, text: String?) {
-        if let row = tableView.indexPath(for: cell)?.row,
-            let section = TextFieldRow(rawValue: row) {
-            switch section {
-            case .date:
-                eventForm.startTime = text
-            case .time:
-                eventForm.startTime = text
-            case .purpose:
-                eventForm.purpose = text
-            default:
-                break 
-            }
+    func textFieldTableViewCellDidFinishEditing(cell: TextFieldTableViewCell, rowType: TextFieldRowType?) {
+        guard let row = rowType else { return }
+        switch row {
+        case .title(let text):
+            eventForm.title = text
+        case .date(let date):
+            startTime.day = date
+        case .time(let date):
+            startTime.time = date
+        case .purpose(let text):
+            eventForm.purpose = text
+        case .share(let text):
+            eventForm.description = text
         }
     }
 }
@@ -252,11 +331,21 @@ extension CreateEventViewController: RangeSliderTableViewCellDelegate {
 extension CreateEventViewController: SegmentControlTableViewCellDelegate {
     
     enum NumberOfPeople: Int {
-        case two = 2
-        case three = 3
-        case four = 4
+        case two
+        case three
+        case four
         
         static let segmentItems = ["2", "3", "4"]
+        var number: Double {
+            switch self {
+            case .two:
+                return 2
+            case .three:
+                return 3
+            case .four:
+                return 4
+            }
+        }
     }
     
     enum Gender: Int {
@@ -281,7 +370,7 @@ extension CreateEventViewController: SegmentControlTableViewCellDelegate {
         }
         
         if row == 0 {
-            eventForm.capacity = Double((NumberOfPeople(rawValue: index) ?? .three).rawValue)
+            eventForm.capacity = (NumberOfPeople(rawValue: index) ?? .three).number
             
             tableView.beginUpdates()
             tableView.endUpdates()
